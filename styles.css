@@ -34,6 +34,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+#get { scroll-margin-top: 88px; }
 body {
   margin: 0;
   font: 400 18px/1.6 var(--ui);
@@ -60,6 +61,7 @@ p { margin: 0; }
   color: var(--ink);
   font: 700 17px/1 var(--ui);
   text-decoration: none;
+  cursor: pointer;
   box-shadow: var(--lift-sm);
   transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
@@ -68,6 +70,45 @@ p { margin: 0; }
 .btn-primary { background: var(--blue); color: #14213d; }
 .btn-sun { background: var(--yellow); }
 .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.btn:disabled { cursor: wait; opacity: 0.65; transform: none; }
+/* ── Early-access modal */
+html.signup-open { overflow: hidden; }
+.signup-dialog { width: min(480px, calc(100% - 32px)); max-height: calc(100dvh - 40px); margin: auto; padding: 0; border: 2.5px solid var(--ink); border-radius: 28px; color: var(--ink); background: var(--cream); box-shadow: 0 8px 0 var(--ink), 0 32px 100px #17142d40; overflow: auto; }
+.signup-dialog::backdrop { background: #1b183c85; backdrop-filter: blur(7px); }
+.signup-dialog[open] { animation: signup-in 180ms ease-out; }
+.signup-card { position: relative; padding: 36px 32px 0; }
+.signup-close { position: absolute; right: 16px; top: 16px; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
+.signup-close:hover { background: #2d2a4a0b; color: var(--ink); }
+.signup-close:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.signup-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.signup-heading img { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 3px 0 var(--ink); }
+.signup-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; background: #ffedac; padding: 5px 10px; border-radius: 999px; }
+.signup-intro h2, .signup-success h2 { font-size: clamp(34px, 7vw, 44px); letter-spacing: -0.025em; }
+.signup-intro > p, .signup-success p { margin-top: 12px; color: var(--muted); font-size: 16px; line-height: 1.65; }
+.signup { margin-top: 26px; text-align: left; }
+.signup > label { display: block; font-size: 13px; font-weight: 800; margin-bottom: 8px; }
+.signup input[type="email"] { width: 100%; border: 2px solid #2d2a4a40; border-radius: 12px; background: var(--paper); color: var(--ink); font: 600 16px/1.4 var(--ui); padding: 14px 16px; transition: border-color 120ms, box-shadow 120ms; }
+.signup input[type="email"]:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px #4a9be820; }
+.signup-submit { width: 100%; justify-content: space-between; margin-top: 12px; border-radius: 12px; padding: 16px 18px; }
+.signup-submit > span:last-child { font-size: 22px; line-height: 14px; }
+.signup-note { margin: 18px 0 24px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.signup-status { margin-top: 14px; font-size: 14px; font-weight: 700; line-height: 1.5; }
+.signup-status:empty { display: none; }
+.signup-status[data-error] { color: #81281c; }
+.signup-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.signup-footer { margin: 0 -32px; padding: 15px 20px; border-top: 1px solid var(--line); background: #2d2a4a03; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--muted); font-weight: 700; }
+.signup-dot { width: 6px; height: 6px; background: #278675; border-radius: 50%; }
+.signup-success { padding: 18px 0 30px; text-align: center; outline: none; }
+.signup-check { display: grid; place-items: center; width: 68px; height: 68px; margin: 0 auto 24px; border: 2px solid var(--ink); border-radius: 50%; background: var(--yellow); font-size: 32px; box-shadow: 0 3px 0 var(--ink); }
+.signup-success .btn { margin-top: 26px; justify-content: center; width: 100%; border-radius: 12px; }
+[hidden] { display: none !important; }
+@keyframes signup-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+@media (max-width: 420px) {
+  .signup-card { padding: 30px 24px 0; }
+  .signup-footer { margin: 0 -24px; }
+  .signup-badge { font-size: 11px; padding: 5px 8px; }
+  .signup-heading { gap: 10px; }
+}
 
 /* ── Nav */
 .nav {

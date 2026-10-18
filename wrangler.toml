@@ -1,0 +1,12 @@
+name = "gmclip"
+pages_build_output_dir = "./dist"
+compatibility_date = "2024-11-16"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gmclip-signups"
+database_id = "b486da08-ea80-4e2b-af7d-b10ca8bc18c8"
+
+# Preview deployments have no production database access.
+[env.preview]
+d1_databases = []

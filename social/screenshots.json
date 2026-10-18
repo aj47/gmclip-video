@@ -1,0 +1,85 @@
+{
+  "source": "https://www.youtube.com/shorts/p9TabsKWsqI",
+  "title": "exe.dev Lets You Provision VMs With a Prompt",
+  "frame_seconds": 35,
+  "size": [
+    2000,
+    1250
+  ],
+  "kind": "real app captures",
+  "errors": [],
+  "viewport": [
+    1280,
+    800
+  ],
+  "device_scale_factor": 1.5625,
+  "parts": 8,
+  "landscape_framing": "full portrait video fitted within 16:9 with sidebars",
+  "caption_corrections": [
+    "Xy.dev -> exe.dev",
+    "XD.dev -> exe.dev"
+  ],
+  "files": [
+    {
+      "file": "assets/shots/exe-dev-v1/editor-vertical-light.webp",
+      "bytes": 229160,
+      "sha256": "59f2dbba18591713db8cc9062392cbeb1ddf30df2364494eb0d88f41a88944fe"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/editor-vertical-dark.webp",
+      "bytes": 219952,
+      "sha256": "be1efa5c564e7aa2f7e55081b919c101be6c41f6b52b1a0c7f83610459ab63c3"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/editor-horizontal-light.webp",
+      "bytes": 191508,
+      "sha256": "0345e3bca198edbb3f82956f736b251bfa3ed8c9915e31de9c044d4aab5bd63d"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/editor-horizontal-dark.webp",
+      "bytes": 181390,
+      "sha256": "35425059a55bfefd10e39bfd2b8b9c04eceeecdb8e5a3138e85127148e1de888"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/editor-plan-light.webp",
+      "bytes": 164264,
+      "sha256": "4633699047d146c74298cea5d905c18c07c2700bacf553d778fb24b4c609aea4"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/editor-plan-dark.webp",
+      "bytes": 154592,
+      "sha256": "8bb32e389b2fa583fb74edce97590f0f1e7060bf38487537a37b71e72e9e9cb8"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/keys-light.webp",
+      "bytes": 215448,
+      "sha256": "319b9dfbfa43410d297330e3ab36236b83206561c6c6f40c078c7193ff250083"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/keys-dark.webp",
+      "bytes": 180518,
+      "sha256": "9cdb7f2c11489a0efb34dfb3fb2040f59817c579be645be704c88ec7a74b4b40"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/palette-light.webp",
+      "bytes": 52654,
+      "sha256": "5ddb47477b41a2426fe4296b975485d5bbff3a717885c036d67b906ac1961f90"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/palette-dark.webp",
+      "bytes": 39102,
+      "sha256": "b8253fe8da4c7584f05c1afdb26509bc78f6142bbf17883ac3535ac0afbaa12e"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/home-light.webp",
+      "bytes": 76268,
+      "sha256": "339e6ff05efe9cea5a096677cf239566a84fa4d621abe7a94a925bbe7e2d3f51"
+    },
+    {
+      "file": "assets/shots/exe-dev-v1/home-dark.webp",
+      "bytes": 65256,
+      "sha256": "aa6230431f780000842d683b9fbd178ea64a6119cae44c0f09b1394bc69d3299"
+    }
+  ],
+  "home": "Home view with the new Short in the recent-project card."
+}
