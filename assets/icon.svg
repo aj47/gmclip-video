@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="sun" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#ffe14d"/>
+      <stop offset="1" stop-color="#f7941d"/>
+    </linearGradient>
+  </defs>
+  <rect x="94" y="94" width="836" height="836" rx="150" fill="#4a9be8"/>
+  <g transform="translate(512 512)" stroke="#ffd23f" stroke-width="58" stroke-linecap="round">
+    <line x1="0" y1="-278" x2="0" y2="-330"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(40)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(80)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(117)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(152)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-40)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-80)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-117)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-152)"/>
+  </g>
+  <circle cx="512" cy="512" r="236" fill="url(#sun)"/>
+  <g fill="none" stroke="#2d2a4a" stroke-width="22" stroke-linecap="round">
+    <path d="M369 505 a38 38 0 0 1 76 0"/>
+    <path d="M579 505 a38 38 0 0 1 76 0"/>
+    <path d="M450 548 q62 62 124 0"/>
+  </g>
+</svg>
