@@ -3,7 +3,7 @@
 // importing. Empty states: one sentence, one action (§12.5).
 import { baseName, isMac, isWindows } from "../platform";
 import { about, ago } from "../eta";
-import { createEffect, createMemo, createResource, createSignal, For, on, onMount, Show } from "solid-js";
+import { createEffect, createMemo, createResource, createSignal, For, on, onCleanup, onMount, Show } from "solid-js";
 import { ConnectAgent } from "../components/AgentPanel";
 import { FirstChecklist, SetupSheet, WelcomeCard } from "../components/FirstRun";
 import { RestoreSheet } from "../components/Reliability";
@@ -81,6 +81,19 @@ export function Home() {
     void refetchRecent();
   };
   onMount(() => void refreshHome());
+  // Home reads again when the window comes back: an agent's project made while the
+  // window was hidden shows even if its `home` event never reached this page.
+  const reread = () => {
+    if (document.visibilityState !== "visible") return;
+    void refreshHome();
+    void refetchRecent();
+  };
+  window.addEventListener("focus", reread);
+  document.addEventListener("visibilitychange", reread);
+  onCleanup(() => {
+    window.removeEventListener("focus", reread);
+    document.removeEventListener("visibilitychange", reread);
+  });
   const active = () => home().running.length + home().needs_you.length + home().done.length > 0;
   // a project shows once: an open one as its own card (with its picture when it has a
   // recent video), a closed one in "Opened before", the rest of the library after that
