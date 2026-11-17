@@ -1,4 +1,13 @@
-# gmclip
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-light.png">
+    <img src="docs/images/logo.png" alt="gmclip" width="320">
+  </picture>
+</p>
+
+<p align="center"><a href="https://gmclip.com">gmclip.com</a></p>
+
+![The gmclip editor on a vertical cut: the video preview, the transcript and burned-in captions](docs/images/editor-vertical-light.webp)
 
 A desktop video editor for turning long recordings into vertical and horizontal cuts. You
 edit a cut by editing its words. Every feature is one command, and the UI, the CLI and a
@@ -10,6 +19,15 @@ ffmpeg.
 **Status: pre-release.** gmclip runs on macOS 13 or later on Apple silicon. Windows code
 exists and is not yet supported. There are no signed builds; you build it from source.
 Formats and commands still change.
+
+## Screenshots
+
+| | |
+|---|---|
+| ![A 16:9 cut in the dark theme](docs/images/editor-horizontal-dark.webp) | ![The transcript beside the timeline of a cut's parts](docs/images/editor-plan-light.webp) |
+| The same cut framed for 16:9 | Transcript and timeline, part by part |
+| ![Home, with the project library](docs/images/home-light.webp) | ![The keyboard shortcut sheet](docs/images/keys-light.webp) |
+| Home and the project library | Every key on one sheet |
 
 ## Build and run
 
