@@ -1,0 +1,913 @@
+# test-media/manifest.toml — corpus v0 (W0-05; SPEC §13 Sources, §17 Corpus).
+#
+# One [[file]] row per media file the tests and benchmarks read. Fields:
+#   id        stable name used by tests, goldens and stream-sources.toml
+#   class     corpus    — self-made or public, bytes reproducible from `recipe`
+#             lab-only  — AJ's full-length sources
+#             window    — 1440p window intermediates the golden cuts were rendered from
+#             golden    — the private set: the 11 golden cuts' plan, spec, receipt,
+#                         ASS, heard.json, holds and reference MP4
+#   path      `lab:<path>` (in the lab media folder: GMCLIP_LAB_MEDIA, default
+#             ~/Development/gmclip-lab-media, made by tools/lab_media.sh), absolute, or
+#             relative to this directory (corpus files live in local/, git-ignored)
+#   size, sha256   of the bytes; `cargo xt corpus verify` checks both
+#   goldens   (optional) the committed tools/make_goldens.py output for this file
+#   corpus rows also carry: recipe, licence, r2
+#
+# `cargo xt corpus verify` passes when every row's file is present with its size and
+# sha256 (`--skip-missing` for a machine without the lab sources). Nothing here is
+# uploaded: every `r2` is "TODO" until AJ creates the bucket (STATUS.md, Needs AJ).
+#
+# Not listed yet:
+# - (e) 8 h 1080p60 OBS MKV x264 keyint 120 without cues (SPEC §13): not on the M4 Pro
+#   (searched 2026-10-14); AJ to point at one (STATUS.md, Needs AJ).
+# - (c), (d) trims: M2. BENCH-60-M0's generated plan: H-15.
+#
+# Regenerate: `tools/make_corpus.sh` (corpus rows), `tools/make_goldens.py` (goldens/).
+# The lab rows at the end are kept by hand.
+
+schema = "gmclip.test-media/0"
+
+[corpus]
+# The ffmpeg build that produced the corpus bytes and the goldens. Another build may
+# encode different bytes: rerun make_corpus.sh, make_goldens.py, and update the rows.
+ffmpeg = "ffprobe version 8.1.2 (Homebrew), libx264, libvpx-vp9, native aac"
+# First line of `ffmpeg -version`/`ffprobe -version` without the copyright: make_corpus.sh
+# and make_goldens.py refuse another build unless told to accept it.
+ffmpeg_version = "ffmpeg version 8.1.2"
+ffprobe_version = "ffprobe version 8.1.2"
+made_on = "AJ's M4 Pro, 2026-10-14"
+
+[consent]
+# The golden rows and the lab-only sources are AJ's own streams and shipped cuts.
+# They stay on the lab machines (M4 Pro, Air), are never uploaded or committed (only
+# their hashes are), and are used only to test gmclip. Corpus rows synthesised from
+# lavfi test sources (b′, edit-list MOV, zoo, VFR) carry no personal content; (a′) is a
+# 3-minute stream-copy trim of AJ's public Oct-01 restream.
+status = "pending AJ's OK (SPEC §21.1, W0-09)"
+
+
+# Corpus v0: self-made, reproducible from the recipe.
+
+[[file]]
+id = "a-prime"
+class = "corpus"
+path = "local/a-prime.mp4"
+size = 161494916
+sha256 = "417605bf224abd2a96748c3d352d5429f13f96c9cf06d96d69a0112d288f4fe2"
+purpose = "(a′) 3-min 1440p30 H.264 High (B-frames, has_b_frames 2) + AAC-LC 48 kHz: stream-copy trim of (a) from the keyframe at 1200.566 s; R-MED-1 [M0], B-01"
+recipe = "tools/make_corpus.sh --only a-prime"
+licence = "AJ's own stream (public restream); upload needs AJ's consent OK"
+r2 = "TODO"
+goldens = "goldens/a-prime.json"
+
+[[file]]
+id = "b-prime"
+class = "corpus"
+path = "local/b-prime.mkv"
+size = 115658526
+sha256 = "1114d8deb80e672ccceced8424cd62342135e2d30346ba47c1d045b7e33ddb84"
+purpose = "(b′) 3-min 1440p30 VP9 Profile 0 MKV with Cues + AAC-LC 48 kHz, encoded by tools/ (libvpx good; no hidden frames, superframes are covered by (b)); R-MED-1 [M0], B-02, B-03"
+recipe = "tools/make_corpus.sh --only b-prime"
+licence = "CC0 (synthetic lavfi testsrc2 + sine)"
+r2 = "TODO"
+goldens = "goldens/b-prime.json"
+
+[[file]]
+id = "editlist-mov"
+class = "corpus"
+path = "local/editlist.mov"
+size = 3771795
+sha256 = "9242ad204e7053a7829c2e6f7d4489426ee06eb9f251e0ae262c16c7b097e58f"
+purpose = "Edit-listed MOV as ffmpeg writes one: stream-copy trim from mid-GOP, video pre-roll discarded, audio starting inside an AAC packet; B-01 elst"
+recipe = "tools/make_corpus.sh --only editlist-mov"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/editlist-mov.json"
+
+[[file]]
+id = "vfr"
+class = "corpus"
+path = "local/vfr.mp4"
+size = 8321048
+sha256 = "59bb05657136f9d9c1412dce55aa162f882c9849dbe95b0d1180afe11d299ea8"
+purpose = "VFR phone-style clip: 1080x1920 H.264 (B-frames) + AAC, 10 s, frame durations 1/60 and 1/30 interleaved, moov first (faststart); B-01 stts, VFR classification"
+recipe = "tools/make_corpus.sh --only vfr"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/vfr.json"
+
+[[file]]
+id = "zoo-v-midgop"
+class = "corpus"
+path = "local/zoo-v-midgop.mp4"
+size = 1114098
+sha256 = "ea36c4b3108ab2e5ff7a129cd9f979b7edc4a5e792df36fdb2f21487551e81cb"
+purpose = "Edit-list zoo: video edit starts at frame 130 (mid-GOP, on a frame edge) and lasts 5 s (end trim); B-01 elst"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-v-midgop.json"
+
+[[file]]
+id = "zoo-v-offframe"
+class = "corpus"
+path = "local/zoo-v-offframe.mp4"
+size = 1114098
+sha256 = "b573714ef229bf2960fcbc2a7eec715e37eac4f6075d24a9369353d8002dfd08"
+purpose = "Edit-list zoo: video edit starts 256 ticks into frame 120 (not on a frame edge); B-01 elst"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-v-offframe.json"
+
+[[file]]
+id = "zoo-a-straddle"
+class = "corpus"
+path = "local/zoo-a-straddle.mp4"
+size = 1114098
+sha256 = "a5b9e550264c87022c6d01dc82cd3f1134e48c4e76794428a99bf6324c9fc26e"
+purpose = "Edit-list zoo: audio edit starts and ends inside AAC packets (5.003 s); B-01 elst"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-a-straddle.json"
+
+[[file]]
+id = "zoo-a-late"
+class = "corpus"
+path = "local/zoo-a-late.mp4"
+size = 1114098
+sha256 = "b26d6e2c7ea23c84055fb151194d0b3b440588429cb095d9b53fce7270819eaf"
+purpose = "Edit-list zoo: audio edit starts 4.375 s into the media (decoder pre-roll window); B-01 elst"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-a-late.json"
+
+[[file]]
+id = "zoo-empty"
+class = "corpus"
+path = "local/zoo-empty.mp4"
+size = 1114122
+sha256 = "3c86a70e057dba15d78fa3de89325369aa8fd0d650b4a443c94bc127461530ee"
+purpose = "Edit-list zoo: leading empty edits (video 0.5 s, audio 0.25 s) then the whole media; B-01 elst"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-empty.json"
+
+[[file]]
+id = "zoo-neg-cts"
+class = "corpus"
+path = "local/zoo-neg-cts.mp4"
+size = 1114102
+sha256 = "7b49a91212a9925e0b7342b0a801106daa61a25706478623d090da8492fc8375"
+purpose = "Edit-list zoo: negative composition offsets (ctts v1, -movflags negative_cts_offsets), dts shifted below pts; B-01 ctts"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-neg-cts.json"
+
+[[file]]
+id = "zoo-ipcm"
+class = "corpus"
+path = "local/zoo-ipcm.mp4"
+size = 864710
+sha256 = "49b7146963c66d7ad6ff695a53e126f3a2681bcf63068febf09e3abcce1d2481"
+purpose = "ISO PCM: 'ipcm' sample entry with pcmC, 24-bit stereo 48 kHz, 3 s, audio only; B-01 ipcm"
+recipe = "tools/make_corpus.sh --only zoo"
+licence = "CC0 (synthetic)"
+r2 = "TODO"
+goldens = "goldens/zoo-ipcm.json"
+
+# --- lab rows ---
+# Lab-only sources (in the lab media folder).
+
+[[file]]
+id = "a"
+class = "lab-only"
+path = "lab:streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-01-2026-restream.mp4"
+size = 3146994507
+sha256 = "2960ad899bb2139dd7084cdb514ca1de9a690a6f2d04c64229b648181a108852"
+purpose = "(a) 2 h 1440p30 H.264 High restream MP4, AAC 48 kHz (SPEC §13); stream loc_bd89f38b (native); golden original of h41/h43/h53/h88; B-01 index timing (2.9 GB)"
+goldens = "goldens/a.json"
+
+[[file]]
+id = "b"
+class = "lab-only"
+path = "lab:streams/jMcAmooE53I-source.mkv"
+size = 1132838200
+sha256 = "13ed3a2671ad918f9e1f79dea18e2b44d30a4293ce106ae44e3bbbfa3f2ddb48"
+purpose = "(b) jMcAmooE53I 1440p30 VP9 Profile 0 MKV with cues, own AAC 44.1 kHz (SPEC §13); 48 kHz audio member proxy-loc_4fadb756; stream loc_4fadb756 picture (hires_mkv); golden original of h34/h37/h48/h79"
+goldens = "goldens/b.json"
+audio_member = "proxy-loc_4fadb756"
+
+[[file]]
+id = "proxy-loc_4fadb756"
+class = "lab-only"
+path = "lab:preview/loc_4fadb756.proxy.mp4"
+size = 614017711
+sha256 = "ad8e69cda5ba9dc10624bbd19a86cb9544a2d7c458952b6e53bf316e78deaa2d"
+purpose = "720p30 H.264 + AAC 48 kHz proxy; the 48 kHz audio member of (b) (stream-sources.toml); golden original"
+goldens = "goldens/proxy-loc_4fadb756.json"
+
+[[file]]
+id = "proxy-loc_086da141"
+class = "lab-only"
+path = "lab:preview/loc_086da141.proxy.mp4"
+size = 668535399
+sha256 = "a8504505fb05deb0650fc76971e99de7800b1c1099d4c5ff74bd3333d63e08cc"
+purpose = "720p30 H.264 + AAC 48 kHz proxy; stream loc_086da141 (native); golden original of h03/h25/h47"
+goldens = "goldens/proxy-loc_086da141.json"
+
+[[file]]
+id = "mmo-oct05"
+class = "lab-only"
+path = "lab:streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-05-2026-restream.mp4"
+size = 3631883700
+sha256 = "244a22f6dd9f677c782bf3a3f0583d0ac6e2ddf44ec16854a2e985758a26be31"
+purpose = "1440p30 H.264 restream MP4; stream loc_2fceb8f9 (native); not used by the 11 golden cuts"
+goldens = "goldens/mmo-oct05.json"
+
+
+# 1440p window intermediates the golden cuts were rendered from (h79's picture).
+# Not originals: the cuts' plans read (b) + its audio member; H-FB2 insurance only.
+
+[[file]]
+id = "rtw-2615-2675"
+class = "window"
+path = "lab:h79/source-window-2615-2675-1440.mov"
+size = 42765012
+sha256 = "5d147a530e487bfa1f8877fe7e20189812f82b4133085294bf7829da1bbe3544"
+purpose = "1440p H.264 + in24 PCM window (MOV)"
+
+[[file]]
+id = "rtw-2565-2615"
+class = "window"
+path = "lab:hires/source-window-2565-2615-1440.mov"
+size = 34913760
+sha256 = "90c6b12344393f38d6ee0bbfc9d618a369b7f4550e162810e95ec2f9fefe048f"
+purpose = "1440p H.264 + in24 PCM window (MOV)"
+goldens = "goldens/rtw-2565-2615.json"
+
+[[file]]
+id = "rtw-2675-2730"
+class = "window"
+path = "lab:hires/source-window-2675-2730-1440.mov"
+size = 31664096
+sha256 = "4dcca37d0ac351be768773826c6421887b05e187f2e87d6d3632988c5ea3eca5"
+purpose = "1440p H.264 + in24 PCM window (MOV)"
+
+
+# Private golden set: the 11 golden cuts (plan, spec, receipt, ASS, heard.json,
+# holds, reference MP4). h79 v4 has no heard.json (its cues are imported from the ASS)
+# and its plan is build_v4.py.
+
+[[file]]
+id = "golden-h03-plan"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/plan.json"
+size = 3139
+sha256 = "c6cc72140e777f59eaf92a1104c18d5fe70deffafb1d22e6e7c0d6b325689f14"
+purpose = "golden loc_086da141_h03: plan"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-spec"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/render-spec-v5.json"
+size = 8287
+sha256 = "0b9d681d9ac6fe040959539ee6e89042120b22d959e0f4e12b76cf821d3873ad"
+purpose = "golden loc_086da141_h03: spec"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-receipt"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/render-receipt.json"
+size = 45349
+sha256 = "b9ccdef35a1a935c7913bc8279f356a388ae6ba2265a46febe54bb9ec548757e"
+purpose = "golden loc_086da141_h03: receipt"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-ass"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/captions-v5.ass"
+size = 4606
+sha256 = "f5960ffdf1f0763084078266b443980a182e93d864a36058087b0a0b4b534f43"
+purpose = "golden loc_086da141_h03: ass"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-heard"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/qa/heard.json"
+size = 6305
+sha256 = "f95c4292ee3f168711b5237f8ec75b4a8e92ed7e591da61433271cc9bfd3d0be"
+purpose = "golden loc_086da141_h03: heard"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-reference"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/loc_086da141_h03-v5.mp4"
+size = 7506941
+sha256 = "251698f603a9907481d393080bf22584d127f422cf4526c39a9140cf5dfb9e72"
+purpose = "golden loc_086da141_h03: reference"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-hold-05a-leaderboard-122.100"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/holds/05a-leaderboard-122.100.png"
+size = 338720
+sha256 = "061c122d39a6dca400433028448985b6d5c19edd37ae4d9dd2813938ce38a8e7"
+purpose = "golden loc_086da141_h03: hold-05a-leaderboard-122.100"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h03-hold-05c-two-bots-126.050"
+class = "golden"
+path = "lab:reels/loc_086da141_h03/holds/05c-two-bots-126.050.png"
+size = 337861
+sha256 = "1794d8c21b70b2283da23c637dea3876d108141da97ec5f8fb8755bdf07bac91"
+purpose = "golden loc_086da141_h03: hold-05c-two-bots-126.050"
+cut = "loc_086da141_h03"
+
+[[file]]
+id = "golden-h25-plan"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/plan.json"
+size = 3479
+sha256 = "2a9d65678ce511d847b694c71b78dded42ca0010e8f512851ac5cf12aff93a02"
+purpose = "golden loc_086da141_h25: plan"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-spec"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/render-spec-v5.json"
+size = 7129
+sha256 = "ce45167dd676f0d2228f9427dc92cddf3ce85468731d67c338a4136d9dd5c5a1"
+purpose = "golden loc_086da141_h25: spec"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-receipt"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/render-receipt.json"
+size = 38921
+sha256 = "de4b08802f7b595d745c699a491972e2408b42a1a625cde3f8590e8f02a4f6c5"
+purpose = "golden loc_086da141_h25: receipt"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-ass"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/captions-v5.ass"
+size = 4891
+sha256 = "025bbeeeefc17b6e787ffee7e2ba1e97dfb0823bcd353dfe66a4dd480abe9cba"
+purpose = "golden loc_086da141_h25: ass"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-heard"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/qa/heard.json"
+size = 8681
+sha256 = "b4888d47fcbc7ebb0ce21fbcd46556d14cbb419a3b32ca712bee5fba39f3c19c"
+purpose = "golden loc_086da141_h25: heard"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-reference"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/loc_086da141_h25-v5.mp4"
+size = 6857227
+sha256 = "7774e5ec119b937c50036db1b0d295facef9cf7cdbf9511ab679e782767e336f"
+purpose = "golden loc_086da141_h25: reference"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-hold-05b-v3-hold-828.660"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/holds/05b-v3-hold-828.660.png"
+size = 482455
+sha256 = "66665bc0df70e3aac5a6183ab6d2db76fc9fd917e9087759bd9627d8bcb10362"
+purpose = "golden loc_086da141_h25: hold-05b-v3-hold-828.660"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-hold-06b-v4-hold-840.300"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/holds/06b-v4-hold-840.300.png"
+size = 468137
+sha256 = "4a3b67cfb73828b5b4ef8ef421a805f983afd39da57af9c987ec0c21a20af41e"
+purpose = "golden loc_086da141_h25: hold-06b-v4-hold-840.300"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h25-hold-07-v5-keeper-945.200"
+class = "golden"
+path = "lab:reels/loc_086da141_h25/holds/07-v5-keeper-945.200.png"
+size = 528504
+sha256 = "cadbdfc5030caf9e72a237eca24f29fefd51a12ee9cbaac68014f2b36ecdc624"
+purpose = "golden loc_086da141_h25: hold-07-v5-keeper-945.200"
+cut = "loc_086da141_h25"
+
+[[file]]
+id = "golden-h47-plan"
+class = "golden"
+path = "lab:reels/loc_086da141_h47/plan.json"
+size = 3385
+sha256 = "6951bdfdceef24f223ae4f31f1e6abc89b92f6c0a6ca802a0aa1dfe1a2b5b4ec"
+purpose = "golden loc_086da141_h47: plan"
+cut = "loc_086da141_h47"
+
+[[file]]
+id = "golden-h47-spec"
+class = "golden"
+path = "lab:reels/loc_086da141_h47/render-spec-v5.json"
+size = 5979
+sha256 = "5464f34ab211c53ab660fbcb0f54c347702fc853fa0a8a4aa7fbb364b0126feb"
+purpose = "golden loc_086da141_h47: spec"
+cut = "loc_086da141_h47"
+
+[[file]]
+id = "golden-h47-receipt"
+class = "golden"
+path = "lab:reels/loc_086da141_h47/render-receipt.json"
+size = 34027
+sha256 = "f6a45588e5d1b0eb286c6027283be06c5acf9116e965fbd988885a4d5c1f5c85"
+purpose = "golden loc_086da141_h47: receipt"
+cut = "loc_086da141_h47"
+
+[[file]]
+id = "golden-h47-ass"
+class = "golden"
+path = "lab:reels/loc_086da141_h47/captions-v5.ass"
+size = 7480
+sha256 = "21a165c0d35079e56c851d943e282a4b180dff75b15365340936b457b8995447"
+purpose = "golden loc_086da141_h47: ass"
+cut = "loc_086da141_h47"
+
+[[file]]
+id = "golden-h47-heard"
+class = "golden"
+path = "lab:reels/loc_086da141_h47/qa/heard.json"
+size = 12024
+sha256 = "fe02ddec8d43349400138be00308c3d5027e34bf3aa98f5052481b4b454fee36"
+purpose = "golden loc_086da141_h47: heard"
+cut = "loc_086da141_h47"
+
+[[file]]
+id = "golden-h47-reference"
+class = "golden"
+path = "lab:reels/loc_086da141_h47/loc_086da141_h47-v5.mp4"
+size = 13607554
+sha256 = "f0558f0733e8eb23f6e38f239fb20401426980e068da320eabeac1322ca7bb93"
+purpose = "golden loc_086da141_h47: reference"
+cut = "loc_086da141_h47"
+
+[[file]]
+id = "golden-h34-plan"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h34/plan.json"
+size = 4640
+sha256 = "91229abb2f1b48d821864f69d53e7cbd258f6ce5e9296f49e40c6f20dafcfe6f"
+purpose = "golden loc_4fadb756_h34: plan"
+cut = "loc_4fadb756_h34"
+
+[[file]]
+id = "golden-h34-spec"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h34/render-spec-v5.json"
+size = 7865
+sha256 = "d77eb244a6a8824e982e4059f99d6e33dd27f18d874ac27ede2dc341c243fc04"
+purpose = "golden loc_4fadb756_h34: spec"
+cut = "loc_4fadb756_h34"
+
+[[file]]
+id = "golden-h34-receipt"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h34/render-receipt.json"
+size = 49030
+sha256 = "6302079d50bd37d585a178237a032735d3b4515bf383b6f8fb448db5a54bc677"
+purpose = "golden loc_4fadb756_h34: receipt"
+cut = "loc_4fadb756_h34"
+
+[[file]]
+id = "golden-h34-ass"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h34/captions-v5.ass"
+size = 7001
+sha256 = "dc1f712b3f3d7741996a557a642cf3c156d41c8ab9126a2cb5285b9e8975f9e2"
+purpose = "golden loc_4fadb756_h34: ass"
+cut = "loc_4fadb756_h34"
+
+[[file]]
+id = "golden-h34-heard"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h34/qa/heard.json"
+size = 9654
+sha256 = "5837d1611219acc6b404c950c0c13637387070c62b68037c364b3ffa5a06d2f8"
+purpose = "golden loc_4fadb756_h34: heard"
+cut = "loc_4fadb756_h34"
+
+[[file]]
+id = "golden-h34-reference"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h34/loc_4fadb756_h34-v5.mp4"
+size = 17439638
+sha256 = "e9082022c9ffbe3d609202c206e0f8378beb49ca9619eb66be148fc9f4919e6b"
+purpose = "golden loc_4fadb756_h34: reference"
+cut = "loc_4fadb756_h34"
+
+[[file]]
+id = "golden-h37-plan"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h37/plan.json"
+size = 5573
+sha256 = "83bbbedbb6e167cac280b317c205a2f6e2fc4a3f23229b0d1ea1562e03b74394"
+purpose = "golden loc_4fadb756_h37: plan"
+cut = "loc_4fadb756_h37"
+
+[[file]]
+id = "golden-h37-spec"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h37/render-spec-v5.json"
+size = 9261
+sha256 = "a1b738e951407a656be02cbd8c65a4faa79e0949fd6a8ee163d200d0bb2abffb"
+purpose = "golden loc_4fadb756_h37: spec"
+cut = "loc_4fadb756_h37"
+
+[[file]]
+id = "golden-h37-receipt"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h37/render-receipt.json"
+size = 52467
+sha256 = "9784e76fdcd3863ca80f0447828b28ac9113a1ad8ba175b71b3a0b86d7dee0eb"
+purpose = "golden loc_4fadb756_h37: receipt"
+cut = "loc_4fadb756_h37"
+
+[[file]]
+id = "golden-h37-ass"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h37/captions-v5.ass"
+size = 8314
+sha256 = "89b9f50f003fe2a44b7e0ba9c214676c45120f1fb39ae6d187743f31b2758734"
+purpose = "golden loc_4fadb756_h37: ass"
+cut = "loc_4fadb756_h37"
+
+[[file]]
+id = "golden-h37-heard"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h37/qa/heard.json"
+size = 9199
+sha256 = "8e9b74064a045a46d1095074485306affc022784679eaceb05ea291429b5f385"
+purpose = "golden loc_4fadb756_h37: heard"
+cut = "loc_4fadb756_h37"
+
+[[file]]
+id = "golden-h37-reference"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h37/loc_4fadb756_h37-v5.mp4"
+size = 14100349
+sha256 = "7cb0b6eeac4402637dcc17e7b0e47684a255c97f428a33acc63dabbffc7c7bf2"
+purpose = "golden loc_4fadb756_h37: reference"
+cut = "loc_4fadb756_h37"
+
+[[file]]
+id = "golden-h48-plan"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h48/plan.json"
+size = 4885
+sha256 = "08bdc958b781889dfe439f6924a70b31d72763a88e6b35b65cce51b20a1cde42"
+purpose = "golden loc_4fadb756_h48: plan"
+cut = "loc_4fadb756_h48"
+
+[[file]]
+id = "golden-h48-spec"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h48/render-spec-v5.json"
+size = 9795
+sha256 = "6156b7a9085f8b6d58c587d13be15733f1d7d2fe01dca970d8331011b043649c"
+purpose = "golden loc_4fadb756_h48: spec"
+cut = "loc_4fadb756_h48"
+
+[[file]]
+id = "golden-h48-receipt"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h48/render-receipt.json"
+size = 62552
+sha256 = "97e628537e30ac412f4367adc9072fa42bef6e8d6aec2fe46fb1db32a35d2902"
+purpose = "golden loc_4fadb756_h48: receipt"
+cut = "loc_4fadb756_h48"
+
+[[file]]
+id = "golden-h48-ass"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h48/captions-v5.ass"
+size = 8079
+sha256 = "a716b7f186c8809450ea6f15e388a3ea3cdd4fa04a680277f08e9249b40627e6"
+purpose = "golden loc_4fadb756_h48: ass"
+cut = "loc_4fadb756_h48"
+
+[[file]]
+id = "golden-h48-heard"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h48/qa/heard.json"
+size = 13161
+sha256 = "734a152a90ad353c6950bc67449636f5f9bf20ec938dafa29db69fc8c78a6b05"
+purpose = "golden loc_4fadb756_h48: heard"
+cut = "loc_4fadb756_h48"
+
+[[file]]
+id = "golden-h48-reference"
+class = "golden"
+path = "lab:reels/loc_4fadb756_h48/loc_4fadb756_h48-v5.mp4"
+size = 17020199
+sha256 = "c6688bc5fcf4a85cf839878b7b8dca58c0d9a1323006014a712a01ce343b59ba"
+purpose = "golden loc_4fadb756_h48: reference"
+cut = "loc_4fadb756_h48"
+
+[[file]]
+id = "golden-h41-plan"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/plan.json"
+size = 6759
+sha256 = "3dad5ba2dc05995ad294a2b2797cc4b8c75cd9ee431a1a7c844c2130794a0e65"
+purpose = "golden loc_bd89f38b_h41: plan"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-spec"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/render-spec-v5.json"
+size = 9227
+sha256 = "d821153222f3c5d610f371ce9aec9d2d08643698324373b39c47d97079c88fc2"
+purpose = "golden loc_bd89f38b_h41: spec"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-receipt"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/render-receipt.json"
+size = 44992
+sha256 = "70fd737c5c94b7ca3ab5cc8178c643d5d6d712149b10e3bd3ead5fa56c12d5f5"
+purpose = "golden loc_bd89f38b_h41: receipt"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-ass"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/captions-v5.ass"
+size = 5705
+sha256 = "121583493a4c672b10c20a5e4f8749b80170ea04267931cc6599b0570e545213"
+purpose = "golden loc_bd89f38b_h41: ass"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-heard"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/qa/heard.json"
+size = 8297
+sha256 = "027d144ae2ba615cf3455d9a057b6f92322761ebb9bddc8a6f6593bacab7f39d"
+purpose = "golden loc_bd89f38b_h41: heard"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-reference"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/loc_bd89f38b_h41-v5.mp4"
+size = 8711830
+sha256 = "0bec3d180035b91d8de32f5689c469a6dd1bfe1fe00b52b697717d811a67b0b2"
+purpose = "golden loc_bd89f38b_h41: reference"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-hold-04c-if-it-makes-sense-1468.000"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/holds/04c-if-it-makes-sense-1468.000.png"
+size = 1114231
+sha256 = "abac0a6cd21cb8ea936c7ab35de0c4cabd402339b9c8c2e08b109f48e65002fa"
+purpose = "golden loc_bd89f38b_h41: hold-04c-if-it-makes-sense-1468.000"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h41-hold-06b-mohawk-hold-2680.300"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h41/holds/06b-mohawk-hold-2680.300.png"
+size = 944905
+sha256 = "76f3484a70f302b524bba5b019326fc0949018382d1c431372082a11bef32a4b"
+purpose = "golden loc_bd89f38b_h41: hold-06b-mohawk-hold-2680.300"
+cut = "loc_bd89f38b_h41"
+
+[[file]]
+id = "golden-h43-plan"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h43/plan.json"
+size = 3880
+sha256 = "3d5689633cbbbf0245ceeb2df6d078ad8d697c4a7b32fcb643d5d0fa51f0d671"
+purpose = "golden loc_bd89f38b_h43: plan"
+cut = "loc_bd89f38b_h43"
+
+[[file]]
+id = "golden-h43-spec"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h43/render-spec-v5.json"
+size = 8820
+sha256 = "fcbd934fbe52f45fb65041ef7b57b0051423fb418b0cae0e901dd331c4a858ef"
+purpose = "golden loc_bd89f38b_h43: spec"
+cut = "loc_bd89f38b_h43"
+
+[[file]]
+id = "golden-h43-receipt"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h43/render-receipt.json"
+size = 48560
+sha256 = "74a019d0e2843db721807befd5311a3d7d08a5f4b7ad7a6725c6c354fbd4c63c"
+purpose = "golden loc_bd89f38b_h43: receipt"
+cut = "loc_bd89f38b_h43"
+
+[[file]]
+id = "golden-h43-ass"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h43/captions-v5.ass"
+size = 4911
+sha256 = "01bec88dcc263bd3033a88e06b84230937e60f4711fd6ecd8b0ba69259d739e0"
+purpose = "golden loc_bd89f38b_h43: ass"
+cut = "loc_bd89f38b_h43"
+
+[[file]]
+id = "golden-h43-heard"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h43/qa/heard.json"
+size = 6759
+sha256 = "5bb07da96921c56b6404c007f5478a8e093a606a51f6cebf7f08a60ed9477312"
+purpose = "golden loc_bd89f38b_h43: heard"
+cut = "loc_bd89f38b_h43"
+
+[[file]]
+id = "golden-h43-reference"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h43/loc_bd89f38b_h43-v5.mp4"
+size = 16434455
+sha256 = "d0bf176297e79007cbaf6d31456b3d04e326c083e513f317a6536bbfb6219167"
+purpose = "golden loc_bd89f38b_h43: reference"
+cut = "loc_bd89f38b_h43"
+
+[[file]]
+id = "golden-h53-plan"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h53/plan.json"
+size = 1773
+sha256 = "0a420eabdb9e07851cda74bfe857561fa8b7832168b6e04b8bb333627c92f629"
+purpose = "golden loc_bd89f38b_h53: plan"
+cut = "loc_bd89f38b_h53"
+
+[[file]]
+id = "golden-h53-spec"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h53/render-spec-v5.json"
+size = 3395
+sha256 = "c9a82f4108db5761eeee9ae1992be3e8ebc3a89fa2248618ffc5ed45864b5cac"
+purpose = "golden loc_bd89f38b_h53: spec"
+cut = "loc_bd89f38b_h53"
+
+[[file]]
+id = "golden-h53-receipt"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h53/render-receipt.json"
+size = 20107
+sha256 = "84472431a540b126c7a26f70e14330a70f286b93d961f43a2caa2c63f1bb318c"
+purpose = "golden loc_bd89f38b_h53: receipt"
+cut = "loc_bd89f38b_h53"
+
+[[file]]
+id = "golden-h53-ass"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h53/captions-v5.ass"
+size = 3015
+sha256 = "f01ad1ef5915509ce25df0a5da39f00c59b934487fd4c0642aeff2a5f4d483c0"
+purpose = "golden loc_bd89f38b_h53: ass"
+cut = "loc_bd89f38b_h53"
+
+[[file]]
+id = "golden-h53-heard"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h53/qa/heard.json"
+size = 3702
+sha256 = "53a1d86647410d7107d09b58bdf769aa70d649a592368d8d4a38ffffc97d8425"
+purpose = "golden loc_bd89f38b_h53: heard"
+cut = "loc_bd89f38b_h53"
+
+[[file]]
+id = "golden-h53-reference"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h53/loc_bd89f38b_h53-v5.mp4"
+size = 7059973
+sha256 = "55667bb6bb32914c2f912eb9cbed6b919d79a959b2b372e3388174232ba1726a"
+purpose = "golden loc_bd89f38b_h53: reference"
+cut = "loc_bd89f38b_h53"
+
+[[file]]
+id = "golden-h88-plan"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h88/plan.json"
+size = 5159
+sha256 = "afa943e07e1abb21f7e255c284cd231c4b7fdb1e32fb51f2fc57d7df73378c27"
+purpose = "golden loc_bd89f38b_h88: plan"
+cut = "loc_bd89f38b_h88"
+
+[[file]]
+id = "golden-h88-spec"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h88/render-spec-v5.json"
+size = 10872
+sha256 = "b0461d5a46d97bd9e4fdb30abad7483658a26e1a7bca7e021ac9bb825704bb84"
+purpose = "golden loc_bd89f38b_h88: spec"
+cut = "loc_bd89f38b_h88"
+
+[[file]]
+id = "golden-h88-receipt"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h88/render-receipt.json"
+size = 59456
+sha256 = "4afa85ddd45c7f8bb0e334ff1069f5afd39a27f592cb5ac0ae6bf2adc8c211cb"
+purpose = "golden loc_bd89f38b_h88: receipt"
+cut = "loc_bd89f38b_h88"
+
+[[file]]
+id = "golden-h88-ass"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h88/captions-v5.ass"
+size = 5141
+sha256 = "548496ebe70f3964dc0616650738bf6895a2f21d3caac1624ebc1f8be7c3a714"
+purpose = "golden loc_bd89f38b_h88: ass"
+cut = "loc_bd89f38b_h88"
+
+[[file]]
+id = "golden-h88-heard"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h88/qa/heard.json"
+size = 7512
+sha256 = "b06e8ae0bcdc3d80bfba5cc709424b07a30bb8fedbfc4e57b5eb5bb99f8bd25a"
+purpose = "golden loc_bd89f38b_h88: heard"
+cut = "loc_bd89f38b_h88"
+
+[[file]]
+id = "golden-h88-reference"
+class = "golden"
+path = "lab:reels/loc_bd89f38b_h88/loc_bd89f38b_h88-v5.mp4"
+size = 12564750
+sha256 = "f7f77065a3e18ecd8eae127c3c27946ca75f58df1f78a713659f756d783ea952"
+purpose = "golden loc_bd89f38b_h88: reference"
+cut = "loc_bd89f38b_h88"
+
+[[file]]
+id = "golden-h79-plan"
+class = "golden"
+path = "lab:h79/build_v4.py"
+size = 10590
+sha256 = "5d3a1bed29c02778ede9d1ff652d5399fc64d83a62aa349465ffbc5934d1729b"
+purpose = "golden loc_4fadb756_h79: plan"
+cut = "loc_4fadb756_h79"
+
+[[file]]
+id = "golden-h79-spec"
+class = "golden"
+path = "lab:h79/render-spec-v4.json"
+size = 12007
+sha256 = "ce588f8c5c39f8e2655147115ebcd570eb853fa7f8870a010021361c1d78bb24"
+purpose = "golden loc_4fadb756_h79: spec"
+cut = "loc_4fadb756_h79"
+
+[[file]]
+id = "golden-h79-receipt"
+class = "golden"
+path = "lab:h79/render-receipt.json"
+size = 60640
+sha256 = "ea569eb59ba133bc425ac07b8380b576d90fa5c46656e5f52caf26a55c69f1d3"
+purpose = "golden loc_4fadb756_h79: receipt"
+cut = "loc_4fadb756_h79"
+
+[[file]]
+id = "golden-h79-ass"
+class = "golden"
+path = "lab:h79/captions-v4.ass"
+size = 6493
+sha256 = "e707ec68dcd4267fd497d137d155942a24e340329763e6862992e6554c06aea1"
+purpose = "golden loc_4fadb756_h79: ass"
+cut = "loc_4fadb756_h79"
+
+[[file]]
+id = "golden-h79-reference"
+class = "golden"
+path = "lab:h79/h79-v4.mp4"
+size = 12346437
+sha256 = "404c924191bac4e927f7e7829a74656f83840cb1fe95e7eea4ac0f7e4ab82e6a"
+purpose = "golden loc_4fadb756_h79: reference"
+cut = "loc_4fadb756_h79"

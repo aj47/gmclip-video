@@ -1,0 +1,17 @@
+[package]
+name = "gmclip-plan"
+description = "RenderPlan v0 types and validator (spec/renderplan-v0.md). No I/O."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+schemars.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

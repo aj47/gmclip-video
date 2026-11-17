@@ -1,0 +1,17 @@
+{
+ "id": "9x16",
+ "canvas": [
+  1080,
+  1920
+ ],
+ "fps": 30,
+ "captions": {
+  "preset": "story_v5",
+  "seat_y": 1065
+ },
+ "loudness": {
+  "mode": "static",
+  "integrated_lufs": -16.0,
+  "true_peak_dbtp": -1.5
+ }
+}

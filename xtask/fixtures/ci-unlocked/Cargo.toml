@@ -1,0 +1,13 @@
+# Negative fixture (W0-11): a dependency missing from the committed Cargo.lock makes
+# every `--locked` cargo invocation fail.
+[workspace]
+
+[package]
+name = "fixture-unlocked"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# Added after Cargo.lock was generated; the lock does not list it.
+[dependencies]
+extra = { path = "extra" }

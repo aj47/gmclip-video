@@ -1,0 +1,24 @@
+# 0022 — Captions come from each cut's own audio; identical parts reuse the source words
+
+Date: 2026-10-16 · Decided by: AJ (2026-10-16), built by lane CAP · Status: adopted
+
+## Context
+§5.10 had two word sources: `heard` (the cut's own audio, the default for shorts) and `stream` (the source's master ASR mapped through the cut, the default for long cuts). Stream captions scored cue-boundary F1 0.845 against heard on the 10 RT cuts (`evals/results/captions/2026-10-16-a09-stream-vs-heard.json`). In code both read the active source transcript; nothing transcribed a cut's audio. AJ, 2026-10-16: "every cut should have its own audio if it may be different. otherwise if there is no difference we can re use."
+
+## Decision
+- **One source, every cut kind:** `heard` = the cut's own audio. `stream` is removed (a stored `"stream"` reads as `heard`, serde alias); the per-kind default goes with it. There was no UI choice to remove; `gmclip plan-cut --captions stream` became `--captions heard` with a measurement-only `--hear rule|all|none`. No override is kept: the spec needs none.
+- **What is compared and heard** is the *voice mix* (RenderPlan rule 7: part gain → fades → sum → envelopes), before the delivery loudness stage (rule 8), which is one static gain and limiter over the whole program, the same for every part, and is neither heard nor compared.
+- **Identical** (`gmclip_core::planner::heard::audit`), per plan part: its media has an active transcript of the member and track it plays (a source through its voice track, which the plan's `audio_track` reads too; a sync group through its master audio member, so an `audio_from` override is heard); no part gain; no non-zero envelope overlapping its output samples; no fade beyond the planner's de-click (≤ 480 samples). RenderPlan v0 has no other way to change a part's audio (one source per part, no mix layers, speed refused; a sweep or tighten is a cut). A model part split by visual splits is heard whole when any of its plan parts is. Each part carries a SHA-256 signature of its voice-mix description (source path, fingerprint, track, first sample, count, gain, fades, envelope pieces).
+- **Stretches:** consecutive heard parts are transcribed together from the rendered voice mix plus 1 s before and 2 s after (clamped to the cut); stretches whose windows would touch merge. A stretch's words are stored as analysis `heard_words` (owner `cut-audio`, revision = the window signature), so the same audio is never transcribed twice, across edits and cuts.
+- **Edges** (`planner::captions`, the heard path's rule): a reused part keeps an edge word it plays most of or ≥ 0.1 s of, except at a continuous join into a heard stretch, where the straddling word is the heard side's; a heard word is the stretch's when its middle is inside, it straddles the edge, or its middle is within 0.35 s of it; a heard word a kept reused word already says (same text within 0.35 s, or overlapping from the reused side) is dropped. A heard word matching a source word of its part keeps that word's id, so caption edits, keywords, time overrides and cue breaks still apply.
+- **When:** the app's export hears the missing stretches first (job phase `captions`, "Hearing captions"), stores them and plans again; until then, and if hearing cannot run (a note on the export record, R-CAP-2), the parts that differ show their source words.
+- Found on the way: Parakeet's window stitch aligned words across the whole overlap of the full-length last window and doubled up to 7 s of words in cuts of 58–88 s; the seam now aligns only words within reach of the switch-over on both sides (`gmclip_ml::stitch`, `STITCH_VERSION` 3).
+
+## Evidence
+`evals/results/captions/2026-10-16-a09-heard-reuse.json` and `…-longform-asr.json` (release build, `crates/gmclip-cli/tests/captions_lab.rs`):
+- Rule vs fully heard (gmclip hears the whole cut): 9 reused-only cuts F1 0.814, WER 5.8 %; the mixed cut (h34, one part under a +12 dB envelope) F1 0.807, WER 2.6 % (reuse-only on h34: 0.800); pooled 0.813 / 5.4 %. Fully heard vs RT's own heard captions: F1 0.870, WER 4.1 %; the rule vs RT: F1 0.846, WER 2.8 %. The differences are the two recognisers' (wording, numbers, punctuation and so cue breaks), not the seams.
+- ASR time (wall, release, a shared machine): hearing all 10 cuts took 67.6 s, the rule 1.2 s (7 s of 498 s heard). A 10-minute long-form (20 takes, one at +4 dB, one 20 s envelope): the rule transcribes 66 s of 600 (89 % less audio) in 5.3 s against 30.4 s for the whole cut, 25.1 s (83 %) saved; an earlier run on a quieter machine: 7.6 s vs 26.4 s (71 %).
+- Tests: `crates/gmclip-core/tests/heard_captions.rs` (reuse vs heard, missing stretches, signatures, no transcript, continuous-join straddlers either way, edge fragments both sides, ids kept), `gmclip_ml::stitch` seam test.
+
+## Sections changed
+- `spec/SPEC.md` §4 CaptionDoc (`source: supplied|heard|imported`), §5.10 Source, the §5.16 table row.

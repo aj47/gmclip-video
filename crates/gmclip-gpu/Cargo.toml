@@ -1,0 +1,86 @@
+[package]
+name = "gmclip-gpu"
+description = "wgpu device bootstrap and hal imports. The only crate allowed to use unsafe."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[features]
+# `lab` tests need VideoToolbox, Metal or real media on AJ's Macs; without the feature
+# they are compiled but ignored, so hosted CI stays on the CPU path.
+lab = []
+# A counting global allocator for tests that prove a real-time path never allocates
+# (the playback callback, H.02). Test builds only: the app enables it as a dev-dependency.
+alloc-probe = []
+
+[dependencies]
+thiserror.workspace = true
+wgpu.workspace = true
+
+[target.'cfg(target_vendor = "apple")'.dependencies.wgpu]
+workspace = true
+features = ["metal"]
+
+[target.'cfg(windows)'.dependencies.wgpu]
+workspace = true
+features = ["dx12", "vulkan"]
+
+# WASAPI playback output and Media Foundation (M5). Microsoft's `windows` crate
+# (MIT OR Apache-2.0) at the version already in Cargo.lock through wgpu-hal's DX12
+# backend: no new package. AJ chose it for Windows audio (2026-10-16).
+[target.'cfg(windows)'.dependencies.windows]
+version = "=0.62.2"
+features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Media_Audio",
+    "Win32_Media_KernelStreaming",
+    "Win32_Media_MediaFoundation",
+    "Win32_Media_Multimedia",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Ole",
+    "Win32_System_Performance",
+    "Win32_System_SystemServices",
+    "Win32_System_Threading",
+    "Win32_System_Variant",
+    "Win32_UI_Shell",
+]
+
+# windows' own core (the same 0.62.2 the `windows` crate locks; no new package): the COM
+# `#[implement]` macro expands to paths in it (the drag-out's IDropSource).
+[target.'cfg(windows)'.dependencies.windows-core]
+version = "=0.62.2"
+
+[target.'cfg(all(unix, not(target_vendor = "apple")))'.dependencies.wgpu]
+workspace = true
+features = ["vulkan"]
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2.workspace = true
+objc2-core-foundation.workspace = true
+objc2-core-video = { workspace = true, features = ["objc2-io-surface"] }
+objc2-io-surface.workspace = true
+objc2-core-media.workspace = true
+objc2-video-toolbox.workspace = true
+objc2-audio-toolbox.workspace = true
+objc2-core-audio-types.workspace = true
+objc2-core-audio.workspace = true
+objc2-metal.workspace = true
+block2.workspace = true
+
+# Not `workspace = true`: the workspace forbids `unsafe_code`. Same lints otherwise;
+# keep in step with [workspace.lints] in the root Cargo.toml.
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+
+[lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+undocumented_unsafe_blocks = "deny"

@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main",
+  "description": "The main window gets the app's own two commands and nothing else: no plugin permissions, no remote domains (R-UI-SEC-1). CODEOWNERS: AJ (R-SUP-2).",
+  "windows": ["main"],
+  "permissions": ["allow-gm-call", "allow-gm-subscribe"]
+}

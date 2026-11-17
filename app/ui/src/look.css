@@ -1,0 +1,75 @@
+/* The look (studio): caption style gallery, images and callouts, brand kit. Tokens only
+ * (design/tokens.css); structure comes from the design components (Panel, Button…). */
+.look-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: var(--s-2); margin: var(--s-2) 0; }
+.look-tile { position: relative; min-width: 0; }
+.look-pick {
+  display: flex; flex-direction: column; align-items: stretch; gap: var(--s-1); width: 100%;
+  padding: var(--s-1); border-radius: var(--r-3); border: 1px solid var(--border-control);
+  background: var(--surface-raised); color: var(--text-1); cursor: pointer;
+}
+.look-pick:hover { background: var(--wash-hover); border-color: var(--border-control-hover); }
+.look-tile.current .look-pick { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.look-thumb { width: 100%; height: auto; border-radius: var(--r-1); background: var(--surface-stage); }
+.look-none { display: grid; place-items: center; aspect-ratio: 9 / 16; color: var(--text-3); font-size: var(--fs-11); padding: var(--s-1); }
+.look-label { font-size: var(--fs-11); color: var(--text-2); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.look-forget { position: absolute; top: 2px; right: 2px; }
+.look-form { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s-1) var(--s-2); align-items: center; margin: var(--s-2) 0; }
+.look-form > label { color: var(--text-2); font-size: var(--fs-12); }
+.look-form select, .look-form input:not([type="color"]):not([type="file"]) { min-width: 0; width: 100%; }
+.look-inline { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-2); align-items: center; margin: var(--s-1) 0; min-width: 0; }
+.look-inline input:not([type="color"]) { min-width: 0; flex: 1 1 8em; }
+.look-note { color: var(--text-2); font-size: var(--fs-12); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.look-swatch { width: 28px; height: 24px; padding: 0; border: 1px solid var(--border-control); border-radius: var(--r-2); background: none; }
+.brand-colours { display: flex; gap: var(--s-1); }
+.brand-logo { display: flex; align-items: center; gap: var(--s-2); min-width: 0; }
+.brand-logo input[type="file"] { min-width: 0; max-width: 100%; font-size: var(--fs-12); color: var(--text-2); }
+.ov-row { border-top: 1px solid var(--sep); padding: var(--s-2) 0; }
+.ov-head { display: flex; align-items: center; gap: var(--s-1); min-width: 0; }
+.ov-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--fs-12); color: var(--text-1); }
+.ov-thumb { max-width: 40px; max-height: 28px; border-radius: var(--r-1); }
+.ov-kind { width: 24px; display: inline-grid; place-items: center; color: var(--text-2); }
+/* match a short (an approximation, measured from the picture) */
+.match-short {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  margin-bottom: var(--s-2);
+}
+.match-short input {
+  flex: 1;
+  min-width: 0;
+}
+.match-result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  font-size: var(--fs-11);
+}
+.match-result .match-name {
+  font-weight: 600;
+  color: var(--text-1);
+}
+.match-facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  color: var(--text-2);
+}
+.look-swatch-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--sep-strong);
+}
+.match-badge {
+  padding: 1px 6px;
+  border-radius: var(--r-pill);
+  background: var(--warning-wash);
+  color: var(--text-1);
+  font-size: var(--fs-11);
+}
+.ramp-row { gap: var(--s-1) var(--s-2); }
+.ramp-row .ramp-ms { width: 6em; min-width: 0; }

@@ -1,0 +1,8 @@
+# Negative fixture (W0-02): a failing test turns the test step red.
+[workspace]
+
+[package]
+name = "fixture-test"
+version = "0.0.0"
+edition = "2024"
+publish = false

@@ -1,0 +1,40 @@
+{
+ "sync_group": {
+  "id": "sg-loc_4fadb756",
+  "method": "import",
+  "master": "audio",
+  "picture": {
+   "source": "mkv1440",
+   "video_id": "jMcAmooE53I",
+   "lab_path": "~/Documents/youtube/streams/20260915-comfyui-minimax-h3-from-scratch-jMcAmooE53I/source/source.mkv",
+   "sha256": "13ed3a2671ad918f9e1f79dea18e2b44d30a4293ce106ae44e3bbbfa3f2ddb48",
+   "offsets": [
+    {
+     "from_s": 195,
+     "until_s": 307,
+     "frames": -503
+    },
+    {
+     "from_s": 1196,
+     "frames": -1642
+    }
+   ]
+  },
+  "audio": {
+   "source": "proxy",
+   "video_id": "loc_4fadb756",
+   "lab_path": "$GMCLIP_LAB_MEDIA/preview/loc_4fadb756.proxy.mp4",
+   "sha256": "ad8e69cda5ba9dc10624bbd19a86cb9544a2d7c458952b6e53bf316e78deaa2d"
+  }
+ },
+ "active_asr": {
+  "lab_path": "$GMCLIP_LAB_MEDIA/asr/loc_4fadb756/out.json",
+  "sha256": "6a1027c813d5612a2faf4aa45bcafd882a8b0dbc51191cb925cb99ca706d2e02",
+  "note": "stream ASR word times (lab-only, by hash)"
+ },
+ "stream": {
+  "video_id": "loc_4fadb756",
+  "title": "combined what im building tech Sep 14 2026 restream",
+  "duration_s": 3095
+ }
+}

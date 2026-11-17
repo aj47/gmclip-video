@@ -1,0 +1,135 @@
+# gmclip-app: the Mac app shell (SPEC §12, M2). Tauri hosts project actors in-process,
+# routes `gm_call` to the command registry, streams events over `gm_subscribe`, serves
+# binary columns on `gm://data/…` and preview frames over the loopback frame socket (D5).
+#
+# Its own Cargo workspace for now (lane U): Tauri's tree is ~1.5 GB of build output, and
+# joining the root workspace would make every lane's `cargo build --workspace` compile
+# it on a disk shared by seven lanes. It depends on the gmclip crates by path, and those
+# inherit their versions from the root workspace. `Cargo.lock` here starts as a copy of
+# the root lock, so shared crates resolve to the same versions. Folding it into the root
+# workspace (members + `cargo xt deps`, which already has a `gmclip-app` row) is one
+# line once disk allows; see `app/README.md`.
+[workspace]
+
+[package]
+name = "gmclip-app"
+description = "gmclip for Mac: the Tauri shell around gmclip-core, the renderer and the frame stream."
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.97"
+publish = false
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "gmclip-app"
+path = "src/main.rs"
+
+[lib]
+name = "gmclip_app"
+path = "src/lib.rs"
+
+[features]
+default = []
+# Serve the built UI (`app/ui/dist`) from the bundle origin instead of the Vite dev
+# server. Every build anyone runs outside UI hacking turns this on.
+custom-protocol = ["tauri/custom-protocol"]
+# R-DEV-1: the token-protected loopback WebSocket that carries `gm_call`/`gm_subscribe`
+# for Playwright and agent-driven UI work. Never in a release build: `build.rs` refuses
+# the feature in the release profile, and `cargo xt assert-no-dev-bridge` (todo) scans
+# the artifact.
+dev-bridge = []
+
+[dependencies]
+gmclip-core = { path = "../../crates/gmclip-core" }
+gmclip-model = { path = "../../crates/gmclip-model" }
+gmclip-proto = { path = "../../crates/gmclip-proto" }
+gmclip-plan = { path = "../../crates/gmclip-plan" }
+gmclip-mcp = { path = "../../crates/gmclip-mcp" }
+gmclip-media = { path = "../../crates/gmclip-media" }
+gmclip-render = { path = "../../crates/gmclip-render" }
+# The pair dialog's offset finder: FFT cross-correlation (already in the tree via parakeet-rs).
+realfft = "3.5.0"
+# The library index (A2.16): a read-only cache rebuilt from the project homes (already in
+# the tree via gmclip-store).
+rusqlite = { version = "0.40", default-features = false, features = ["bundled", "cache"] }
+gmclip-gpu = { path = "../../crates/gmclip-gpu" }
+# Background analysis and ASR of opened videos: lane D's DSP and models, driven by the
+# CLI's analysis host (compiled in from `crates/gmclip-cli/src/analysis.rs`, see
+# `src/analysis.rs`).
+gmclip-analysis = { path = "../../crates/gmclip-analysis" }
+gmclip-ml = { path = "../../crates/gmclip-ml" }
+# Agents from the app: the launcher (R-AGT-1..5) and the holder's tokio runtime.
+gmclip-ai = { path = "../../crates/gmclip-ai" }
+# The S7 isolation probe (zero spend: a loopback stub model, a canary home), which the app
+# runs once on a Claude Code build outside the tested range before trusting it; and, in
+# dev-bridge builds only, the stub model agent runs in tests point Claude Code at.
+gmclip-eval = { path = "../../crates/gmclip-eval" }
+tokio = { version = "1.53", default-features = false, features = ["rt-multi-thread", "net", "io-util", "io-std", "sync", "time", "macros"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# The UI event payloads' JSON Schemas, for their generated TypeScript (A2.01; already in
+# the tree via gmclip-core).
+schemars = "1.0"
+getrandom = "0.4"
+cap-std = "4.0.3"
+# Pinned (SPEC §12.1; lane U brief): Tauri 2.12.3 on wry 0.57.0. Default features off:
+# no tray, no dbus/x11 on the Mac build, no dynamic ACL beyond the app's own commands.
+tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression"] }
+wry = { version = "=0.57.0", default-features = false }
+# The frame socket and the dev bridge: a blocking WebSocket on its own thread
+# (R-PROTO-7: the frame socket has its own runtime thread).
+tungstenite = { version = "0.30", default-features = false, features = ["handshake"] }
+
+# Free disk space before an export (statvfs).
+[target.'cfg(unix)'.dependencies]
+rustix = { version = "1", default-features = false, features = ["std", "fs"] }
+
+# Windows (decisions/0019): owner-only files and free disk space through gmclip-platform's
+# FFI, and wgpu's Windows backends for the preview (as gmclip-gpu enables them).
+[target.'cfg(windows)'.dependencies]
+gmclip-platform = { path = "../../crates/gmclip-platform" }
+wgpu = { version = "=30.0.1", default-features = false, features = ["std", "parking_lot", "wgsl", "dx12", "vulkan"] }
+
+# The allocation probe (H.02: the playback callback never allocates). Its `unsafe` lives
+# in gmclip-gpu, the one crate allowed it; test builds only.
+[dev-dependencies]
+gmclip-gpu = { path = "../../crates/gmclip-gpu", features = ["alloc-probe"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# "Open video…": AppKit's NSOpenPanel through objc2's safe bindings (already in Tauri's
+# tree; only these features are added).
+objc2 = "0.6.5"
+objc2-foundation = { version = "0.3.2", default-features = false, features = ["std", "NSArray", "NSString", "NSURL"] }
+objc2-app-kit = { version = "0.3.2", default-features = false, features = ["std", "NSOpenPanel", "NSSavePanel", "NSPanel", "NSWindow", "NSResponder", "NSAlert", "NSApplication", "NSButton", "NSControl", "NSView"] }
+wgpu = { version = "=30.0.1", default-features = false, features = ["std", "parking_lot", "wgsl", "metal"] }
+
+[build-dependencies]
+tauri-build = { version = "2.7", default-features = false }
+
+[lints.rust]
+unsafe_code = "forbid"
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+
+[lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+
+# Slim profiles as in the root workspace (disk budget): line tables for the app, no
+# debug info for dependencies. Unlike the root, dependencies (which here include the
+# gmclip crates, as path dependencies) are optimised in dev builds: the preview and the
+# export's audio pass must run at speed for S2a and the Playwright smoke, and one
+# profile avoids a second (release) target directory on a shared disk.
+[profile.dev]
+debug = "line-tables-only"
+opt-level = 1
+
+[profile.dev.package."*"]
+debug = false
+opt-level = 3
+
+[profile.test]
+debug = "line-tables-only"
+
+[profile.release]
+panic = "unwind"

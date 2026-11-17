@@ -1,0 +1,8 @@
+# Negative fixture (W0-02): a clippy warning turns `cargo clippy -- -D warnings` red.
+[workspace]
+
+[package]
+name = "fixture-clippy"
+version = "0.0.0"
+edition = "2024"
+publish = false

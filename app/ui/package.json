@@ -1,0 +1,33 @@
+{
+  "name": "gmclip-ui",
+  "private": true,
+  "license": "MIT OR Apache-2.0",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "gmclip's webview UI (SPEC \u00a712): SolidJS + TypeScript + Vite.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "lint": "eslint src tests",
+    "lint:fixtures": "node scripts/lint-fixtures.mjs",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "node scripts/e2e.mjs",
+    "check:handlers": "node scripts/check-handlers.mjs && node scripts/check-handlers.mjs --fixtures"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "2.12.1",
+    "solid-js": "1.9.16"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "eslint": "10.12.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.1",
+    "vite": "8.3.3",
+    "vite-plugin-solid": "2.11.14"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": []
+  }
+}

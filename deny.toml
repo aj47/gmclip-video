@@ -1,0 +1,126 @@
+# cargo-deny policy (SPEC §15.4). CODEOWNERS: AJ. Coding agents may not edit this file
+# (SR R-SUP-2); a change goes through AJ's review.
+#
+# Run: `cargo deny check` (CI runs it on every PR). Negative fixtures proving the
+# licence and ban rules bite: `cargo xt fixtures` (xtask/fixtures/ci-deny-*).
+
+[graph]
+# Every shipped target, so a platform-gated dependency cannot slip past.
+targets = [
+    "aarch64-apple-darwin",
+    "x86_64-apple-darwin",
+    "x86_64-pc-windows-msvc",
+    "aarch64-pc-windows-msvc",
+    "x86_64-unknown-linux-gnu",
+    "aarch64-unknown-linux-gnu",
+]
+# Check with every feature on, so a feature flag cannot hide a banned crate.
+all-features = true
+
+[output]
+feature-depth = 1
+
+[advisories]
+# RustSec vulnerabilities and unsound advisories are errors; yanked crates too.
+yanked = "deny"
+ignore = [
+    { id = "RUSTSEC-2024-0436", reason = "unmaintained `paste` via tokenizers (parakeet-rs); decision 0006, pending AJ (or own TDT decoder)" },
+]
+
+[licenses]
+# SPEC §15.4 "Allowed". LGPL is allowed only for unmodified, dynamically linked
+# libraries in the exception register (WebKitGTK in the AppImage, user-system
+# GStreamer); neither is a Rust crate, so no LGPL licence is allowed here.
+# Denied by omission: GPL, AGPL, SSPL, BUSL, non-commercial and custom commercial.
+allow = [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "CC0-1.0",
+    "BSL-1.0",
+    # MPL-2.0: unmodified files only, with a source offer per release (§15.1, symphonia).
+    "MPL-2.0",
+    # Fonts.
+    "OFL-1.1",
+]
+confidence-threshold = 0.93
+# The list is policy, not inventory: an allowed licence nobody uses yet is fine.
+unused-allowed-license = "allow"
+# Per-crate exceptions (the "exception register"). Each entry needs AJ's sign-off.
+exceptions = []
+
+[licenses.private]
+# gmclip's own crates are `publish = false`; they are MIT OR Apache-2.0 (LICENSE-MIT, LICENSE-APACHE).
+ignore = true
+registries = []
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+# Internal path dependencies have no version requirement.
+allow-wildcard-paths = true
+highlight = "all"
+workspace-default-features = "allow"
+external-default-features = "allow"
+allow = []
+deny = [
+    # No ffmpeg anywhere (SPEC §0, §15.0, §15.4).
+    { crate = "ffmpeg-next", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "ffmpeg-sys-next", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "ffmpeg-sys", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "ffmpeg-the-third", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "ffmpeg-sys-the-third", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "ffmpeg-sidecar", reason = "SPEC §15.4: no ffmpeg (not even as a spawned binary)" },
+    { crate = "rsmpeg", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "rusty_ffmpeg", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "ac-ffmpeg", reason = "SPEC §15.4: no ffmpeg" },
+    { crate = "video-rs", reason = "SPEC §15.4: wraps ffmpeg-next" },
+    # x264 / x265 (GPL encoders).
+    { crate = "x264", reason = "SPEC §15.4: x264 is GPL" },
+    { crate = "x264-sys", reason = "SPEC §15.4: x264 is GPL" },
+    { crate = "x264-dev", reason = "SPEC §15.4: x264 is GPL" },
+    { crate = "x265", reason = "SPEC §15.4: x265 is GPL" },
+    { crate = "x265-sys", reason = "SPEC §15.4: x265 is GPL" },
+    # Artifact deny-list (§15.4) mirrored at the crate level.
+    { crate = "fdk-aac", reason = "SPEC §15.4: libfdk-aac is denied" },
+    { crate = "fdk-aac-sys", reason = "SPEC §15.4: libfdk-aac is denied" },
+    { crate = "dav1d", reason = "SPEC §15.0: no software AV1 decoder until counsel rules (Q6)" },
+    { crate = "dav1d-sys", reason = "SPEC §15.0: no software AV1 decoder until counsel rules (Q6)" },
+    { crate = "vpx", reason = "SPEC §15.0: no software VP9 decoder until counsel rules (Q6)" },
+    { crate = "vpx-sys", reason = "SPEC §15.0: no software VP9 decoder until counsel rules (Q6)" },
+    { crate = "env-libvpx-sys", reason = "SPEC §15.0: no software VP9 decoder until counsel rules (Q6)" },
+    { crate = "espeak-rs", reason = "SPEC §15.4: espeak is GPL" },
+    { crate = "espeakng-sys", reason = "SPEC §15.4: espeak is GPL" },
+    # symphonia's AAC decoder (SPEC §15.4; implementer finding 27). The `aac` feature
+    # pulls this crate in, so banning the crate catches the feature even when another
+    # dependency turns it on through feature unification. CI also runs
+    # `cargo tree -e features -i symphonia-codec-aac`, which must find nothing.
+    { crate = "symphonia-codec-aac", reason = "SPEC §15.4: symphonia's AAC feature is denied" },
+    # GStreamer crates are allowed only inside the Linux shim (M6, SPEC §6.2, implementer
+    # finding 26). The shim does not exist yet, so every GStreamer crate is refused; at
+    # M6 each entry gains `wrappers = ["<shim crate>"]`.
+    { crate = "gstreamer", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-sys", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-app", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-video", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-audio", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-base", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-pbutils", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-player", reason = "SPEC §15.4: Linux shim only" },
+    { crate = "gstreamer-gl", reason = "SPEC §15.4: Linux shim only" },
+]
+skip = []
+skip-tree = []
+
+[sources]
+# crates.io only; no git dependencies, no other registries (SR R-SUP-1).
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []

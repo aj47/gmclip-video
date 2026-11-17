@@ -1,0 +1,60 @@
+/* Screen Studio controls (decision 0046): the zoom and layout lanes above the parts, a
+ * section's controls, the look panel, the camera bubble and the point picker on the
+ * preview. Tokens only. */
+
+.section-lanes { height: 54px; max-height: none; overflow: hidden; }
+.sl-body { cursor: copy; }
+.sl-bar {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  padding: 0 6px;
+  border: 1px solid var(--lane-text-edge);
+  border-radius: 3px;
+  background: var(--lane-text);
+  font-size: 10px;
+  line-height: 18px;
+  color: var(--text-1);
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.sl-bar:active { cursor: grabbing; }
+/* the edges resize */
+.sl-bar::before,
+.sl-bar::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6px; cursor: ew-resize; }
+.sl-bar::before { left: 0; }
+.sl-bar::after { right: 0; }
+.sl-bar.sl-layout { border-color: var(--lane-caption-edge); background: var(--lane-caption); }
+/* an automatic zoom: dashed and lighter until edited */
+.sl-bar.auto { border-style: dashed; background: color-mix(in srgb, var(--lane-text) 45%, transparent); }
+.sl-bar.sel { border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 30%, var(--lane-text)); }
+.sl-bar:focus-visible { outline: var(--outline-w) solid var(--accent); outline-offset: 1px; }
+
+.studio-block { display: flex; flex-direction: column; gap: var(--s-2); margin: var(--s-3) 0; padding-top: var(--s-2); border-top: 1px solid var(--sep); }
+.studio-block h3 { margin: 0; display: flex; align-items: center; gap: var(--s-2); }
+.studio-block .row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2); }
+.studio-block .appearance-range input[type="range"] { width: min(160px, 30vw); }
+.studio-block .note { color: var(--text-3); font-size: var(--fs-11); }
+.studio-block input[type="number"] { width: 72px; }
+
+.point-pick { position: absolute; cursor: crosshair; z-index: 4; box-shadow: inset 0 0 0 2px var(--accent); }
+.point-pick-hint {
+  position: absolute;
+  top: var(--s-2);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px var(--s-2);
+  border-radius: 4px;
+  background: var(--surface-panel);
+  color: var(--text-1);
+  font-size: var(--fs-11);
+  pointer-events: none;
+}
+.point-pick-cross { position: absolute; width: 0; height: 0; pointer-events: none; }
+.point-pick-cross::before,
+.point-pick-cross::after { content: ""; position: absolute; background: var(--accent); }
+.point-pick-cross::before { left: -12px; top: -1px; width: 24px; height: 2px; }
+.point-pick-cross::after { left: -1px; top: -12px; width: 2px; height: 24px; }

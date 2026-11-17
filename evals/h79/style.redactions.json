@@ -1,0 +1,66 @@
+{
+ "schema": "gmclip.eval.redactions/0",
+ "source": {
+  "path": "clip-library/AGENTS.md",
+  "sha256": "c3023774c32e743105fd1cb11d1444e07389273247bd467b649d12346b525940"
+ },
+ "style_sha256": "d57b960693b42c7f6b7b4ed5996d5132c07b3c2b5e769dd23bac74d7b6edaa82",
+ "approved_by_aj": false,
+ "redactions": [
+  {
+   "original": "Origin: AJ's brief while remaking `loc_4fadb756_h79` (talking banana). He rejected the 22.5 s v3\n(\"a bit too jumpy, and hard to follow… we can make it go for ~1 minute\") and approved the 60.2 s\nv4 (\"this is great\"). Worked example: `production/h79-v3-2026-10-04/`. It contains `build_v4.py`\n(spec + captions generator), `render-spec-v4.json`, `captions-v4.ass`, `h79-v4.mp4` and `qa/`. It\nrenders with `production/staged-reels-2026-10-01/loc_4fadb756_h06/reset-v2/render_reel.py`\n(`--ffmpeg static_ffmpeg --ffprobe static_ffprobe`). Copy that build script as the starting point.",
+   "replacement": "Origin: AJ's brief while remaking a staged hook (AJ found a ~20 s cut \"a bit too jumpy, and hard to follow… we can make it go for ~1 minute\" and approved a ~60 s cut). [redacted for an eval: the worked example, its files and build script]",
+   "why": "names the eval's own cut, its v3/v4 renders and the build script that holds the answer"
+  },
+  {
+   "original": "Example: text \"My PC made this in 67 seconds.\" over voice \"we were able to\n     generate that five-second video in less than two minutes\".",
+   "replacement": "[redacted for an eval: the example is the eval's own hook and voice line]",
+   "why": "the golden text hook and the spoken claim it compresses"
+  },
+  {
+   "original": "never split \"two minutes\" or \"NVIDIA 5080 GPU\", and",
+   "replacement": "never split a number from its unit or a product name, and",
+   "why": "the examples are phrases from the eval's moment"
+  },
+  {
+   "original": "First a context\n   label (\"MiniMax H3 running on my PC\"), then a measured run clock (\"GENERATING 0:23\" →\n   \"DONE IN 1:07\").",
+   "replacement": "First a context\n   label, then a measured run clock that counts while the job runs and ends on the measured total.\n   [redacted for an eval: the example pill and clock texts]",
+   "why": "the golden pill text and the golden run-clock values"
+  },
+  {
+   "original": "(ComfyUI queue 0→1 active)",
+   "replacement": "(for example a job queue going 0→1 active)",
+   "why": "names the app in the eval's moment"
+  },
+  {
+   "original": " For h79 that was 2610.833 → 2678.267, i.e. 67.4 s.",
+   "replacement": " [redacted for an eval: the measured example]",
+   "why": "the golden run-clock measurement"
+  },
+  {
+   "original": "   - Drop spoken lines the screen contradicts. h79 dropped \"15%\" (the screen said 57%/0%)\n     and \"maybe less than one minute\" (the run was 67 s).",
+   "replacement": "   - Drop spoken lines the screen contradicts. [redacted for an eval: the examples]",
+   "why": "the golden cut's dropped lines and the measured total"
+  },
+  {
+   "original": " and `production/h79-v3-2026-10-04/build_window.py` for",
+   "replacement": " for",
+   "why": "the eval cut's production folder"
+  },
+  {
+   "original": "with `program_gain_envelopes`;\n      +10 dB worked for h79.",
+   "replacement": "with `program_gain_envelopes`.\n      [redacted for an eval: the gain used on the eval cut]",
+   "why": "the golden gain envelope value"
+  },
+  {
+   "original": "for a one-off\n  build such as h79 v4.",
+   "replacement": "for a one-off\n  build.",
+   "why": "names the eval cut"
+  },
+  {
+   "original": "- 2026-10-04: v3 (`production/h79-v3-2026-10-04/h79-v3.mp4`, 22.5 s): \"its a bit too jumpy, and\n  hard to follow. we can make it go for ~ 1 minute\".\n- 2026-10-04: v4 (`production/h79-v3-2026-10-04/h79-v4.mp4`, 60.2 s): \"ok this is great\".",
+   "replacement": "- 2026-10-04: a ~20 s cut: \"its a bit too jumpy, and hard to follow. we can make it go for ~ 1 minute\".\n- 2026-10-04: a ~1 minute cut: \"ok this is great\".\n  [redacted for an eval: which cut and render these were]",
+   "why": "the feedback names the eval cut's renders; AJ's words are kept"
+  }
+ ]
+}

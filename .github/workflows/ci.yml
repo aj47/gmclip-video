@@ -1,0 +1,115 @@
+# gmclip CI (W0-02, W0-11; SPEC §15.4, §19.1 W0, SR R-SUP-1/2).
+#
+# INACTIVE: this repository has no remote yet. The workflow starts running once AJ
+# creates the private GitHub repo under aj47 (SPEC §21 Q20) and pushes `main`. Then AJ
+# turns on branch protection for `main`: require the `check (*)` and `policy` jobs and a
+# code-owner review (CODEOWNERS), which is what blocks agent PRs touching protected paths
+# (W0-11).
+#
+# CODEOWNERS: AJ. Coding agents may not edit this file (SR R-SUP-2).
+#
+# Every cargo invocation is --locked (the `cargo xt` alias is too). Actions are pinned by
+# commit SHA. Tools are pinned to versions in install-action's checksum manifest at that
+# SHA, with `fallback: none` so an unlisted version fails instead of installing unverified.
+
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  merge_group:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  # Superseded PR runs are cancelled; runs on main always finish.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+  RUST_BACKTRACE: "1"
+
+jobs:
+  check:
+    name: check (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        # macOS 14 arm64 is the reference build host (W0-03 scans its release binary).
+        os: [macos-14, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned toolchain (rust-toolchain.toml)
+        run: rustup toolchain install
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+      - uses: taiki-e/install-action@1168f6810a3cb30a3514bf5756a3b7f0422c6df8 # v2.87.28
+        with:
+          tool: cargo-nextest@0.9.132
+          fallback: none
+      - name: Build
+        run: cargo build --workspace --all-targets --locked
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Test
+        run: cargo nextest run --workspace --locked
+      - name: Doctests (nextest does not run them)
+        run: cargo test --doc --workspace --locked
+      - name: Dependency direction and unsafe policy
+        run: cargo xt deps
+      - name: Command registry
+        run: cargo xt check-registry
+
+  policy:
+    name: policy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned toolchain (rust-toolchain.toml)
+        run: rustup toolchain install
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+      - uses: taiki-e/install-action@1168f6810a3cb30a3514bf5756a3b7f0422c6df8 # v2.87.28
+        with:
+          # cargo-vet 0.10.0: the newest version in the pinned manifest (0.10.2 locally
+          # reads the same supply-chain/ format).
+          tool: cargo-deny@0.20.2,cargo-vet@0.10.0
+          fallback: none
+      - name: Format
+        run: cargo fmt --all --check
+      - name: Cargo.lock is current
+        run: cargo metadata --format-version 1 --locked > /dev/null
+      - name: cargo deny (licences, bans, advisories, sources; SPEC §15.4)
+        run: cargo deny --locked check
+      - name: No symphonia AAC through feature unification (implementer finding 27)
+        # deny.toml bans the crate too; this step fails closed: only cargo's
+        # "did not match any packages" counts as absent.
+        run: |
+          set +e
+          out=$(cargo tree --locked -e features -i symphonia-codec-aac --target all 2>&1)
+          rc=$?
+          set -e
+          if [ $rc -eq 0 ]; then
+            echo "symphonia-codec-aac is in the dependency graph (SPEC §15.4 denies symphonia's aac feature)"
+            echo "$out"
+            exit 1
+          fi
+          echo "$out" | grep -q "did not match any packages" || { echo "$out"; exit 1; }
+      - name: cargo vet (imported audits; new crates need AJ's audit, SR R-SUP-1)
+        run: cargo vet --locked
+      - name: No build-script or proc-macro crate new to the tree (SR R-SUP-1)
+        run: cargo xt supply
+      - name: Negative fixtures each turn their check red (W0-02, W0-11)
+        run: cargo xt fixtures --require-all
+
+  # Not yet checked (W0-11, open): "a crate published < 30 days ago" (needs crates.io).
+  # Added when app/ui lands (M2): pnpm install --frozen-lockfile with ignore-scripts=true,
+  # onlyBuiltDependencies = [] and minimumReleaseAge >= 7 days (SR R-SUP-1).
+  # Added by W0-03: release build on macos-14 arm64 -> syft SBOM -> scancode -> deny globs.

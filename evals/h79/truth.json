@@ -1,0 +1,169 @@
+{
+ "schema": "gmclip.eval.h79.truth/0",
+ "approved_by_aj": false,
+ "note": "Values from the h79 v4 build (build_v4.py, render-receipt.json, AGENTS.md rule 6). The run clock was measured on the proxy; AJ re-verifies it on the 1440p picture (AJ-03) before the grader freezes.",
+ "inputs": {
+  "v4_renderplan": {
+   "path": "schemas/examples/h79-v4.renderplan.json",
+   "sha256": "b8065d187fccf80a759052836697888048bbe1edc8f5f01037f7984b9b49559a"
+  },
+  "build_v4": {
+   "path": "clip-library/production/h79-v3-2026-10-04/build_v4.py",
+   "sha256": "5d3a1bed29c02778ede9d1ff652d5399fc64d83a62aa349465ffbc5934d1729b"
+  },
+  "render_receipt": {
+   "path": "clip-library/production/h79-v3-2026-10-04/render-receipt.json",
+   "sha256": "ea569eb59ba133bc425ac07b8380b576d90fa5c46656e5f52caf26a55c69f1d3"
+  },
+  "render_spec_v3": {
+   "path": "clip-library/production/h79-v3-2026-10-04/render-spec-v3.json",
+   "sha256": "583334563245a0117319198f2c677bc14c590121a5a59e1b7bcfcf320576a08d"
+  },
+  "captions_v3": {
+   "path": "clip-library/production/h79-v3-2026-10-04/captions-v3.ass",
+   "sha256": "ef7c13fa8d4179f7f2602a36aac8ebae2ee4645e5af1f9e5f9687c9eb06299cb"
+  }
+ },
+ "golden": {
+  "path": "clip-library/production/h79-v3-2026-10-04/h79-v4.mp4",
+  "sha256": "404c924191bac4e927f7e7829a74656f83840cb1fe95e7eea4ac0f7e4ab82e6a",
+  "frames": 1807,
+  "fps": 30,
+  "seconds": 60.233,
+  "parts": 14,
+  "part_frames": [
+   55,
+   121,
+   221,
+   219,
+   77,
+   81,
+   17,
+   196,
+   100,
+   144,
+   263,
+   119,
+   99,
+   95
+  ],
+  "median_part_s": 3.65,
+  "min_part_s": 0.567,
+  "words": 141
+ },
+ "v3": {
+  "path": "clip-library/production/h79-v3-2026-10-04/h79-v3.mp4",
+  "sha256": "7fb4a732f46aceea34331c561d42294e69823c7f68081b98a9940f2417e24a23"
+ },
+ "moment_span_s": [
+  2585.8,
+  2614.6
+ ],
+ "payoff_region_s": [
+  2679.0,
+  2730.0
+ ],
+ "setup_region_s": [
+  2585.8,
+  2611.5
+ ],
+ "reaction_region_s": [
+  2711.0,
+  2727.3
+ ],
+ "result_window_s": [
+  2679.0,
+  2700.0
+ ],
+ "run_clock": {
+  "start_s": 2610.833,
+  "stop_s": 2678.267,
+  "seconds": 67.434,
+  "tolerance_s": 0.5
+ },
+ "cam_region_px": [
+  2060,
+  634,
+  496,
+  340
+ ],
+ "cam_place_px": [
+  160,
+  1120,
+  760,
+  520
+ ],
+ "sources": {
+  "picture": {
+   "video_id": "jMcAmooE53I",
+   "path": "~/Documents/youtube/streams/20260915-comfyui-minimax-h3-from-scratch-jMcAmooE53I/source/source.mkv",
+   "sha256": "13ed3a2671ad918f9e1f79dea18e2b44d30a4293ce106ae44e3bbbfa3f2ddb48",
+   "frame_offset": -1642,
+   "offset_valid_from_s": 1196
+  },
+  "audio": {
+   "video_id": "loc_4fadb756",
+   "path": "$GMCLIP_LAB_MEDIA/preview/loc_4fadb756.proxy.mp4",
+   "sha256": "ad8e69cda5ba9dc10624bbd19a86cb9544a2d7c458952b6e53bf316e78deaa2d"
+  }
+ },
+ "golden_words_file": "truth/golden-words.json",
+ "font_metrics_file": "truth/font-neometric-heavy.json",
+ "thresholds": {
+  "duration_s": [
+   55.0,
+   65.0
+  ],
+  "arc_monotone_share": 0.8,
+  "median_part_s_min": 3.0,
+  "part_s_min": 0.25,
+  "parts_max": 25,
+  "hook_end_s": [
+   3.0,
+   8.0
+  ],
+  "hook_words": [
+   5,
+   8
+  ],
+  "hook_lines_max": 2,
+  "hook_chars_per_line_max": 22,
+  "hook_band_y": [
+   220,
+   400
+  ],
+  "ig_top_px": 220,
+  "ig_right": {
+   "w": 120,
+   "y": [
+    1000,
+    1560
+   ]
+  },
+  "cue_words_max": 3,
+  "cue4_chars_max": 18,
+  "cue4_s_max": 0.9,
+  "cue_frames_min": 6,
+  "caption_coverage_min": 0.95,
+  "evidence_frames_min": 2,
+  "cam_iou_min": 0.8,
+  "cam_place_tol": 0.1,
+  "cam_share_min": 0.8,
+  "screen_band_y": [
+   250,
+   1010
+  ],
+  "screen_share_min": 0.8,
+  "layouts_max": 8,
+  "content_recall_report_gate": 0.5,
+  "loudness_tol_lu": 0.5,
+  "true_peak_max_dbtp": -1.5
+ },
+ "forbidden_fixture_strings": [
+  "67",
+  "1:07",
+  "2610.8",
+  "2678.2",
+  "My PC made"
+ ]
+}

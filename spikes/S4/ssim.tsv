@@ -1,0 +1,628 @@
+n	reel	event	style	ssim	bbox_dx0	bbox_dy0	bbox_dx1	bbox_dy1	centroid_dx	centroid_dy	mean_dalpha	text
+0001	loc_086da141_h03	d001	Hook	0.99464	0	0	0	0	0.012	0.078	0.443	{\pos(540,305)}My Discord now has\Nits own {\c&H00D4FF&}website.
+0002	loc_086da141_h03	d002	Speech	0.99501	0	1	0	0	0.048	-0.083	0.482	{\pos(540,1110)}You can even
+0003	loc_086da141_h03	d003	Speech	0.99686	0	0	0	0	0.206	0.03	0.303	{\pos(540,1110)}like type messages
+0004	loc_086da141_h03	d004	Speech	0.99505	0	0	0	0	-0.01	-0.068	0.399	{\pos(540,1110)}into the {\c&H00D4FF&}Discord{\c&HFFFFFF&}
+0005	loc_086da141_h03	d005	Speech	0.99400	0	0	0	0	0.008	-0.085	0.506	{\pos(540,1110)}and they'll
+0006	loc_086da141_h03	d006	Speech	0.99572	0	0	0	0	0.026	-0.071	0.402	{\pos(540,1110)}show up
+0007	loc_086da141_h03	d007	Speech	0.99345	0	0	0	0	-0.038	-0.08	0.461	{\pos(540,1110)}on the {\c&H00D4FF&}Discord.{\c&HFFFFFF&}
+0008	loc_086da141_h03	d008	Speech	0.99399	0	0	0	0	0.128	-0.08	0.415	{\pos(540,1110)}TechFriend community
+0009	loc_086da141_h03	d009	Speech	0.99505	0	0	0	0	-0.016	-0.09	0.432	{\pos(540,1110)}{\c&H00D4FF&}web{\c&HFFFFFF&} {\c&H00D4FF&}app.{\c&HFFFFFF&}
+0010	loc_086da141_h03	d010	Speech	0.99535	0	0	0	0	0.02	-0.088	0.450	{\pos(540,1110)}I think I
+0011	loc_086da141_h03	d011	Speech	0.99613	0	0	0	0	-0.063	-0.052	0.327	{\pos(540,1110)}submitted the prompt,
+0012	loc_086da141_h03	d012	Speech	0.99729	0	0	0	0	-0.031	-0.01	0.303	{\pos(540,1110)}but I didn't
+0013	loc_086da141_h03	d013	Speech	0.99574	0	0	0	0	-0.031	-0.074	0.411	{\pos(540,1110)}show you
+0014	loc_086da141_h03	d014	Speech	0.99530	0	0	0	0	0.01	-0.079	0.411	{\pos(540,1110)}the result,
+0015	loc_086da141_h03	d015	Speech	0.99452	0	0	0	0	-0.015	-0.085	0.471	{\pos(540,1110)}so here we
+0016	loc_086da141_h03	d016	Speech	0.99443	0	0	0	0	-0.073	-0.06	0.437	{\pos(540,1110)}go.
+0017	loc_086da141_h03	d017	Speech	0.99507	0	1	0	0	0.029	-0.08	0.444	{\pos(540,1110)}Here
+0018	loc_086da141_h03	d018	Speech	0.99685	0	0	0	0	-0.039	-0.036	0.327	{\pos(540,1110)}is the result
+0019	loc_086da141_h03	d019	Speech	0.99490	0	0	0	0	0.01	-0.001	0.376	{\pos(540,1110)\fs84}techfriendcommunity.com.
+0020	loc_086da141_h03	d020	Speech	0.99431	0	1	0	0	-0.096	-0.083	0.486	{\pos(540,1110)}You can now
+0021	loc_086da141_h03	d021	Speech	0.99610	0	0	0	0	-0.044	-0.052	0.350	{\pos(540,1110)}interact with our
+0022	loc_086da141_h03	d022	Speech	0.99413	0	0	0	0	0.014	-0.092	0.482	{\pos(540,1110)}{\c&H00D4FF&}web{\c&HFFFFFF&} {\c&H00D4FF&}app{\c&HFFFFFF&}
+0023	loc_086da141_h03	d023	Speech	0.99614	0	0	0	0	0.006	-0.073	0.349	{\pos(540,1110)}with our community
+0024	loc_086da141_h03	d024	Speech	0.99476	0	0	0	0	0.007	-0.077	0.435	{\pos(540,1110)}rather through
+0025	loc_086da141_h03	d025	Speech	0.99515	0	0	0	0	0.018	-0.086	0.427	{\pos(540,1110)}the {\c&H00D4FF&}web{\c&HFFFFFF&} {\c&H00D4FF&}app.{\c&HFFFFFF&}
+0026	loc_086da141_h03	d026	Speech	0.99502	-1	1	0	0	0.051	-0.085	0.499	{\pos(540,1110)}You can
+0027	loc_086da141_h03	d027	Speech	0.99699	0	0	0	0	0.065	0.043	0.309	{\pos(540,1110)}link your account.
+0028	loc_086da141_h03	d028	Speech	0.99528	0	0	0	0	0.087	-0.081	0.425	{\pos(540,1110)}Oh, that {\c&H00D4FF&}crash.{\c&HFFFFFF&}
+0029	loc_086da141_h03	d029	Speech	0.99482	0	0	0	0	0.131	-0.059	0.418	{\pos(540,1110)}Could be {\c&H00D4FF&}buggy.{\c&HFFFFFF&}
+0030	loc_086da141_h03	d030	Speech	0.99304	0	0	0	0	-0.086	-0.088	0.509	{\pos(540,1110)}You could also
+0031	loc_086da141_h03	d031	Speech	0.99587	0	0	0	0	-0.072	-0.011	0.383	{\pos(540,1110)}see the {\c&H00D4FF&}leaderboard.{\c&HFFFFFF&}
+0032	loc_086da141_h03	d032	Speech	0.99450	0	0	0	0	0.023	-0.103	0.441	{\pos(540,1110)}Which is dope.
+0033	loc_086da141_h03	d033	Speech	0.99560	0	0	0	0	0.023	-0.086	0.424	{\pos(540,1110)}And we
+0034	loc_086da141_h03	d034	Speech	0.99404	-1	0	0	0	0.084	-0.086	0.504	{\pos(540,1110)}now have
+0035	loc_086da141_h03	d035	Speech	0.99595	0	0	0	0	0.006	-0.024	0.379	{\pos(540,1110)}an {\c&H00D4FF&}all-time{\c&HFFFFFF&} {\c&H00D4FF&}leaderboard{\c&HFFFFFF&}
+0036	loc_086da141_h03	d036	Speech	0.99419	0	0	0	0	-0.018	-0.092	0.491	{\pos(540,1110)}and we have
+0037	loc_086da141_h03	d037	Speech	0.99664	0	0	0	0	0.12	0.016	0.332	{\pos(540,1110)}like two {\c&H00D4FF&}bots{\c&HFFFFFF&}
+0038	loc_086da141_h03	d038	Speech	0.99671	0	0	0	0	-0.012	-0.046	0.326	{\pos(540,1110)}in the chat.
+0039	loc_086da141_h03	d039	Pill	0.99850	0	0	0	0	0.011	-0.039	0.268	{\an7\pos(48,262)\fs50}LAST STREAM  {\c&H00D4FF&}the plan
+0040	loc_086da141_h03	d040	Pill	0.99865	0	0	1	0	-0.025	-0.038	0.279	{\an7\pos(48,262)\fs50}techfriendcommunity.com
+0041	loc_086da141_h03	d041	Pill	0.99812	0	0	0	0	0.015	-0.04	0.285	{\an7\pos(48,262)\fs50}LIVE DEMO  {\c&H00D4FF&}account linking
+0042	loc_086da141_h03	d042	Pill	0.99778	0	0	0	0	0.035	-0.04	0.303	{\an7\pos(48,262)\fs50}LEADERBOARD  {\c&H00D4FF&}all-time
+0043	loc_086da141_h25	d001	Hook	0.99581	0	0	0	0	0.066	0.052	0.392	{\pos(540,305)}My AI avatar\Ntook {\c&H00D4FF&}5 versions.
+0044	loc_086da141_h25	d002	Speech	0.99418	0	0	0	0	0.131	-0.073	0.473	{\pos(540,1325)}So this was
+0045	loc_086da141_h25	d003	Speech	0.99433	0	0	0	0	0.021	-0.078	0.454	{\pos(540,1325)}the one shot.
+0046	loc_086da141_h25	d004	Speech	0.99487	0	0	0	0	-0.034	-0.083	0.454	{\pos(540,1325)}One shot of
+0047	loc_086da141_h25	d005	Speech	0.99502	0	0	0	0	0.005	-0.047	0.453	{\pos(540,1325)}a {\c&H00D4FF&}3D{\c&HFFFFFF&} {\c&H00D4FF&}avatar.{\c&HFFFFFF&}
+0048	loc_086da141_h25	d006	Speech	0.99419	0	0	0	0	0.08	-0.077	0.470	{\pos(540,1325)}Like not
+0049	loc_086da141_h25	d007	Speech	0.99241	0	0	0	0	-0.075	-0.111	0.591	{\pos(540,1325)}a bad
+0050	loc_086da141_h25	d008	Speech	0.99575	0	0	0	0	-0.05	-0.043	0.364	{\pos(540,1325)}first shot.
+0051	loc_086da141_h25	d009	Speech	0.99464	0	0	0	0	-0.104	-0.081	0.452	{\pos(540,1325)}Like that's like
+0052	loc_086da141_h25	d010	Speech	0.99365	0	0	0	0	0.059	-0.078	0.480	{\pos(540,1325)}{\c&H00D4FF&}80%{\c&HFFFFFF&} there.
+0053	loc_086da141_h25	d011	Speech	0.99394	0	0	0	0	-0.03	-0.087	0.499	{\pos(540,1325)}And then I
+0054	loc_086da141_h25	d012	Speech	0.99489	0	0	0	0	0.06	-0.086	0.446	{\pos(540,1325)}was like, okay,
+0055	loc_086da141_h25	d013	Speech	0.99759	0	0	0	0	0.023	0.029	0.285	{\pos(540,1325)}let's just keep
+0056	loc_086da141_h25	d014	Speech	0.99621	0	0	0	0	0.046	-0.045	0.337	{\pos(540,1325)}making it {\c&H00D4FF&}better.{\c&HFFFFFF&}
+0057	loc_086da141_h25	d015	Speech	0.99441	0	0	0	0	0.015	-0.083	0.470	{\pos(540,1325)}So the
+0058	loc_086da141_h25	d016	Speech	0.99609	0	0	0	0	0.047	-0.061	0.343	{\pos(540,1325)}{\c&H00D4FF&}lip{\c&HFFFFFF&} sync's working
+0059	loc_086da141_h25	d017	Speech	0.99530	0	0	0	0	0.058	-0.072	0.418	{\pos(540,1325)}way feeling
+0060	loc_086da141_h25	d018	Speech	0.99722	0	0	0	0	-0.026	-0.035	0.309	{\pos(540,1325)}way {\c&H00D4FF&}better,{\c&HFFFFFF&}
+0061	loc_086da141_h25	d019	Speech	0.99493	0	0	0	0	0.032	-0.088	0.495	{\pos(540,1325)}I think
+0062	loc_086da141_h25	d020	Speech	0.99346	0	0	0	0	0.122	-0.083	0.499	{\pos(540,1325)}the colors are
+0063	loc_086da141_h25	d021	Speech	0.99541	0	0	0	0	-0.012	-0.054	0.426	{\pos(540,1325)}{\c&H00D4FF&}better{\c&HFFFFFF&} and that's
+0064	loc_086da141_h25	d022	Speech	0.99686	0	0	0	0	0.107	0.037	0.308	{\pos(540,1325)}like eyebrows
+0065	loc_086da141_h25	d023	Speech	0.99272	0	0	0	0	-0.152	-0.09	0.569	{\pos(540,1325)}and stuff
+0066	loc_086da141_h25	d024	Speech	0.99374	0	0	0	0	-0.05	-0.1	0.490	{\pos(540,1325)}and like
+0067	loc_086da141_h25	d025	Speech	0.99496	0	0	1	0	-0.035	-0.084	0.418	{\pos(540,1325)}an idle thing.
+0068	loc_086da141_h25	d026	Speech	0.99458	0	0	0	0	0.038	-0.085	0.442	{\pos(540,1325)}This is {\c&H00D4FF&}V3.{\c&HFFFFFF&}
+0069	loc_086da141_h25	d027	Speech	0.99409	0	0	0	0	0.104	-0.079	0.449	{\pos(540,1325)}A bit less
+0070	loc_086da141_h25	d028	Speech	0.99369	0	0	0	0	0.001	-0.098	0.504	{\pos(540,1325)}of a wide head.
+0071	loc_086da141_h25	d029	Speech	0.99552	0	0	0	0	0.065	-0.077	0.395	{\pos(540,1325)}And then yesterday
+0072	loc_086da141_h25	d030	Speech	0.99629	0	1	0	0	-0.053	-0.075	0.402	{\pos(540,1325)}V4.
+0073	loc_086da141_h25	d031	Speech	0.99579	0	0	0	0	0.091	-0.073	0.384	{\pos(540,1325)}Mouth is more
+0074	loc_086da141_h25	d032	Speech	0.99339	0	0	0	0	-0.102	-0.091	0.480	{\pos(540,1325)}animated here
+0075	loc_086da141_h25	d033	Speech	0.99598	0	0	0	0	0.001	-0.062	0.378	{\pos(540,1325)}with the beard,
+0076	loc_086da141_h25	d034	Speech	0.99580	0	0	0	0	0.169	-0.002	0.370	{\pos(540,1325)}but it looks
+0077	loc_086da141_h25	d035	Speech	0.99703	0	0	0	0	0.112	-0.027	0.314	{\pos(540,1325)}kind of {\c&H00D4FF&}scary.{\c&HFFFFFF&}
+0078	loc_086da141_h25	d036	Speech	0.99469	-1	0	0	0	0.1	-0.087	0.451	{\pos(540,1325)}Oh boy.
+0079	loc_086da141_h25	d037	Speech	0.99544	0	0	0	0	-0.024	-0.079	0.409	{\pos(540,1325)}Yeah, I'm gonna
+0080	loc_086da141_h25	d038	Speech	0.99695	0	0	0	0	0.066	0.037	0.342	{\pos(540,1325)}use this as
+0081	loc_086da141_h25	d039	Speech	0.99506	0	0	0	0	0.048	-0.075	0.437	{\pos(540,1325)}the {\c&H00D4FF&}avatar.{\c&HFFFFFF&}
+0082	loc_086da141_h25	d040	Speech	0.99446	0	0	-1	0	0.147	0.052	0.431	{\pos(540,1325)}Boom.
+0083	loc_086da141_h25	d041	Speech	0.99610	0	0	0	0	-0.017	-0.069	0.355	{\pos(540,1325)}Pocoj {\c&H00D4FF&}Avatar.{\c&HFFFFFF&}
+0084	loc_086da141_h25	d042	Speech	0.99421	-1	0	0	0	0.162	-0.073	0.446	{\pos(540,1325)}{\c&H00D4FF&}Amazing{\c&HFFFFFF&}
+0085	loc_086da141_h25	d043	Pill	0.99819	0	0	0	0	-0.013	-0.041	0.273	{\an7\pos(48,262)\fs50}V1  {\c&H00D4FF&}one-shot
+0086	loc_086da141_h25	d044	Pill	0.99855	0	0	0	0	-0.026	-0.039	0.270	{\an7\pos(48,262)\fs50}V2  {\c&H00D4FF&}better lip sync
+0087	loc_086da141_h25	d045	Pill	0.99878	0	0	0	0	-0.025	-0.037	0.248	{\an7\pos(48,262)\fs50}V3  {\c&H00D4FF&}less wide head
+0088	loc_086da141_h25	d046	Pill	0.99867	0	0	0	0	-0.007	-0.038	0.250	{\an7\pos(48,262)\fs50}V4  {\c&H00D4FF&}kind of scary
+0089	loc_086da141_h25	d047	Pill	0.99916	0	0	0	0	-0.038	-0.038	0.249	{\an7\pos(48,262)\fs50}V5  {\c&H00D4FF&}the keeper
+0090	loc_086da141_h47	d001	Hook	0.99556	0	0	0	0	0.11	0.062	0.371	{\pos(540,305)}My app found {\c&H00D4FF&}2,615 hooks{\c&HFFFFFF&}\Nin 17 streams.
+0091	loc_086da141_h47	d002	Speech	0.99434	0	1	0	0	0.102	-0.083	0.504	{\pos(540,1110)}You can see
+0092	loc_086da141_h47	d003	Speech	0.99424	0	0	0	0	0.06	-0.091	0.444	{\pos(540,1110)}I've processed
+0093	loc_086da141_h47	d004	Speech	0.99567	0	0	0	0	-0.056	-0.035	0.372	{\pos(540,1110)}over {\c&H00D4FF&}2,500{\c&HFFFFFF&} {\c&H00D4FF&}hooks.{\c&HFFFFFF&}
+0094	loc_086da141_h47	d005	Speech	0.99645	0	0	0	0	0.039	-0.076	0.361	{\pos(540,1110)}This is my
+0095	loc_086da141_h47	d006	Speech	0.99484	0	0	0	1	-0.001	-0.078	0.444	{\pos(540,1110)}custom web
+0096	loc_086da141_h47	d007	Speech	0.99289	0	0	0	0	-0.077	-0.099	0.502	{\pos(540,1110)}app Clippy,
+0097	loc_086da141_h47	d008	Speech	0.99618	0	0	0	0	-0.089	-0.066	0.349	{\pos(540,1110)}super personalized
+0098	loc_086da141_h47	d009	Speech	0.99723	0	0	-1	0	0.061	0.038	0.305	{\pos(540,1110)}for me
+0099	loc_086da141_h47	d010	Speech	0.99561	0	0	0	0	0.059	-0.07	0.403	{\pos(540,1110)}to make videos
+0100	loc_086da141_h47	d011	Speech	0.99360	0	0	-1	0	-0.059	-0.095	0.511	{\pos(540,1110)}and to handle
+0101	loc_086da141_h47	d012	Speech	0.99447	0	0	0	0	-0.061	-0.068	0.404	{\pos(540,1110)}all my content.
+0102	loc_086da141_h47	d013	Speech	0.99444	0	0	0	0	0.181	-0.077	0.465	{\pos(540,1110)}And the way
+0103	loc_086da141_h47	d014	Speech	0.99667	0	0	0	0	-0.014	-0.017	0.316	{\pos(540,1110)}we get {\c&H00D4FF&}hooks{\c&HFFFFFF&}
+0104	loc_086da141_h47	d015	Speech	0.99746	0	0	1	0	-0.031	-0.036	0.288	{\pos(540,1110)}is just
+0105	loc_086da141_h47	d016	Speech	0.99590	0	0	0	0	-0.043	-0.022	0.354	{\pos(540,1110)}by adding
+0106	loc_086da141_h47	d017	Speech	0.99500	0	0	0	0	-0.027	-0.083	0.414	{\pos(540,1110)}one of my
+0107	loc_086da141_h47	d018	Speech	0.99419	0	1	0	0	0.013	-0.073	0.459	{\pos(540,1110)}stream URLs
+0108	loc_086da141_h47	d019	Speech	0.99605	0	0	0	0	0.084	-0.056	0.385	{\pos(540,1110)}in this site
+0109	loc_086da141_h47	d020	Speech	0.99398	0	0	0	0	0.008	-0.094	0.523	{\pos(540,1110)}and then
+0110	loc_086da141_h47	d021	Speech	0.99718	0	0	0	0	-0.025	-0.047	0.298	{\pos(540,1110)}it fires up
+0111	loc_086da141_h47	d022	Speech	0.99562	0	0	0	0	-0.066	-0.026	0.397	{\pos(540,1110)}an {\c&H00D4FF&}agent,{\c&HFFFFFF&} let's
+0112	loc_086da141_h47	d023	Speech	0.99490	0	0	0	0	-0.085	-0.087	0.425	{\pos(540,1110)}say {\c&H00D4FF&}Claude{\c&HFFFFFF&} {\c&H00D4FF&}Code,{\c&HFFFFFF&}
+0113	loc_086da141_h47	d024	Speech	0.99524	0	0	0	0	-0.051	-0.067	0.411	{\pos(540,1110)}to extract all
+0114	loc_086da141_h47	d025	Speech	0.99626	-1	0	0	0	0.045	-0.034	0.319	{\pos(540,1110)}the potential {\c&H00D4FF&}hooks{\c&HFFFFFF&}
+0115	loc_086da141_h47	d026	Speech	0.99459	0	0	0	0	-0.08	-0.061	0.411	{\pos(540,1110)}in the stream.
+0116	loc_086da141_h47	d027	Speech	0.99450	0	0	-1	0	-0.019	-0.083	0.463	{\pos(540,1110)}So these are
+0117	loc_086da141_h47	d028	Speech	0.99584	0	0	0	0	-0.075	-0.011	0.317	{\pos(540,1110)}staged {\c&H00D4FF&}hooks.{\c&HFFFFFF&}
+0118	loc_086da141_h47	d029	Speech	0.99512	0	0	0	0	-0.019	-0.074	0.436	{\pos(540,1110)}They all get
+0119	loc_086da141_h47	d030	Speech	0.99428	0	0	0	0	-0.104	-0.09	0.486	{\pos(540,1110)}a {\c&H00D4FF&}score{\c&HFFFFFF&} and
+0120	loc_086da141_h47	d031	Speech	0.99502	0	0	0	0	-0.048	-0.055	0.404	{\pos(540,1110)}why they're good
+0121	loc_086da141_h47	d032	Speech	0.99340	0	0	0	0	-0.102	-0.086	0.520	{\pos(540,1110)}and the actual
+0122	loc_086da141_h47	d033	Speech	0.99705	0	0	0	0	0.078	0.009	0.329	{\pos(540,1110)}{\c&H00D4FF&}quote{\c&HFFFFFF&}
+0123	loc_086da141_h47	d034	Speech	0.99684	0	0	0	0	0.063	0.031	0.330	{\pos(540,1110)}for the hook
+0124	loc_086da141_h47	d035	Speech	0.99462	0	0	0	0	-0.062	-0.076	0.463	{\pos(540,1110)}as well.
+0125	loc_086da141_h47	d036	Speech	0.99485	0	0	0	0	0.041	-0.085	0.460	{\pos(540,1110)}If we click
+0126	loc_086da141_h47	d037	Speech	0.99449	0	0	0	0	-0.019	-0.084	0.438	{\pos(540,1110)}on the editor
+0127	loc_086da141_h47	d038	Speech	0.99551	0	0	1	0	-0.038	-0.072	0.397	{\pos(540,1110)}one, we get
+0128	loc_086da141_h47	d039	Speech	0.99413	0	0	0	0	-0.033	-0.086	0.450	{\pos(540,1110)}a whole editor
+0129	loc_086da141_h47	d040	Speech	0.99552	0	0	0	0	-0.023	-0.078	0.396	{\pos(540,1110)}view where I'm
+0130	loc_086da141_h47	d041	Speech	0.99675	0	0	0	0	-0.028	-0.024	0.305	{\pos(540,1110)}planning the crops,
+0131	loc_086da141_h47	d042	Speech	0.99556	0	0	0	0	0.051	-0.07	0.405	{\pos(540,1110)}the layouts,
+0132	loc_086da141_h47	d043	Speech	0.99625	0	0	0	0	0.027	-0.065	0.359	{\pos(540,1110)}the subtitles,
+0133	loc_086da141_h47	d044	Speech	0.99535	0	0	0	0	-0.006	-0.078	0.434	{\pos(540,1110)}or in this
+0134	loc_086da141_h47	d045	Speech	0.99405	0	1	0	0	-0.045	-0.086	0.504	{\pos(540,1110)}case, I can
+0135	loc_086da141_h47	d046	Speech	0.99606	0	0	0	0	-0.079	-0.068	0.367	{\pos(540,1110)}give an {\c&H00D4FF&}agent{\c&HFFFFFF&}
+0136	loc_086da141_h47	d047	Speech	0.99504	0	0	1	0	-0.051	-0.039	0.373	{\pos(540,1110)}to do
+0137	loc_086da141_h47	d048	Speech	0.99652	0	0	0	0	0.094	-0.064	0.343	{\pos(540,1110)}the first pass
+0138	loc_086da141_h47	d050	Speech	0.99481	0	1	0	0	-0.018	-0.076	0.472	{\pos(540,1110)}so I
+0139	loc_086da141_h47	d051	Speech	0.99563	0	0	0	0	-0.012	-0.017	0.377	{\pos(540,1110)}don't even need
+0140	loc_086da141_h47	d053	Speech	0.99496	0	0	1	0	-0.089	-0.072	0.398	{\pos(540,1110)}anything myself,
+0141	loc_086da141_h47	d054	Speech	0.99686	0	0	0	0	-0.022	-0.011	0.306	{\pos(540,1110)}but you know,
+0142	loc_086da141_h47	d055	Speech	0.99642	0	0	0	0	-0.029	-0.03	0.346	{\pos(540,1110)}sometimes {\c&H00D4FF&}human{\c&HFFFFFF&}
+0143	loc_086da141_h47	d056	Speech	0.99654	0	0	0	0	0.043	-0.044	0.325	{\pos(540,1110)}in the loop
+0144	loc_086da141_h47	d057	Speech	0.99617	0	0	0	0	-0.052	-0.061	0.342	{\pos(540,1110)}is great
+0145	loc_086da141_h47	d058	Speech	0.99473	0	0	1	0	-0.017	-0.051	0.397	{\pos(540,1110)}to go
+0146	loc_086da141_h47	d059	Speech	0.99612	0	0	0	0	-0.046	-0.056	0.365	{\pos(540,1110)}in and do
+0147	loc_086da141_h47	d060	Speech	0.99491	0	0	0	0	0.015	-0.089	0.461	{\pos(540,1110)}the like
+0148	loc_086da141_h47	d061	Speech	0.99589	0	0	0	0	-0.005	-0.053	0.351	{\pos(540,1110)}fine tuning.
+0149	loc_086da141_h47	d062	Speech	0.99497	0	0	0	0	0.016	-0.086	0.437	{\pos(540,1110)}This is a
+0150	loc_086da141_h47	d063	Speech	0.99576	0	0	0	0	-0.076	-0.036	0.337	{\pos(540,1110)}good hook.
+0151	loc_086da141_h47	d064	Speech	0.99544	0	0	0	0	0.02	-0.072	0.428	{\pos(540,1110)}So I guess
+0152	loc_086da141_h47	d065	Speech	0.99520	0	0	0	0	-0.137	-0.052	0.381	{\pos(540,1110)}the {\c&H00D4FF&}agent{\c&HFFFFFF&} didn't
+0153	loc_086da141_h47	d066	Speech	0.99695	0	0	0	0	-0.026	-0.001	0.308	{\pos(540,1110)}do as good,
+0154	loc_086da141_h47	d067	Speech	0.99687	0	0	0	0	0.078	0.006	0.349	{\pos(540,1110)}but I can
+0155	loc_086da141_h47	d068	Speech	0.99688	0	0	0	0	-0.013	-0.012	0.284	{\pos(540,1110)}just come here,
+0156	loc_086da141_h47	d069	Speech	0.99651	0	0	0	0	-0.084	-0.034	0.322	{\pos(540,1110)}grab that hook,
+0157	loc_086da141_h47	d070	Speech	0.99492	0	0	0	0	-0.048	-0.08	0.424	{\pos(540,1110)}and I'm gonna
+0158	loc_086da141_h47	d071	Speech	0.99537	-1	0	0	0	0.026	-0.068	0.402	{\pos(540,1110)}take it to
+0159	loc_086da141_h47	d072	Speech	0.99517	0	0	0	0	-0.004	-0.063	0.428	{\pos(540,1110)}the {\c&H00D4FF&}start{\c&HFFFFFF&}
+0160	loc_086da141_h47	d073	Speech	0.99465	0	0	0	0	0.032	-0.089	0.452	{\pos(540,1110)}of the video.
+0161	loc_086da141_h47	d074	Speech	0.99619	0	0	0	0	-0.02	-0.028	0.385	{\pos(540,1110)}Cut this {\c&H00D4FF&}fat.{\c&HFFFFFF&}
+0162	loc_086da141_h47	d075	Speech	0.99446	0	0	-1	0	0.147	0.052	0.431	{\pos(540,1110)}Boom.
+0163	loc_086da141_h47	d076	Pill	0.99893	0	0	0	0	-0.005	-0.037	0.244	{\an7\pos(48,262)\fs50}1  {\c&H00D4FF&}paste a stream URL
+0164	loc_086da141_h47	d077	Pill	0.99858	0	0	0	0	-0.007	-0.037	0.281	{\an7\pos(48,262)\fs50}2  {\c&H00D4FF&}keep the best hooks
+0165	loc_086da141_h47	d078	Pill	0.99737	0	0	0	0	0.067	-0.04	0.348	{\an7\pos(48,262)\fs50}3  {\c&H00D4FF&}an agent edits the cut
+0166	loc_086da141_h47	d079	Pill	0.99784	0	0	0	0	-0.032	-0.041	0.306	{\an7\pos(48,262)\fs50}4  {\c&H00D4FF&}I fix the opening
+0167	loc_4fadb756_h34	d001	Hook	0.99451	0	0	0	0	0.008	0.106	0.486	{\pos(540,305)}1 prompt. {\c&H00D4FF&}4 shots.{\c&HFFFFFF&}\NMade on my own PC.
+0168	loc_4fadb756_h34	d002	Speech	0.99645	0	1	0	0	-0.048	-0.077	0.362	{\pos(540,1065)}Wow,
+0169	loc_4fadb756_h34	d003	Speech	0.99417	0	0	0	0	-0.116	-0.084	0.464	{\pos(540,1065)}{\c&H00D4FF&}audio{\c&HFFFFFF&} as well.
+0170	loc_4fadb756_h34	d004	Speech	0.99497	0	0	0	0	0.016	-0.086	0.437	{\pos(540,1065)}This is a
+0171	loc_4fadb756_h34	d005	Speech	0.99494	0	0	0	0	0.042	-0.048	0.383	{\pos(540,1065)}full {\c&H00D4FF&}cinematic{\c&HFFFFFF&}
+0172	loc_4fadb756_h34	d006	Speech	0.99608	0	0	1	0	-0.087	0.016	0.349	{\pos(540,1065)}live action video,
+0173	loc_4fadb756_h34	d007	Speech	0.99419	0	0	0	0	-0.018	-0.092	0.491	{\pos(540,1065)}and we have
+0174	loc_4fadb756_h34	d008	Speech	0.99713	0	0	0	0	-0.011	-0.018	0.286	{\pos(540,1065)}just generated this
+0175	loc_4fadb756_h34	d009	Speech	0.99462	0	0	0	0	0.079	-0.081	0.438	{\pos(540,1065)}video here,
+0176	loc_4fadb756_h34	d010	Speech	0.99527	0	0	0	0	-0.088	-0.063	0.390	{\pos(540,1065)}five second video
+0177	loc_4fadb756_h34	d011	Speech	0.99547	0	0	0	0	-0.078	-0.047	0.397	{\pos(540,1065)}in under
+0178	loc_4fadb756_h34	d012	Speech	0.99540	1	0	0	0	-0.038	-0.074	0.438	{\pos(540,1065)}{\c&H00D4FF&}10{\c&HFFFFFF&} {\c&H00D4FF&}minutes{\c&HFFFFFF&}
+0179	loc_4fadb756_h34	d013	Speech	0.99344	0	0	0	0	-0.07	-0.072	0.483	{\pos(540,1065)}on my
+0180	loc_4fadb756_h34	d014	Speech	0.99584	0	0	0	0	0.051	-0.036	0.360	{\pos(540,1065)}Windows PC {\c&H00D4FF&}locally.{\c&HFFFFFF&}
+0181	loc_4fadb756_h34	d015	Speech	0.99370	0	0	0	0	-0.057	-0.086	0.497	{\pos(540,1065)}There's a second
+0182	loc_4fadb756_h34	d016	Speech	0.99620	0	0	0	0	0.004	-0.016	0.338	{\pos(540,1065)}by second storyboard,
+0183	loc_4fadb756_h34	d017	Speech	0.99428	0	0	0	0	-0.074	-0.087	0.470	{\pos(540,1065)}each shot
+0184	loc_4fadb756_h34	d018	Speech	0.99607	0	0	0	0	-0.021	-0.071	0.351	{\pos(540,1065)}is a separate
+0185	loc_4fadb756_h34	d019	Speech	0.99355	0	0	0	0	0.001	-0.084	0.531	{\pos(540,1065)}scene.
+0186	loc_4fadb756_h34	d020	Speech	0.99301	0	0	0	0	0.12	-0.073	0.514	{\pos(540,1065)}So this is
+0187	loc_4fadb756_h34	d021	Speech	0.99397	0	0	0	0	-0.064	-0.086	0.442	{\pos(540,1065)}a five-second video
+0188	loc_4fadb756_h34	d022	Speech	0.99458	0	0	0	0	0.034	-0.077	0.448	{\pos(540,1065)}where there's
+0189	loc_4fadb756_h34	d023	Speech	0.99537	0	0	0	0	0.148	-0.052	0.376	{\pos(540,1065)}{\c&H00D4FF&}four{\c&HFFFFFF&} separate scenes,
+0190	loc_4fadb756_h34	d024	Speech	0.99613	0	0	0	0	0.075	-0.045	0.353	{\pos(540,1065)}{\c&H00D4FF&}four{\c&HFFFFFF&} separate {\c&H00D4FF&}shots.{\c&HFFFFFF&}
+0191	loc_4fadb756_h34	d025	Speech	0.99640	0	0	0	0	0.013	-0.063	0.354	{\pos(540,1065)}Alright,
+0192	loc_4fadb756_h34	d026	Speech	0.99668	0	0	0	0	0.045	0.044	0.347	{\pos(540,1065)}let's run this.
+0193	loc_4fadb756_h34	d027	Speech	0.99446	0	0	-1	0	0.147	0.052	0.431	{\pos(540,1065)}Boom.
+0194	loc_4fadb756_h34	d029	Speech	0.99568	0	0	0	0	0.012	-0.066	0.408	{\pos(540,1065)}we're at {\c&H00D4FF&}70%.{\c&HFFFFFF&}
+0195	loc_4fadb756_h34	d030	Speech	0.99654	0	0	0	0	0.006	-0.064	0.337	{\pos(540,1065)}H3 is truly
+0196	loc_4fadb756_h34	d031	Speech	0.99507	0	0	0	0	-0.104	-0.081	0.405	{\pos(540,1065)}a game-changing model
+0197	loc_4fadb756_h34	d032	Speech	0.99709	0	0	0	0	0.114	0.027	0.337	{\pos(540,1065)}here.
+0198	loc_4fadb756_h34	d033	Speech	0.99460	0	0	0	0	0.096	-0.075	0.419	{\pos(540,1065)}And it's even
+0199	loc_4fadb756_h34	d034	Speech	0.99523	0	0	0	0	0.121	-0.026	0.383	{\pos(540,1065)}broken down
+0200	loc_4fadb756_h34	d035	Speech	0.99427	-1	0	0	0	0.014	-0.063	0.394	{\pos(540,1065)}the storyboard here.
+0201	loc_4fadb756_h34	d036	Speech	0.99509	0	0	0	0	-0.011	-0.085	0.418	{\pos(540,1065)}Shot one,
+0202	loc_4fadb756_h34	d037	Speech	0.99736	0	0	0	0	0.073	0.005	0.279	{\pos(540,1065)}high side angle
+0203	loc_4fadb756_h34	d038	Speech	0.99627	0	0	0	0	-0.017	-0.028	0.322	{\pos(540,1065)}protagonist sprinting at
+0204	loc_4fadb756_h34	d039	Speech	0.99416	0	0	0	0	-0.019	-0.072	0.437	{\pos(540,1065)}the roof edge,
+0205	loc_4fadb756_h34	d040	Speech	0.99669	0	0	0	0	0.068	-0.017	0.318	{\pos(540,1065)}pursuers appearing in
+0206	loc_4fadb756_h34	d041	Speech	0.99534	0	0	0	0	0.064	-0.066	0.368	{\pos(540,1065)}the rooftop doorway
+0207	loc_4fadb756_h34	d042	Speech	0.99662	-1	0	0	0	0.082	-0.03	0.345	{\pos(540,1065)}behind him.
+0208	loc_4fadb756_h34	d043	Speech	0.99618	0	0	0	0	0.063	-0.062	0.348	{\pos(540,1065)}It's obviously got
+0209	loc_4fadb756_h34	d044	Speech	0.99509	0	0	0	0	0.016	-0.07	0.374	{\pos(540,1065)}some things {\c&H00D4FF&}wrong{\c&HFFFFFF&}
+0210	loc_4fadb756_h34	d046	Speech	0.99522	0	0	0	0	0.07	-0.093	0.420	{\pos(540,1065)}The pursuers are
+0211	loc_4fadb756_h34	d047	Speech	0.99660	0	0	1	0	-0.019	0.01	0.385	{\pos(540,1065)}in {\c&H00D4FF&}front{\c&HFFFFFF&}
+0212	loc_4fadb756_h34	d048	Speech	0.99523	0	0	0	0	-0.019	-0.097	0.413	{\pos(540,1065)}of him,
+0213	loc_4fadb756_h34	d049	Speech	0.99457	0	0	0	0	-0.049	-0.085	0.449	{\pos(540,1065)}and there's like
+0214	loc_4fadb756_h34	d050	Speech	0.99471	0	0	0	0	-0.054	-0.068	0.406	{\pos(540,1065)}some weird artifacts
+0215	loc_4fadb756_h34	d051	Speech	0.99608	0	0	0	0	0.132	-0.012	0.372	{\pos(540,1065)}but I mean
+0216	loc_4fadb756_h34	d052	Speech	0.99701	0	0	0	0	0.045	-0.038	0.293	{\pos(540,1065)}it looks pretty
+0217	loc_4fadb756_h34	d053	Speech	0.99583	0	0	0	0	0.007	-0.023	0.338	{\pos(540,1065)}damn good,
+0218	loc_4fadb756_h34	d054	Speech	0.99614	0	0	0	0	0.004	-0.068	0.347	{\pos(540,1065)}{\c&H00D4FF&}cinematic{\c&HFFFFFF&} style etc.
+0219	loc_4fadb756_h34	d055	Speech	0.99432	0	0	0	0	-0.12	-0.092	0.460	{\pos(540,1065)}So yeah dude
+0220	loc_4fadb756_h34	d056	Speech	0.99600	0	0	0	0	-0.084	-0.061	0.362	{\pos(540,1065)}we got that
+0221	loc_4fadb756_h34	d057	Speech	0.99691	0	0	0	0	0.025	0.03	0.309	{\pos(540,1065)}up and running
+0222	loc_4fadb756_h34	d058	Speech	0.99594	0	0	0	0	0.042	-0.054	0.383	{\pos(540,1065)}in less than
+0223	loc_4fadb756_h34	d059	Speech	0.99546	0	0	0	0	0.017	-0.074	0.404	{\pos(540,1065)}{\c&H00D4FF&}20{\c&HFFFFFF&} {\c&H00D4FF&}minutes.{\c&HFFFFFF&}
+0224	loc_4fadb756_h34	d060	Speech	0.99477	0	0	0	0	0.015	-0.079	0.413	{\pos(540,1065)}I'm pretty impressed.
+0225	loc_4fadb756_h34	d061	Pill	0.99749	0	0	-1	0	0.051	-0.04	0.342	{\an7\pos(48,262)\fs50}MiniMax H3  {\c&H00D4FF&}one prompt, 4 shots
+0226	loc_4fadb756_h34	d062	Pill	0.99759	0	0	0	0	-0.011	-0.041	0.324	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:00
+0227	loc_4fadb756_h34	d063	Pill	0.99728	0	0	0	0	-0.003	-0.04	0.347	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:33
+0228	loc_4fadb756_h34	d064	Pill	0.99753	0	0	0	0	0.001	-0.04	0.344	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:34
+0229	loc_4fadb756_h34	d065	Pill	0.99735	0	0	0	0	0.021	-0.04	0.366	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:35
+0230	loc_4fadb756_h34	d066	Pill	0.99769	0	0	0	0	-0.042	-0.04	0.323	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:47
+0231	loc_4fadb756_h34	d067	Pill	0.99763	0	0	0	0	-0.017	-0.04	0.321	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:48
+0232	loc_4fadb756_h34	d068	Pill	0.99777	0	0	0	0	-0.039	-0.04	0.317	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:49
+0233	loc_4fadb756_h34	d069	Pill	0.99726	0	0	0	0	0.048	-0.04	0.377	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}1:50
+0234	loc_4fadb756_h34	d070	Pill	0.99842	0	0	0	0	-0.016	-0.039	0.269	{\an7\pos(48,262)\fs50}THE PROMPT SAID  {\c&H00D4FF&}pursuers behind him
+0235	loc_4fadb756_h37	d001	Hook	0.99447	0	0	0	0	0.059	0.107	0.477	{\pos(540,305)}My GPU went from\N{\c&H00D4FF&}2% to 100%.
+0236	loc_4fadb756_h37	d002	Speech	0.99590	0	0	0	0	-0.034	-0.08	0.390	{\pos(540,1065)}GPU is already
+0237	loc_4fadb756_h37	d003	Speech	0.99709	0	0	0	0	0.073	-0.013	0.324	{\pos(540,1065)}at {\c&H00D4FF&}60{\c&HFFFFFF&} {\c&H00D4FF&}degrees{\c&HFFFFFF&}
+0238	loc_4fadb756_h37	d004	Speech	0.99612	0	0	0	0	0.035	-0.064	0.359	{\pos(540,1065)}{\c&H00D4FF&}temperature{\c&HFFFFFF&}
+0239	loc_4fadb756_h37	d005	Speech	0.99494	0	0	0	1	-0.055	-0.079	0.433	{\pos(540,1065)}and it's about
+0240	loc_4fadb756_h37	d006	Speech	0.99603	0	0	0	0	0.052	-0.016	0.371	{\pos(540,1065)}at {\c&H00D4FF&}100%{\c&HFFFFFF&} usage.
+0241	loc_4fadb756_h37	d007	Speech	0.99557	0	0	0	0	0.01	0.041	0.373	{\pos(540,1065)}Before we do
+0242	loc_4fadb756_h37	d008	Speech	0.99458	0	0	0	0	0.101	-0.067	0.416	{\pos(540,1065)}that, I'm gonna
+0243	loc_4fadb756_h37	d009	Speech	0.99489	0	0	0	0	-0.051	-0.083	0.417	{\pos(540,1065)}actually bring up
+0244	loc_4fadb756_h37	d010	Speech	0.99432	0	0	0	0	0.08	-0.074	0.391	{\pos(540,1065)}task manager.
+0245	loc_4fadb756_h37	d011	Speech	0.99536	0	0	0	0	0.046	-0.076	0.430	{\pos(540,1065)}So you can
+0246	loc_4fadb756_h37	d012	Speech	0.99576	0	0	0	0	-0.088	-0.069	0.355	{\pos(540,1065)}see right now
+0247	loc_4fadb756_h37	d013	Speech	0.99596	-1	0	0	0	0.04	-0.072	0.409	{\pos(540,1065)}my GPU
+0248	loc_4fadb756_h37	d014	Speech	0.99641	0	0	0	0	-0.047	-0.043	0.352	{\pos(540,1065)}is at about
+0249	loc_4fadb756_h37	d015	Speech	0.99440	0	0	0	0	-0.047	-0.082	0.536	{\pos(540,1065)}{\c&H00D4FF&}2%.{\c&HFFFFFF&}
+0250	loc_4fadb756_h37	d016	Speech	0.99477	0	0	0	0	-0.035	-0.065	0.404	{\pos(540,1065)}It's not really
+0251	loc_4fadb756_h37	d017	Speech	0.99642	0	0	0	0	-0.051	-0.025	0.303	{\pos(540,1065)}doing much,
+0252	loc_4fadb756_h37	d018	Speech	0.99661	0	0	0	0	-0.007	-0.021	0.353	{\pos(540,1065)}but when we
+0253	loc_4fadb756_h37	d019	Speech	0.99648	0	-1	0	0	-0.024	-0.014	0.376	{\pos(540,1065)}press run,
+0254	loc_4fadb756_h37	d020	Speech	0.99514	0	0	0	0	0.031	-0.083	0.400	{\pos(540,1065)}I expect this
+0255	loc_4fadb756_h37	d021	Speech	0.99578	0	0	0	0	-0.021	-0.061	0.348	{\pos(540,1065)}to hit up
+0256	loc_4fadb756_h37	d022	Speech	0.99497	0	0	0	0	0.07	-0.063	0.469	{\pos(540,1065)}to {\c&H00D4FF&}100%.{\c&HFFFFFF&}
+0257	loc_4fadb756_h37	d023	Speech	0.99428	0	0	0	0	-0.0	-0.089	0.477	{\pos(540,1065)}You see here
+0258	loc_4fadb756_h37	d024	Speech	0.99560	0	0	0	0	-0.141	-0.041	0.372	{\pos(540,1065)}in the bottom left
+0259	loc_4fadb756_h37	d025	Speech	0.99616	0	0	0	0	0.072	-0.067	0.352	{\pos(540,1065)}the {\c&H00D4FF&}temperature{\c&HFFFFFF&}
+0260	loc_4fadb756_h37	d026	Speech	0.99579	0	0	0	0	-0.103	-0.039	0.396	{\pos(540,1065)}is about
+0261	loc_4fadb756_h37	d027	Speech	0.99574	0	0	0	0	0.042	-0.045	0.357	{\pos(540,1065)}{\c&H00D4FF&}45{\c&HFFFFFF&} {\c&H00D4FF&}degrees{\c&HFFFFFF&} Celsius.
+0262	loc_4fadb756_h37	d028	Speech	0.99478	0	1	0	0	0.037	-0.088	0.470	{\pos(540,1065)}I expect
+0263	loc_4fadb756_h37	d029	Speech	0.99568	0	0	0	0	0.01	-0.068	0.371	{\pos(540,1065)}that to skyrocket
+0264	loc_4fadb756_h37	d030	Speech	0.99462	0	0	0	0	-0.062	-0.076	0.463	{\pos(540,1065)}as well.
+0265	loc_4fadb756_h37	d034	Speech	0.99424	0	0	0	0	0.055	-0.111	0.496	{\pos(540,1065)}Oop.
+0266	loc_4fadb756_h37	d035	Speech	0.99579	0	0	0	0	-0.072	-0.076	0.370	{\pos(540,1065)}The GPU {\c&H00D4FF&}spiked{\c&HFFFFFF&}
+0267	loc_4fadb756_h37	d036	Speech	0.99543	0	0	0	1	-0.019	-0.075	0.418	{\pos(540,1065)}a little bit.
+0268	loc_4fadb756_h37	d037	Speech	0.99659	0	0	0	0	-0.079	-0.066	0.344	{\pos(540,1065)}CPU {\c&H00D4FF&}spiked.{\c&HFFFFFF&}
+0269	loc_4fadb756_h37	d038	Speech	0.99637	0	0	0	0	-0.012	-0.059	0.326	{\pos(540,1065)}Memory {\c&H00D4FF&}spiked.{\c&HFFFFFF&}
+0270	loc_4fadb756_h37	d039	Speech	0.99615	0	0	0	0	-0.024	-0.058	0.333	{\pos(540,1065)}Memory is about
+0271	loc_4fadb756_h37	d040	Speech	0.99649	0	0	0	0	0.098	-0.028	0.345	{\pos(540,1065)}{\c&H00D4FF&}full{\c&HFFFFFF&} now.
+0272	loc_4fadb756_h37	d041	Speech	0.99694	0	0	0	0	0.047	-0.072	0.355	{\pos(540,1065)}All my
+0273	loc_4fadb756_h37	d042	Speech	0.99604	0	0	0	0	-0.038	-0.04	0.387	{\pos(540,1065)}{\c&H00D4FF&}32GB{\c&HFFFFFF&} of {\c&H00D4FF&}DDR5{\c&HFFFFFF&}
+0274	loc_4fadb756_h37	d043	Speech	0.99590	0	0	0	0	-0.079	-0.044	0.355	{\pos(540,1065)}is being used,
+0275	loc_4fadb756_h37	d044	Speech	0.99694	0	0	0	0	0.105	0.016	0.310	{\pos(540,1065)}fully utilizing
+0276	loc_4fadb756_h37	d045	Speech	0.99403	-1	0	0	0	0.075	-0.08	0.474	{\pos(540,1065)}the GPU.
+0277	loc_4fadb756_h37	d046	Speech	0.99420	0	1	0	0	-0.053	-0.077	0.486	{\pos(540,1065)}Let me see
+0278	loc_4fadb756_h37	d047	Speech	0.99608	0	0	0	0	0.069	-0.07	0.413	{\pos(540,1065)}if I can
+0279	loc_4fadb756_h37	d048	Speech	0.99734	0	0	0	0	0.066	0.023	0.340	{\pos(540,1065)}hear it.
+0280	loc_4fadb756_h37	d049	Speech	0.99502	0	0	0	0	0.07	-0.085	0.434	{\pos(540,1065)}Yo, low-key?
+0281	loc_4fadb756_h37	d050	Speech	0.99477	1	0	0	0	-0.055	-0.058	0.432	{\pos(540,1065)}It's not
+0282	loc_4fadb756_h37	d051	Speech	0.99592	0	0	0	0	-0.069	-0.041	0.340	{\pos(540,1065)}it doesn't actually
+0283	loc_4fadb756_h37	d052	Speech	0.99574	0	0	0	0	-0.081	-0.032	0.379	{\pos(540,1065)}sound that {\c&H00D4FF&}loud.{\c&HFFFFFF&}
+0284	loc_4fadb756_h37	d053	Speech	0.99298	0	0	0	0	-0.013	-0.078	0.494	{\pos(540,1065)}Doesn't sound
+0285	loc_4fadb756_h37	d054	Speech	0.99626	0	0	0	0	-0.054	-0.026	0.382	{\pos(540,1065)}as {\c&H00D4FF&}loud{\c&HFFFFFF&} as
+0286	loc_4fadb756_h37	d055	Speech	0.99487	0	0	0	0	-0.045	-0.089	0.471	{\pos(540,1065)}I would
+0287	loc_4fadb756_h37	d056	Speech	0.99607	0	0	0	0	-0.091	0.03	0.352	{\pos(540,1065)}have expected
+0288	loc_4fadb756_h37	d057	Speech	0.99603	-1	0	0	0	0.121	0.003	0.378	{\pos(540,1065)}for {\c&H00D4FF&}100%{\c&HFFFFFF&} usage
+0289	loc_4fadb756_h37	d058	Pill	0.99782	0	0	0	0	-0.013	-0.04	0.299	{\an7\pos(48,262)\fs50}BEFORE RUN  {\c&H00D4FF&}GPU idle
+0290	loc_4fadb756_h37	d060	Pill	0.99767	0	0	0	0	-0.043	-0.04	0.330	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:07
+0291	loc_4fadb756_h37	d061	Pill	0.99757	0	0	0	0	-0.018	-0.04	0.321	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:08
+0292	loc_4fadb756_h37	d062	Pill	0.99761	0	0	0	0	0.024	-0.04	0.352	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:09
+0293	loc_4fadb756_h37	d063	Pill	0.99748	0	0	0	0	-0.012	-0.04	0.332	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:10
+0294	loc_4fadb756_h37	d064	Pill	0.99719	0	0	0	0	0.043	-0.04	0.382	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:11
+0295	loc_4fadb756_h37	d065	Pill	0.99760	0	0	0	0	0.008	-0.04	0.347	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:12
+0296	loc_4fadb756_h37	d066	Pill	0.99753	0	0	0	0	-0.01	-0.04	0.337	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:13
+0297	loc_4fadb756_h37	d067	Pill	0.99773	0	0	0	0	-0.002	-0.04	0.337	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:14
+0298	loc_4fadb756_h37	d068	Pill	0.99747	0	0	0	0	0.023	-0.04	0.363	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:15
+0299	loc_4fadb756_h37	d069	Pill	0.99749	0	0	0	0	0.023	-0.04	0.360	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:16
+0300	loc_4fadb756_h37	d070	Pill	0.99761	0	0	0	0	0.017	-0.04	0.352	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:17
+0301	loc_4fadb756_h37	d071	Pill	0.99774	0	0	0	0	-0.0	-0.04	0.336	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:24
+0302	loc_4fadb756_h37	d072	Pill	0.99751	0	0	-1	0	0.021	-0.04	0.359	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:25
+0303	loc_4fadb756_h37	d073	Pill	0.99752	0	0	-1	0	0.021	-0.04	0.356	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:26
+0304	loc_4fadb756_h37	d074	Pill	0.99765	0	0	0	0	0.013	-0.04	0.346	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:27
+0305	loc_4fadb756_h37	d075	Pill	0.99764	0	0	0	0	-0.014	-0.04	0.324	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:28
+0306	loc_4fadb756_h37	d076	Pill	0.99751	0	0	0	0	-0.018	-0.04	0.332	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:31
+0307	loc_4fadb756_h37	d077	Pill	0.99750	0	0	0	0	0.011	-0.04	0.352	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:32
+0308	loc_4fadb756_h37	d078	Pill	0.99731	0	0	0	0	-0.007	-0.04	0.346	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:33
+0309	loc_4fadb756_h37	d079	Pill	0.99754	0	0	0	0	-0.003	-0.04	0.343	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:34
+0310	loc_4fadb756_h37	d080	Pill	0.99744	0	0	0	0	-0.011	-0.04	0.334	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:40
+0311	loc_4fadb756_h37	d081	Pill	0.99736	0	0	0	0	0.041	-0.04	0.379	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:41
+0312	loc_4fadb756_h37	d082	Pill	0.99759	0	0	0	0	0.01	-0.04	0.348	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:42
+0313	loc_4fadb756_h37	d083	Pill	0.99731	0	0	0	0	-0.008	-0.04	0.344	{\an7\pos(48,262)\fs50}GENERATING  {\c&H00D4FF&}0:43
+0314	loc_4fadb756_h48	d001	Hook	0.99761	0	0	0	0	0.172	-0.007	0.257	{\pos(540,305)\fs81}Free AI video on my own PC.\N{\c&H00D4FF&}Here's the setup.
+0315	loc_4fadb756_h48	d002	Speech	0.99597	0	0	0	0	0.099	-0.074	0.402	{\pos(540,1065)}It's super {\c&H00D4FF&}easy.{\c&HFFFFFF&}
+0316	loc_4fadb756_h48	d003	Speech	0.99685	0	0	0	0	-0.069	-0.06	0.332	{\pos(540,1065)}Let me just
+0317	loc_4fadb756_h48	d004	Speech	0.99501	0	0	0	0	0.108	-0.058	0.407	{\pos(540,1065)}tell you guys
+0318	loc_4fadb756_h48	d005	Speech	0.99689	0	0	0	0	0.001	0.013	0.310	{\pos(540,1065)}how I did
+0319	loc_4fadb756_h48	d006	Speech	0.99773	0	0	0	0	0.015	-0.046	0.310	{\pos(540,1065)}it.
+0320	loc_4fadb756_h48	d007	Speech	0.99599	0	0	0	0	-0.024	-0.071	0.377	{\pos(540,1065)}Pretty much I
+0321	loc_4fadb756_h48	d008	Speech	0.99521	0	0	0	0	-0.007	-0.064	0.369	{\pos(540,1065)}went to {\c&H00D4FF&}comfy.org.{\c&HFFFFFF&}
+0322	loc_4fadb756_h48	d009	Speech	0.99463	0	0	-1	0	0.02	-0.086	0.440	{\pos(540,1065)}This is where
+0323	loc_4fadb756_h48	d010	Speech	0.99559	0	0	0	0	-0.065	-0.055	0.359	{\pos(540,1065)}you download {\c&H00D4FF&}ComfyUI.{\c&HFFFFFF&}
+0324	loc_4fadb756_h48	d011	Speech	0.99456	0	0	0	0	0.024	-0.082	0.426	{\pos(540,1065)}I just pressed
+0325	loc_4fadb756_h48	d012	Speech	0.99663	0	0	0	0	0.009	-0.006	0.287	{\pos(540,1065)}download desktop.
+0326	loc_4fadb756_h48	d013	Speech	0.99507	0	0	0	0	-0.054	-0.081	0.421	{\pos(540,1065)}This is what
+0327	loc_4fadb756_h48	d014	Speech	0.99561	0	0	0	0	0.014	-0.064	0.400	{\pos(540,1065)}you see when
+0328	loc_4fadb756_h48	d015	Speech	0.99676	0	0	0	0	-0.075	-0.065	0.334	{\pos(540,1065)}you first run
+0329	loc_4fadb756_h48	d016	Speech	0.99639	0	0	0	0	-0.012	-0.073	0.373	{\pos(540,1065)}{\c&H00D4FF&}ComfyUI.{\c&HFFFFFF&}
+0330	loc_4fadb756_h48	d017	Speech	0.99378	0	0	0	0	-0.048	-0.093	0.454	{\pos(540,1065)}It'll be like,
+0331	loc_4fadb756_h48	d018	Speech	0.99626	0	0	0	0	-0.093	-0.01	0.353	{\pos(540,1065)}do you want
+0332	loc_4fadb756_h48	d019	Speech	0.99280	0	0	0	0	-0.114	-0.082	0.546	{\pos(540,1065)}to {\c&H00D4FF&}cloud{\c&HFFFFFF&}
+0333	loc_4fadb756_h48	d020	Speech	0.99490	1	0	0	0	0.014	0.002	0.464	{\pos(540,1065)}or {\c&H00D4FF&}local?{\c&HFFFFFF&}
+0334	loc_4fadb756_h48	d021	Speech	0.99420	0	0	0	0	0.11	-0.03	0.477	{\pos(540,1065)}I did {\c&H00D4FF&}local.{\c&HFFFFFF&}
+0335	loc_4fadb756_h48	d022	Speech	0.99625	0	0	0	0	0.072	-0.07	0.357	{\pos(540,1065)}I'm running this
+0336	loc_4fadb756_h48	d023	Speech	0.99492	0	0	0	0	0.097	0.008	0.423	{\pos(540,1065)}all {\c&H00D4FF&}locally.{\c&HFFFFFF&}
+0337	loc_4fadb756_h48	d024	Speech	0.99394	0	0	0	0	-0.044	-0.075	0.470	{\pos(540,1065)}I want to do
+0338	loc_4fadb756_h48	d025	Speech	0.99638	0	0	0	0	0.063	-0.004	0.343	{\pos(540,1065)}it for {\c&H00D4FF&}free.{\c&HFFFFFF&}
+0339	loc_4fadb756_h48	d026	Speech	0.99452	0	0	0	0	0.008	-0.075	0.466	{\pos(540,1065)}I don't
+0340	loc_4fadb756_h48	d027	Speech	0.99553	0	0	0	0	0.011	-0.056	0.375	{\pos(540,1065)}want to pay
+0341	loc_4fadb756_h48	d028	Speech	0.99410	0	0	0	0	0.009	-0.055	0.485	{\pos(540,1065)}for {\c&H00D4FF&}cloud{\c&HFFFFFF&} stuff.
+0342	loc_4fadb756_h48	d029	Speech	0.99537	0	1	0	0	0.018	-0.087	0.453	{\pos(540,1065)}You set up
+0343	loc_4fadb756_h48	d030	Speech	0.99485	0	0	0	0	0.077	-0.074	0.430	{\pos(540,1065)}what GPU you
+0344	loc_4fadb756_h48	d031	Speech	0.99657	0	0	0	0	-0.01	0.031	0.335	{\pos(540,1065)}have.
+0345	loc_4fadb756_h48	d032	Speech	0.99635	0	0	0	0	0.07	-0.069	0.340	{\pos(540,1065)}I'm running
+0346	loc_4fadb756_h48	d033	Speech	0.99506	0	0	0	0	-0.03	-0.082	0.479	{\pos(540,1065)}a {\c&H00D4FF&}NVIDIA{\c&HFFFFFF&} GPU.
+0347	loc_4fadb756_h48	d034	Speech	0.99576	0	1	0	0	-0.012	-0.065	0.442	{\pos(540,1065)}I set
+0348	loc_4fadb756_h48	d035	Speech	0.99674	-1	0	0	0	0.022	-0.058	0.338	{\pos(540,1065)}that up.
+0349	loc_4fadb756_h48	d036	Speech	0.99428	-1	0	0	0	0.075	-0.09	0.455	{\pos(540,1065)}And then here,
+0350	loc_4fadb756_h48	d037	Speech	0.99406	-1	0	0	0	0.067	-0.083	0.498	{\pos(540,1065)}this is like
+0351	loc_4fadb756_h48	d038	Speech	0.99539	0	0	0	0	0.036	-0.069	0.401	{\pos(540,1065)}you can choose
+0352	loc_4fadb756_h48	d039	Speech	0.99529	0	0	0	0	-0.063	-0.075	0.413	{\pos(540,1065)}a starter workflow,
+0353	loc_4fadb756_h48	d040	Speech	0.99462	0	0	0	0	-0.008	-0.087	0.472	{\pos(540,1065)}and this
+0354	loc_4fadb756_h48	d041	Speech	0.99458	0	0	0	0	-0.083	-0.06	0.439	{\pos(540,1065)}is the one
+0355	loc_4fadb756_h48	d042	Speech	0.99576	0	0	0	0	-0.054	-0.058	0.355	{\pos(540,1065)}that I just
+0356	loc_4fadb756_h48	d043	Speech	0.99352	0	0	0	0	0.049	-0.086	0.469	{\pos(540,1065)}chose.
+0357	loc_4fadb756_h48	d044	Speech	0.99523	0	0	0	0	0.047	-0.078	0.409	{\pos(540,1065)}The {\c&H00D4FF&}MiniMax{\c&HFFFFFF&} {\c&H00D4FF&}H3.{\c&HFFFFFF&}
+0358	loc_4fadb756_h48	d045	Speech	0.99502	0	0	0	0	0.006	-0.084	0.433	{\pos(540,1065)}This is the
+0359	loc_4fadb756_h48	d046	Speech	0.99590	0	0	0	0	-0.028	-0.068	0.356	{\pos(540,1065)}new open {\c&H00D4FF&}weights{\c&HFFFFFF&}
+0360	loc_4fadb756_h48	d047	Speech	0.99612	0	0	0	0	-0.014	-0.057	0.333	{\pos(540,1065)}text-to-video model,
+0361	loc_4fadb756_h48	d048	Speech	0.99431	0	0	1	0	-0.095	-0.093	0.449	{\pos(540,1065)}also does {\c&H00D4FF&}audio,{\c&HFFFFFF&}
+0362	loc_4fadb756_h48	d049	Speech	0.99595	0	0	0	0	-0.025	-0.053	0.370	{\pos(540,1065)}super good.
+0363	loc_4fadb756_h48	d050	Speech	0.99502	0	0	-1	0	0.1	-0.068	0.449	{\pos(540,1065)}It's what we
+0364	loc_4fadb756_h48	d051	Speech	0.99696	0	0	0	0	0.059	-0.024	0.298	{\pos(540,1065)}just saw.
+0365	loc_4fadb756_h48	d052	Speech	0.99528	0	0	0	0	-0.007	-0.095	0.462	{\pos(540,1065)}Yeah,
+0366	loc_4fadb756_h48	d053	Speech	0.99593	0	0	0	0	-0.137	-0.057	0.381	{\pos(540,1065)}so I just
+0367	loc_4fadb756_h48	d054	Speech	0.99464	0	0	0	0	-0.027	-0.088	0.445	{\pos(540,1065)}clicked that workflow
+0368	loc_4fadb756_h48	d055	Speech	0.99466	0	0	0	0	-0.062	-0.077	0.460	{\pos(540,1065)}and that's
+0369	loc_4fadb756_h48	d056	Speech	0.99681	0	0	0	0	-0.08	-0.04	0.291	{\pos(540,1065)}it just pre-installed
+0370	loc_4fadb756_h48	d058	Speech	0.99507	0	0	0	0	0.098	-0.076	0.407	{\pos(540,1065)}It had everything
+0371	loc_4fadb756_h48	d059	Speech	0.99560	0	0	0	0	0.024	-0.052	0.369	{\pos(540,1065)}ready to go.
+0372	loc_4fadb756_h48	d060	Speech	0.99385	0	0	0	0	0.095	-0.075	0.502	{\pos(540,1065)}So this
+0373	loc_4fadb756_h48	d061	Speech	0.99557	0	0	0	0	-0.044	-0.038	0.347	{\pos(540,1065)}is what you
+0374	loc_4fadb756_h48	d062	Speech	0.99579	0	0	0	0	-0.034	-0.073	0.361	{\pos(540,1065)}saw once everything
+0375	loc_4fadb756_h48	d063	Speech	0.99456	0	0	0	0	0.008	-0.068	0.456	{\pos(540,1065)}was installed
+0376	loc_4fadb756_h48	d064	Speech	0.99319	0	0	0	0	-0.064	-0.1	0.520	{\pos(540,1065)}and downloaded.
+0377	loc_4fadb756_h48	d065	Speech	0.99449	0	0	-1	0	0.084	-0.077	0.487	{\pos(540,1065)}It's like
+0378	loc_4fadb756_h48	d066	Speech	0.99422	0	0	0	0	0.035	-0.092	0.450	{\pos(540,1065)}a node-based diagram,
+0379	loc_4fadb756_h48	d067	Speech	0.99464	0	0	0	0	0.03	-0.084	0.448	{\pos(540,1065)}and it even
+0380	loc_4fadb756_h48	d068	Speech	0.99717	0	0	0	0	0.02	-0.021	0.295	{\pos(540,1065)}had {\c&H00D4FF&}pre-filled{\c&HFFFFFF&} this
+0381	loc_4fadb756_h48	d069	Speech	0.99597	0	0	0	0	0.068	-0.06	0.361	{\pos(540,1065)}text prompt here.
+0382	loc_4fadb756_h48	d070	Speech	0.99508	-1	0	0	0	0.058	-0.073	0.442	{\pos(540,1065)}So that was
+0383	loc_4fadb756_h48	d071	Speech	0.99522	0	0	0	0	-0.102	-0.026	0.375	{\pos(540,1065)}all {\c&H00D4FF&}pre-filled.{\c&HFFFFFF&}
+0384	loc_4fadb756_h48	d072	Speech	0.99593	0	0	0	0	-0.051	-0.081	0.403	{\pos(540,1065)}Yeah, it's all
+0385	loc_4fadb756_h48	d073	Speech	0.99500	0	0	0	0	-0.012	-0.072	0.398	{\pos(540,1065)}set up here.
+0386	loc_4fadb756_h48	d074	Speech	0.99651	0	1	0	0	0.072	-0.065	0.426	{\pos(540,1065)}It was
+0387	loc_4fadb756_h48	d075	Speech	0.99518	0	0	-1	0	0.073	-0.068	0.462	{\pos(540,1065)}super {\c&H00D4FF&}easy{\c&HFFFFFF&}
+0388	loc_4fadb756_h48	d076	Speech	0.99552	0	0	0	0	0.066	-0.055	0.371	{\pos(540,1065)}to get going.
+0389	loc_4fadb756_h48	d078	Speech	0.99553	0	0	-1	0	0.111	-0.081	0.398	{\pos(540,1065)}I think {\c&H00D4FF&}anyone{\c&HFFFFFF&}
+0390	loc_4fadb756_h48	d079	Speech	0.99200	0	0	0	0	-0.114	-0.092	0.521	{\pos(540,1065)}could do it.
+0391	loc_4fadb756_h48	d080	Pill	0.99733	0	0	0	0	-0.027	-0.041	0.314	{\an7\pos(48,262)\fs50}STEP 1  {\c&H00D4FF&}comfy.org, Download Desktop
+0392	loc_4fadb756_h48	d081	Pill	0.99793	0	0	0	0	0.042	-0.04	0.315	{\an7\pos(48,262)\fs50}STEP 2  {\c&H00D4FF&}Local, not cloud
+0393	loc_4fadb756_h48	d082	Pill	0.99747	0	0	0	0	-0.012	-0.041	0.296	{\an7\pos(48,262)\fs50}STEP 3  {\c&H00D4FF&}Pick your GPU
+0394	loc_4fadb756_h48	d083	Pill	0.99834	0	0	-1	0	0.009	-0.04	0.283	{\an7\pos(48,262)\fs50}STEP 4  {\c&H00D4FF&}MiniMax H3 starter workflow
+0395	loc_4fadb756_h48	d084	Pill	0.99859	0	0	0	0	-0.051	-0.038	0.280	{\an7\pos(48,262)\fs50}READY  {\c&H00D4FF&}prompt comes pre-filled
+0396	loc_bd89f38b_h41	d001	Hook	0.99542	0	0	0	0	-0.048	0.075	0.350	{\pos(540,305)}Codex gave me 3 options.\NI said {\c&H00D4FF&}all.
+0397	loc_bd89f38b_h41	d002	Speech	0.99405	0	0	0	0	-0.043	-0.083	0.464	{\pos(540,1110)}Whoa, there's all
+0398	loc_bd89f38b_h41	d003	Speech	0.99510	0	0	0	0	-0.034	-0.073	0.420	{\pos(540,1110)}these different kind
+0399	loc_bd89f38b_h41	d004	Speech	0.99459	0	0	1	0	0.082	-0.094	0.450	{\pos(540,1110)}of default packages.
+0400	loc_bd89f38b_h41	d005	Speech	0.99404	0	0	0	0	-0.118	-0.071	0.460	{\pos(540,1110)}On the first
+0401	loc_bd89f38b_h41	d006	Speech	0.99733	0	0	0	0	0.066	0.037	0.296	{\pos(540,1110)}load, show
+0402	loc_bd89f38b_h41	d007	Speech	0.99430	0	0	0	0	0.084	-0.077	0.483	{\pos(540,1110)}the user the
+0403	loc_bd89f38b_h41	d008	Speech	0.99443	0	0	0	0	0.112	-0.08	0.428	{\pos(540,1110)}{\c&H00D4FF&}character{\c&HFFFFFF&} {\c&H00D4FF&}creation{\c&HFFFFFF&} screen
+0404	loc_bd89f38b_h41	d009	Speech	0.99277	0	0	0	0	-0.059	-0.089	0.499	{\pos(540,1110)}and rename screen
+0405	loc_bd89f38b_h41	d010	Speech	0.99505	0	0	0	0	-0.036	-0.071	0.414	{\pos(540,1110)}so they
+0406	loc_bd89f38b_h41	d011	Speech	0.99431	0	0	0	0	-0.004	-0.088	0.465	{\pos(540,1110)}can set up
+0407	loc_bd89f38b_h41	d012	Speech	0.99436	0	0	0	0	0.087	-0.082	0.444	{\pos(540,1110)}their {\c&H00D4FF&}character.{\c&HFFFFFF&}
+0408	loc_bd89f38b_h41	d013	Speech	0.99447	0	0	-1	0	0.062	-0.085	0.476	{\pos(540,1110)}Also make
+0409	loc_bd89f38b_h41	d014	Speech	0.99472	1	0	0	0	-0.067	-0.052	0.387	{\pos(540,1110)}it much more
+0410	loc_bd89f38b_h41	d015	Speech	0.99470	0	0	0	0	-0.024	-0.091	0.473	{\pos(540,1110)}{\c&H00D4FF&}advanced{\c&HFFFFFF&} with
+0411	loc_bd89f38b_h41	d016	Speech	0.99544	0	0	0	0	0.03	-0.08	0.384	{\pos(540,1110)}many more {\c&H00D4FF&}options.{\c&HFFFFFF&}
+0412	loc_bd89f38b_h41	d017	Speech	0.99475	-1	0	0	0	0.077	-0.063	0.428	{\pos(540,1110)}Alright, let's
+0413	loc_bd89f38b_h41	d018	Speech	0.99524	0	0	0	0	-0.001	-0.067	0.392	{\pos(540,1110)}send that through.
+0414	loc_bd89f38b_h41	d019	Speech	0.99440	0	0	-1	0	0.059	-0.095	0.484	{\pos(540,1110)}Okay, I'll expand
+0415	loc_bd89f38b_h41	d020	Speech	0.99442	0	0	0	0	0.075	-0.081	0.467	{\pos(540,1110)}the {\c&H00D4FF&}character{\c&HFFFFFF&} roles.
+0416	loc_bd89f38b_h41	d021	Speech	0.99375	0	0	0	0	0.147	-0.082	0.462	{\pos(540,1110)}What direction
+0417	loc_bd89f38b_h41	d022	Speech	0.99478	0	0	0	0	0.073	-0.07	0.418	{\pos(540,1110)}matters most?
+0418	loc_bd89f38b_h41	d023	Speech	0.99524	0	0	0	0	0.01	-0.08	0.415	{\pos(540,1110)}Starter looks,
+0419	loc_bd89f38b_h41	d024	Speech	0.99585	0	0	0	0	0.015	-0.078	0.381	{\pos(540,1110)}more hairstyles,
+0420	loc_bd89f38b_h41	d025	Speech	0.99348	0	0	0	0	-0.104	-0.088	0.464	{\pos(540,1110)}more face,
+0421	loc_bd89f38b_h41	d026	Speech	0.99476	0	0	0	0	0.046	-0.08	0.442	{\pos(540,1110)}more colors.
+0422	loc_bd89f38b_h41	d027	Speech	0.99716	0	0	0	0	0.01	-0.035	0.312	{\pos(540,1110)}{\c&H00D4FF&}All{\c&HFFFFFF&} dude,
+0423	loc_bd89f38b_h41	d028	Speech	0.99516	0	0	0	0	0.017	-0.074	0.424	{\pos(540,1110)}this is the
+0424	loc_bd89f38b_h41	d029	Speech	0.99550	0	0	0	0	-0.063	-0.077	0.416	{\pos(540,1110)}age of AI
+0425	loc_bd89f38b_h41	d030	Speech	0.99576	0	0	0	0	-0.027	-0.072	0.382	{\pos(540,1110)}where you need
+0426	loc_bd89f38b_h41	d031	Speech	0.99612	0	0	0	0	0.02	-0.045	0.382	{\pos(540,1110)}to be
+0427	loc_bd89f38b_h41	d032	Speech	0.99482	0	0	0	0	0.023	-0.079	0.418	{\pos(540,1110)}more {\c&H00D4FF&}ambitious.{\c&HFFFFFF&}
+0428	loc_bd89f38b_h41	d033	Speech	0.99490	0	0	0	0	-0.079	-0.07	0.390	{\pos(540,1110)}Don't limit yourself.
+0429	loc_bd89f38b_h41	d034	Speech	0.99551	0	0	0	0	-0.047	-0.077	0.397	{\pos(540,1110)}So when they
+0430	loc_bd89f38b_h41	d035	Speech	0.99587	0	0	0	0	-0.074	-0.078	0.389	{\pos(540,1110)}give you {\c&H00D4FF&}options,{\c&HFFFFFF&}
+0431	loc_bd89f38b_h41	d036	Speech	0.99618	0	0	0	0	-0.072	-0.043	0.336	{\pos(540,1110)}you tell them
+0432	loc_bd89f38b_h41	d037	Speech	0.99632	0	0	0	0	-0.084	-0.064	0.379	{\pos(540,1110)}you want
+0433	loc_bd89f38b_h41	d038	Speech	0.99480	0	0	0	0	0.024	-0.089	0.485	{\pos(540,1110)}{\c&H00D4FF&}all of them{\c&HFFFFFF&}.
+0434	loc_bd89f38b_h41	d039	Speech	0.99499	0	0	-1	0	0.111	-0.081	0.424	{\pos(540,1110)}If it makes sense
+0435	loc_bd89f38b_h41	d040	Speech	0.99719	0	0	0	0	0.125	0.033	0.319	{\pos(540,1110)}for the game.
+0436	loc_bd89f38b_h41	d041	Speech	0.99562	0	0	0	0	0.044	-0.082	0.421	{\pos(540,1110)}Oh shit,
+0437	loc_bd89f38b_h41	d042	Speech	0.99530	0	0	0	0	0.002	-0.086	0.452	{\pos(540,1110)}we have
+0438	loc_bd89f38b_h41	d043	Speech	0.99488	0	0	0	0	-0.013	-0.081	0.502	{\pos(540,1110)}a new
+0439	loc_bd89f38b_h41	d045	Speech	0.99482	0	0	0	0	0.047	-0.075	0.488	{\pos(540,1110)}now.
+0440	loc_bd89f38b_h41	d046	Speech	0.99488	0	0	0	0	0.024	-0.088	0.458	{\pos(540,1110)}This
+0441	loc_bd89f38b_h41	d047	Speech	0.99564	0	0	0	0	0.082	-0.057	0.376	{\pos(540,1110)}is pretty {\c&H00D4FF&}cool.{\c&HFFFFFF&}
+0442	loc_bd89f38b_h41	d048	Speech	0.99538	0	0	0	0	0.051	-0.074	0.415	{\pos(540,1110)}Yeah, let's go
+0443	loc_bd89f38b_h41	d049	Speech	0.99616	0	0	0	0	0.106	-0.068	0.376	{\pos(540,1110)}{\c&H00D4FF&}Mohawk{\c&HFFFFFF&} guy.
+0444	loc_bd89f38b_h41	d050	Speech	0.99582	0	0	0	0	0.001	-0.059	0.340	{\pos(540,1110)}I'm just gonna
+0445	loc_bd89f38b_h41	d051	Speech	0.99583	0	0	0	0	-0.019	-0.066	0.381	{\pos(540,1110)}go {\c&H00D4FF&}Mohawk{\c&HFFFFFF&} guy
+0446	loc_bd89f38b_h41	d052	Pill	0.99810	0	0	0	0	-0.067	-0.041	0.291	{\an7\pos(48,262)\fs50}MY PROMPT  {\c&H00D4FF&}a character creator
+0447	loc_bd89f38b_h41	d053	Pill	0.99802	0	0	0	0	-0.011	-0.038	0.293	{\an7\pos(48,262)\fs50}CODEX ASKS  {\c&H00D4FF&}pick one of 3
+0448	loc_bd89f38b_h41	d054	Pill	0.99794	0	0	0	0	0.02	-0.041	0.318	{\an7\pos(48,262)\fs50}MY ANSWER  {\c&H00D4FF&}all of them
+0449	loc_bd89f38b_h41	d055	Pill	0.99830	0	0	0	0	-0.01	-0.04	0.297	{\an7\pos(48,262)\fs50}20 MIN LATER  {\c&H00D4FF&}new character creator
+0450	loc_bd89f38b_h43	d001	Hook	0.99545	0	0	0	0	-0.008	0.087	0.438	{\pos(540,305)}I gave a stranger\Na weapon in {\c&H00D4FF&}my MMO.
+0451	loc_bd89f38b_h43	d002	Speech	0.99563	0	1	0	0	0.029	-0.069	0.427	{\pos(540,1215)}I gave you
+0452	loc_bd89f38b_h43	d003	Speech	0.99529	0	0	-1	0	0.004	-0.071	0.461	{\pos(540,1215)}a {\c&H00D4FF&}stick.{\c&HFFFFFF&}
+0453	loc_bd89f38b_h43	d004	Speech	0.99520	0	0	0	0	0.033	-0.08	0.406	{\pos(540,1215)}How could you?
+0454	loc_bd89f38b_h43	d005	Speech	0.99635	0	0	0	0	0.026	-0.07	0.345	{\pos(540,1215)}Alright, let me
+0455	loc_bd89f38b_h43	d006	Speech	0.99697	0	0	0	0	-0.012	-0.048	0.329	{\pos(540,1215)}give this guy
+0456	loc_bd89f38b_h43	d008	Speech	0.99386	1	0	0	0	-0.042	-0.096	0.498	{\pos(540,1215)}I think he
+0457	loc_bd89f38b_h43	d009	Speech	0.99432	0	0	0	0	-0.063	-0.096	0.448	{\pos(540,1215)}accepted.
+0458	loc_bd89f38b_h43	d010	Speech	0.99524	0	0	0	0	0.082	-0.069	0.443	{\pos(540,1215)}Let's see.
+0459	loc_bd89f38b_h43	d011	Speech	0.99567	0	1	0	0	0.027	-0.084	0.489	{\pos(540,1215)}You
+0460	loc_bd89f38b_h43	d012	Speech	0.99596	0	0	0	0	-0.017	-0.061	0.343	{\pos(540,1215)}might need
+0461	loc_bd89f38b_h43	d013	Speech	0.99525	0	0	0	0	-0.035	-0.052	0.377	{\pos(540,1215)}to wield it.
+0462	loc_bd89f38b_h43	d014	Speech	0.99473	0	0	0	0	0.033	-0.085	0.439	{\pos(540,1215)}He said no.
+0463	loc_bd89f38b_h43	d015	Speech	0.99528	0	0	0	0	-0.007	-0.095	0.462	{\pos(540,1215)}Yeah,
+0464	loc_bd89f38b_h43	d016	Speech	0.99552	0	0	0	0	0.096	-0.071	0.383	{\pos(540,1215)}there we go.
+0465	loc_bd89f38b_h43	d017	Speech	0.99517	0	0	0	0	0.007	-0.092	0.431	{\pos(540,1215)}Oh no, no,
+0466	loc_bd89f38b_h43	d018	Speech	0.99613	-1	0	0	0	0.058	-0.03	0.337	{\pos(540,1215)}he's {\c&H00D4FF&}attacking{\c&HFFFFFF&} him.
+0467	loc_bd89f38b_h43	d019	Speech	0.99611	0	1	0	0	-0.01	-0.063	0.377	{\pos(540,1215)}Yo, {\c&H00D4FF&}stop.{\c&HFFFFFF&}
+0468	loc_bd89f38b_h43	d020	Speech	0.99589	0	0	0	0	0.038	-0.069	0.380	{\pos(540,1215)}I'm gonna
+0469	loc_bd89f38b_h43	d021	Speech	0.99685	0	0	0	0	-0.04	-0.023	0.345	{\pos(540,1215)}{\c&H00D4FF&}attack{\c&HFFFFFF&} him back.
+0470	loc_bd89f38b_h43	d022	Speech	0.99623	0	0	0	0	0.038	-0.06	0.366	{\pos(540,1215)}Let's go,
+0471	loc_bd89f38b_h43	d023	Speech	0.99652	0	0	0	0	0.075	0.015	0.343	{\pos(540,1215)}let's gang up
+0472	loc_bd89f38b_h43	d024	Speech	0.99501	0	0	0	0	-0.008	-0.089	0.439	{\pos(540,1215)}on him.
+0473	loc_bd89f38b_h43	d025	Speech	0.99446	0	0	-1	0	0.147	0.052	0.431	{\pos(540,1215)}Boom.
+0474	loc_bd89f38b_h43	d026	Speech	0.99504	0	0	0	0	-0.019	-0.087	0.411	{\pos(540,1215)}Oh shit, no,
+0475	loc_bd89f38b_h43	d027	Speech	0.99386	0	0	0	0	0.073	-0.066	0.539	{\pos(540,1215)}yes.
+0476	loc_bd89f38b_h43	d028	Speech	0.99438	0	0	0	0	0.056	-0.091	0.474	{\pos(540,1215)}Phew.
+0477	loc_bd89f38b_h43	d029	Speech	0.99533	1	1	0	0	-0.016	-0.074	0.448	{\pos(540,1215)}Eat some
+0478	loc_bd89f38b_h43	d030	Speech	0.99552	0	0	0	0	0.039	-0.036	0.393	{\pos(540,1215)}{\c&H00D4FF&}berries{\c&HFFFFFF&} to
+0479	loc_bd89f38b_h43	d031	Speech	0.99519	0	0	0	0	-0.117	-0.08	0.426	{\pos(540,1215)}restore your health.
+0480	loc_bd89f38b_h43	d032	Speech	0.99640	0	0	0	0	0.013	-0.063	0.354	{\pos(540,1215)}Alright,
+0481	loc_bd89f38b_h43	d033	Speech	0.99416	0	0	0	0	0.02	-0.079	0.470	{\pos(540,1215)}me and {\c&H00D4FF&}Codex{\c&HFFFFFF&}
+0482	loc_bd89f38b_h43	d034	Speech	0.99546	0	0	0	0	-0.089	-0.046	0.389	{\pos(540,1215)}are gonna {\c&H00D4FF&}protect{\c&HFFFFFF&}
+0483	loc_bd89f38b_h43	d035	Speech	0.99465	0	0	0	0	-0.038	-0.025	0.399	{\pos(540,1215)}the {\c&H00D4FF&}island{\c&HFFFFFF&} from
+0484	loc_bd89f38b_h43	d036	Speech	0.99628	0	0	0	0	-0.046	-0.03	0.332	{\pos(540,1215)}people who {\c&H00D4FF&}attack.{\c&HFFFFFF&}
+0485	loc_bd89f38b_h43	d037	Speech	0.99517	-1	0	0	0	-0.012	-0.081	0.433	{\pos(540,1215)}So yeah,
+0486	loc_bd89f38b_h43	d038	Speech	0.99698	0	0	0	0	0.026	-0.037	0.299	{\pos(540,1215)}if you're thinking
+0487	loc_bd89f38b_h43	d039	Speech	0.99560	0	0	0	0	-0.035	-0.063	0.350	{\pos(540,1215)}you're coming here
+0488	loc_bd89f38b_h43	d040	Speech	0.99717	0	0	0	0	0.104	0.015	0.297	{\pos(540,1215)}killing our players,
+0489	loc_bd89f38b_h43	d041	Speech	0.99534	0	0	0	0	0.037	-0.081	0.402	{\pos(540,1215)}think {\c&H00D4FF&}again.{\c&HFFFFFF&}
+0490	loc_bd89f38b_h43	d042	Speech	0.99420	-1	0	0	0	0.011	-0.09	0.487	{\pos(540,1215)}Cause me and {\c&H00D4FF&}Codex{\c&HFFFFFF&}
+0491	loc_bd89f38b_h43	d043	Speech	0.99573	0	0	1	0	-0.145	-0.037	0.399	{\pos(540,1215)}gonna {\c&H00D4FF&}protect{\c&HFFFFFF&}
+0492	loc_bd89f38b_h43	d044	Speech	0.99495	0	0	0	0	0.066	-0.084	0.435	{\pos(540,1215)}our players.
+0493	loc_bd89f38b_h43	d045	Pill	0.99828	0	0	0	0	-0.096	-0.04	0.306	{\an7\pos(48,262)\fs50}BeriGame  {\c&H00D4FF&}gifting a stranger a stick
+0494	loc_bd89f38b_h43	d046	Pill	0.99825	0	0	0	0	-0.025	-0.039	0.296	{\an7\pos(48,262)\fs50}BeriGame  {\c&H00D4FF&}he used it
+0495	loc_bd89f38b_h43	d047	Pill	0.99828	0	0	0	0	-0.034	-0.038	0.278	{\an7\pos(48,262)\fs50}ME + CODEX  {\c&H00D4FF&}island defense
+0496	loc_bd89f38b_h53	d001	Hook	0.99581	0	0	0	0	0.03	0.059	0.389	{\pos(540,305)}Strangers in my MMO\Nteamed up to {\c&H00D4FF&}save him.
+0497	loc_bd89f38b_h53	d003	Speech	0.99655	0	0	0	0	0.012	-0.041	0.357	{\pos(540,1215)}we {\c&H00D4FF&}saved{\c&HFFFFFF&} him.
+0498	loc_bd89f38b_h53	d004	Speech	0.99505	0	1	0	0	0.023	-0.103	0.493	{\pos(540,1215)}Yo,
+0499	loc_bd89f38b_h53	d005	Speech	0.99625	0	0	0	0	0.122	-0.045	0.345	{\pos(540,1215)}who's {\c&H00D4FF&}attacking{\c&HFFFFFF&} here?
+0500	loc_bd89f38b_h53	d006	Speech	0.99604	0	0	0	0	-0.061	-0.039	0.386	{\pos(540,1215)}Dude, {\c&H00D4FF&}defend.{\c&HFFFFFF&}
+0501	loc_bd89f38b_h53	d007	Speech	0.99419	0	0	0	0	-0.078	-0.091	0.487	{\pos(540,1215)}{\c&H00D4FF&}Defend{\c&HFFFFFF&} our man.
+0502	loc_bd89f38b_h53	d009	Speech	0.99515	0	0	0	0	0.027	-0.082	0.442	{\pos(540,1215)}How do we
+0503	loc_bd89f38b_h53	d010	Speech	0.99409	0	0	0	0	0.124	-0.092	0.502	{\pos(540,1215)}Oh shit?
+0504	loc_bd89f38b_h53	d011	Speech	0.99513	0	0	0	0	-0.013	-0.061	0.401	{\pos(540,1215)}Dude, eat {\c&H00D4FF&}berries.{\c&HFFFFFF&}
+0505	loc_bd89f38b_h53	d012	Speech	0.99551	1	0	0	0	-0.077	-0.086	0.430	{\pos(540,1215)}Dude, guys, quick,
+0506	loc_bd89f38b_h53	d013	Speech	0.99703	0	0	0	0	-0.001	-0.043	0.320	{\pos(540,1215)}get this guy
+0507	loc_bd89f38b_h53	d014	Speech	0.99587	0	0	0	0	0.12	0.008	0.365	{\pos(540,1215)}before he {\c&H00D4FF&}kills{\c&HFFFFFF&}
+0508	loc_bd89f38b_h53	d015	Speech	0.99362	0	0	0	0	-0.055	-0.059	0.479	{\pos(540,1215)}our guy.
+0509	loc_bd89f38b_h53	d016	Speech	0.99575	0	1	0	0	0.045	-0.079	0.465	{\pos(540,1215)}Yes.
+0510	loc_bd89f38b_h53	d017	Speech	0.99496	0	0	0	0	0.053	-0.094	0.470	{\pos(540,1215)}No, quick,
+0511	loc_bd89f38b_h53	d018	Speech	0.99507	0	0	0	0	-0.068	-0.079	0.416	{\pos(540,1215)}one more hit.
+0512	loc_bd89f38b_h53	d019	Speech	0.99510	0	0	0	0	-0.006	-0.09	0.450	{\pos(540,1215)}No, no, stop,
+0513	loc_bd89f38b_h53	d020	Speech	0.99601	0	0	0	0	-0.034	-0.045	0.345	{\pos(540,1215)}stop.
+0514	loc_bd89f38b_h53	d021	Speech	0.99628	0	0	0	0	0.072	-0.072	0.390	{\pos(540,1215)}Okay.
+0515	loc_bd89f38b_h53	d022	Speech	0.99469	0	0	0	0	-0.032	-0.08	0.435	{\pos(540,1215)}Okay, we good.
+0516	loc_bd89f38b_h53	d023	Speech	0.99522	0	0	0	0	0.027	-0.082	0.447	{\pos(540,1215)}Wait, is he
+0517	loc_bd89f38b_h53	d024	Speech	0.99595	0	0	0	0	-0.096	-0.031	0.348	{\pos(540,1215)}coming {\c&H00D4FF&}back?{\c&HFFFFFF&}
+0518	loc_bd89f38b_h53	d025	Pill	0.99784	0	0	0	0	-0.042	-0.041	0.303	{\an7\pos(48,262)\fs50}BeriGame  {\c&H00D4FF&}a player is under attack
+0519	loc_bd89f38b_h88	d001	Hook	0.99533	0	0	0	0	0.002	0.048	0.381	{\pos(540,305)}An {\c&H00D4FF&}AI agent{\c&HFFFFFF&} showed up\Nfor our group photo.
+0520	loc_bd89f38b_h88	d002	Speech	0.99482	0	0	0	0	-0.016	-0.067	0.376	{\pos(540,1215)}I'm taking it.
+0521	loc_bd89f38b_h88	d003	Speech	0.99541	0	0	0	0	0.053	-0.085	0.419	{\pos(540,1215)}Three, two, one,
+0522	loc_bd89f38b_h88	d004	Speech	0.99223	0	0	0	0	0.029	-0.085	0.526	{\pos(540,1215)}come on.
+0523	loc_bd89f38b_h88	d005	Speech	0.99536	0	0	0	0	0.083	-0.078	0.397	{\pos(540,1215)}There we go.
+0524	loc_bd89f38b_h88	d007	Speech	0.99432	1	0	1	0	-0.083	-0.075	0.435	{\pos(540,1215)}I took it.
+0525	loc_bd89f38b_h88	d008	Speech	0.99586	0	0	0	0	0.001	-0.072	0.378	{\pos(540,1215)}I'm gonna take
+0526	loc_bd89f38b_h88	d009	Speech	0.99421	0	0	0	0	-0.062	-0.084	0.468	{\pos(540,1215)}a screenshot here.
+0527	loc_bd89f38b_h88	d011	Speech	0.99533	0	0	0	0	0.088	-0.075	0.418	{\pos(540,1215)}That's awesome.
+0528	loc_bd89f38b_h88	d012	Speech	0.99463	0	0	0	0	0.07	-0.083	0.481	{\pos(540,1215)}I think this
+0529	loc_bd89f38b_h88	d013	Speech	0.99629	0	0	0	0	-0.017	-0.03	0.333	{\pos(540,1215)}is the {\c&H00D4FF&}most{\c&HFFFFFF&} people
+0530	loc_bd89f38b_h88	d014	Speech	0.99547	0	0	0	0	0.001	-0.074	0.404	{\pos(540,1215)}we've had online
+0531	loc_bd89f38b_h88	d015	Speech	0.99636	0	0	0	0	0.055	-0.06	0.345	{\pos(540,1215)}in the game.
+0532	loc_bd89f38b_h88	d016	Speech	0.99701	0	0	0	0	-0.07	-0.006	0.295	{\pos(540,1215)}{\c&H00D4FF&}9{\c&HFFFFFF&} people online
+0533	loc_bd89f38b_h88	d017	Speech	0.99577	0	0	0	0	-0.052	-0.065	0.352	{\pos(540,1215)}on my {\c&H00D4FF&}MMO{\c&HFFFFFF&}
+0534	loc_bd89f38b_h88	d018	Speech	0.99637	0	0	0	0	0.05	-0.01	0.321	{\pos(540,1215)}plus or minus
+0535	loc_bd89f38b_h88	d019	Speech	0.99582	0	0	0	0	-0.018	-0.063	0.385	{\pos(540,1215)}{\c&H00D4FF&}agents.{\c&HFFFFFF&}
+0536	loc_bd89f38b_h88	d020	Speech	0.99528	0	0	0	0	-0.024	-0.074	0.408	{\pos(540,1215)}I gotta be
+0537	loc_bd89f38b_h88	d021	Speech	0.99667	0	0	0	0	0.076	0.044	0.331	{\pos(540,1215)}fast here.
+0538	loc_bd89f38b_h88	d022	Speech	0.99247	0	0	0	0	0.16	-0.084	0.566	{\pos(540,1215)}Ready?
+0539	loc_bd89f38b_h88	d023	Speech	0.99434	0	0	0	0	0.04	-0.09	0.458	{\pos(540,1215)}Three.
+0540	loc_bd89f38b_h88	d024	Speech	0.99635	0	1	0	0	-0.003	-0.076	0.393	{\pos(540,1215)}Two
+0541	loc_bd89f38b_h88	d025	Speech	0.99399	0	0	0	0	-0.038	-0.089	0.496	{\pos(540,1215)}one.
+0542	loc_bd89f38b_h88	d026	Speech	0.99526	0	0	0	0	-0.012	-0.075	0.392	{\pos(540,1215)}{\c&H00D4FF&}Rocky.{\c&HFFFFFF&}
+0543	loc_bd89f38b_h88	d027	Speech	0.99473	0	0	0	0	-0.065	-0.088	0.442	{\pos(540,1215)}Oh shit.
+0544	loc_bd89f38b_h88	d028	Speech	0.99468	0	0	0	0	0.054	-0.094	0.438	{\pos(540,1215)}Noob killed {\c&H00D4FF&}Rocky,{\c&HFFFFFF&}
+0545	loc_bd89f38b_h88	d029	Speech	0.99748	0	0	0	0	0.02	0.02	0.290	{\pos(540,1215)}dude.
+0546	loc_bd89f38b_h88	d030	Speech	0.99545	0	0	0	0	0.082	-0.075	0.410	{\pos(540,1215)}Okay, we're just
+0547	loc_bd89f38b_h88	d031	Speech	0.99622	0	0	0	0	-0.109	-0.07	0.359	{\pos(540,1215)}gonna wait
+0548	loc_bd89f38b_h88	d032	Speech	0.99548	0	0	0	0	0.069	-0.006	0.356	{\pos(540,1215)}for maybe {\c&H00D4FF&}Rocky{\c&HFFFFFF&}
+0549	loc_bd89f38b_h88	d033	Speech	0.99515	0	0	0	0	0.003	-0.069	0.426	{\pos(540,1215)}can get
+0550	loc_bd89f38b_h88	d034	Speech	0.99520	0	0	-1	0	0.131	-0.012	0.396	{\pos(540,1215)}back in line.
+0551	loc_bd89f38b_h88	d035	Speech	0.99492	0	0	0	0	0.007	-0.077	0.415	{\pos(540,1215)}Poor {\c&H00D4FF&}Rocky.{\c&HFFFFFF&}
+0552	loc_bd89f38b_h88	d036	Speech	0.99441	0	0	0	0	0.055	-0.09	0.437	{\pos(540,1215)}Noob, stop it.
+0553	loc_bd89f38b_h88	d037	Speech	0.99412	0	0	0	0	0.122	-0.084	0.424	{\pos(540,1215)}Spam the {\c&H00D4FF&}emotes.{\c&HFFFFFF&}
+0554	loc_bd89f38b_h88	d038	Speech	0.99478	0	0	0	0	-0.045	-0.082	0.437	{\pos(540,1215)}Nice.
+0555	loc_bd89f38b_h88	d039	Speech	0.99557	0	0	0	0	0.002	-0.071	0.373	{\pos(540,1215)}{\c&H00D4FF&}Codex{\c&HFFFFFF&} is doing
+0556	loc_bd89f38b_h88	d040	Speech	0.99509	0	0	1	0	-0.07	-0.06	0.409	{\pos(540,1215)}it too.
+0557	loc_bd89f38b_h88	d041	Speech	0.99442	1	0	0	0	-0.112	-0.098	0.495	{\pos(540,1215)}Dude,
+0558	loc_bd89f38b_h88	d042	Speech	0.99652	0	0	0	0	0.098	-0.046	0.330	{\pos(540,1215)}it's sick having
+0559	loc_bd89f38b_h88	d043	Speech	0.99454	0	0	0	0	-0.121	-0.071	0.432	{\pos(540,1215)}an actual {\c&H00D4FF&}agent{\c&HFFFFFF&}
+0560	loc_bd89f38b_h88	d044	Speech	0.99526	0	0	0	0	0.105	-0.068	0.413	{\pos(540,1215)}that listens
+0561	loc_bd89f38b_h88	d045	Speech	0.99631	0	0	0	0	0.03	-0.059	0.388	{\pos(540,1215)}to you.
+0562	loc_bd89f38b_h88	d049	Pill	0.99807	0	0	0	0	-0.03	-0.04	0.293	{\an7\pos(48,262)\fs50}BeriGame  {\c&H00D4FF&}9 online at once
+0563	loc_bd89f38b_h88	d050	Pill	0.99796	0	0	0	0	-0.033	-0.04	0.300	{\an7\pos(48,262)\fs50}GROUP PHOTO  {\c&H00D4FF&}take 1
+0564	loc_bd89f38b_h88	d051	Pill	0.99767	0	0	0	0	-0.041	-0.041	0.301	{\an7\pos(48,262)\fs50}GROUP PHOTO  {\c&H00D4FF&}Codex joins in
+0565	loc_4fadb756_h79	d001	Hook	0.99506	0	0	0	0	0.01	0.091	0.462	{\pos(540,305)}My PC made this\Nin {\c&H00D4FF&}67 seconds.
+0566	loc_4fadb756_h79	d002	Speech	0.99477	0	0	0	0	0.006	-0.071	0.446	{\pos(540,1065)}we were able
+0567	loc_4fadb756_h79	d003	Speech	0.99539	0	0	1	0	-0.155	-0.066	0.400	{\pos(540,1065)}to generate that
+0568	loc_4fadb756_h79	d004	Speech	0.99536	0	0	0	0	-0.009	-0.065	0.386	{\pos(540,1065)}five-second video
+0569	loc_4fadb756_h79	d006	Speech	0.99542	0	0	0	0	0.026	-0.064	0.373	{\pos(540,1065)}{\c&H00D4FF&}two{\c&HFFFFFF&} {\c&H00D4FF&}minutes.{\c&HFFFFFF&}
+0570	loc_4fadb756_h79	d007	Speech	0.99552	0	0	0	0	0.015	-0.078	0.425	{\pos(540,1065)}I mean this
+0571	loc_4fadb756_h79	d008	Speech	0.99514	0	0	0	0	-0.163	-0.066	0.401	{\pos(540,1065)}is gonna be
+0572	loc_4fadb756_h79	d009	Speech	0.99381	0	0	0	0	-0.124	-0.089	0.434	{\pos(540,1065)}a terrible prompt,
+0573	loc_4fadb756_h79	d010	Speech	0.99618	0	0	0	0	-0.02	0.002	0.328	{\pos(540,1065)}but let's
+0574	loc_4fadb756_h79	d011	Speech	0.99574	0	0	0	0	-0.02	-0.021	0.358	{\pos(540,1065)}just say
+0575	loc_4fadb756_h79	d012	Speech	0.99372	0	0	0	1	-0.053	-0.087	0.490	{\pos(540,1065)}a cartoon banana
+0576	loc_4fadb756_h79	d013	Speech	0.99569	-1	0	0	0	0.089	-0.008	0.351	{\pos(540,1065)}peeling itself.
+0577	loc_4fadb756_h79	d014	Speech	0.99660	0	0	0	0	0.093	0.062	0.345	{\pos(540,1065)}let's also try
+0578	loc_4fadb756_h79	d015	Speech	0.99453	0	0	0	0	-0.032	-0.08	0.393	{\pos(540,1065)}some {\c&H00D4FF&}voice,{\c&HFFFFFF&}
+0579	loc_4fadb756_h79	d016	Speech	0.99638	0	0	0	0	0.04	0.058	0.353	{\pos(540,1065)}let's say
+0580	loc_4fadb756_h79	d017	Speech	0.99585	0	0	0	0	-0.011	-0.082	0.394	{\pos(540,1065)}and says Hi,
+0581	loc_4fadb756_h79	d018	Speech	0.99353	0	0	0	0	0.004	-0.084	0.490	{\pos(540,1065)}I'm a banana.
+0582	loc_4fadb756_h79	d019	Speech	0.99593	0	0	0	0	-0.061	0.043	0.377	{\pos(540,1065)}let's see how
+0583	loc_4fadb756_h79	d020	Speech	0.99594	0	0	0	0	0.082	0.04	0.353	{\pos(540,1065)}long that takes.
+0584	loc_4fadb756_h79	d021	Speech	0.99475	-1	0	0	0	0.077	-0.063	0.428	{\pos(540,1065)}Alright, let's
+0585	loc_4fadb756_h79	d022	Speech	0.99489	0	0	0	0	-0.04	-0.072	0.437	{\pos(540,1065)}start the clock.
+0586	loc_4fadb756_h79	d023	Speech	0.99415	0	0	0	0	0.119	-0.077	0.446	{\pos(540,1065)}What's the time?
+0587	loc_4fadb756_h79	d024	Speech	0.99497	0	0	0	0	0.021	-0.077	0.417	{\pos(540,1065)}Twelve fifteen.
+0588	loc_4fadb756_h79	d025	Speech	0.99356	0	1	0	0	0.108	-0.082	0.594	{\pos(540,1065)}{\c&H00D4FF&}Run.{\c&HFFFFFF&}
+0589	loc_4fadb756_h79	d026	Speech	0.99465	0	0	0	0	0.099	-0.09	0.496	{\pos(540,1065)}I have an
+0590	loc_4fadb756_h79	d027	Speech	0.99524	0	0	0	0	-0.064	-0.074	0.461	{\pos(540,1065)}{\c&H00D4FF&}NVIDIA{\c&HFFFFFF&} {\c&H00D4FF&}5080{\c&HFFFFFF&} {\c&H00D4FF&}GPU{\c&HFFFFFF&}
+0591	loc_4fadb756_h79	d028	Speech	0.99649	0	0	0	0	0.141	0.028	0.395	{\pos(540,1065)}here
+0592	loc_4fadb756_h79	d029	Speech	0.99559	0	0	0	0	-0.048	-0.09	0.399	{\pos(540,1065)}and it just
+0593	loc_4fadb756_h79	d030	Speech	0.99417	0	0	-1	0	0.079	-0.071	0.456	{\pos(540,1065)}works much better
+0594	loc_4fadb756_h79	d031	Speech	0.99607	0	0	0	0	-0.021	-0.08	0.403	{\pos(540,1065)}with a
+0595	loc_4fadb756_h79	d032	Speech	0.99355	0	0	0	0	0.137	-0.085	0.487	{\pos(540,1065)}Windows PC
+0596	loc_4fadb756_h79	d033	Speech	0.99622	0	0	0	0	0.058	-0.074	0.391	{\pos(540,1065)}Okay, this
+0597	loc_4fadb756_h79	d034	Speech	0.99536	0	0	0	0	-0.094	-0.051	0.385	{\pos(540,1065)}is the video.
+0598	loc_4fadb756_h79	d035	Speech	0.99543	0	0	0	0	0.006	-0.076	0.441	{\pos(540,1065)}Dude, that was
+0599	loc_4fadb756_h79	d036	Speech	0.99676	0	0	0	0	0.076	0.045	0.367	{\pos(540,1065)}less than
+0600	loc_4fadb756_h79	d037	Speech	0.99663	0	0	0	0	0.03	-0.069	0.337	{\pos(540,1065)}{\c&H00D4FF&}two{\c&HFFFFFF&} {\c&H00D4FF&}minutes,{\c&HFFFFFF&}
+0601	loc_4fadb756_h79	d038	Speech	0.99479	0	0	0	0	-0.067	-0.089	0.467	{\pos(540,1065)}We have
+0602	loc_4fadb756_h79	d039	Speech	0.99454	0	0	0	0	-0.1	-0.081	0.434	{\pos(540,1065)}a vertical video
+0603	loc_4fadb756_h79	d040	Speech	0.99359	0	0	0	1	0.03	-0.099	0.521	{\pos(540,1065)}of a banana
+0604	loc_4fadb756_h79	d041	Speech	0.99672	0	0	0	0	-0.065	-0.013	0.312	{\pos(540,1065)}peeling itself
+0605	loc_4fadb756_h79	d042	Speech	0.99444	0	0	0	0	0.035	-0.082	0.470	{\pos(540,1065)}and let's see
+0606	loc_4fadb756_h79	d043	Speech	0.99593	0	0	0	0	0.038	-0.042	0.361	{\pos(540,1065)}if it
+0607	loc_4fadb756_h79	d044	Speech	0.99459	0	0	0	0	0.036	-0.083	0.442	{\pos(540,1065)}also has {\c&H00D4FF&}voice.{\c&HFFFFFF&}
+0608	loc_4fadb756_h79	d045	Speech	0.99618	0	1	0	0	-0.014	-0.072	0.391	{\pos(540,1450)}Wow.
+0609	loc_4fadb756_h79	d047	Speech	0.99538	0	0	0	0	-0.048	-0.074	0.402	{\pos(540,1065)}I am actually
+0610	loc_4fadb756_h79	d048	Speech	0.99600	0	0	0	0	0.121	-0.022	0.341	{\pos(540,1065)}blown away
+0611	loc_4fadb756_h79	d049	Speech	0.99778	0	0	0	0	-0.035	-0.003	0.286	{\pos(540,1065)}by that.
+0612	loc_4fadb756_h79	d050	Speech	0.99390	0	0	0	1	-0.015	-0.094	0.479	{\pos(540,1065)}Incredible.
+0613	loc_4fadb756_h79	d051	Speech	0.99564	0	0	0	0	0.065	-0.076	0.433	{\pos(540,1065)}{\c&H00D4FF&}Locally,{\c&HFFFFFF&} yes.
+0614	loc_4fadb756_h79	d052	Speech	0.99502	0	0	0	0	0.05	-0.076	0.445	{\pos(540,1065)}{\c&H00D4FF&}Locally.{\c&HFFFFFF&}
+0615	loc_4fadb756_h79	d053	Speech	0.99327	0	0	0	0	-0.09	-0.09	0.514	{\pos(540,1450)}This is all
+0616	loc_4fadb756_h79	d054	Speech	0.99668	0	0	0	0	-0.059	-0.02	0.321	{\pos(540,1450)}on my {\c&H00D4FF&}local{\c&HFFFFFF&}
+0617	loc_4fadb756_h79	d055	Speech	0.99463	0	0	0	0	0.058	-0.085	0.438	{\pos(540,1450)}Windows PC.
+0618	loc_4fadb756_h79	d056	Pill	0.99862	0	0	0	0	-0.022	-0.039	0.268	{\an7\pos(48,262)}MiniMax H3  {\c&H00D4FF&}running on my PC
+0619	loc_4fadb756_h79	d057	Pill	0.99759	0	0	0	0	-0.011	-0.041	0.324	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:00
+0620	loc_4fadb756_h79	d058	Pill	0.99752	0	0	0	0	-0.003	-0.04	0.341	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:23
+0621	loc_4fadb756_h79	d059	Pill	0.99774	0	0	0	0	-0.0	-0.04	0.336	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:24
+0622	loc_4fadb756_h79	d060	Pill	0.99751	0	0	-1	0	0.021	-0.04	0.359	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:25
+0623	loc_4fadb756_h79	d061	Pill	0.99752	0	0	-1	0	0.021	-0.04	0.356	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:26
+0624	loc_4fadb756_h79	d062	Pill	0.99765	0	0	0	0	0.013	-0.04	0.346	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:27
+0625	loc_4fadb756_h79	d063	Pill	0.99764	0	0	0	0	-0.014	-0.04	0.324	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:28
+0626	loc_4fadb756_h79	d064	Pill	0.99754	0	0	-1	0	0.021	-0.04	0.355	{\an7\pos(48,262)}GENERATING  {\c&H00D4FF&}0:29
+0627	loc_4fadb756_h79	d066	Pill	0.99739	0	0	0	0	0.048	-0.04	0.331	{\an7\pos(48,262)}{\c&H84DC3D&}DONE IN  {\c&HFFFFFF&}1:07

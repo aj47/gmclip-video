@@ -1,0 +1,23 @@
+[package]
+name = "gmclip-model"
+description = "Data model: time, geometry, ids, order keys, entities, ops, Doc, effective(). No I/O, no async."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+ciborium.workspace = true
+gmclip-macros.workspace = true
+imbl.workspace = true
+schemars.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

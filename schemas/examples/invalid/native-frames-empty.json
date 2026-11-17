@@ -1,0 +1,733 @@
+{
+ "schema": "gmclip.renderplan/0",
+ "meta": {
+  "hook_id": "loc_4fadb756_h79",
+  "content_id": "cnt_20261003_33ecfcc4d7",
+  "title": "My PC made this in 67 seconds (parts 1-3)"
+ },
+ "output": {
+  "canvas": {
+   "w": 1080,
+   "h": 1920
+  },
+  "fps": {
+   "num": 30,
+   "den": 1
+  },
+  "frames": 397,
+  "color": {
+   "matrix": "bt709",
+   "transfer": "bt709",
+   "primaries": "bt709",
+   "range": "limited"
+  },
+  "video": {
+   "codec": "h264",
+   "profile": "high",
+   "level": "4.0",
+   "bframes": 2,
+   "gop_frames": 30,
+   "closed_gop": true,
+   "rate": {
+    "mode": "vbr",
+    "target_bps": 16000000,
+    "max_bps": 24000000
+   },
+   "timescale": 15360
+  },
+  "audio": {
+   "codec": "aac_lc",
+   "rate": 48000,
+   "channels": 2,
+   "bitrate": 192000
+  },
+  "container": {
+   "moov_first": true,
+   "edit_lists": false
+  }
+ },
+ "background": {
+  "kind": "colour",
+  "rgb": "#0c1118"
+ },
+ "sources": [
+  {
+   "id": "mkv1440",
+   "path": "streams/jMcAmooE53I-source.mkv",
+   "fingerprint": {
+    "size": 1132838200,
+    "sha256": "13ed3a2671ad918f9e1f79dea18e2b44d30a4293ce106ae44e3bbbfa3f2ddb48"
+   },
+   "expect": {
+    "video": {
+     "codec": "vp9",
+     "w": 2560,
+     "h": 1440,
+     "fps": {
+      "num": 30,
+      "den": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "proxy",
+   "path": "preview/loc_4fadb756.proxy.mp4",
+   "fingerprint": {
+    "size": 614017711,
+    "sha256": "ad8e69cda5ba9dc10624bbd19a86cb9544a2d7c458952b6e53bf316e78deaa2d"
+   },
+   "expect": {
+    "audio": {
+     "codec": "aac",
+     "rate": 48000,
+     "channels": 2
+    }
+   }
+  }
+ ],
+ "fonts": [
+  {
+   "id": "neometric-heavy",
+   "family": "Neometric",
+   "style": "Heavy",
+   "path": "fonts/Neometric Heavy (Bold).otf",
+   "sha256": "9ece81e8896ebc740c5256985dcbbeee0251011e6df73f5e637c8e599ad6a76e",
+   "em_per_size": 0.8332
+  }
+ ],
+ "text_styles": {
+  "Speech": {
+   "font": "neometric-heavy",
+   "size": 86,
+   "fill": "#FFFFFFFF",
+   "outline": {
+    "width": 12,
+    "colour": "#000000FF",
+    "join": "round"
+   },
+   "shadow": {
+    "dx": 7,
+    "dy": 7,
+    "blur": 0,
+    "colour": "#000000FF",
+    "of": "fill_and_outline"
+   },
+   "align": 5
+  },
+  "Hook": {
+   "font": "neometric-heavy",
+   "size": 88,
+   "fill": "#FFFFFFFF",
+   "outline": {
+    "width": 12,
+    "colour": "#000000FF",
+    "join": "round"
+   },
+   "shadow": {
+    "dx": 7,
+    "dy": 7,
+    "blur": 0,
+    "colour": "#000000FF",
+    "of": "fill_and_outline"
+   },
+   "align": 5
+  },
+  "Pill": {
+   "font": "neometric-heavy",
+   "size": 50,
+   "fill": "#FFFFFFFF",
+   "box": {
+    "colour": "#101010CF",
+    "pad_x": 16,
+    "pad_y": 16,
+    "radius": 0,
+    "geometry": "libass_bs3"
+   },
+   "letter_spacing": 1,
+   "align": 7
+  }
+ },
+ "parts": [
+  {
+   "id": "01-payoff-banana",
+   "out": [
+    0,
+    55
+   ],
+   "picture": {
+    "source": "mkv1440",
+    "first_frame": 79612
+   },
+   "audio": {
+    "source": "proxy",
+    "first_sample": 130006400,
+    "rate": 48000,
+    "gain_db": 0,
+    "fade_in": {
+     "samples": 144,
+     "shape": "linear"
+    },
+    "fade_out": {
+     "samples": 144,
+     "shape": "linear"
+    }
+   },
+   "native": {
+    "frames": [
+     81254,
+     81254
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1222,
+      "y": 392,
+      "w": 418,
+      "h": 688
+     },
+     "place": {
+      "x": 250,
+      "y": 410,
+      "w": 580,
+      "h": 954
+     },
+     "z": 0,
+     "time_map": {
+      "mode": "live"
+     }
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 200,
+      "y": 1350,
+      "w": 32,
+      "h": 20
+     },
+     "place": {
+      "x": 0,
+      "y": 1900,
+      "w": 32,
+      "h": 20
+     },
+     "z": 1,
+     "visible": false
+    }
+   ]
+  },
+  {
+   "id": "02-claim",
+   "out": [
+    55,
+    176
+   ],
+   "picture": {
+    "source": "mkv1440",
+    "first_frame": 79825
+   },
+   "audio": {
+    "source": "proxy",
+    "first_sample": 130347200,
+    "rate": 48000,
+    "gain_db": 0,
+    "fade_in": {
+     "samples": 144,
+     "shape": "linear"
+    },
+    "fade_out": {
+     "samples": 144,
+     "shape": "linear"
+    }
+   },
+   "native": {
+    "frames": [
+     81467,
+     81588
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 770,
+      "y": 220,
+      "w": 1280,
+      "h": 900
+     },
+     "place": {
+      "x": 160,
+      "y": 420,
+      "w": 760,
+      "h": 534
+     },
+     "z": 0,
+     "time_map": {
+      "mode": "live"
+     }
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1
+    }
+   ]
+  },
+  {
+   "id": "03-terrible-prompt",
+   "out": [
+    176,
+    397
+   ],
+   "picture": {
+    "source": "mkv1440",
+    "first_frame": 75956
+   },
+   "audio": {
+    "source": "proxy",
+    "first_sample": 124156800,
+    "rate": 48000,
+    "gain_db": 0,
+    "fade_in": {
+     "samples": 144,
+     "shape": "linear"
+    },
+    "fade_out": {
+     "samples": 144,
+     "shape": "linear"
+    }
+   },
+   "native": {
+    "frames": [
+     77598,
+     77819
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1040,
+      "y": 150,
+      "w": 1520,
+      "h": 760
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 510
+     },
+     "z": 0,
+     "time_map": {
+      "mode": "live"
+     }
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1
+    },
+    {
+     "id": "detail-0",
+     "role": "detail",
+     "crop": {
+      "x": 1074,
+      "y": 250,
+      "w": 425,
+      "h": 35
+     },
+     "place": {
+      "x": 30,
+      "y": 800,
+      "w": 1020,
+      "h": 84
+     },
+     "z": 2,
+     "time_map": {
+      "mode": "live"
+     }
+    }
+   ]
+  }
+ ],
+ "text_events": [
+  {
+   "id": "hook",
+   "role": "text_hook",
+   "out": [
+    0,
+    177
+   ],
+   "layer": 2,
+   "style": "Hook",
+   "size": 88,
+   "pos": {
+    "x": 540,
+    "y": 305
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "My PC made this\nin "
+    },
+    {
+     "text": "67 seconds.",
+     "fill": "#FFD400FF"
+    }
+   ],
+   "provenance": {
+    "kind": "import",
+    "detail": {
+     "file": "captions-v4.ass",
+     "key": "Dialogue 1"
+    }
+   }
+  },
+  {
+   "id": "pill-1",
+   "role": "section_pill",
+   "out": [
+    177,
+    397
+   ],
+   "layer": 3,
+   "style": "Pill",
+   "size": 50,
+   "pos": {
+    "x": 48,
+    "y": 262
+   },
+   "align": 7,
+   "runs": [
+    {
+     "text": "MiniMax H3  "
+    },
+    {
+     "text": "running on my PC",
+     "fill": "#FFD400FF"
+    }
+   ]
+  },
+  {
+   "id": "c01",
+   "role": "caption",
+   "out": [
+    55,
+    67
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "we were able"
+    }
+   ]
+  },
+  {
+   "id": "c02",
+   "role": "caption",
+   "out": [
+    67,
+    87
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "to generate that"
+    }
+   ]
+  },
+  {
+   "id": "c03",
+   "role": "caption",
+   "out": [
+    87,
+    111
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "five-second video"
+    }
+   ]
+  },
+  {
+   "id": "c04",
+   "role": "caption",
+   "out": [
+    111,
+    147
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "in less than"
+    }
+   ]
+  },
+  {
+   "id": "c05",
+   "role": "caption",
+   "out": [
+    147,
+    177
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "two",
+     "fill": "#FFD400FF"
+    },
+    {
+     "text": " "
+    },
+    {
+     "text": "minutes.",
+     "fill": "#FFD400FF"
+    }
+   ]
+  },
+  {
+   "id": "c06",
+   "role": "caption",
+   "out": [
+    186,
+    202
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "I mean this"
+    }
+   ]
+  },
+  {
+   "id": "c07",
+   "role": "caption",
+   "out": [
+    202,
+    214
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "is gonna be"
+    }
+   ]
+  },
+  {
+   "id": "c08",
+   "role": "caption",
+   "out": [
+    214,
+    243
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "a terrible prompt,"
+    }
+   ]
+  },
+  {
+   "id": "c09",
+   "role": "caption",
+   "out": [
+    243,
+    258
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "but let's"
+    }
+   ]
+  },
+  {
+   "id": "c10",
+   "role": "caption",
+   "out": [
+    258,
+    270
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "just say"
+    }
+   ]
+  },
+  {
+   "id": "c11",
+   "role": "caption",
+   "out": [
+    270,
+    348
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "a cartoon banana"
+    }
+   ]
+  },
+  {
+   "id": "c12",
+   "role": "caption",
+   "out": [
+    349,
+    397
+   ],
+   "layer": 1,
+   "style": "Speech",
+   "size": 86,
+   "pos": {
+    "x": 540,
+    "y": 1065
+   },
+   "runs": [
+    {
+     "text": "peeling itself."
+    }
+   ]
+  }
+ ],
+ "audio": {
+  "envelopes": [
+   {
+    "id": "banana-voice-payoff",
+    "out_samples": [
+     1600,
+     86400
+    ],
+    "gain_db": 10,
+    "ramp_in_samples": 3840,
+    "ramp_out_samples": 5760,
+    "curve": "linear_db",
+    "provenance": {
+     "kind": "import",
+     "detail": {
+      "file": "render-spec-v4.json",
+      "key": "program_gain_envelopes[0]"
+     }
+    }
+   }
+  ],
+  "loudness": {
+   "mode": "static",
+   "integrated_lufs": -16,
+   "true_peak_dbtp": -1.5
+  }
+ },
+ "checks": {
+  "safe_zones": "instagram"
+ }
+}

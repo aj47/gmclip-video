@@ -1,0 +1,2 @@
+# request heads: keep their CRLF bytes
+* -text

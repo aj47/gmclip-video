@@ -1,0 +1,29 @@
+[package]
+name = "gmclip-media"
+description = "Demux (MP4/MKV), sample index, reorder, OS decode/encode backends, MP4 writer, audio."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+gmclip-model.workspace = true
+gmclip-plan.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+gmclip-gpu.workspace = true
+# Cursor images in a recording are stored by sha256 (decision 0045).
+sha2.workspace = true
+# Overlay images (R-MEDIA-SEC-3: pure-Rust decoders with limits). PENDING AJ AUDIT.
+png = { version = "=0.18.1", default-features = false }
+zune-jpeg = { version = "=0.5.15", default-features = false, features = ["std"] }
+
+[features]
+# `lab` tests need VideoToolbox / real media (test-media/local, the lab sources) on AJ's Macs;
+# `cargo test -p gmclip-media --features lab` on the lab; hosted CI runs without it.
+lab = ["gmclip-gpu/lab"]
+
+[lints]
+workspace = true

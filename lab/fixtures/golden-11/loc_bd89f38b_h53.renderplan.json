@@ -1,0 +1,1172 @@
+{
+  "schema": "gmclip.renderplan/0",
+  "meta": {
+    "title": "Strangers in my MMO teamed up to save a player",
+    "hook_id": "loc_bd89f38b_h53"
+  },
+  "output": {
+    "canvas": {
+      "w": 1080,
+      "h": 1920
+    },
+    "fps": {
+      "num": 30,
+      "den": 1
+    },
+    "frames": 520,
+    "color": {
+      "matrix": "bt709",
+      "transfer": "bt709",
+      "primaries": "bt709",
+      "range": "limited"
+    },
+    "video": {
+      "codec": "h264",
+      "profile": "high",
+      "level": "4.0",
+      "bframes": 2,
+      "gop_frames": 30,
+      "closed_gop": true,
+      "rate": {
+        "mode": "vbr",
+        "target_bps": 16000000,
+        "max_bps": 24000000
+      },
+      "timescale": 15360
+    },
+    "audio": {
+      "codec": "aac_lc",
+      "rate": 48000,
+      "channels": 2,
+      "bitrate": 192000
+    },
+    "container": {
+      "moov_first": true,
+      "edit_lists": false
+    }
+  },
+  "background": {
+    "kind": "colour",
+    "rgb": "#0c1118"
+  },
+  "sources": [
+    {
+      "id": "native",
+      "path": "streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-01-2026-restream.mp4",
+      "fingerprint": {
+        "size": 3146994507,
+        "sha256": "2960ad899bb2139dd7084cdb514ca1de9a690a6f2d04c64229b648181a108852"
+      },
+      "expect": {
+        "video": {
+          "codec": "h264",
+          "w": 2560,
+          "h": 1440,
+          "fps": {
+            "num": 30,
+            "den": 1
+          }
+        },
+        "audio": {
+          "codec": "aac",
+          "rate": 48000,
+          "channels": 2
+        }
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "id": "neometric-heavy",
+      "family": "Neometric",
+      "style": "Heavy",
+      "path": "fonts/Neometric Heavy (Bold).otf",
+      "sha256": "9ece81e8896ebc740c5256985dcbbeee0251011e6df73f5e637c8e599ad6a76e",
+      "em_per_size": 0.8332
+    }
+  ],
+  "text_styles": {
+    "Hook": {
+      "font": "neometric-heavy",
+      "size": 88.0,
+      "fill": "#FFFFFFFF",
+      "outline": {
+        "width": 12.0,
+        "colour": "#000000FF",
+        "join": "round"
+      },
+      "shadow": {
+        "dx": 7.0,
+        "dy": 7.0,
+        "blur": 0.0,
+        "colour": "#000000FF",
+        "of": "fill_and_outline"
+      },
+      "align": 5
+    },
+    "Pill": {
+      "font": "neometric-heavy",
+      "size": 50.0,
+      "fill": "#FFFFFFFF",
+      "box": {
+        "colour": "#101010CF",
+        "pad_x": 16.0,
+        "pad_y": 16.0,
+        "radius": 0.0,
+        "geometry": "libass_bs3"
+      },
+      "letter_spacing": 1.0,
+      "align": 7
+    },
+    "Speech": {
+      "font": "neometric-heavy",
+      "size": 86.0,
+      "fill": "#FFFFFFFF",
+      "outline": {
+        "width": 12.0,
+        "colour": "#000000FF",
+        "join": "round"
+      },
+      "shadow": {
+        "dx": 7.0,
+        "dy": 7.0,
+        "blur": 0.0,
+        "colour": "#000000FF",
+        "of": "fill_and_outline"
+      },
+      "align": 5
+    }
+  },
+  "parts": [
+    {
+      "id": "01-payoff-saved",
+      "out": [
+        0,
+        47
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 62696
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 100313600,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          62696,
+          62743
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 1404.0,
+            "y": 170.0,
+            "w": 1052.0,
+            "h": 950.0
+          },
+          "place": {
+            "x": 130.0,
+            "y": 420.0,
+            "w": 820.0,
+            "h": 740.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 1090.0,
+            "w": 550.0,
+            "h": 350.0
+          },
+          "place": {
+            "x": 260.0,
+            "y": 1270.0,
+            "w": 560.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "02a-who-attacks",
+      "out": [
+        47,
+        109
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 62351
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 99761600,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": null
+      },
+      "native": {
+        "frames": [
+          62351,
+          62413
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 1404.0,
+            "y": 170.0,
+            "w": 1052.0,
+            "h": 950.0
+          },
+          "place": {
+            "x": 130.0,
+            "y": 420.0,
+            "w": 820.0,
+            "h": 740.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 1090.0,
+            "w": 550.0,
+            "h": 350.0
+          },
+          "place": {
+            "x": 260.0,
+            "y": 1270.0,
+            "w": 560.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "02b-defend-our-man",
+      "out": [
+        109,
+        391
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 62413
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 99860800,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": null,
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          62413,
+          62695
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 1404.0,
+            "y": 170.0,
+            "w": 1052.0,
+            "h": 950.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 920.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 1090.0,
+            "w": 550.0,
+            "h": 350.0
+          },
+          "place": {
+            "x": 260.0,
+            "y": 1270.0,
+            "w": 560.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "03-coming-back",
+      "out": [
+        391,
+        520
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 62743
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 100388800,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          62743,
+          62872
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 1404.0,
+            "y": 170.0,
+            "w": 1052.0,
+            "h": 950.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 920.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 1090.0,
+            "w": 550.0,
+            "h": 350.0
+          },
+          "place": {
+            "x": 260.0,
+            "y": 1270.0,
+            "w": 560.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    }
+  ],
+  "text_events": [
+    {
+      "id": "hook",
+      "out": [
+        0,
+        109
+      ],
+      "layer": 2,
+      "role": "text_hook",
+      "style": "Hook",
+      "pos": {
+        "x": 540.0,
+        "y": 305.0
+      },
+      "align": 5,
+      "size": 88.0,
+      "runs": [
+        {
+          "text": "Strangers in my MMO\nteamed up to "
+        },
+        {
+          "text": "save him.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 1"
+        }
+      }
+    },
+    {
+      "id": "pill-1",
+      "out": [
+        109,
+        520
+      ],
+      "layer": 3,
+      "role": "section_pill",
+      "style": "Pill",
+      "pos": {
+        "x": 48.0,
+        "y": 262.0
+      },
+      "align": 7,
+      "size": 50.0,
+      "runs": [
+        {
+          "text": "BeriGame  "
+        },
+        {
+          "text": "a player is under attack",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 25"
+        }
+      }
+    },
+    {
+      "id": "c01",
+      "out": [
+        0,
+        13
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Yeah,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 2"
+        }
+      }
+    },
+    {
+      "id": "c02",
+      "out": [
+        13,
+        42
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "we "
+        },
+        {
+          "text": "saved",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " him."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 3"
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "out": [
+        42,
+        52
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Yo,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 4"
+        }
+      }
+    },
+    {
+      "id": "c04",
+      "out": [
+        52,
+        81
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "who's "
+        },
+        {
+          "text": "attacking",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " here?"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 5"
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "out": [
+        81,
+        109
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Dude, "
+        },
+        {
+          "text": "defend.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 6"
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "out": [
+        109,
+        150
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Defend",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " our man."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 7"
+        }
+      }
+    },
+    {
+      "id": "c07",
+      "out": [
+        150,
+        180
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Defend",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " our man."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 8"
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "out": [
+        180,
+        198
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "How do we"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 9"
+        }
+      }
+    },
+    {
+      "id": "c09",
+      "out": [
+        198,
+        220
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Oh shit?"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 10"
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "out": [
+        220,
+        261
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Dude, eat "
+        },
+        {
+          "text": "berries.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 11"
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "out": [
+        261,
+        288
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Dude, guys, quick,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 12"
+        }
+      }
+    },
+    {
+      "id": "c12",
+      "out": [
+        288,
+        304
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "get this guy"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 13"
+        }
+      }
+    },
+    {
+      "id": "c13",
+      "out": [
+        304,
+        324
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "before he "
+        },
+        {
+          "text": "kills",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 14"
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "out": [
+        324,
+        340
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "our guy."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 15"
+        }
+      }
+    },
+    {
+      "id": "c15",
+      "out": [
+        340,
+        352
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Yes."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 16"
+        }
+      }
+    },
+    {
+      "id": "c16",
+      "out": [
+        352,
+        369
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "No, quick,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 17"
+        }
+      }
+    },
+    {
+      "id": "c17",
+      "out": [
+        369,
+        393
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "one more hit."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 18"
+        }
+      }
+    },
+    {
+      "id": "c18",
+      "out": [
+        393,
+        408
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "No, no, stop,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 19"
+        }
+      }
+    },
+    {
+      "id": "c19",
+      "out": [
+        408,
+        430
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "stop."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 20"
+        }
+      }
+    },
+    {
+      "id": "c20",
+      "out": [
+        436,
+        450
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Okay."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 21"
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "out": [
+        450,
+        480
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Okay, we good."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 22"
+        }
+      }
+    },
+    {
+      "id": "c22",
+      "out": [
+        480,
+        501
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Wait, is he"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 23"
+        }
+      }
+    },
+    {
+      "id": "c23",
+      "out": [
+        501,
+        520
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1215.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "coming "
+        },
+        {
+          "text": "back?",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 24"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "loudness": {
+      "mode": "static",
+      "integrated_lufs": -16.0,
+      "true_peak_dbtp": -1.5
+    }
+  },
+  "checks": {
+    "reference": {
+      "path": "reels/loc_bd89f38b_h53/loc_bd89f38b_h53-v5.mp4",
+      "sha256": "55667bb6bb32914c2f912eb9cbed6b919d79a959b2b372e3388174232ba1726a",
+      "frames": 520
+    },
+    "safe_zones": "instagram"
+  }
+}

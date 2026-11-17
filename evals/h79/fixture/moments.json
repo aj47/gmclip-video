@@ -1,0 +1,2756 @@
+{
+ "source_id": "loc_4fadb756",
+ "untrusted": true,
+ "moments": [
+  {
+   "t_start": 45.7,
+   "t_end": 68.9,
+   "hook_text": "yes alright we're good tricks is joined too all right so today um I want to do video generation with the minimax H3 model and I have my Windows computer here hopefully this is the first time we're streaming the Windows PC um",
+   "context_before": "oh okay no that's good that's good okay um",
+   "context_after": "from I'm actually on my Mac running OBS with Windows I don't know there's a lot going on and",
+   "payoff_hint": "the plan whiteboard at ~01:39 and the model actually installed at ~17:22",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "Stream-goal cold open that names a concrete model and a first-ever setup, cheap context for a stranger.",
+   "overlaps_existing": null,
+   "text_hook": "First stream off my Windows PC: local AI video gen",
+   "opening_contract": {
+    "viewer_promise": "see local video generation with Minimax H3 attempted on a Windows PC for the first time",
+    "proof_hint": "the Windows desktop on screen and a generated clip later",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h01",
+   "state": "new"
+  },
+  {
+   "t_start": 74.2,
+   "t_end": 89.2,
+   "hook_text": "I'm actually on my Mac running OBS with Windows I don't know there's a lot going on and\nwe will go through it all let's uh let's give bring up Excalibur if we can so we",
+   "context_before": "generation with the minimax H3 model and I have my Windows computer here hopefully this is the first\ntime we're streaming the Windows PC um",
+   "context_after": "can whiteboard out how everything's going to go so a few so today\nsetting up Windows PC with comfy UI, this is the user interface for a lot of media generation",
+   "payoff_hint": "the whiteboard plan at 01:39–02:37 explains the whole setup",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "A first-time rig (Mac OBS feeding a Windows box) is a quiet setup hook for the AI/dev-tools crowd who run mixed hardware.",
+   "overlaps_existing": null,
+   "text_hook": "Streaming a Windows PC through a Mac running OBS",
+   "opening_contract": {
+    "viewer_promise": "see how a Mac + Windows streaming setup is wired for local video gen",
+    "proof_hint": "the whiteboard plan and the Windows desktop on screen",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h02",
+   "state": "new"
+  },
+  {
+   "t_start": 99.1,
+   "t_end": 132.4,
+   "hook_text": "setting up Windows PC with comfy UI, this is the user interface for a lot of media generation uh with local models. We're gonna get the Mini Max h3 uh model in download. So that's probably the first thing I'll do because I think that'll take a while. Um actually we might have to do comfy UI first, and then we're gonna try to make music video for AGI before",
+   "context_before": "we will go through it all let's uh let's give bring up Excalibur if we can so we can whiteboard out how everything's going to go so a few so today",
+   "context_after": "GTA6. This is my uh that's GTA5. This is I mean4. This is my video music video title.",
+   "payoff_hint": "the title reveal 'AGI before GTA6' at ~02:13; music video itself is later in the stream, unclear",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A specific, funny end goal plus a concrete toolchain in one breath.",
+   "overlaps_existing": null,
+   "text_hook": "A music video for 'AGI Before GTA6', generated locally",
+   "opening_contract": {
+    "viewer_promise": "a whole pipeline from install to a generated music video",
+    "proof_hint": "whiteboard plan, then ComfyUI running the model",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h03",
+   "state": "new",
+   "excerpt": "setting up Windows PC with comfy UI, this is the user interface for a lot of media generation uh with local models."
+  },
+  {
+   "t_start": 128.2,
+   "t_end": 154.5,
+   "hook_text": "video for AGI before\nGTA6. This is my\nuh that's GTA5. This is I mean4. This is my video music video title.\nIf you haven't heard the teaser, it's in one of my reels.",
+   "context_before": "So that's probably the first thing I'll do because I think that'll take a while.\nUm actually we might have to do comfy UI first, and then we're gonna try to make music",
+   "context_after": "So this is the the setup, this is the plan today.\nThanks, uh DJ Rich forever for joining early. PMoves AI, thank you for joining.",
+   "payoff_hint": "the actual video generation runs later in the stream (from ~19:41 onward); the music video itself is the stream's end goal",
+   "hook_type": "curiosity",
+   "hook_score": 3,
+   "why": "The song title is a joke the audience already shares, and pairing it with a local video model creates a concrete 'can he pull this off' goal.",
+   "overlaps_existing": null,
+   "text_hook": "Making a music video called 'AGI before GTA6' with a local model",
+   "opening_contract": {
+    "viewer_promise": "a music video for a track titled AGI before GTA6, generated locally",
+    "proof_hint": "generated clips from Minimax H3 later in the stream",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h04",
+   "state": "new"
+  },
+  {
+   "t_start": 186.6,
+   "t_end": 204.4,
+   "hook_text": "Or or you could try the cloud for free. That's interesting. Um you get five free runs. I kind of want a long-term solution, so that's why I'm going to do uh the local install. So my desktop specs.",
+   "context_before": "Let's get uh Comfy UI straight away. Because I think we might have to install uh everything through comfy UI. Not sure. Just Comfy UI desktop. We can just download it for desktop here.",
+   "context_after": "Um see I'm also gonna open open code. So I just downloaded open code for a quick and easy free agent on my computer. So I can say list all my specs.",
+   "payoff_hint": "specs read out at ~04:46 and local install proceeds at ~05:05",
+   "hook_type": "contrarian",
+   "hook_score": 2,
+   "why": "A small decision with a number and a reason a builder audience relates to.",
+   "overlaps_existing": null,
+   "text_hook": "ComfyUI gives 5 free cloud runs. I went local instead.",
+   "opening_contract": {
+    "viewer_promise": "why local beats five free cloud runs",
+    "proof_hint": "the ComfyUI download page showing the cloud offer",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h05",
+   "state": "new"
+  },
+  {
+   "t_start": 206.3,
+   "t_end": 222.7,
+   "hook_text": "see I'm also gonna open open code. So I just downloaded open code for a quick and easy free agent on my computer. So I can say list all my specs. So you get a free Musepark usage with open code on my PC.",
+   "context_before": "Um you get five free runs. I kind of want a long-term solution, so that's why I'm going to do uh the local install. So my desktop specs. Um",
+   "context_after": "So GPPUU RAM C, etc. .",
+   "payoff_hint": "the agent prints the specs at ~04:46 (RTX 5080, 16GB VRAM)",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A one-line trick with a free tool and an immediate visible result.",
+   "overlaps_existing": null,
+   "text_hook": "A free coding agent that reads your PC specs for you",
+   "opening_contract": {
+    "viewer_promise": "see a free agent list the machine's hardware",
+    "proof_hint": "the spec list appearing in the terminal",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h06",
+   "state": "new",
+   "excerpt": "I just downloaded open code for a quick and easy free agent on my computer. So I can say list all my specs."
+  },
+  {
+   "t_start": 253.4,
+   "t_end": 289.1,
+   "hook_text": "rename this. For some reason the titles\non X never get updated properly. But hopefully, hopefully they do.\nLooks like some some kind of glitch. Uh okay. So this is my specs.",
+   "context_before": "So that's the plan today. Hope you guys are doing well.\nUm",
+   "context_after": "Right now we got the GTX. I mean the GForce RTX5080.\nThat's my GPU. That's probably the main thing. Uh with16 gigabytes of VRAM.",
+   "payoff_hint": "unclear — the title glitch is never resolved on stream",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "A small platform-bug complaint that multi-streamers will recognise instantly, but there is no payoff.",
+   "overlaps_existing": null,
+   "text_hook": "X stream titles never update properly. Every time.",
+   "opening_contract": {
+    "viewer_promise": "a recurring X streaming glitch named",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h07",
+   "state": "new"
+  },
+  {
+   "t_start": 282.2,
+   "t_end": 305.0,
+   "hook_text": "Looks like some some kind of glitch. Uh okay. So this is my specs. Right now we got the GTX. I mean the GForce RTX5080. That's my GPU. That's probably the main thing. Uh with16 gigabytes of VRAM. This is enough to run a quantized version of the Mini Max H3 model.",
+   "context_before": "rename this. For some reason the titles on X never get updated properly. But hopefully, hopefully they do.",
+   "context_after": "So I'm gonna install Comfy UI here, the install finished, I mean the download finished, we're gonna install it just to default. Uh sure we'll add a desktop shortcut, that's fine.",
+   "payoff_hint": "the model finishes installing at ~17:22; first run is beyond this chunk",
+   "hook_type": "number-proof",
+   "hook_score": 3,
+   "why": "A concrete GPU and VRAM number against a named model is exactly what a local-AI viewer wants answered.",
+   "overlaps_existing": null,
+   "text_hook": "16GB of VRAM. Is that enough for Minimax H3?",
+   "opening_contract": {
+    "viewer_promise": "whether a 5080 with 16GB can run Minimax H3",
+    "proof_hint": "the spec readout on screen, then a generation running",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h08",
+   "state": "new",
+   "excerpt": "with16 gigabytes of VRAM. This is enough to run a quantized version of the Mini Max H3 model."
+  },
+  {
+   "t_start": 354.1,
+   "t_end": 369.6,
+   "hook_text": "It'll take about five gigabytes of space. So we can actually choose the Minimax M3 starter workflow straight\naway with the Comfy UI desktop. They kind of give you that.",
+   "context_before": "New we'll just call this comfy UI short. I mean, can do we need to\nconfide release, stable release, stable version. We're using an NVIDIA GPU, install location default.",
+   "context_after": "We'll try that out, but there it could be the case that the model that they recommend isn't\nthe optimal model for my hardware. Because these things are changing so fast, it could be the case",
+   "payoff_hint": "the bundled workflow opens at 18:28–19:04 and is run at 19:34",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "A useful one-click detail for anyone about to install: the installer offers the H3 starter workflow before you touch a node.",
+   "overlaps_existing": null,
+   "text_hook": "Comfy UI desktop ships a Minimax H3 workflow out of the box",
+   "opening_contract": {
+    "viewer_promise": "you can pick the Minimax H3 starter workflow during install",
+    "proof_hint": "the installer's workflow picker on screen",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h09",
+   "state": "new"
+  },
+  {
+   "t_start": 369.6,
+   "t_end": 393.3,
+   "hook_text": "We'll try that out, but there it could be the case that the model that they recommend isn't the optimal model for my hardware. Because these things are changing so fast, it could be the case that Comfy UI hasn't updated to whatever the latest best quantized model is for my hardware. So we might have to manually download uh a model in the future.",
+   "context_before": "It'll take about five gigabytes of space. So we can actually choose the Minimax M3 starter workflow straight away with the Comfy UI desktop. They kind of give you that.",
+   "context_after": "But we'll see how this goes. So we're downloading at about38 megabytes per second right now, uh all through the comfy UI app. So it says26 uh seconds remaining, but I think that's just for the",
+   "payoff_hint": "unclear",
+   "hook_type": "contrarian",
+   "hook_score": 2,
+   "why": "A practical warning against trusting defaults, aimed at people about to install.",
+   "overlaps_existing": null,
+   "text_hook": "The starter workflow's model may be wrong for your GPU",
+   "opening_contract": {
+    "viewer_promise": "why the bundled model might not be the best pick",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "abstract-setup",
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h10",
+   "state": "new"
+  },
+  {
+   "t_start": 399.6,
+   "t_end": 420.6,
+   "hook_text": "through the comfy UI app. So it says26 uh seconds remaining, but I think that's just for the app itself. The model is the big one. I think that's50 gigabytes. That might take an hour or so. So uh we might be here for a while and I don't know what we'll be working on, but that's the plan today.",
+   "context_before": "So we might have to manually download uh a model in the future. But we'll see how this goes. So we're downloading at about38 megabytes per second right now, uh all",
+   "context_after": "yo Yo,, Figs, what's up? Not what I expected from you to be streaming. I've been working on this since Minimax H3 came out.",
+   "payoff_hint": "the model turns out to be installed already at ~17:22, far earlier than the hour estimate",
+   "hook_type": "number-proof",
+   "hook_score": 2,
+   "why": "The size number sets stakes and the estimate gets overturned later, which is a usable setup/payoff pair.",
+   "overlaps_existing": null,
+   "text_hook": "A 50GB model download before anything runs",
+   "opening_contract": {
+    "viewer_promise": "how long a local video model takes to get running",
+    "proof_hint": "download progress bar, then the installed models list",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h11",
+   "state": "new"
+  },
+  {
+   "t_start": 420.6,
+   "t_end": 438.6,
+   "hook_text": "yo Yo,, Figs, what's up? Not what I expected from you to be streaming.\nI've been working on this since Minimax H3 came out.\nOkay, Figs. Figs is the absolute OG. It seems like whatever I'm doing, he's already done it before.\nSo yeah, if you got any tips, Figs, please please let me know.",
+   "context_before": "That might take an hour or so. So uh we might be here for a while and I\ndon't know what we'll be working on, but that's the plan today.",
+   "context_after": "I'm gonna send Spark to watch after it gotta run.\nAlright, man, I'll I'll catch you later. Uh how can I generate one hour long clip for instance?",
+   "payoff_hint": "Figs' tips arrive at 12:09–12:22 (test custom workflows, Reddit and Discord lists) and 17:59–18:18 (headless Comfy, speed LoRAs not worth it)",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "A warm community beat that sets up the chat-driven tips later, but it needs those tips to land.",
+   "overlaps_existing": null,
+   "text_hook": "Whatever I build, this chat regular already did it",
+   "opening_contract": {
+    "viewer_promise": "a veteran in chat will steer the local video-gen setup",
+    "proof_hint": "Figs' concrete tips later in the stream",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h12",
+   "state": "new"
+  },
+  {
+   "t_start": 442.4,
+   "t_end": 481.0,
+   "hook_text": "Alright, man, I'll I'll catch you later. Uh how can I generate one hour long clip for instance? Do you have any logic for this? That's a good question. I don't know. I've only just started getting into this kind of generation. It could be as easy as just setting a variable. And I think if you try to keep going, it get the results get worse. That's why they limit it to three seconds. But you could always do it on a loop, so you just start from the last frame and generate the next three seconds.",
+   "context_before": "So yeah, if you got any tips, Figs, please please let me know. I'm gonna send Spark to watch after it gotta run.",
+   "context_after": "Um but you obviously you'd probably want different scenes, so there's some kind of workflow you can set up to create that loop with an LLM agent to generate the next scene or generate the whole",
+   "payoff_hint": "last-frame loop plus LLM scene planner explained ~08:01–08:16, whiteboarded from ~08:35",
+   "hook_type": "curiosity",
+   "hook_score": 4,
+   "why": "A chat question everyone doing video gen has, answered with a concrete loop idea right away.",
+   "overlaps_existing": null,
+   "text_hook": "How do you generate an hour of AI video?",
+   "opening_contract": {
+    "viewer_promise": "a method for getting long video out of a short-clip model",
+    "proof_hint": "the whiteboard loop diagram",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h13",
+   "state": "new",
+   "excerpt": "you could always do it on a loop, so you just start from the last frame and generate the next three seconds."
+  },
+  {
+   "t_start": 481.0,
+   "t_end": 513.0,
+   "hook_text": "Um but you obviously you'd probably want different scenes, so there's some kind of workflow you can set up to create that loop with an LLM agent to generate the next scene or generate the whole plan and then generate age three seconds by three seconds. And comfy UI will actually help you uh design these workflows. That's kind of like the whole point of comfy UI. It's like a user interface where you can um create these workflows. It's like you know, the node-based diagrams. This node uh links into that node, so you could have",
+   "context_before": "And I think if you try to keep going, it get the results get worse. That's why they limit it to three seconds. But you could always do it on a loop, so you just start from the last frame and generate the next three seconds.",
+   "context_after": "let's go on the whiteboard actually. Let's so let's say um you have an LLM node. And it can create",
+   "payoff_hint": "the whiteboard diagram LLM → plan → vid gen loop at ~08:36–09:37",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "The architecture answer to the long-video question, drawn out as nodes on a whiteboard.",
+   "overlaps_existing": null,
+   "text_hook": "An LLM agent that writes the next scene, on loop",
+   "opening_contract": {
+    "viewer_promise": "a workflow design for endless scene-by-scene generation",
+    "proof_hint": "the Excalidraw node diagram",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h14",
+   "state": "new"
+  },
+  {
+   "t_start": 577.9,
+   "t_end": 610.4,
+   "hook_text": "But then you could also have like things in here, like maybe you want uh text to image. Right? Because that way instead of waiting, because this vid gen will take a long time, instead of waiting for a whole video to generate to see if it's good, you could uh have a plan and images, like a storyboard. You could have a step in between here to create a storyboard, and then from that storyboard generate the images. There's like different ways you could do it, but essentially, like if you wanted to go for hours, it's some kind of loop that just keeps going back and",
+   "context_before": "So the VGN model can do text to image. Text to video. And that could just loop. I mean, that's a pretty shit one, but but yeah.",
+   "context_after": "forth. Uh yeah, we'll see. We'll experiment with different ways to do things. Uh this will probably take some time. And my room is gonna get quite hot right now.",
+   "payoff_hint": "the storyboard step drawn onto the whiteboard loop in the same span",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A practical time-saving idea with a clear reason, easy to grasp cold.",
+   "overlaps_existing": null,
+   "text_hook": "Storyboard first, so you don't wait on bad video",
+   "opening_contract": {
+    "viewer_promise": "a cheaper way to check a scene before rendering video",
+    "proof_hint": "the storyboard node added to the diagram",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h15",
+   "state": "new",
+   "excerpt": "instead of waiting for a whole video to generate to see if it's good, you could uh have a plan and images, like a storyboard."
+  },
+  {
+   "t_start": 616.9,
+   "t_end": 631.6,
+   "hook_text": "Uh this will probably take some time. And my room is gonna get quite hot right now. We're starting with27 degrees Celsius. Um who wants to guess how much that is in Fahrenheit?",
+   "context_before": "forth. Uh yeah, we'll see. We'll experiment with different ways to do things.",
+   "context_after": "Why is this reversed? Let's flip. L'ets flip. Wait, right hand, left hand. Should we flip it? I'm gonna flip my camera here.",
+   "payoff_hint": "the thermometer reads 81°F at ~11:52",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "A relatable local-GPU side effect with a live number and a small guessing game.",
+   "overlaps_existing": null,
+   "text_hook": "Room's at 27°C before the GPU even starts",
+   "opening_contract": {
+    "viewer_promise": "how hot the room gets running a local video model",
+    "proof_hint": "the thermometer on camera",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h16",
+   "state": "new"
+  },
+  {
+   "t_start": 631.6,
+   "t_end": 675.4,
+   "hook_text": "Why is this reversed? Let's flip. L'ets flip. Wait, right hand, left hand.\nShould we flip it? I'm gonna flip my camera here.\n.\nI can't Oh, it's locked.\nOh crap, I flipped the wrong one. Okay. There we go.",
+   "context_before": "Uh this will probably take some time. And my room is gonna get quite hot right now.\nWe're starting with27 degrees Celsius. Um who wants to guess how much that is in Fahrenheit?",
+   "context_after": "Twenty-seven degrees Celsius. Who knows what that is in Fahrenheit.\nEnvironment consistency is the issue, says T Bag. Okay. Expand on that.",
+   "payoff_hint": "resolved within the span at 11:15 ('There we go'), then the Fahrenheit reveal at 11:52–12:00",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "A short live fumble with a visible fix is a comedy beat, but it is thin without the thermometer bit around it.",
+   "overlaps_existing": null,
+   "text_hook": "Flipped the wrong camera live. Twice.",
+   "opening_contract": {
+    "viewer_promise": "a mirrored camera gets sorted out on air",
+    "proof_hint": "the camera feed flipping on screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h17",
+   "state": "new"
+  },
+  {
+   "t_start": 681.8,
+   "t_end": 686.9,
+   "hook_text": "Environment consistency is the issue, says T Bag. Okay. Expand on that.",
+   "context_before": "Oh crap, I flipped the wrong one. Okay. There we go.\nTwenty-seven degrees Celsius. Who knows what that is in Fahrenheit.",
+   "context_after": "No Santoni. Thanks for jumping through. Curious to see how this turns out.\nYeah, me too. Okay, time's up for the Fahrenheit. Um I'm also trying to learn my Fahrenheit uh",
+   "payoff_hint": "unclear — chat's point is never expanded on this chunk; it answers the hour-long-clip question from 07:22–08:01",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "A chat regular names the actual blocker for long generated video, but AJ asks for more and nothing follows here.",
+   "overlaps_existing": null,
+   "text_hook": "The real problem with hour-long AI video isn't length",
+   "opening_contract": {
+    "viewer_promise": "why long AI video breaks: scene consistency, not clip length",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h18",
+   "state": "new"
+  },
+  {
+   "t_start": 705.4,
+   "t_end": 729.2,
+   "hook_text": "That might be like79. What do you guys think? I'm gonna find out. I'm gonna press the button. Uh81, damn. I was close-ish. Okay. It's hot, and it's probably gonna get hotter as the as the GPU starts working.",
+   "context_before": "Yeah, me too. Okay, time's up for the Fahrenheit. Um I'm also trying to learn my Fahrenheit uh estimates. So27. I think that might be close to like eighty degrees.",
+   "context_after": "I started working on this package system in Pasteum on Discord. It's not fully done. My only tip is to test out different custom workflows.",
+   "payoff_hint": "immediate: the 81°F reading",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "The payoff of the temperature bit, with a number and a foreboding line.",
+   "overlaps_existing": null,
+   "text_hook": "81°F in the room, and the GPU hasn't started",
+   "opening_contract": {
+    "viewer_promise": "the actual room temperature reading",
+    "proof_hint": "thermometer showing 81",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h19",
+   "state": "new"
+  },
+  {
+   "t_start": 729.2,
+   "t_end": 750.0,
+   "hook_text": "I started working on this package system in Pasteum on Discord. It's not fully done. My only tip is to test out different custom workflows. I can share a few, but Reddit also has list of workflows. Band Delco Discord has a lot too. Okay, okay. Let's see if we can jump over to.",
+   "context_before": "I'm gonna press the button. Uh81, damn. I was close-ish. Okay. It's hot, and it's probably gonna get hotter as the as the GPU starts working.",
+   "context_after": "Discord One moment please",
+   "payoff_hint": "attempt to open Discord crashes OBS at ~13:00; workflow link shown at ~14:34",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Chat advice from an experienced viewer on where real workflows live.",
+   "overlaps_existing": null,
+   "text_hook": "The one ComfyUI tip from someone who's done this",
+   "opening_contract": {
+    "viewer_promise": "where to find working ComfyUI workflows",
+    "proof_hint": "the shared workflow link on screen",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h20",
+   "state": "new"
+  },
+  {
+   "t_start": 780.9,
+   "t_end": 815.2,
+   "hook_text": "TikTok. Why are you playing with me? Oh my god is just crashing completely. What piece of shit should I update it? Hopefully we don't crash again okay.",
+   "context_before": "One moment please get TikTok again.",
+   "context_after": "So let's see that did that bring us back? I'm back okay. Good.",
+   "payoff_hint": "stream recovers ~13:39; cause named at ~14:04 (OBS crashed on scene change)",
+   "hook_type": "failure",
+   "hook_score": 3,
+   "why": "A live crash with real frustration, and the cause explained a minute later.",
+   "overlaps_existing": null,
+   "text_hook": "The stream crashed the moment I switched scenes",
+   "opening_contract": {
+    "viewer_promise": "see what went wrong and whether the stream comes back",
+    "proof_hint": "frozen screen, then the recovered feed",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h21",
+   "state": "new"
+  },
+  {
+   "t_start": 833.6,
+   "t_end": 861.7,
+   "hook_text": "Okay it's back on my screen. Now I'm kinda scared I was trying to hop to uh hop to Discord. But as soon as I change scenes, OBS crashed so I not'm sure if I want to do that again. Um what I can do. Open AI try to base me exactly. They're trying to slow the progress.",
+   "context_before": "that did that bring us back? I'm back okay. Good. Um it's still kinda weirdly frozen on my screen. I'm just gonna okay.",
+   "context_after": "Yo, bro, got the codec sticker. Let's dope. Alright, I'm just gonna open Discord on my phone and then maybe show the screen on my phone. Okay, so shout out KCFs.",
+   "payoff_hint": "the workaround (Discord on the phone) at ~14:23",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "The aftermath of the crash with a workaround and a joke, explains itself in one line.",
+   "overlaps_existing": null,
+   "text_hook": "Switching scenes crashed OBS. Now I'm scared to touch it.",
+   "opening_contract": {
+    "viewer_promise": "how he gets around a stream setup that crashes on scene change",
+    "proof_hint": "the phone held up to camera instead of a scene switch",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h22",
+   "state": "new"
+  },
+  {
+   "t_start": 855.0,
+   "t_end": 861.7,
+   "hook_text": "Open AI try to base me exactly. They're trying to slow the progress.",
+   "context_before": "hop to Discord. But as soon as I change scenes, OBS crashed so I not'm sure if I\nwant to do that again. Um what I can do.",
+   "context_after": "Yo, bro, got the codec sticker. Let's dope. Alright, I'm just gonna open Discord on my phone and\nthen maybe show the screen on my phone. Okay, so shout out KCFs.",
+   "payoff_hint": "the OBS crash it jokes about is at 13:00–14:15; the workaround (Discord on the phone) follows at 14:23",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "A throwaway conspiracy joke right after a live crash is a comedy beat the AI audience gets instantly.",
+   "overlaps_existing": null,
+   "text_hook": "OBS crashed mid-stream. Chat blamed OpenAI.",
+   "opening_contract": {
+    "viewer_promise": "a laugh at who is to blame for the stream crashing",
+    "proof_hint": "the crash and recovery moments just before",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h23",
+   "state": "new"
+  },
+  {
+   "t_start": 887.8,
+   "t_end": 903.8,
+   "hook_text": "which I assume has some workflows. But we can just search, let's just search for uh mini max\nh3 on a5080 on red. Let's see what does that come up any anything?",
+   "context_before": "They have sent through a link to\nuh comfy workflows. Um",
+   "context_after": "Okay.\nUh you'll have a blast. Check out Pixarama's channel on YouTube.",
+   "payoff_hint": "chat redirects to Pixarama's channel at 15:13–15:43, which has many H3 videos",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "The exact search a viewer with the same card would type, though the answer comes from chat rather than Reddit.",
+   "overlaps_existing": null,
+   "text_hook": "Does Minimax H3 run on a 16GB 5080? Searching Reddit live",
+   "opening_contract": {
+    "viewer_promise": "whether a 5080 handles Minimax H3",
+    "proof_hint": "search results or a working workflow for the card",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h24",
+   "state": "new"
+  },
+  {
+   "t_start": 934.5,
+   "t_end": 951.4,
+   "hook_text": "Oh, they got a lot of videos on mini match H3. Should we watch Speed Laura plus VRAM monitor nodes or best video generation workflow? Let's probably start with this one. Um we got ads because I don't have YouTube premium on this.",
+   "context_before": "Uh you'll have a blast. Check out Pixarama's channel on YouTube. Okay, that sounds like fun. Check out Pixarama. Let's see if they got anything on H3.",
+   "context_after": ". Oh fine Do we have audio? Oh crap, we don't have audio. Uh how could we get audio?",
+   "payoff_hint": "unclear; the tutorial has no audio and the install finishing interrupts it at ~17:00",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "Honest learn-in-public moment following a chat recommendation.",
+   "overlaps_existing": null,
+   "text_hook": "Learning Minimax H3 from a YouTube tutorial, live",
+   "opening_contract": {
+    "viewer_promise": "watch him pick up the workflow from a tutorial",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h25",
+   "state": "new"
+  },
+  {
+   "t_start": 943.6,
+   "t_end": 964.1,
+   "hook_text": "Let's probably start with this one. Um we got ads because I don't have YouTube premium on this.\n. Oh fine Do we have audio? Oh crap, we don't have audio.\nUh how could we get audio?",
+   "context_before": "Oh, they got a lot of videos on mini match H3.\nShould we watch Speed Laura plus VRAM monitor nodes or best video generation workflow?",
+   "context_after": "Let's go here. Today I will show you how to use the new Minac H3 video model so\nyou can create awesome video. Welcome to my Comfy UI setup where every cable has a purpose.",
+   "payoff_hint": "audio comes through at 16:07 when the tutorial plays",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "A relatable stack of small stream failures, quickly fixed, but low stakes.",
+   "overlaps_existing": null,
+   "text_hook": "Tried to watch a tutorial on stream. Ads, then no audio.",
+   "opening_contract": {
+    "viewer_promise": "get a YouTube tutorial playing with sound on stream",
+    "proof_hint": "the tutorial audio playing moments later",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h26",
+   "state": "new"
+  },
+  {
+   "t_start": 1020.0,
+   "t_end": 1052.4,
+   "hook_text": "Oh shit. Okay, so Comfy UI finished installing. But I think we are still downloading. Um whoa. Hold on. So we have a few Minimax H3 models here. Oh wow, we actually finished installing the full diffusion model for Minimax H3. Okay, that's good. So maybe we can try run something.",
+   "context_before": "Uh updating as you know, I usually come to UI to install. Easy install. Because it has a lot of useful script.",
+   "context_after": "How much memory do I have in GPU? So I have the5080, which has16 gigabytes of VRAM. So not that much. This is like a decent amount.",
+   "payoff_hint": "the bundled workflow opened at ~18:28 and the default prompt queued at ~19:41",
+   "hook_type": "reveal",
+   "hook_score": 3,
+   "why": "Genuine surprise that overturns his own earlier estimate, and it unlocks the first run.",
+   "overlaps_existing": null,
+   "text_hook": "Expected an hour. The Minimax model was already installed.",
+   "opening_contract": {
+    "viewer_promise": "the model is ready and something is about to run",
+    "proof_hint": "the models list in ComfyUI showing Minimax H3",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h27",
+   "state": "new",
+   "excerpt": "Oh wow, we actually finished installing the full diffusion model for Minimax H3."
+  },
+  {
+   "t_start": 1052.4,
+   "t_end": 1079.8,
+   "hook_text": "How much memory do I have in GPU? So I have the5080, which has16 gigabytes of VRAM. So not that much. This is like a decent amount. This is enough. This is like probably the bare minimum enough to run like a decent Minimax H3 model. And then for actual RAM, I have two16GB, so32 megabytes of uh gigabytes of RAM.",
+   "context_before": "Oh wow, we actually finished installing the full diffusion model for Minimax H3. Okay, that's good. So maybe we can try run something.",
+   "context_after": "I should have mentioned that I mainly use Comfy headlessly. Oh nice. Speed LoRas are not worth the quality drop, in my opinion.",
+   "payoff_hint": "first generation is queued at ~19:41; result beyond this chunk",
+   "hook_type": "number-proof",
+   "hook_score": 3,
+   "why": "A hardware floor stated plainly is a search-shaped question for anyone with a consumer GPU.",
+   "overlaps_existing": null,
+   "text_hook": "16GB VRAM is the bare minimum for Minimax H3",
+   "opening_contract": {
+    "viewer_promise": "whether a mid-range card can run this model at all",
+    "proof_hint": "a generation completing on the 5080",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h28",
+   "state": "new"
+  },
+  {
+   "t_start": 1079.8,
+   "t_end": 1098.5,
+   "hook_text": "I should have mentioned that I mainly use Comfy headlessly. Oh nice. Speed LoRas are not worth the quality drop, in my opinion. Okay. Good to know. Uh that's the reason I created that website package. Oh, that's your website. Sick. It's a code first attempt at Comfy that compiles to JSON.",
+   "context_before": "This is enough. This is like probably the bare minimum enough to run like a decent Minimax H3 model. And then for actual RAM, I have two16GB, so32 megabytes of uh gigabytes of RAM.",
+   "context_after": "Yo. You know, that's not bad. Okay, so hold the phone. Okay. So this is the video minimax H3 text to video workflow that comes with",
+   "payoff_hint": "unclear",
+   "hook_type": "contrarian",
+   "hook_score": 2,
+   "why": "A blunt opinion from an experienced viewer plus a code-first ComfyUI tool reveal.",
+   "overlaps_existing": null,
+   "text_hook": "Speed LoRAs: not worth the quality drop",
+   "opening_contract": {
+    "viewer_promise": "an experienced user's take on speed LoRAs and a code-first ComfyUI alternative",
+    "proof_hint": "unclear",
+    "context_debt": "high",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "context-debt",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h29",
+   "state": "new"
+  },
+  {
+   "t_start": 1092.2,
+   "t_end": 1104.9,
+   "hook_text": "Oh, that's your website. Sick. It's a code first attempt at Comfy that compiles to JSON.\nYo. You know, that's not bad. Okay, so",
+   "context_before": "",
+   "context_after": "hold the phone. Okay. So this is the video minimax H3 text to video workflow that comes with\nthe official Comfy UI app. So if we zoom in here, we might be able to see the",
+   "payoff_hint": "unclear — a viewer's project is acknowledged and the stream moves on to the H3 workflow",
+   "hook_type": "reveal",
+   "hook_score": 2,
+   "why": "A code-first alternative to node-dragging is a real curiosity for dev-tool viewers, but it is a passing acknowledgement with no demo.",
+   "overlaps_existing": null,
+   "text_hook": "Someone rebuilt ComfyUI as code that compiles to JSON",
+   "opening_contract": {
+    "viewer_promise": "there is a code-first way to write Comfy workflows",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "proof-delay",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h30",
+   "state": "new"
+  },
+  {
+   "t_start": 1108.7,
+   "t_end": 1144.6,
+   "hook_text": "hold the phone. Okay. So this is the video minimax H3 text to video workflow that comes with the official Comfy UI app. So if we zoom in here, we might be able to see the actual node description. Um there's a guide, there's the links to the models, the LoRa's, the location of storage, prompt embedding description, and how to report issues. Okay.",
+   "context_before": "Oh, that's your website. Sick. It's a code first attempt at Comfy that compiles to JSON. Yo. You know, that's not bad. Okay, so",
+   "context_after": "Up here, what do we got here? Minimax H3 is a Minimax general purpose omni-modal generation model. It jointly understands text, image, video, and audio, and generates video with native stereo audio, voice, sound effects,",
+   "payoff_hint": "model description read at ~19:04 and default prompt run at ~19:41",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Demo narration of the bundled workflow, useful for anyone opening ComfyUI for the first time.",
+   "overlaps_existing": null,
+   "text_hook": "The Minimax H3 workflow ComfyUI ships by default",
+   "opening_contract": {
+    "viewer_promise": "a tour of the stock text-to-video workflow",
+    "proof_hint": "the node graph on screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h31",
+   "state": "new"
+  },
+  {
+   "t_start": 1144.6,
+   "t_end": 1174.8,
+   "hook_text": "Up here, what do we got here? Minimax H3 is a Minimax general purpose omni-modal generation model. It jointly understands text, image, video, and audio, and generates video with native stereo audio, voice, sound effects, and music. It's all modeled jointly in a single forward pass, not layered on afterwards. Output is up to2K resolution24 FPS and up to about15 seconds.",
+   "context_before": "the actual node description. Um there's a guide, there's the links to the models, the LoRa's, the location of storage, prompt embedding description, and how to report issues. Okay.",
+   "context_after": ". Awesome Okay, so let's see. So we can just run the default prompt here. Live action cinematic action movie trailer photography style, blah blah blah.",
+   "payoff_hint": "first run queued at ~19:41; output beyond this chunk",
+   "hook_type": "reveal",
+   "hook_score": 3,
+   "why": "The spec sheet in one breath: native audio in a single pass, 2K, 24fps, 15s, on a home GPU.",
+   "overlaps_existing": null,
+   "text_hook": "A local video model that generates its own audio",
+   "opening_contract": {
+    "viewer_promise": "what this model can produce, with numbers",
+    "proof_hint": "a generated clip with sound",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h32",
+   "state": "new",
+   "excerpt": "generates video with native stereo audio, voice, sound effects, and music. It's all modeled jointly in a single forward pass, not layered on afterwards."
+  },
+  {
+   "t_start": 1174.8,
+   "t_end": 1199.6,
+   "hook_text": "Awesome Okay, so let's see. So we can just run the default prompt here. Live action cinematic action movie trailer photography style, blah blah blah. Um, and this is gonna generate a video from this big text prompt. You can see it's quite detailed. There's a short description, there's a scene overview, there's a second by",
+   "context_before": "and music. It's all modeled jointly in a single forward pass, not layered on afterwards. Output is up to2K resolution24 FPS and up to about15 seconds.",
+   "context_after": "",
+   "payoff_hint": "unclear; the first generation result is beyond this chunk",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "The moment before the first render, with a peek at how detailed the prompt has to be.",
+   "overlaps_existing": null,
+   "text_hook": "First Minimax H3 run on a 16GB card",
+   "opening_contract": {
+    "viewer_promise": "see the first generation attempt kick off",
+    "proof_hint": "the queued job and, later, the output video",
+    "context_debt": "low",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h33",
+   "state": "new"
+  },
+  {
+   "t_start": 1192.4,
+   "t_end": 1213.9,
+   "hook_text": "You can see it's quite detailed. There's a short description, there's a scene overview, there's a second by second storyboard. Each shot is a separate scene. So this is a five-second video where there's four separate scenes, four separate shots. Each shot is described in this single prompt in the storyboard.",
+   "context_before": "Live action cinematic action movie trailer photography style, blah blah blah. Um, and this is gonna generate a video from this big text prompt.",
+   "context_after": "This is great. I love working with storyboards, so we could set up a flow like that in the future. Uh it has a little description about the camera, description about the audio, and some anti-prompting",
+   "payoff_hint": "the four-shot video plays and matches the storyboard at 00:27:56–00:28:08",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "Shows how a video prompt is structured as a per-second storyboard, which is the non-obvious part of getting good output.",
+   "overlaps_existing": null,
+   "text_hook": "Four shots in five seconds, all from one prompt",
+   "opening_contract": {
+    "viewer_promise": "how a text-to-video prompt is actually written to get multiple shots",
+    "proof_hint": "the storyboard prompt text on screen, then the generated shots",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h34",
+   "state": "staged",
+   "excerpt": "this is a five-second video where there's four separate scenes, four separate shots. Each shot is described in this single prompt in the storyboard."
+  },
+  {
+   "t_start": 1213.9,
+   "t_end": 1230.3,
+   "hook_text": "This is great. I love working with storyboards, so we could set up a flow like that in\nthe future. Uh it has a little description about the camera, description about the audio, and some anti-prompting\nor negative prompting as well. It seems here. So that sounds awesome.",
+   "context_before": "second storyboard. Each shot is a separate scene. So this is a five-second video where there's four separate\nscenes, four separate shots. Each shot is described in this single prompt in the storyboard.",
+   "context_after": "Duration five seconds, seed, okay, okay. And there's some notes there.\nI think if we just press run, we can see it run.",
+   "payoff_hint": "the storyboard-driven music video plan starts at ~36:49",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Naming the parts of a video prompt (camera, audio, negatives) is a small practical how-to that a beginner would screenshot.",
+   "overlaps_existing": null,
+   "text_hook": "The prompt has camera notes, audio notes and a negative prompt",
+   "opening_contract": {
+    "viewer_promise": "what a good text-to-video prompt contains",
+    "proof_hint": "the prompt text visible on screen",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h35",
+   "state": "new"
+  },
+  {
+   "t_start": 1240.4,
+   "t_end": 1265.4,
+   "hook_text": "Before we do that, I'm gonna actually bring up task manager. Let's see if we can split windows here, so we can get a bit of like a performance overview. So you can see right now my GPU is at about two percent. It's not really doing much, but when we press run, I expect this to hit up to a hundred percent, and also let's look at the temperature, it's about forty five.",
+   "context_before": "Duration five seconds, seed, okay, okay. And there's some notes there. I think if we just press run, we can see it run.",
+   "context_after": "Oh, you can't see that. Uh hold on one sec. I'm gonna move myself here. You can see here in the bottom left, the temperature is about45 degrees",
+   "payoff_hint": "GPU hits 100%, 60°C, 32GB RAM full at 00:21:23–00:21:48",
+   "hook_type": "curiosity",
+   "hook_score": 3,
+   "why": "Sets a before-number on screen and promises to watch it spike, a clean stakes-then-result setup.",
+   "overlaps_existing": null,
+   "text_hook": "GPU at 2% and 45°C. Now I press run.",
+   "opening_contract": {
+    "viewer_promise": "see what local video generation does to a GPU",
+    "proof_hint": "task manager GPU % and temperature before and after run",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h36",
+   "state": "new",
+   "excerpt": "my GPU is at about two percent. It's not really doing much, but when we press run, I expect this to hit up to a hundred percent"
+  },
+  {
+   "t_start": 1283.1,
+   "t_end": 1308.1,
+   "hook_text": "Boom. It's queuing up. Uh currently zero. Oop. The GPU spiked a little bit. CPU spiked. Memory spiked. Memory is about full now. All my32 gigabytes of DDR5 is being used. GPU is already at60 degrees temperature, and it's about at100% usage.",
+   "context_before": "Celsius. . I expect that to skyrocket as well Alright, let's run this.",
+   "context_after": "Fully utilizing the CP the GPU. Let me see if I can hear it. Yo, low key it's not actually it doesn't actually sound that loud.",
+   "payoff_hint": "five-second video done in under ten minutes at 00:22:49–00:23:09 and plays at 00:27:33",
+   "hook_type": "number-proof",
+   "hook_score": 4,
+   "why": "Live hardware numbers maxing out on screen the moment the job starts is a visceral, visual proof beat.",
+   "overlaps_existing": null,
+   "text_hook": "32GB of RAM gone in seconds. GPU pinned at 100%.",
+   "opening_contract": {
+    "viewer_promise": "what a local video model costs in hardware while it runs",
+    "proof_hint": "task manager showing 100% GPU, 60°C, memory full",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h37",
+   "state": "staged",
+   "excerpt": "All my32 gigabytes of DDR5 is being used. GPU is already at60 degrees temperature, and it's about at100% usage."
+  },
+  {
+   "t_start": 1314.1,
+   "t_end": 1329.2,
+   "hook_text": "Yo, low key it's not actually it doesn't actually sound that loud. There's a lot of noise coming from outside, but the actual GPU itself is doesn't sound as loud as I would have expected for100% usage.",
+   "context_before": "GPU is already at60 degrees temperature, and it's about at100% usage. Fully utilizing the CP the GPU. Let me see if I can hear it.",
+   "context_after": "Hey, yo. That's cool. Um let's get Claude on this computer so we can do that. Um",
+   "payoff_hint": "unclear",
+   "hook_type": "reveal",
+   "hook_score": 2,
+   "why": "Small surprise about fan noise under full load; marginal but a real reaction.",
+   "overlaps_existing": null,
+   "text_hook": "100% GPU and it's quieter than I expected",
+   "opening_contract": {
+    "viewer_promise": "how loud a GPU gets at 100% for video gen",
+    "proof_hint": "unclear",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h38",
+   "state": "new"
+  },
+  {
+   "t_start": 1332.6,
+   "t_end": 1369.2,
+   "hook_text": "Hey, yo. That's cool. Um let's get Claude on this computer so we can do that.\nUm\ninstall Claude. There's some weird shit going on in the background, but it's fine.\nUh Claude Desktop. Is there a clawed desktop on search claude desktop codecs desktop comes up?\nClaude Desktop on uh windows, yes. Nice. Let's get Claude up and running.",
+   "context_before": "There's a lot of noise coming from outside, but the actual GPU itself is\ndoesn't sound as loud as I would have expected for100% usage.",
+   "context_after": "Meanwhile. Um. Yeah, so I wow, we're at70%. Guys, this we're getting a a five-second video in under\nten minutes, which is likemazing. Um, this wasn't possible at like a few months ago or whenever before",
+   "payoff_hint": "Claude login lands at ~26:45 and the Comfy MCP setup begins at ~31:14",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "Installing an agent onto a Windows box mid-render sets up the stream's real arc, but the moment itself is search-box fumbling.",
+   "overlaps_existing": null,
+   "text_hook": "While the GPU renders, I install Claude to drive ComfyUI",
+   "opening_contract": {
+    "viewer_promise": "Claude is going to take over configuring ComfyUI",
+    "proof_hint": "Claude Desktop installed and the MCP setup prompt later",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h39",
+   "state": "new"
+  },
+  {
+   "t_start": 1369.2,
+   "t_end": 1394.6,
+   "hook_text": "Meanwhile. Um. Yeah, so I wow, we're at70%. Guys, this we're getting a a five-second video in under ten minutes, which is likemazing. Um, this wasn't possible at like a few months ago or whenever before H3 came out. H3 is truly a game changing model here.",
+   "context_before": "Uh Claude Desktop. Is there a clawed desktop on search claude desktop codecs desktop comes up? Claude Desktop on uh windows, yes. Nice. Let's get Claude up and running.",
+   "context_after": "Uh let's see if I can log in. Um there another way. Okay. Um, what can I do here?",
+   "payoff_hint": "the finished video plays with audio at 00:27:33–00:27:56",
+   "hook_type": "number-proof",
+   "hook_score": 4,
+   "why": "A clear number-claim with genuine excitement and a 'wasn't possible months ago' framing.",
+   "overlaps_existing": null,
+   "text_hook": "A 5-second AI video in under 10 minutes, on my own PC",
+   "opening_contract": {
+    "viewer_promise": "local text-to-video is now fast enough to be practical",
+    "proof_hint": "progress bar at 70% and the finished clip",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h40",
+   "state": "new",
+   "excerpt": "we're getting a a five-second video in under ten minutes"
+  },
+  {
+   "t_start": 1434.8,
+   "t_end": 1481.9,
+   "hook_text": "Claude on desktop here. One moment, please. So figs recommends the latent upscaler.\nSaves a lot of time. I'll send you that one in the script note.\nAppreciate you, Figs.",
+   "context_before": "Oh, I could have just done that to show Discord.\nOkay, interesting. That's good to know for next time. Um yeah, I'm just gonna try log in to",
+   "context_after": "I'll show you what I'm building in a moment. Just trying to log on to my Claude here\non the desktop so we can do some agency driven development.",
+   "payoff_hint": "the upscaler comparison is pulled up at ~33:11",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "A community tip about a specific time-saving node is a quiet, practical answer-to-chat beat.",
+   "overlaps_existing": null,
+   "text_hook": "Chat's tip: use the latent upscaler, it saves a lot of time",
+   "opening_contract": {
+    "viewer_promise": "a faster way to get high-res video out of Comfy",
+    "proof_hint": "the upscaler comparison image later",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "context-debt",
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h41",
+   "state": "new"
+  },
+  {
+   "t_start": 1500.2,
+   "t_end": 1516.1,
+   "hook_text": "I'll show you what I'm building in a moment. Just trying to log on to my Claude here\non the desktop so we can do some agency driven development.",
+   "context_before": "Saves a lot of time. I'll send you that one in the script note.\nAppreciate you, Figs.",
+   "context_after": "Let's see, let's see.\nUh",
+   "payoff_hint": "the Comfy MCP setup and music video plan from ~31:05 onward",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "A stated promise of what is about to be built, with the 'agency driven development' phrase as the curiosity, but nothing on screen yet.",
+   "overlaps_existing": null,
+   "text_hook": "Agent-driven video generation, running on a Windows desktop",
+   "opening_contract": {
+    "viewer_promise": "an agent will build the video pipeline",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h42",
+   "state": "new"
+  },
+  {
+   "t_start": 1605.1,
+   "t_end": 1620.4,
+   "hook_text": "see if this works. Okay. We are in\non Claude. All right, all right, all right. Alright, now I can show my screen again and I'll",
+   "context_before": "Let's see, let's see.\nUh",
+   "context_after": "just explain everything to Alex. Yo, I see through. What's up?\nWhat's up? What's up? Boom. Okay. So what I'm doing right now, I have",
+   "payoff_hint": "the recap of the whole setup follows at ~27:12",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "The relief beat that closes the login struggle, and it leads straight into the recap of what was built.",
+   "overlaps_existing": null,
+   "text_hook": "Four minutes of login later, Claude is finally on the box",
+   "opening_contract": {
+    "viewer_promise": "the setup is complete and about to be shown",
+    "proof_hint": "Claude Desktop open on screen",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h43",
+   "state": "new"
+  },
+  {
+   "t_start": 1632.2,
+   "t_end": 1658.0,
+   "hook_text": "hold on. Accidentally started that YouTube video. I this stream I have installed from scratch, Comfy UI. This is my Windows desktop, and this is the Mini Max H3 model that can take either image to video or text to video. And we've just generated this video here, five second video in under ten minutes on my Windows PC locally.",
+   "context_before": "just explain everything to Alex. Yo, I see through. What's up? What's up? What's up? Boom. Okay. So what I'm doing right now, I have",
+   "context_after": "Wow, audio as well. This is a full cinematic uh live action video. And it's even break broken down the storyboard here. Shot one high side angle, protagonist sprinting at the",
+   "payoff_hint": "the clip plays with audio right after, 00:27:50–00:28:26",
+   "hook_type": "reveal",
+   "hook_score": 4,
+   "why": "A self-contained recap that sets stakes (from scratch, local, Windows) and delivers the result on screen immediately.",
+   "overlaps_existing": null,
+   "text_hook": "Installed from scratch this stream. First video already out.",
+   "opening_contract": {
+    "viewer_promise": "see a locally generated AI video made from a fresh install",
+    "proof_hint": "the generated video playing on the Windows desktop",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h44",
+   "state": "new"
+  },
+  {
+   "t_start": 1670.2,
+   "t_end": 1688.5,
+   "hook_text": "Wow, audio as well. This is a full cinematic uh live action video. And it's even break broken down the storyboard here. Shot one high side angle, protagonist sprinting at the roof edge, pursuers appearing in the rooftop doorway behind him.",
+   "context_before": "to video or text to video. And we've just generated this video here, five second video in under ten minutes on my Windows PC locally.",
+   "context_after": ". It's obviously got some things wrong here The pursuers are in front of him, and there's like some weird artifacts, but",
+   "payoff_hint": "honest verdict follows at 00:28:11–00:28:35",
+   "hook_type": "emotion",
+   "hook_score": 4,
+   "why": "The genuine 'wow, audio as well' reaction over a cinematic clip is the payoff moment of the whole arc.",
+   "overlaps_existing": null,
+   "text_hook": "It generated the sound too. Watch the rooftop chase.",
+   "opening_contract": {
+    "viewer_promise": "a locally generated video with its own soundtrack",
+    "proof_hint": "the clip playing with audible sound, storyboard text beside it",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h45",
+   "state": "new",
+   "excerpt": "Wow, audio as well. This is a full cinematic uh live action video."
+  },
+  {
+   "t_start": 1691.8,
+   "t_end": 1715.9,
+   "hook_text": "It's obviously got some things wrong here The pursuers are in front of him, and there's like some weird artifacts, but I mean it looks pretty damn good, cinematic style, etc. So yeah, dude, we got that up and running in less than20 minutes. I'm pretty impressed. I didn't expect it to be so uh seamless.",
+   "context_before": "roof edge, pursuers appearing in the rooftop doorway behind him. .",
+   "context_after": "What's the app? Yo, Weedle, what's up? This is um comfy UI C O M F Y UI. It's pretty much been the go-to app for image generation and now video generation uh locally.",
+   "payoff_hint": "the generated clip just shown (00:27:50); setup walkthrough at 00:28:58",
+   "hook_type": "reveal",
+   "hook_score": 4,
+   "why": "An honest verdict that names the flaw and the win, with a concrete time number.",
+   "overlaps_existing": null,
+   "text_hook": "It got the chase backwards. Still: 20 minutes, zero dollars.",
+   "opening_contract": {
+    "viewer_promise": "a fair judgement of local text-to-video quality and effort",
+    "proof_hint": "the clip with the wrong pursuer placement, artifacts visible",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h46",
+   "state": "new"
+  },
+  {
+   "t_start": 1715.9,
+   "t_end": 1731.3,
+   "hook_text": "What's the app? Yo, Weedle, what's up? This is um comfy UI C O M F Y UI. It's pretty much been the go-to app for image generation and now video generation uh locally.",
+   "context_before": "So yeah, dude, we got that up and running in less than20 minutes. I'm pretty impressed. I didn't expect it to be so uh seamless.",
+   "context_after": "Yeah, it's great. Looks good, says Davy. Thank you. Fanny for the follow, thank you. Oh, it was late. I'd love to see how you set it up.",
+   "payoff_hint": "setup walkthrough at 00:28:58–00:30:38",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Direct answer to a chat question naming the tool; short and useful but low tension.",
+   "overlaps_existing": null,
+   "text_hook": "The free app I use for local AI video",
+   "opening_contract": {
+    "viewer_promise": "the name of the tool that does local image and video gen",
+    "proof_hint": "ComfyUI on screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h47",
+   "state": "new"
+  },
+  {
+   "t_start": 1736.1,
+   "t_end": 1753.2,
+   "hook_text": "Oh, it was late. I'd love to see how you set it up. Yeah, it's super easy. Let me just tell you guys how I did it. Pretty much I went to comfy.org. This is where you download comfy UI. I just pressed download desktop. Once that opened up, uh we actually might be able to show you",
+   "context_before": "It's pretty much been the go-to app for image generation and now video generation uh locally. Yeah, it's great. Looks good, says Davy. Thank you. Fanny for the follow, thank you.",
+   "context_after": "in the stream VOD. Uh we just log into boop boop okay.",
+   "payoff_hint": "the first-run screens shown at 00:29:32–00:30:38",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A chat request answered with a step-by-step; the how-to is the hook.",
+   "overlaps_existing": null,
+   "text_hook": "How I set up local AI video: one download, one click",
+   "opening_contract": {
+    "viewer_promise": "the exact steps to install local text-to-video",
+    "proof_hint": "comfy.org download page and the first-run setup screens",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h48",
+   "state": "staged",
+   "excerpt": "Pretty much I went to comfy.org. This is where you download comfy UI. I just pressed download desktop."
+  },
+  {
+   "t_start": 1772.5,
+   "t_end": 1790.1,
+   "hook_text": "yeah, I downloaded it. And then boom. This is what you see when you first run uh comfy UI. It'll be like, Do you want to cloud or local? I did local. I'm running this all locally. I want to do it for free, I don't want to pay for cloud stuff. Um you set up what GPU you have.",
+   "context_before": "boop boop okay. Let me show you. So",
+   "context_after": "I'm running a NVIDIA GPU. Set that up. Um, and then here, this is like you can choose a starter workflow, and this is the one that I just chose.",
+   "payoff_hint": "starter workflow pre-installs everything, 00:29:58–00:30:26",
+   "hook_type": "contrarian",
+   "hook_score": 3,
+   "why": "The free-vs-paid choice on the first-run screen is a decision viewers care about, stated plainly.",
+   "overlaps_existing": null,
+   "text_hook": "Cloud or local? I picked local so it costs nothing.",
+   "opening_contract": {
+    "viewer_promise": "how to run this for free instead of paying for cloud",
+    "proof_hint": "the cloud/local picker and GPU setup screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h49",
+   "state": "new",
+   "excerpt": "I'm running this all locally. I want to do it for free, I don't want to pay for cloud stuff."
+  },
+  {
+   "t_start": 1790.1,
+   "t_end": 1820.8,
+   "hook_text": "I'm running a NVIDIA GPU. Set that up. Um, and then here, this is like you can choose a starter workflow, and this is the one that I just chose. The Mini Max H3. This is the new open weights text-to-video model. Also does audio. I think it also does image to video. It's super good. It's what we just saw. Yeah, so I just clicked that workflow, and that's it, just pre-installed it. It had everything ready to go. So this is what you saw once everything was",
+   "context_before": "I did local. I'm running this all locally. I want to do it for free, I don't want to pay for cloud stuff. Um you set up what GPU you have.",
+   "context_after": "installed and downloaded. Is this workflow? It's like a node-based diagram. And it even had pre-filled this text prompt here. So that was all pre-filled.",
+   "payoff_hint": "the pre-filled node graph and prompt on screen, 00:30:20–00:30:38",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "'I just clicked that workflow and that's it' is the promise a scroller wants to hear about local video gen.",
+   "overlaps_existing": null,
+   "text_hook": "One click and the video model installs itself",
+   "opening_contract": {
+    "viewer_promise": "you do not need to wire anything up by hand",
+    "proof_hint": "the starter workflow picker and the pre-filled graph",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h50",
+   "state": "new",
+   "excerpt": "I just clicked that workflow, and that's it, just pre-installed it. It had everything ready to go."
+  },
+  {
+   "t_start": 1820.8,
+   "t_end": 1842.4,
+   "hook_text": "installed and downloaded. Is this workflow? It's like a node-based diagram.\nAnd it even had pre-filled this text prompt here. So that was all pre-filled.\nAnd yeah, it's all set up here. It was super easy to get going.\nYeah, I think anyone could do it. You could watch back this VOD.",
+   "context_before": "It's super good. It's what we just saw. Yeah, so I just clicked that workflow, and that's it,\njust pre-installed it. It had everything ready to go. So this is what you saw once everything was",
+   "context_after": "All my uh live stream VODs are on YouTube. So if you want to watch those, you can\ndo that there. Um I'll also be making short form on TikTok, Instagram, etc.",
+   "payoff_hint": "immediate — the pre-filled node graph is on screen",
+   "hook_type": "contrarian",
+   "hook_score": 3,
+   "why": "The verdict that closes the how-to — local video gen needs no expertise — is its own scroll-stopper for people who assume Comfy is hard.",
+   "overlaps_existing": null,
+   "text_hook": "The prompt was pre-filled. Anyone could do this.",
+   "opening_contract": {
+    "viewer_promise": "local video generation is beginner-easy",
+    "proof_hint": "the pre-filled workflow and prompt on screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h51",
+   "state": "new"
+  },
+  {
+   "t_start": 1853.7,
+   "t_end": 1865.0,
+   "hook_text": "So did Hermes handle everything? No, this is all manual. Only now I've just also installed uh Clawed desktop here.",
+   "context_before": "All my uh live stream VODs are on YouTube. So if you want to watch those, you can do that there. Um I'll also be making short form on TikTok, Instagram, etc.",
+   "context_after": "So now let me show you what I'm gonna do now. I'm going to say, let's use Opus. I'm gonna say",
+   "payoff_hint": "Claude asked to set up the ComfyUI MCP at 00:31:21–00:31:47",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "A chat answer that pivots the stream from manual setup to agent-driven control.",
+   "overlaps_existing": null,
+   "text_hook": "No agent did this part. Now the agent takes over.",
+   "opening_contract": {
+    "viewer_promise": "where the human stops and the agent starts",
+    "proof_hint": "Claude Desktop opening on the Windows machine",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h52",
+   "state": "new"
+  },
+  {
+   "t_start": 1874.1,
+   "t_end": 1907.0,
+   "hook_text": "use Opus. I'm gonna say Sonic. We're gonna we want it fast. We don't need that much intelligence here. Set up Comfy UI MCP so we can configure Comfy UI together. Okay, so I'm gonna set up Comfy UI MCP. So this essentially will let me edit these workflows, create new workflows, edit the text, all within Claude. So I don't have to manually mess with the UI.",
+   "context_before": "So now let me show you what I'm gonna do now. I'm going to say, let's",
+   "context_after": "That is the plan here. I also don't recommend writing your own prompts. I would use a language model for your prompts. Yep.",
+   "payoff_hint": "Claude asks clarifying questions at 00:32:07–00:32:23; MCP setup result later in stream",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A concrete agentic plan: an MCP so the model edits video workflows instead of the human clicking.",
+   "overlaps_existing": null,
+   "text_hook": "I'm letting Claude drive ComfyUI so I never touch the nodes",
+   "opening_contract": {
+    "viewer_promise": "an AI agent building and editing ComfyUI workflows for you",
+    "proof_hint": "the prompt typed into Claude Desktop and its response",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h53",
+   "state": "new",
+   "excerpt": "Set up Comfy UI MCP so we can configure Comfy UI together."
+  },
+  {
+   "t_start": 1907.0,
+   "t_end": 1927.7,
+   "hook_text": "That is the plan here. I also don't recommend writing your own prompts. I would use a language model for your prompts. Yep. Or use a custom workflow. Yep, yep. We will do that.",
+   "context_before": "So this essentially will let me edit these workflows, create new workflows, edit the text, all within Claude. So I don't have to manually mess with the UI.",
+   "context_after": "Okay, is Comfy UR already running? Yes, already running. For the MCV server, do you have a preference? Uh pretty good well maintained one. I have a specific repo in mind.",
+   "payoff_hint": "Claude asked to write storyboard prompts for the music video at 00:36:49–00:37:31",
+   "hook_type": "contrarian",
+   "hook_score": 3,
+   "why": "A short, quotable rule that contradicts how most people approach text-to-video.",
+   "overlaps_existing": null,
+   "text_hook": "Don't write your own video prompts",
+   "opening_contract": {
+    "viewer_promise": "a better way to prompt a video model",
+    "proof_hint": "unclear",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h54",
+   "state": "new",
+   "excerpt": "I also don't recommend writing your own prompts. I would use a language model for your prompts."
+  },
+  {
+   "t_start": 1927.7,
+   "t_end": 1943.6,
+   "hook_text": "Okay, is Comfy UR already running? Yes, already running. For the MCV server, do you have a preference?\nUh pretty good well maintained one. I have a specific repo in mind.\nUh yes. Find the best one. I don't have it in mind.",
+   "context_before": "I would use a language model for your prompts. Yep.\nOr use a custom workflow. Yep, yep. We will do that.",
+   "context_after": "I assume there's an official one. But we'll see. Okay, so what we're gonna work on once this\nMCP is set up is making a music video for uh our song",
+   "payoff_hint": "unclear — the MCP setup outcome is not in this chunk",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Claude asking clarifying questions and being told 'find the best one' is a small demo of delegating research to the agent.",
+   "overlaps_existing": null,
+   "text_hook": "I told Claude to find the best ComfyUI MCP itself",
+   "opening_contract": {
+    "viewer_promise": "the agent will pick and install the MCP server on its own",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h55",
+   "state": "new"
+  },
+  {
+   "t_start": 1943.7,
+   "t_end": 1983.4,
+   "hook_text": "I assume there's an official one. But we'll see. Okay, so what we're gonna work on once this MCP is set up is making a music video for uh our song AGI before GTA6. Let's see if we can find that without because I don't I haven't logged into",
+   "context_before": "Uh pretty good well maintained one. I have a specific repo in mind. Uh yes. Find the best one. I don't have it in mind.",
+   "context_after": "Discord here, but if I go to tech friendcommunity.com, I can see our Discord without having to log in, which is really cool. Uh shout out KC Figs, they just shared the latent upscaler.",
+   "payoff_hint": "song plays at 00:35:37; storyboard prompt submitted at 00:37:53; video later in stream",
+   "hook_type": "story",
+   "hook_score": 3,
+   "why": "Names a fun, concrete goal for the stream that a viewer wants to see finished.",
+   "overlaps_existing": null,
+   "text_hook": "Making a music video for 'AGI before GTA 6', fully local",
+   "opening_contract": {
+    "viewer_promise": "an AI music video for an AI-made song",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h56",
+   "state": "new"
+  },
+  {
+   "t_start": 1977.0,
+   "t_end": 1991.9,
+   "hook_text": "AGI before GTA6. Let's see if we can find that without because I don't I haven't logged into\nDiscord here, but if I go to tech friendcommunity.com, I can see our Discord without having to log",
+   "context_before": "I assume there's an official one. But we'll see. Okay, so what we're gonna work on once this\nMCP is set up is making a music video for uh our song",
+   "context_after": "in, which is really cool. Uh shout out KC Figs, they just shared the latent upscaler.\nWhich will so if if you guys don't know what an upscaler is, it takes uh video with",
+   "payoff_hint": "immediate — the community site showing Discord content without login",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "A quiet feature reveal of the community site that viewers who avoid Discord would find useful.",
+   "overlaps_existing": null,
+   "text_hook": "Our Discord is readable on the web with no login",
+   "opening_contract": {
+    "viewer_promise": "you can browse the community's Discord without an account",
+    "proof_hint": "the site showing Discord channels on screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h57",
+   "state": "new"
+  },
+  {
+   "t_start": 1991.9,
+   "t_end": 2009.3,
+   "hook_text": "in, which is really cool. Uh shout out KC Figs, they just shared the latent upscaler. Which will so if if you guys don't know what an upscaler is, it takes uh video with lower resolution and can upscale it to be um",
+   "context_before": "AGI before GTA6. Let's see if we can find that without because I don't I haven't logged into Discord here, but if I go to tech friendcommunity.com, I can see our Discord without having to log",
+   "context_after": "higher resolution. I think okay, so the top left is the one. These are all just comparing different upscalers. Um yeah, so we might try that out too.",
+   "payoff_hint": "upscaler comparison image on screen at 00:33:30",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Community-sourced tip with a comparison image; useful but low energy.",
+   "overlaps_existing": null,
+   "text_hook": "A chat viewer sent the upscaler that saves the most time",
+   "opening_contract": {
+    "viewer_promise": "how to get higher-res output from a low-res generation",
+    "proof_hint": "upscaler comparison grid on screen",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h58",
+   "state": "new"
+  },
+  {
+   "t_start": 2051.0,
+   "t_end": 2080.1,
+   "hook_text": "This is it? No, it's not available. Oh, so I uploaded it.\nUp up\nInteresting. Okay. So it looks like the website won't display that.",
+   "context_before": "GTA before I mean AGI before GTA six song. Um\nis it",
+   "context_after": "Um\nI think let's see if I go Suno. Okay, it's got some of my s oh no, this",
+   "payoff_hint": "the song is found on Suno instead at ~34:55",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "A small live failure on the community site, with a quick workaround right after.",
+   "overlaps_existing": null,
+   "text_hook": "My own song wouldn't load on my own site",
+   "opening_contract": {
+    "viewer_promise": "why the upload is missing and how it gets found",
+    "proof_hint": "the song playing from Suno shortly after",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h59",
+   "state": "new"
+  },
+  {
+   "t_start": 2137.7,
+   "t_end": 2163.0,
+   "hook_text": "We got we got we got AI got my job. A I took my bitch. A AI made a movie and AI made a hit. A um replacement before I take a shit. We got A G I before G T A six. I used to write code by hand. Now AI hold my hand. Now A I code my plans. I just type. Okay, so that's pretty much it.",
+   "context_before": "I can play it through the Mac so you will be able to hear it. Pretty sure this is the one we want.",
+   "context_after": "I think it might be this one. A guy. Wait, because it's all saying we got a guy.",
+   "payoff_hint": "lyrics fed to Claude for a storyboard at 00:36:49; music video generated later",
+   "hook_type": "emotion",
+   "hook_score": 3,
+   "why": "The song's own lyrics are funny and quotable, and they set up the music-video build.",
+   "overlaps_existing": null,
+   "text_hook": "The AI song we're turning into an AI music video",
+   "opening_contract": {
+    "viewer_promise": "hear the track and see what gets made from it",
+    "proof_hint": "the Suno track playing on screen",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h60",
+   "state": "new"
+  },
+  {
+   "t_start": 2163.0,
+   "t_end": 2173.1,
+   "hook_text": "I think it might be this one.\nA guy. Wait, because it's all saying we got a guy.\nOh no, it's this one.",
+   "context_before": "I used to write code by hand. Now AI hold my hand.\nNow A I code my plans. I just type. Okay, so that's pretty much it.",
+   "context_after": "What the fuck? Windows block some of my shit.\nI'm gonna go sit down.",
+   "payoff_hint": "the right take is confirmed at ~36:37",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "A comedy beat where the generated vocal mispronounces the song's own title and the wrong take gets caught.",
+   "overlaps_existing": null,
+   "text_hook": "The AI singer keeps saying 'a guy' instead of AGI",
+   "opening_contract": {
+    "viewer_promise": "the AI song's pronunciation gag",
+    "proof_hint": "the track playing with the 'a guy' lyric",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h61",
+   "state": "new"
+  },
+  {
+   "t_start": 2180.9,
+   "t_end": 2182.9,
+   "hook_text": "What the fuck? Windows block some of my shit.",
+   "context_before": "A guy. Wait, because it's all saying we got a guy. Oh no, it's this one.",
+   "context_after": "I'm gonna go sit down. Yeah, yeah, it's this one.",
+   "payoff_hint": "unclear",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "A small live-frustration beat; marginal on its own.",
+   "overlaps_existing": null,
+   "text_hook": "Windows just blocked my own file",
+   "opening_contract": {
+    "viewer_promise": "a Windows annoyance mid-stream",
+    "proof_hint": "unclear",
+    "context_debt": "high",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "context-debt",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h62",
+   "state": "new"
+  },
+  {
+   "t_start": 2209.9,
+   "t_end": 2251.6,
+   "hook_text": "Okay, I'm gonna copy the lyrics. I'm gonna go into a new claude session. Um say plan a storyboard and uh and text prompts. Oops, accidentally text prompts five seconds each prompt to go into the minimax h3 model for prompts to make a music video for the following lyrics and song.",
+   "context_before": "Yeah, yeah, it's this one. Okay, let's see if I can download this. Oh, actually.",
+   "context_after": "Um I'll probably also download the song. Let's see, download MP3 unlock and download. What does that mean? I don't know what that means, but yeah, okay.",
+   "payoff_hint": "prompt submitted at 00:37:53; storyboard and generated shots later in stream",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A concrete, repeatable pipeline step: lyrics in, five-second video prompts out.",
+   "overlaps_existing": null,
+   "text_hook": "Paste the lyrics, let Claude storyboard the whole video",
+   "opening_contract": {
+    "viewer_promise": "how to go from a song to video-model prompts automatically",
+    "proof_hint": "the prompt typed into Claude asking for a storyboard",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h63",
+   "state": "new",
+   "excerpt": "text prompts five seconds each prompt to go into the minimax h3 model for prompts to make a music video for the following lyrics and song."
+  },
+  {
+   "t_start": 2251.6,
+   "t_end": 2269.6,
+   "hook_text": "Um I'll probably also download the song. Let's see, download MP3 unlock and download.\nWhat does that mean? I don't know what that means, but yeah, okay.",
+   "context_before": "and text prompts. Oops, accidentally text prompts five seconds each prompt to go into the minimax h3 model\nfor prompts to make a music video for the following lyrics and song.",
+   "context_after": "Um I kinda need to pee too, so\nlet me just submit this prompt and I'll be right back.",
+   "payoff_hint": "unclear",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "A passing confusion at a paywall-ish button on a generated song, a relatable tool friction moment.",
+   "overlaps_existing": null,
+   "text_hook": "Suno wants me to 'unlock' my own song to download it",
+   "opening_contract": {
+    "viewer_promise": "what 'unlock and download' means on Suno",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "proof-delay",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h64",
+   "state": "new"
+  },
+  {
+   "t_start": 2269.6,
+   "t_end": 2281.0,
+   "hook_text": "Um I kinda need to pee too, so\nlet me just submit this prompt and I'll be right back.\nAnd we can actually play the song while I go.",
+   "context_before": "Um I'll probably also download the song. Let's see, download MP3 unlock and download.\nWhat does that mean? I don't know what that means, but yeah, okay.",
+   "context_after": "Okay, boom. Uh alright, I'm gonna play the song and be back.\nWe weep weep weep weep weep weep weep, we got a j",
+   "payoff_hint": "the storyboard result after the break, outside this chunk",
+   "hook_type": "story",
+   "hook_score": 3,
+   "why": "The agent-works-while-I-step-away beat is a genuinely funny, honest framing of what delegating to an AI feels like.",
+   "overlaps_existing": null,
+   "text_hook": "Claude plans my music video while I take a bathroom break",
+   "opening_contract": {
+    "viewer_promise": "the storyboard will be done when he returns",
+    "proof_hint": "Claude's storyboard output after the break",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h65",
+   "state": "new"
+  },
+  {
+   "t_start": 2273.6,
+   "t_end": 2285.6,
+   "hook_text": "let me just submit this prompt and I'll be right back. And we can actually play the song while I go. Okay, boom. Uh alright, I'm gonna play the song and be back.",
+   "context_before": "What does that mean? I don't know what that means, but yeah, okay. Um I kinda need to pee too, so",
+   "context_after": "We weep weep weep weep weep weep weep, we got a j before G T A six",
+   "payoff_hint": "the AI-made song plays over the stream while Claude drafts the storyboard, ~00:38:05",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "Comedy beat of handing the job to the agent and walking off mid-stream, with the AI song playing in his absence.",
+   "overlaps_existing": null,
+   "text_hook": "Claude storyboards the video while I step away",
+   "opening_contract": {
+    "viewer_promise": "the agent works unattended while the host leaves and the song fills the gap",
+    "proof_hint": "the storyboard prompt submitted, then the song playing with the host gone",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h66",
+   "state": "new"
+  },
+  {
+   "t_start": 2298.4,
+   "t_end": 2315.3,
+   "hook_text": "test we got we got we got A I got my job, a I took my bitch. A AI made a movie and AI made a hit. A um replace me before I take a shit. We got aG GI A before G T A",
+   "context_before": "We weep weep weep weep weep weep weep, we got a j before G T A six",
+   "context_after": "six. I used to write code by hand. Now AI hold my hand. Now AI called my plans. I just type, make it better.",
+   "payoff_hint": "the chorus 'AGI before GTA 6' at 00:39:18; AJ then makes a music video for this song",
+   "hook_type": "emotion",
+   "hook_score": 3,
+   "why": "Opening verse of the AGI-before-GTA-6 song is instantly funny and quotable for the dev audience.",
+   "overlaps_existing": null,
+   "text_hook": "AI got my job, AI took my girl",
+   "opening_contract": {
+    "viewer_promise": "a comedy rap about AI replacing everyone",
+    "proof_hint": "the song playing on stream with its lyrics",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h67",
+   "state": "new"
+  },
+  {
+   "t_start": 2315.5,
+   "t_end": 2337.7,
+   "hook_text": "six. I used to write code by hand. Now AI hold my hand. Now AI called my plans. I just type, make it better. Then pretend I understand. One prompt, whole app. One click. Whole stack. Spent four years learning code. Shoulda learned how to chat.",
+   "context_before": "A AI made a movie and AI made a hit. A um replace me before I take a shit. We got aG GI A before G T A",
+   "context_after": "Clawed in one tab. Codex in the back. Chat GPT knows me better than half of my contacts. Everybody got an agent. Everybody got a clone. My AI answering emails while I'm scrolling on my phone.",
+   "payoff_hint": "punchline lands in the same lines ('Shoulda learned how to chat'); chorus follows at 00:39:18",
+   "hook_type": "contrarian",
+   "hook_score": 4,
+   "why": "'I just type make it better then pretend I understand' is the vibe-coding confession every dev recognises.",
+   "overlaps_existing": null,
+   "text_hook": "Four years learning code. Should've learned how to chat.",
+   "opening_contract": {
+    "viewer_promise": "a verse that roasts the way developers now work",
+    "proof_hint": "the lyric punchline itself",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h68",
+   "state": "new"
+  },
+  {
+   "t_start": 2337.7,
+   "t_end": 2358.2,
+   "hook_text": "Clawed in one tab. Codex in the back. Chat GPT knows me better than half of my contacts. Everybody got an agent. Everybody got a clone. My AI answering emails while I'm scrolling on my phone. What the fuck is happening? Nobody playin' for this. Rock star.",
+   "context_before": "Then pretend I understand. One prompt, whole app. One click. Whole stack. Spent four years learning code. Shoulda learned how to chat.",
+   "context_after": "Been cooking since I was a kid. We got a job before GTA Six. Robots got careers before GTA Six. AI making films before GTA Six.",
+   "payoff_hint": "leads straight into the chorus at 00:39:18",
+   "hook_type": "emotion",
+   "hook_score": 3,
+   "why": "Name-drops Claude, Codex and ChatGPT in a line the audience lives every day.",
+   "overlaps_existing": null,
+   "text_hook": "ChatGPT knows me better than my contacts do",
+   "opening_contract": {
+    "viewer_promise": "a relatable roast of running three AI tools at once",
+    "proof_hint": "the lyrics and the chorus that follows",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h69",
+   "state": "new"
+  },
+  {
+   "t_start": 2358.2,
+   "t_end": 2389.2,
+   "hook_text": "Been cooking since I was a kid. We got a job before GTA Six. Robots got careers before GTA Six. AI making films before GTA Six. I might be unemployed before GTA six. We got a job before GTA six. Whole damn world got patched and switched. Ten years later, rocks. Still won't ship. We got AI.",
+   "context_before": "What the fuck is happening? Nobody playin' for this. Rock star.",
+   "context_after": "My fridge got Wi-Fi. My car can drive. My phone made a song and the singer ain't alive. D D fake me once. D fake me twice. Saw myself selling crypto.",
+   "payoff_hint": "self-contained chorus; the song later gets its own AI-generated music video",
+   "hook_type": "emotion",
+   "hook_score": 3,
+   "why": "The chorus is the hook of the whole song and the joke is universal to gamers and devs alike.",
+   "overlaps_existing": null,
+   "text_hook": "Robots got careers before GTA 6",
+   "opening_contract": {
+    "viewer_promise": "the chorus of an AI-vs-GTA-6 song",
+    "proof_hint": "the song itself",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h70",
+   "state": "new"
+  },
+  {
+   "t_start": 2391.6,
+   "t_end": 2418.1,
+   "hook_text": "My fridge got Wi-Fi. My car can drive. My phone made a song and the singer ain't alive. D D fake me once. D fake me twice. Saw myself selling crypto. I ain't even know the price. CEO said AI first. That's corporate for your cooks. Whole team got deleted. Then the stock price went up. Used to fear sky net. Now I pay it twenty bucks.",
+   "context_before": "Whole damn world got patched and switched. Ten years later, rocks. Still won't ship. We got AI.",
+   "context_after": "ASIC for business plan. It told me good luck. Got the therapist bot. Got my girlfriend bot. Got an AI influencer making more than my job.",
+   "payoff_hint": "'Used to fear Skynet, now I pay it twenty bucks' is the punchline, same lines",
+   "hook_type": "contrarian",
+   "hook_score": 4,
+   "why": "Densest verse of the song: deepfakes, AI-first layoffs and the $20 subscription joke back to back.",
+   "overlaps_existing": null,
+   "text_hook": "CEO said AI first. Team deleted, stock went up.",
+   "opening_contract": {
+    "viewer_promise": "a verse skewering AI-first corporate culture",
+    "proof_hint": "the lyric punchlines",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h71",
+   "state": "new"
+  },
+  {
+   "t_start": 2418.1,
+   "t_end": 2433.3,
+   "hook_text": "ASIC for business plan. It told me good luck. Got the therapist bot. Got my girlfriend bot. Got an AI influencer making more than my job. Got a robot with the body doing flips inside the lab.",
+   "context_before": "CEO said AI first. That's corporate for your cooks. Whole team got deleted. Then the stock price went up. Used to fear sky net. Now I pay it twenty bucks.",
+   "context_after": "I still can't enter my city Twenty thirteen. GTA V. Twenty twenty-two. Chat GPT. Twenty twenty six.",
+   "payoff_hint": "the GTA timeline beat at 00:40:39",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "Quick run of AI-life jokes; weaker than the verse before it but still quotable.",
+   "overlaps_existing": null,
+   "text_hook": "Asked AI for a business plan. It said good luck.",
+   "opening_contract": {
+    "viewer_promise": "more rapid-fire jokes about living with AI",
+    "proof_hint": "the lyrics",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h72",
+   "state": "new"
+  },
+  {
+   "t_start": 2439.5,
+   "t_end": 2454.6,
+   "hook_text": "Twenty thirteen. GTA V. Twenty twenty-two. Chat GPT. Twenty twenty six. Machines can think things. Rockstar.",
+   "context_before": "Got a robot with the body doing flips inside the lab. I still can't enter my city",
+   "context_after": "We got HIB4 GTA six. Robots got careers before G T A six. AI making films before GTA C Grandma Pro Engineering before G T A six.",
+   "payoff_hint": "the final chorus right after, 00:40:56",
+   "hook_type": "number-proof",
+   "hook_score": 3,
+   "why": "Three dates tell the whole joke in six seconds and set up the chorus drop.",
+   "overlaps_existing": null,
+   "text_hook": "2013 GTA V. 2022 ChatGPT. 2026: machines think.",
+   "opening_contract": {
+    "viewer_promise": "a timeline that makes the GTA 6 delay absurd",
+    "proof_hint": "the dates and the chorus",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h73",
+   "state": "new"
+  },
+  {
+   "t_start": 2456.9,
+   "t_end": 2475.6,
+   "hook_text": "We got HIB4 GTA six. Robots got careers before G T A six. AI making films before GTA C Grandma Pro Engineering before G T A six. We got AJ before G T A six.",
+   "context_before": "Twenty thirteen. GTA V. Twenty twenty-two. Chat GPT. Twenty twenty six. Machines can think things. Rockstar.",
+   "context_after": "AI saw the future. Fox still won't ship. We be we we got we can hear a bit less. We got AI.",
+   "payoff_hint": "final chorus and outro of the AI-generated song, ~00:41:19",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "A distinct lyric line from the song's final chorus that lands a joke a dev audience will get instantly.",
+   "overlaps_existing": null,
+   "text_hook": "Grandma's prompt engineering before GTA 6 ships",
+   "opening_contract": {
+    "viewer_promise": "a hooky chorus line that mocks the GTA 6 wait with AI progress",
+    "proof_hint": "the song playing on stream",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h74",
+   "state": "new"
+  },
+  {
+   "t_start": 2494.4,
+   "t_end": 2509.4,
+   "hook_text": "Teach you how to AI when GTR coming out. You just talk to it, bro. That's the hack. But I don't have access to future release information. Man, fuck this shit. Texture windows, yes. That's a new era.",
+   "context_before": "AI saw the future. Fox still won't ship. We be we we got we can hear a bit less. We got AI.",
+   "context_after": "The idea with the latent upscaler is you generate like zero point two megapixels since it's way faster than upscale it to whatever. Okay. Finally a decent stream.",
+   "payoff_hint": "self-contained skit; the 'no access to future release information' refusal is the punchline",
+   "hook_type": "emotion",
+   "hook_score": 3,
+   "why": "The song's outro skit plays a real chatbot refusal for laughs, a beat everyone has hit.",
+   "overlaps_existing": null,
+   "text_hook": "Asked AI when GTA 6 drops. It refused.",
+   "opening_contract": {
+    "viewer_promise": "a joke about asking AI for GTA 6's release date",
+    "proof_hint": "the refusal line in the song",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h75",
+   "state": "new"
+  },
+  {
+   "t_start": 2509.4,
+   "t_end": 2520.5,
+   "hook_text": "The idea with the latent upscaler is you generate like zero point two megapixels since it's way faster than upscale it to whatever. Okay. Finally a decent stream.",
+   "context_before": "That's the hack. But I don't have access to future release information. Man, fuck this shit. Texture windows, yes. That's a new era.",
+   "context_after": "Yo, Sam, what's up? What's up, gassing? Okay. Um, so yeah, if you guys just joined today, we started with a fresh Windows PC. essentially We downloaded Comfy UI desktop uh from here, and then one",
+   "payoff_hint": "the 0.2 megapixel vertical render finishing in under two minutes, ~00:44:39",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "A concrete speed technique read aloud from chat, stated as the reason rather than just the setting.",
+   "overlaps_existing": null,
+   "text_hook": "Render tiny, then upscale: the local video speed trick",
+   "opening_contract": {
+    "viewer_promise": "a way to make local video generation much faster",
+    "proof_hint": "a low-res render finishing quickly, then the upscaler step",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h76",
+   "state": "new"
+  },
+  {
+   "t_start": 2520.5,
+   "t_end": 2561.7,
+   "hook_text": "Yo, Sam, what's up? What's up, gassing? Okay. Um, so yeah, if you guys just joined today, we started with a fresh Windows PC. essentially We downloaded Comfy UI desktop uh from here, and then one of their default workflows was Mini Max H3, which generates if we generated this video in like five minutes, I think, from text, like completely unique video, all generated locally from this text prompt.",
+   "context_before": "The idea with the latent upscaler is you generate like zero point two megapixels since it's way faster than upscale it to whatever. Okay. Finally a decent stream.",
+   "context_after": "So yeah, so Figs is saying if we do0.2 megapixels here, so you can actually set the resolution if we do0.2. Let's try also do a portrait video.",
+   "payoff_hint": "the generated video is on screen as he says it; the faster banana clip follows at 00:44:39",
+   "hook_type": "how-to",
+   "hook_score": 4,
+   "why": "A whole-stream recap in four lines with a concrete result: fresh PC, ComfyUI desktop, unique video, all local.",
+   "overlaps_existing": null,
+   "text_hook": "Fresh Windows PC to local AI video in 5 minutes",
+   "opening_contract": {
+    "viewer_promise": "you can go from a clean Windows install to locally generated AI video",
+    "proof_hint": "the ComfyUI workflow and the generated clip on screen",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h77",
+   "state": "new",
+   "excerpt": "we generated this video in like five minutes, I think, from text"
+  },
+  {
+   "t_start": 2561.7,
+   "t_end": 2583.4,
+   "hook_text": "So yeah, so Figs is saying if we do0.2 megapixels here, so you can actually set the resolution if we do0.2. Let's try also do a portrait video. Uh9x16. So this is like uh TikTok style. Let's try do a Cocoa Melon prompt.",
+   "context_before": "of their default workflows was Mini Max H3, which generates if we generated this video in like five minutes, I think, from text, like completely unique video, all generated locally from this text prompt.",
+   "context_after": "Um uh I mean this is gonna be a terrible prompt, but let's just say a cartoon banana peeling itself. I don't know. Uh let's also try some uh voice, let's say, and says Hi, I'm a",
+   "payoff_hint": "the 0.2MP vertical clip renders in under two minutes at 00:44:39",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A specific setting change from chat plus a vertical TikTok-style test gives the viewer something to copy.",
+   "overlaps_existing": null,
+   "text_hook": "The 0.2 megapixel trick for faster local video",
+   "opening_contract": {
+    "viewer_promise": "lowering resolution to 0.2 megapixels will make local generation much faster",
+    "proof_hint": "the render timer on the vertical banana clip",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h78",
+   "state": "new",
+   "excerpt": "Let's try also do a portrait video. Uh9x16. So this is like uh TikTok style."
+  },
+  {
+   "t_start": 2585.8,
+   "t_end": 2614.6,
+   "hook_text": "uh I mean this is gonna be a terrible prompt, but let's just say a cartoon banana peeling itself. I don't know. Uh let's also try some uh voice, let's say, and says Hi, I'm a banana. Uh let's see how long that takes. Alright, let's start the clock. What's the time? 1215. Uh, whatever. Okay, run. So this is a shit prompt.",
+   "context_before": "Uh9x16. So this is like uh TikTok style. Let's try do a Cocoa Melon prompt. Um",
+   "context_after": "I just want to see what'll happen. I've never tried creating a vertical and my camera cut out. Oh, we're back. Okay. Never tried creating a vertical uh video before.",
+   "payoff_hint": "the talking banana appears with voice at 00:44:39–00:45:00",
+   "hook_type": "curiosity",
+   "hook_score": 3,
+   "why": "Deliberately dumb prompt plus a started clock is a clean setup for the payoff.",
+   "overlaps_existing": null,
+   "text_hook": "I asked AI for\na talking banana.",
+   "opening_contract": {
+    "viewer_promise": "how long a local model takes to make a vertical talking banana",
+    "proof_hint": "the finished clip and the elapsed time",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h79",
+   "state": "staged",
+   "excerpt": "this is gonna be a terrible prompt, but let's just say a cartoon banana peeling itself."
+  },
+  {
+   "t_start": 2605.8,
+   "t_end": 2624.7,
+   "hook_text": "What's the time? 1215. Uh, whatever. Okay, run. So this is a shit prompt. I just want to see what'll happen. I've never tried creating a vertical and my camera cut out. Oh, we're back. Okay. Never tried creating a vertical uh video before.",
+   "context_before": "itself. I don't know. Uh let's also try some uh voice, let's say, and says Hi, I'm a banana. Uh let's see how long that takes. Alright, let's start the clock.",
+   "context_after": "We're already at15%, not even a minute down. Uh yes, I see through we're on Windows. Because I have an NVIDIA5080 GPU here, and it just works much better with a Windows PC than",
+   "payoff_hint": "the talking banana vertical video appears in under two minutes, ~00:44:39",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "Clock started, admittedly terrible prompt, first-ever vertical attempt: three open questions in one breath.",
+   "overlaps_existing": null,
+   "text_hook": "First vertical render ever, on a deliberately bad prompt",
+   "opening_contract": {
+    "viewer_promise": "will a lazy prompt produce a usable vertical video locally, and how fast",
+    "proof_hint": "the progress bar and the finished vertical clip",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h80",
+   "state": "new"
+  },
+  {
+   "t_start": 2624.7,
+   "t_end": 2639.9,
+   "hook_text": "We're already at15%, not even a minute down. Uh yes, I see through we're on Windows. Because I have an NVIDIA5080 GPU here, and it just works much better with a Windows PC than trying to get that shit working on my Mac. .",
+   "context_before": "I just want to see what'll happen. I've never tried creating a vertical and my camera cut out. Oh, we're back. Okay. Never tried creating a vertical uh video before.",
+   "context_after": "So let's see Okay, we've pretty much maybe crossed a minute soon. Um yeah, we're generating videos here, and then also I've set up Claude so we can get Claude",
+   "payoff_hint": "the clip finishes in under two minutes at 00:44:39",
+   "hook_type": "contrarian",
+   "hook_score": 3,
+   "why": "A Mac-first creator explaining why he bought a Windows box with a 5080 for local video is a chat-question answer with a stance.",
+   "overlaps_existing": null,
+   "text_hook": "Why I generate AI video on Windows, not Mac",
+   "opening_contract": {
+    "viewer_promise": "the reason local video generation runs on Windows here",
+    "proof_hint": "progress bar climbing on the 5080",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h81",
+   "state": "new"
+  },
+  {
+   "t_start": 2649.2,
+   "t_end": 2679.2,
+   "hook_text": "Um yeah, we're generating videos here, and then also I've set up Claude so we can get Claude to actually generate the um the storyboard and the prompts for us. So I'm actually making a music video for the song you might have heard if you were here like three minutes ago. AGI before GTA6. Uh we have the prompts here. Uh this was all generated by Sonnet. So I don't know if that's gonna be good or bad.",
+   "context_before": "So let's see Okay, we've pretty much maybe crossed a minute soon.",
+   "context_after": "Okay, this is the video, dude. That was less than two minutes, maybe even less than one minute. We have a vertical video of a banana peeling itself, and let's see if it also has voice.",
+   "payoff_hint": "the storyboard prompts are on screen; the music video shots come later in the stream",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "States the plan plainly: an AI-written storyboard for an AI-made song, rendered locally.",
+   "overlaps_existing": null,
+   "text_hook": "Sonnet wrote every prompt for this music video",
+   "opening_contract": {
+    "viewer_promise": "Claude-generated prompts will drive a whole music video",
+    "proof_hint": "the prompt list from Sonnet on screen",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h82",
+   "state": "new"
+  },
+  {
+   "t_start": 2679.2,
+   "t_end": 2700.0,
+   "hook_text": "Okay, this is the video, dude. That was less than two minutes, maybe even less than one minute. We have a vertical video of a banana peeling itself, and let's see if it also has voice. Hi, I'm a banana. Wow. Wow. Hi, I'm a banana.",
+   "context_before": "Uh this was all generated by Sonnet. So I don't know if that's gonna be good or bad.",
+   "context_after": "Oh, I'm a banana. Oh, I'm a banana. I am actually blown away by that. Uh we were able to generate that five second video in less than two minutes.",
+   "payoff_hint": "the banana speaks in the same lines; verdict 'blown away' at 00:45:00",
+   "hook_type": "reveal",
+   "hook_score": 5,
+   "why": "The payoff moment: a vertical clip with synced voice pops up in under two minutes on a home GPU and AJ's reaction is genuine.",
+   "overlaps_existing": null,
+   "text_hook": "Local AI made a talking banana in under 2 minutes",
+   "opening_contract": {
+    "viewer_promise": "see the locally generated vertical clip and whether it has voice",
+    "proof_hint": "the banana clip playing with 'Hi, I'm a banana' audio",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h83",
+   "state": "new"
+  },
+  {
+   "t_start": 2700.1,
+   "t_end": 2728.9,
+   "hook_text": "Oh, I'm a banana. Oh, I'm a banana. I am actually blown away by that. Uh we were able to generate that five second video in less than two minutes. Incredible. Locally, yes. Locally. This is all on my local Windows PC.",
+   "context_before": "We have a vertical video of a banana peeling itself, and let's see if it also has voice. Hi, I'm a banana. Wow. Wow. Hi, I'm a banana.",
+   "context_after": "Oh man, it sucks that my camera keeps cutting out, but um I'll just have to get a new capture card. Yeah, dude, that's actually incredible.",
+   "payoff_hint": "self-contained; the clip is on screen as he says it",
+   "hook_type": "number-proof",
+   "hook_score": 4,
+   "why": "The verdict with numbers: five seconds of vertical video with voice, under two minutes, fully local, and he answers chat's 'locally?' on the spot.",
+   "overlaps_existing": null,
+   "text_hook": "Five-second video, under two minutes, no cloud.",
+   "opening_contract": {
+    "viewer_promise": "a local GPU can make a talking video clip in under two minutes",
+    "proof_hint": "the clip on screen and the stated render time",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h84",
+   "state": "new"
+  },
+  {
+   "t_start": 2739.2,
+   "t_end": 2760.6,
+   "hook_text": "So yeah, shout out to Figs. Uh KC Figs. They have given us a lot of tips. So they just le recent tip they gave us is to use just a low megapixel0.2 here. . Previously it was at0.4 And then what you can do is for all the loss of quality that you make there, you can make it up with the upscaler, which we haven't uh linked in just",
+   "context_before": "I'll just have to get a new capture card. Yeah, dude, that's actually incredible.",
+   "context_after": "yet, but but yeah. Sam asks, uh local LLM2. So far we haven't used any LLMs for this workflow, and no, we're uh I'm using Claude on the cloud for all this LLM work.",
+   "payoff_hint": "the upscaler gets wired in via Claude at 00:48:34; result later in the stream",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A named, copyable speed trick for local video: render small, recover quality with a latent upscaler.",
+   "overlaps_existing": null,
+   "text_hook": "Drop to 0.2 megapixels, then upscale it back",
+   "opening_contract": {
+    "viewer_promise": "halve the resolution for speed and recover quality with an upscaler",
+    "proof_hint": "an upscaled clip compared with the 0.2MP one",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h85",
+   "state": "new"
+  },
+  {
+   "t_start": 2760.6,
+   "t_end": 2775.5,
+   "hook_text": "yet, but but yeah. Sam asks, uh local LLM2. So far we haven't used any LLMs for this workflow, and no, we're uh I'm using Claude on the cloud for all this LLM work.",
+   "context_before": "Previously it was at0.4 And then what you can do is for all the loss of quality that you make there, you can make it up with the upscaler, which we haven't uh linked in just",
+   "context_after": "So what what I want to do now is we have asked Claude in this session, let me try to find it. We have asked Claude here to set up the Comfy UI MCP.",
+   "payoff_hint": "unclear; a straight answer to chat",
+   "hook_type": "contrarian",
+   "hook_score": 2,
+   "why": "An honest split: local video model, cloud LLM, answering the obvious chat question.",
+   "overlaps_existing": null,
+   "text_hook": "No local LLM here. Claude does the writing.",
+   "opening_contract": {
+    "viewer_promise": "which parts of this stack are actually local",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h86",
+   "state": "new"
+  },
+  {
+   "t_start": 2775.5,
+   "t_end": 2801.6,
+   "hook_text": "So what what I want to do now is we have asked Claude in this session, let me try to find it. We have asked Claude here to set up the Comfy UI MCP. So what that enables us to do is use Claude here to do all the editing in Comfy UI without me having to do it manually. That's the plan. Did it work? Let's see.",
+   "context_before": "Sam asks, uh local LLM2. So far we haven't used any LLMs for this workflow, and no, we're uh I'm using Claude on the cloud for all this LLM work.",
+   "context_after": "Okay. Okay, okay. Um apparently we have uh we have we have music video production protagonist AR.",
+   "payoff_hint": "AJ asks Claude if it has the MCP at 00:47:44; outcome later in the stream, unclear here",
+   "hook_type": "curiosity",
+   "hook_score": 4,
+   "why": "A clear promise (Claude drives ComfyUI through an MCP) ending on 'did it work? let's see' is a natural cliffhanger.",
+   "overlaps_existing": null,
+   "text_hook": "Claude now edits ComfyUI for me. Did it work?",
+   "opening_contract": {
+    "viewer_promise": "Claude can build and edit ComfyUI workflows by itself via MCP",
+    "proof_hint": "Claude adding nodes to a workflow on screen",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h87",
+   "state": "new"
+  },
+  {
+   "t_start": 2838.1,
+   "t_end": 2872.2,
+   "hook_text": "Um, let's just say make the protagonist me, AJ, aka tech friend, uh Persian. man in blue hoodie Uh maybe we should try text to video. Do you have access to the comfy UI MCP question mark? Let's go opus here. This is what I actually wanted to do is opus.",
+   "context_before": "music video production protagonist AR. Okay. So blah blah blah blah. Let's see. I'm gonna set up I'm gonna I think I'm gonna start from scratch, maybe.",
+   "context_after": "Um might lose cash, but I think probably lost it on that five minutes anyway. So yeah, and interestingly, you know, we're still at27 degrees.",
+   "payoff_hint": "unclear; the protagonist prompt is reissued to Fable at 00:49:31",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "Casting himself as the video's protagonist is a fun beat, but nothing is shown yet.",
+   "overlaps_existing": null,
+   "text_hook": "Making myself the star of an AI music video",
+   "opening_contract": {
+    "viewer_promise": "an AI music video with AJ as the main character",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h88",
+   "state": "new"
+  },
+  {
+   "t_start": 2865.6,
+   "t_end": 2878.4,
+   "hook_text": "MCP question mark? Let's go opus here. This is what I actually wanted to do is opus. Um might lose cash, but I think probably lost it on that five minutes anyway.",
+   "context_before": "Um, let's just say make the protagonist me, AJ, aka tech friend, uh Persian. man in blue hoodie Uh maybe we should try text to video. Do you have access to the comfy UI",
+   "context_after": "So yeah, and interestingly, you know, we're still at27 degrees. I thought it'd be a lot hotter now, but I guess we've only ran two videos.",
+   "payoff_hint": "unclear; he later abandons the thread and starts a new one with Fable, ~00:49:15",
+   "hook_type": "contrarian",
+   "hook_score": 2,
+   "why": "A passing cost aside about model switching and prompt caching that working Claude users will recognise.",
+   "overlaps_existing": null,
+   "text_hook": "Swapping to Opus mid-session, the cache is gone anyway",
+   "opening_contract": {
+    "viewer_promise": "why switching models mid-session costs you, and when it doesn't matter",
+    "proof_hint": "unclear",
+    "context_debt": "high",
+    "payoff_distance": "unclear",
+    "retention_risks": [
+     "context-debt",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h89",
+   "state": "new"
+  },
+  {
+   "t_start": 2878.4,
+   "t_end": 2896.0,
+   "hook_text": "So yeah, and interestingly, you know, we're still at27 degrees. I thought it'd be a lot hotter now, but I guess we've only ran two videos. I I definitely feel a lot hotter. Um let's see if they have access to MCP, and then",
+   "context_before": "Um might lose cash, but I think probably lost it on that five minutes anyway.",
+   "context_after": "also I'm gonna start a new session. Let's get this upscaler here. The one figs linked. Where can I find that? Oh, yep, I can find it on techfriends community.com.",
+   "payoff_hint": "unclear",
+   "hook_type": "number-proof",
+   "hook_score": 2,
+   "why": "A small surprise about heat after local video generation; light but concrete.",
+   "overlaps_existing": null,
+   "text_hook": "Two videos generated and the GPU sits at 27°",
+   "opening_contract": {
+    "viewer_promise": "how hot a 5080 gets generating local video",
+    "proof_hint": "the temperature readout",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_h90",
+   "state": "new"
+  },
+  {
+   "t_start": 2914.2,
+   "t_end": 2941.7,
+   "hook_text": "Let's see if we can also ask Claude. Can you add boop to a new comfy UI workflow with mini max h3? Uh we want to generate with mini max at0.2 megapixel and then upscale. Let's see if that works. So we got two sessions.",
+   "context_before": "The one figs linked. Where can I find that? Oh, yep, I can find it on techfriends community.com. Uh let's go to the here here. Let's see, latent upscaler.",
+   "context_after": "Uh okay, so this one doesn't have okay. We're just gonna stop this. Um fork this okay",
+   "payoff_hint": "unclear in this chunk; the new-thread retry is at 00:49:15",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "A concrete agentic ask: Claude builds a generate-then-upscale workflow from a link.",
+   "overlaps_existing": null,
+   "text_hook": "Asked Claude to wire the upscaler into ComfyUI",
+   "opening_contract": {
+    "viewer_promise": "Claude will assemble a 0.2MP-plus-upscaler workflow on its own",
+    "proof_hint": "the workflow appearing in ComfyUI",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h91",
+   "state": "new"
+  },
+  {
+   "t_start": 2955.8,
+   "t_end": 2991.5,
+   "hook_text": "okay this isn't really gonna work let's delete that let's create a new thread gonna give it the same prompt I'm gonna also link the video we're gonna do fable for this one main character me is AJ tech friend Persian man in blue hoodie software engineer at content creator okay all right we're gonna get fable to come up with the lyrics this time",
+   "context_before": "fork this okay okay",
+   "context_after": "um okay let's see what happened here okay that's a different one okay um minimax did it I feel like we're missing the",
+   "payoff_hint": "unclear",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "A live model swap mid-project with himself as the character; a marginal but real decision beat.",
+   "overlaps_existing": null,
+   "text_hook": "Switching the lyric writer from Sonnet to Fable",
+   "opening_contract": {
+    "viewer_promise": "a bigger model retries the storyboard with AJ as protagonist",
+    "proof_hint": "unclear",
+    "context_debt": "high",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "context-debt",
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_h92",
+   "state": "new"
+  },
+  {
+   "t_start": 2992.9,
+   "t_end": 3002.7,
+   "hook_text": "um okay let's see what happened here okay that's a different one okay um minimax did it",
+   "context_before": "software engineer at content creator okay all right we're gonna get fable to come up with the lyrics this time",
+   "context_after": "I feel like we're missing the what's going on here",
+   "payoff_hint": "unclear; the Minimax render finished while the Claude thread was being redone",
+   "hook_type": "reveal",
+   "hook_score": 2,
+   "why": "The quiet payoff of the earlier generation landing while he is busy elsewhere, a mini reveal of the local pipeline working.",
+   "overlaps_existing": null,
+   "text_hook": "The local model already finished the render",
+   "opening_contract": {
+    "viewer_promise": "the local video model produced something without being watched",
+    "proof_hint": "the finished Minimax output in ComfyUI",
+    "context_debt": "high",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_h93",
+   "state": "new"
+  },
+  {
+   "t_start": 3048.8,
+   "t_end": 3089.8,
+   "hook_text": "wait we're not live on Restream. Let's fix that. Oh shit, where did my multi stream go? Hmm. Some reason. Crap. Oh, okay, it's back. We are live on Restream.",
+   "context_before": "this will take a minute everything looks good on the platforms",
+   "context_after": "",
+   "payoff_hint": "resolves in the same lines ('Oh, okay, it's back')",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "A small live scare with an instant resolution; short and self-contained.",
+   "overlaps_existing": null,
+   "text_hook": "Mid-stream, Restream dropped me. Then it came back.",
+   "opening_contract": {
+    "viewer_promise": "a live multistream outage and whether it recovers",
+    "proof_hint": "the Restream dashboard going live again",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_h94",
+   "state": "new"
+  },
+  {
+   "t_start": 10.1,
+   "t_end": 42.2,
+   "hook_text": "let's see let's see if this works come on let's do a test okay it says I'm live\nthough\nthough I don't see\nthe actual stream coming through which is not good not a good sign\num we double check\noh okay no that's good that's good okay",
+   "context_before": "and um\nyeah any second now",
+   "context_after": "um\nyes alright we're good tricks is joined too all right so today um I want to do video",
+   "payoff_hint": "the stream is confirmed working at 00:39 and the goal is stated at 00:45 (already carded)",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "Cold open where the stream itself may not be working — a small live scare before anything else happens.",
+   "overlaps_existing": null,
+   "text_hook": "It says I'm live. I can't see the stream.",
+   "opening_contract": {
+    "viewer_promise": "Is the stream actually up, and what is he about to attempt?",
+    "proof_hint": "the 'oh okay no that's good' relief and the plan that follows",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw01",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 164.2,
+   "t_end": 172.5,
+   "hook_text": "Uh what version of Kimi are you using? Uh I'm not using Kimi at the moment, but if\nI was probably K3. Alright, so let's get into it.",
+   "context_before": "So this is the the setup, this is the plan today.\nThanks, uh DJ Rich forever for joining early. PMoves AI, thank you for joining.",
+   "context_after": "Let's get uh Comfy UI straight away. Because I think we might have to install uh everything through\ncomfy UI. Not sure. Just Comfy UI desktop. We can just download it for desktop here.",
+   "payoff_hint": "unclear — a one-line answer, no follow-up",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "A chat question about which Kimi version he uses gets a blunt one-line answer — short honest tool-choice beat.",
+   "overlaps_existing": null,
+   "text_hook": "Not running Kimi right now. If I was: K3.",
+   "opening_contract": {
+    "viewer_promise": "Which Kimi model does he actually use?",
+    "proof_hint": "unclear",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_sw02",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 305.0,
+   "t_end": 354.1,
+   "hook_text": "So I'm gonna install Comfy UI here, the install finished, I mean the download finished, we're gonna install\nit just to default. Uh sure we'll add a desktop shortcut, that's fine.\nUm okay, we're gonna do local. Create a new instance.\nNew we'll just call this comfy UI short. I mean, can do we need to\nconfide release, stable release, stable version. We're using an NVIDIA GPU, install location default.",
+   "context_before": "That's my GPU. That's probably the main thing. Uh with16 gigabytes of VRAM.\nThis is enough to run a quantized version of the Mini Max H3 model.",
+   "context_after": "It'll take about five gigabytes of space. So we can actually choose the Minimax M3 starter workflow straight\naway with the Comfy UI desktop. They kind of give you that.",
+   "payoff_hint": "Comfy UI finishes installing and the H3 diffusion model is already down at 17:00 (carded)",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Demo narration of the actual ComfyUI desktop install choices (local, stable, NVIDIA, default path) — the how-to the miner skipped.",
+   "overlaps_existing": null,
+   "text_hook": "Installing ComfyUI on a 5080: every default I picked",
+   "opening_contract": {
+    "viewer_promise": "What do you click to get ComfyUI running on a Windows NVIDIA box?",
+    "proof_hint": "the installer screens being stepped through on screen",
+    "context_debt": "low",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_sw03",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 516.8,
+   "t_end": 577.9,
+   "hook_text": "so let's say um you have an LLM node. And it can create\nscene X. And then it will or like create the scene X like description.\nPlant. .\nLet's just say plan And that can go into\nthe vid gen. Or, you know, straight from like tech.\nSo the VGN model can do text to image. Text to video.\nAnd that could just loop. I mean, that's a pretty shit one, but but yeah.",
+   "context_before": "It's like you know, the node-based diagrams. This node uh links into that node, so you could have\nlet's go on the whiteboard actually. Let's",
+   "context_after": "But then you could also have like things in here, like maybe you want uh text to image.\nRight? Because that way instead of waiting, because this vid gen will take a long time, instead of",
+   "payoff_hint": "the storyboard refinement of the same loop at 09:37 (carded) — the drawing completes on screen here",
+   "hook_type": "how-to",
+   "hook_score": 3,
+   "why": "The whiteboard sketch of how an LLM plans scenes and feeds the video model in a loop — a visual explainer for the hour-long-video question, ending in self-deprecation about the drawing.",
+   "overlaps_existing": null,
+   "text_hook": "An LLM node feeding a video model, on a loop",
+   "opening_contract": {
+    "viewer_promise": "How would you chain an LLM and a video model to generate longer than a few seconds?",
+    "proof_hint": "the Excalidraw diagram with LLM → plan → vid gen → loop drawn live",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_sw04",
+   "origin": "sweep",
+   "state": "new",
+   "excerpt": "So the VGN model can do text to image. Text to video. And that could just loop."
+  },
+  {
+   "t_start": 863.0,
+   "t_end": 884.8,
+   "hook_text": "Yo, bro, got the codec sticker. Let's dope. Alright, I'm just gonna open Discord on my phone and\nthen maybe show the screen on my phone. Okay, so shout out KCFs.\nThey have sent through a link to\nuh comfy workflows. Um",
+   "context_before": "want to do that again. Um what I can do.\nOpen AI try to base me exactly. They're trying to slow the progress.",
+   "context_after": "which I assume has some workflows. But we can just search, let's just search for uh mini max\nh3 on a5080 on red. Let's see what does that come up any anything?",
+   "payoff_hint": "the workflow search on Reddit at 14:47 (carded) and finding Pixarama at 15:34",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "The workaround after the crash arc — too scared to switch OBS scenes, so Discord moves to the phone; a human improvising beat.",
+   "overlaps_existing": null,
+   "text_hook": "OBS crashes on scene change. Discord goes on the phone.",
+   "opening_contract": {
+    "viewer_promise": "How does he get to Discord without crashing the stream again?",
+    "proof_hint": "the phone screen being shown instead of a scene switch",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_sw05",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 913.4,
+   "t_end": 933.2,
+   "hook_text": "Uh you'll have a blast. Check out Pixarama's channel on YouTube.\nOkay, that sounds like fun. Check out Pixarama. Let's see if they got anything on H3.",
+   "context_before": "h3 on a5080 on red. Let's see what does that come up any anything?\nOkay.",
+   "context_after": "Oh, they got a lot of videos on mini match H3.\nShould we watch Speed Laura plus VRAM monitor nodes or best video generation workflow?",
+   "payoff_hint": "the channel turns out to have many H3 videos at 15:34 (carded)",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "A chat tip that redirects the whole search — a cold viewer gets a concrete resource for the model in seconds.",
+   "overlaps_existing": null,
+   "text_hook": "Chat says one YouTube channel has the H3 workflows",
+   "opening_contract": {
+    "viewer_promise": "Which channel is the go-to for Minimax H3 ComfyUI workflows?",
+    "proof_hint": "the channel page loading with H3 videos listed",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_sw06",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 967.2,
+   "t_end": 994.7,
+   "hook_text": "Let's go here. Today I will show you how to use the new Minac H3 video model so\nyou can create awesome video. Welcome to my Comfy UI setup where every cable has a purpose.\nProbably. Perfect. I have now connected everything exactly the way I was not supposed to.\nOh no, I lost the webcam. I guess we are buying more VRAM.",
+   "context_before": ". Oh fine Do we have audio? Oh crap, we don't have audio.\nUh how could we get audio?",
+   "context_after": "What is your name? I am Pink Subunny. Where are you coming from?\nYou always look at how to understand everything. Okay.",
+   "payoff_hint": "unclear — watch-along of another creator's intro; AJ's own reaction is silent",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "Comedy beat from the Pixarama video played on stream — but the audio is a third party's, so it is a reaction/watch-along clip at best and the human should decide whether it is usable.",
+   "overlaps_existing": null,
+   "text_hook": "\"I guess we are buying more VRAM\"",
+   "opening_contract": {
+    "viewer_promise": "A joke about ComfyUI cable-spaghetti and VRAM hunger",
+    "proof_hint": "unclear",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw07",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 1230.3,
+   "t_end": 1240.4,
+   "hook_text": "Duration five seconds, seed, okay, okay. And there's some notes there.\nI think if we just press run, we can see it run.",
+   "context_before": "or negative prompting as well. It seems here. So that sounds awesome.",
+   "context_after": "Before we do that, I'm gonna actually bring up task manager.\nLet's see if we can split windows here, so we can get a bit of like a performance",
+   "payoff_hint": "the run is queued and the machine loads up ~00:21:23; video arrives ~00:27:50",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "The 'just press run' moment on a stock workflow is the low-friction promise a first-timer wants to see tested.",
+   "overlaps_existing": null,
+   "text_hook": "One run button on a fresh Comfy install. Let's see.",
+   "opening_contract": {
+    "viewer_promise": "a default text-to-video workflow runs with a single click",
+    "proof_hint": "queue starting and the resulting video",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_sw08",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 1272.4,
+   "t_end": 1283.1,
+   "hook_text": "I'm gonna move myself here. You can see here in the bottom left, the temperature is about45 degrees\nCelsius. .\nI expect that to skyrocket as well Alright, let's run this.",
+   "context_before": "It's not really doing much, but when we press run, I expect this to hit up to a\nhundred percent, and also let's look at the temperature, it's about forty five.\nOh, you can't see that. Uh hold on one sec.",
+   "context_after": "Boom. It's queuing up. Uh currently zero. Oop. The GPU spiked a little bit.\nCPU spiked. Memory spiked. Memory is about full now. All my32 gigabytes of DDR5 is being used.",
+   "payoff_hint": "GPU hits 60°C and 100% usage, all 32GB RAM full, ~00:21:32-00:21:48",
+   "hook_type": "number-proof",
+   "hook_score": 3,
+   "why": "A stated baseline number with a prediction it will skyrocket is a built-in before/after that pays off seconds later on screen.",
+   "overlaps_existing": null,
+   "text_hook": "GPU at 45°C. Now I press run on a video model.",
+   "opening_contract": {
+    "viewer_promise": "see what a local video model does to a consumer GPU the moment it starts",
+    "proof_hint": "task manager readouts jumping: temperature, GPU %, memory",
+    "context_debt": "low",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "none"
+    ]
+   },
+   "id": "loc_4fadb756_sw09",
+   "origin": "sweep",
+   "state": "new",
+   "excerpt": "the temperature is about45 degrees Celsius. . I expect that to skyrocket as well Alright, let's run this."
+  },
+  {
+   "t_start": 1394.6,
+   "t_end": 1431.9,
+   "hook_text": "Uh let's see if I can log in. Um\nthere another way. Okay. Um, what can I do here?\nLet me let me try log in here without exposing too much info.\nOh, I could have just done that to show Discord.\nOkay, interesting. That's good to know for next time. Um yeah, I'm just gonna try log in to",
+   "context_before": "ten minutes, which is likemazing. Um, this wasn't possible at like a few months ago or whenever before\nH3 came out. H3 is truly a game changing model here.",
+   "context_after": "Claude on desktop here. One moment, please. So figs recommends the latent upscaler.\nSaves a lot of time. I'll send you that one in the script note.",
+   "payoff_hint": "login finally lands ~00:26:45 'We are in on Claude'",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "A small live-stream logistics scramble with a self-correction is a relatable human beat, though thin on payoff.",
+   "overlaps_existing": null,
+   "text_hook": "Logging into Claude live without leaking anything on stream",
+   "opening_contract": {
+    "viewer_promise": "watch a streamer log in on camera without exposing credentials",
+    "proof_hint": "the login succeeding minutes later",
+    "context_debt": "medium",
+    "payoff_distance": "distant",
+    "retention_risks": [
+     "proof-delay",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw10",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 1839.3,
+   "t_end": 1853.6,
+   "hook_text": "Yeah, I think anyone could do it. You could watch back this VOD.\nAll my uh live stream VODs are on YouTube. So if you want to watch those, you can\ndo that there. Um I'll also be making short form on TikTok, Instagram, etc.",
+   "context_before": "And it even had pre-filled this text prompt here. So that was all pre-filled.\nAnd yeah, it's all set up here. It was super easy to get going.",
+   "context_after": "So did Hermes handle everything? No, this is all manual.\nOnly now I've just also installed uh Clawed desktop here.",
+   "payoff_hint": "the verdict closes the setup walkthrough that started ~00:28:58; proof is the earlier generated video",
+   "hook_type": "contrarian",
+   "hook_score": 2,
+   "why": "A wrap-up verdict on the how-to lowers the barrier for a viewer who assumed local video gen needs expertise.",
+   "overlaps_existing": null,
+   "text_hook": "Local text-to-video setup: anyone could do it",
+   "opening_contract": {
+    "viewer_promise": "local video generation is genuinely beginner-friendly",
+    "proof_hint": "the walkthrough just shown and the finished five-second video",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw11",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2020.0,
+   "t_end": 2032.8,
+   "hook_text": "But what I'm looking at for right now is let's go to media dump and try find the\nGTA before I mean AGI before GTA six song. Um",
+   "context_before": "higher resolution. I think okay, so the top left is the one.\nThese are all just comparing different upscalers. Um yeah, so we might try that out too.",
+   "context_after": "is it\nThis is it? No, it's not available. Oh, so I uploaded it.",
+   "payoff_hint": "the song is found on Suno ~00:34:55 and played ~00:35:37",
+   "hook_type": "curiosity",
+   "hook_score": 2,
+   "why": "The song title alone is a hook for the dev audience and sets up the whole music-video arc.",
+   "overlaps_existing": null,
+   "text_hook": "Making a music video for a song called AGI Before GTA 6",
+   "opening_contract": {
+    "viewer_promise": "an AI-made music video for an AI-made song about AGI beating GTA 6",
+    "proof_hint": "the song playing and storyboard prompts being generated",
+    "context_debt": "low",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_sw12",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2082.4,
+   "t_end": 2106.4,
+   "hook_text": "I think let's see if I go Suno. Okay, it's got some of my s oh no, this\nis Lazy's playlist. Let's see. Oh wait, actually, it could log me in here.\nOkay, perfect. Oh, okay, good. We got all our songs here.\nOkay, great, good. So I think the one I actually liked was this one.",
+   "context_before": "Interesting. Okay. So it looks like the website won't display that.\nUm",
+   "context_after": "Oh, you guys can't hear that.\nOkay, that's cool. I can play it through uh",
+   "payoff_hint": "song plays with lyrics ~00:35:37-00:36:03",
+   "hook_type": "reveal",
+   "hook_score": 2,
+   "why": "Reveals the source of the song the music video will be built on, tying a second AI tool into the pipeline.",
+   "overlaps_existing": null,
+   "text_hook": "Our whole song catalog is AI-made on Suno",
+   "opening_contract": {
+    "viewer_promise": "hear the AI-generated song that the video is being built for",
+    "proof_hint": "the Suno library and the track playing",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_sw13",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2108.6,
+   "t_end": 2124.3,
+   "hook_text": "Oh, you guys can't hear that.\nOkay, that's cool. I can play it through uh\nI can play it through the Mac so you will be able to hear it.\nPretty sure this is the one we want.",
+   "context_before": "Okay, perfect. Oh, okay, good. We got all our songs here.\nOkay, great, good. So I think the one I actually liked was this one.",
+   "context_after": "We got we got we got AI got my job.\nA I took my bitch. A AI made a movie and AI made a hit.",
+   "payoff_hint": "the song audibly plays ~00:35:37",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "A quick live-production workaround beat, mildly comedic, leading straight into the song reveal.",
+   "overlaps_existing": null,
+   "text_hook": "Two machines on one stream, and only one has audio",
+   "opening_contract": {
+    "viewer_promise": "hear the track once the audio routing is sorted",
+    "proof_hint": "the song playing on stream seconds later",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw14",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2479.3,
+   "t_end": 2486.6,
+   "hook_text": "AI saw the future. Fox still won't ship. We be we we got we can hear a bit\nless. We got AI.",
+   "context_before": "AI making films before GTA C Grandma Pro Engineering before G T A six.\nWe got AJ before G T A six.",
+   "context_after": "Teach you how to AI when GTR coming out. You just talk to it, bro.\nThat's the hack. But I don't have access to future release information.",
+   "payoff_hint": "Song outro; the music video built from it lands at 00:44:39 and the storyboard prompts at 00:44:09",
+   "hook_type": "story",
+   "hook_score": 2,
+   "why": "The song's closing punchline, the one uncarded lyric beat, and the line the whole music-video arc is named after.",
+   "overlaps_existing": null,
+   "text_hook": "AI saw the future. Rockstar still won't ship.",
+   "opening_contract": {
+    "viewer_promise": "The punchline of an AI-made song about GTA 6 never shipping",
+    "proof_hint": "the song playing over the stream with the lyrics on screen",
+    "context_debt": "high",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "context-debt"
+    ]
+   },
+   "id": "loc_4fadb756_sw15",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2728.9,
+   "t_end": 2739.2,
+   "hook_text": "Oh man, it sucks that my camera keeps cutting out, but um\nI'll just have to get a new capture card. Yeah, dude, that's actually incredible.",
+   "context_before": "Uh we were able to generate that five second video in less than two minutes.\nIncredible. Locally, yes. Locally. This is all on my local Windows PC.",
+   "context_after": "So yeah, shout out to Figs. Uh KC Figs. They have given us a lot of tips.\nSo they just le recent tip they gave us is to use just a low megapixel0.2 here.",
+   "payoff_hint": "The verdict itself; the banana video it reacts to is at 00:44:39-00:45:20",
+   "hook_type": "emotion",
+   "hook_score": 2,
+   "why": "Self-deprecating human beat right after the wow moment — the stream rig failing while the local model just worked.",
+   "overlaps_existing": null,
+   "text_hook": "My camera died mid-stream. The local AI video didn't.",
+   "opening_contract": {
+    "viewer_promise": "What was so incredible that a dead camera doesn't matter",
+    "proof_hint": "the banana clip playing moments earlier",
+    "context_debt": "high",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "context-debt",
+     "proof-delay"
+    ]
+   },
+   "id": "loc_4fadb756_sw16",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2799.4,
+   "t_end": 2838.1,
+   "hook_text": "Did it work? Let's see.\nOkay. Okay, okay. Um\napparently we have uh\nwe have we have\nmusic video production protagonist AR. Okay. So blah blah blah blah.\nLet's see. I'm gonna set up I'm gonna I think I'm gonna start from scratch, maybe.",
+   "context_before": "So what that enables us to do is use Claude here to do all the editing in Comfy\nUI without me having to do it manually. That's the plan.",
+   "context_after": "Um, let's just say make the protagonist me, AJ, aka tech friend, uh Persian. man in blue hoodie\nUh",
+   "payoff_hint": "The Claude MCP session comes back as an unusable wall of storyboard text and AJ restarts from scratch; the retry with Opus is at 00:47:45",
+   "hook_type": "failure",
+   "hook_score": 2,
+   "why": "The check on an already-carded setup — the answer is a shrug and a restart, which is its own honest beat.",
+   "overlaps_existing": null,
+   "text_hook": "I asked Claude to run ComfyUI for me. Did it work?",
+   "opening_contract": {
+    "viewer_promise": "Whether Claude actually wired up the ComfyUI MCP",
+    "proof_hint": "the Claude session output on screen, then a fresh prompt",
+    "context_debt": "medium",
+    "payoff_distance": "immediate",
+    "retention_risks": [
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw17",
+   "origin": "sweep",
+   "state": "new"
+  },
+  {
+   "t_start": 2896.0,
+   "t_end": 2914.2,
+   "hook_text": "also I'm gonna start a new session. Let's get this upscaler here.\nThe one figs linked. Where can I find that? Oh, yep, I can find it on techfriends community.com.\nUh let's go to the here here. Let's see, latent upscaler.",
+   "context_before": "I thought it'd be a lot hotter now, but I guess we've only ran two videos.\nI I definitely feel a lot hotter. Um let's see if they have access to MCP, and then",
+   "context_after": "Let's see if we can also ask Claude. Can you add boop to a new comfy UI workflow\nwith mini max h3? Uh we want to generate with mini max at0.2 megapixel and then upscale.",
+   "payoff_hint": "AJ pulls the community-linked latent upscaler into the workflow and asks Claude to wire it at 00:48:34",
+   "hook_type": "how-to",
+   "hook_score": 2,
+   "why": "Demo narration of where the upscaler workflow came from — a community-sourced fix for the low-res generation trick.",
+   "overlaps_existing": null,
+   "text_hook": "A viewer's upscaler tip fixes my 0.2 megapixel videos",
+   "opening_contract": {
+    "viewer_promise": "How to get quality back after generating tiny for speed",
+    "proof_hint": "the latent upscaler node found on the community site and added to the workflow",
+    "context_debt": "medium",
+    "payoff_distance": "nearby",
+    "retention_risks": [
+     "proof-delay",
+     "abstract-setup"
+    ]
+   },
+   "id": "loc_4fadb756_sw18",
+   "origin": "sweep",
+   "state": "new"
+  }
+ ]
+}

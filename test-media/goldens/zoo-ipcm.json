@@ -1,0 +1,78 @@
+{
+ "schema": "gmclip.goldens/0",
+ "id": "zoo-ipcm",
+ "tool": "tools/make_goldens.py",
+ "ffmpeg": "ffprobe version 8.1.2; ffmpeg version 8.1.2",
+ "source": {
+  "name": "zoo-ipcm.mp4",
+  "size": 864710,
+  "sha256": "49b7146963c66d7ad6ff695a53e126f3a2681bcf63068febf09e3abcce1d2481"
+ },
+ "packet_line": "<pts> <dts> <size> <pos> <K|_><D|_>",
+ "streams": [
+  {
+   "index": 0,
+   "type": "audio",
+   "codec": "pcm_s24le",
+   "time_base": "1/48000",
+   "sample_rate": 48000,
+   "channels": 2,
+   "ffprobe": {
+    "bits_per_raw_sample": "24"
+   },
+   "packets": {
+    "edited": {
+     "count": 141,
+     "discarded": 0,
+     "sha256": "e794a7c4c954c53c030ead0f8d2ca82f66bfd57b526dfc4959db88873a4e5ba5",
+     "head": [
+      "0 0 6144 44 K_",
+      "1024 1024 6144 6188 K_",
+      "2048 2048 6144 12332 K_"
+     ],
+     "tail": [
+      "141312 141312 6144 847916 K_",
+      "142336 142336 6144 854060 K_",
+      "143360 143360 3840 860204 K_"
+     ]
+    },
+    "raw": {
+     "count": 141,
+     "discarded": 0,
+     "sha256": "e794a7c4c954c53c030ead0f8d2ca82f66bfd57b526dfc4959db88873a4e5ba5",
+     "head": [
+      "0 0 6144 44 K_",
+      "1024 1024 6144 6188 K_",
+      "2048 2048 6144 12332 K_"
+     ],
+     "tail": [
+      "141312 141312 6144 847916 K_",
+      "142336 142336 6144 854060 K_",
+      "143360 143360 3840 860204 K_"
+     ]
+    }
+   }
+  }
+ ],
+ "iso_tree": {
+  "skipped": "MP4Box not installed"
+ },
+ "pcm": {
+  "stream": 0,
+  "format": "f32le interleaved, native rate and channels, md5 per whole second",
+  "decoder": "ffmpeg (integer PCM / 2^(bits-1))",
+  "bit_exact_across_decoders": true,
+  "first_frame": {
+   "pts": 0,
+   "samples": 1024
+  },
+  "sample_rate": 48000,
+  "channels": 2,
+  "samples": 144000,
+  "md5_per_second": [
+   "8ae35cc7e23c0c52d31d3c1f6a5daa6c",
+   "8ae35cc7e23c0c52d31d3c1f6a5daa6c",
+   "8ae35cc7e23c0c52d31d3c1f6a5daa6c"
+  ]
+ }
+}

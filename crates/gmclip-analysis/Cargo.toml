@@ -1,0 +1,17 @@
+[package]
+name = "gmclip-analysis"
+description = "Pure-CPU DSP: energy, silence grid, loudness, prosody, waveform peaks."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+gmclip-model.workspace = true
+ciborium.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

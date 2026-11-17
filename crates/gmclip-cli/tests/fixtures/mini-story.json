@@ -1,0 +1,18 @@
+{
+ "about": "A one-moment project with one story cut (moment origin_ref mini_h01, an excerpt, a text hook): what `gmclip clippy` sends.",
+ "analysis": [
+ ],
+ "name": "mini",
+ "rev": 3,
+ "rows": [
+  ["project","01M4VVAW0046HAF3QJZ8000001",1,"system",{"active_asr":{},"id":"01M4VVAW0046HAF3QJZ8000001","meta":{"app_version":"0.0.1","created_ms":1791936000000,"name":"Mini"},"profile_ref":null}],
+  ["source","01M4VVAW0046HAF3QJZ8000003",1,"system",{"audio_roles":{"exclude":[],"program":[],"voice":null},"fingerprint":"","id":"01M4VVAW0046HAF3QJZ8000003","path":"/var/folders/1t/tn_3vh3x0nv_snwb7xrv97th0000gn/T/gmclip-freeze-mini-77604/a/ledger/cache/preview/mini.mp4","probe":{"audio_tracks":[],"duration":0,"tracks":[]},"relink_hint":null,"stream_layout":null}],
+  ["sync_group","01M4VVAW0046HAF3QJZ8000002",1,"system",{"id":"01M4VVAW0046HAF3QJZ8000002","master_audio":"01M4VVAW0046HAF3QJZ8000004","picture":"01M4VVAW0046HAF3QJZ8000004"}],
+  ["sync_member","01M4VVAW0046HAF3QJZ8000004",1,"system",{"confidence":1.0,"group":"01M4VVAW0046HAF3QJZ8000002","id":"01M4VVAW0046HAF3QJZ8000004","method":"import","order":"a0","rate_ppm":0.0,"role":"both","source":"01M4VVAW0046HAF3QJZ8000003"}],
+  ["sync_segment","01M4VVAW0046HAF3QJZ8000005",1,"system",{"id":"01M4VVAW0046HAF3QJZ8000005","member":"01M4VVAW0046HAF3QJZ8000004","offset":0,"order":"a0","src_range":{"end":2305843009213693951,"start":0}}],
+  ["moment","01M4VVAW0046HAF3QJZ8000007",2,"system",{"entry_angle":null,"excerpt":{"exact":true,"text":"q"},"harness_label":null,"id":"01M4VVAW0046HAF3QJZ8000007","media":{"group":"01M4VVAW0046HAF3QJZ8000002"},"origin":"agent","origin_ref":"mini_h01","pass_ref":null,"payoff":null,"payoff_hint":"","quote":"q","score":4,"span":{"edges":"word","end":{"raw":{"reason":"import:hooks/mini.json#mini_h01.t_end","time":{"clock":"src","group":"01M4VVAW0046HAF3QJZ8000002","t":8820000000}}},"start":{"raw":{"reason":"import:hooks/mini.json#mini_h01.t_start","time":{"clock":"src","group":"01M4VVAW0046HAF3QJZ8000002","t":7056000000}}}},"state":"new","text_hook":"It works","type":"reveal","variant_of":null,"visual":null,"why":"w"}],
+  ["cut","01M4VVAW0046HAF3QJZ8000009",3,"system",{"brief":"","id":"01M4VVAW0046HAF3QJZ8000009","last_run_summary":null,"lineage":{"covers":[],"forked_from":null},"loop_check":null,"moment":"01M4VVAW0046HAF3QJZ8000007","notes":"","story_arc":[],"title":"Story"}],
+  ["part","01M4VVAW0046HAF3QJZ800000A",3,"system",{"audio_from":null,"caption_place_override":{},"cut":"01M4VVAW0046HAF3QJZ8000009","from":"hook","gain_db":0.0,"id":"01M4VVAW0046HAF3QJZ800000A","lineage":{"import_role":null,"merged":[],"split_of":null,"suggestion":null},"look":{},"media":{"group":"01M4VVAW0046HAF3QJZ8000002"},"order":"a0","role":"hook","speed":1.0,"src_in":7056000000,"src_out":8820000000}]
+ ],
+ "schema": "gmclip.project-fixture/0"
+}

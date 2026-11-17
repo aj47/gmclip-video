@@ -1,0 +1,2180 @@
+{
+  "schema": "gmclip.renderplan/0",
+  "meta": {
+    "title": "My AI avatar took 5 versions",
+    "hook_id": "loc_086da141_h25",
+    "content_id": "cnt_20261002_94b22b34f9"
+  },
+  "output": {
+    "canvas": {
+      "w": 1080,
+      "h": 1920
+    },
+    "fps": {
+      "num": 30,
+      "den": 1
+    },
+    "frames": 1523,
+    "color": {
+      "matrix": "bt709",
+      "transfer": "bt709",
+      "primaries": "bt709",
+      "range": "limited"
+    },
+    "video": {
+      "codec": "h264",
+      "profile": "high",
+      "level": "4.0",
+      "bframes": 2,
+      "gop_frames": 30,
+      "closed_gop": true,
+      "rate": {
+        "mode": "vbr",
+        "target_bps": 16000000,
+        "max_bps": 24000000
+      },
+      "timescale": 15360
+    },
+    "audio": {
+      "codec": "aac_lc",
+      "rate": 48000,
+      "channels": 2,
+      "bitrate": 192000
+    },
+    "container": {
+      "moov_first": true,
+      "edit_lists": false
+    }
+  },
+  "background": {
+    "kind": "colour",
+    "rgb": "#0c1118"
+  },
+  "sources": [
+    {
+      "id": "native",
+      "path": "preview/loc_086da141.proxy.mp4",
+      "fingerprint": {
+        "size": 668535399,
+        "sha256": "a8504505fb05deb0650fc76971e99de7800b1c1099d4c5ff74bd3333d63e08cc"
+      },
+      "expect": {
+        "video": {
+          "codec": "h264",
+          "w": 1280,
+          "h": 720,
+          "fps": {
+            "num": 30,
+            "den": 1
+          }
+        },
+        "audio": {
+          "codec": "aac",
+          "rate": 48000,
+          "channels": 2
+        }
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "id": "neometric-heavy",
+      "family": "Neometric",
+      "style": "Heavy",
+      "path": "fonts/Neometric Heavy (Bold).otf",
+      "sha256": "9ece81e8896ebc740c5256985dcbbeee0251011e6df73f5e637c8e599ad6a76e",
+      "em_per_size": 0.8332
+    }
+  ],
+  "text_styles": {
+    "Hook": {
+      "font": "neometric-heavy",
+      "size": 88.0,
+      "fill": "#FFFFFFFF",
+      "outline": {
+        "width": 12.0,
+        "colour": "#000000FF",
+        "join": "round"
+      },
+      "shadow": {
+        "dx": 7.0,
+        "dy": 7.0,
+        "blur": 0.0,
+        "colour": "#000000FF",
+        "of": "fill_and_outline"
+      },
+      "align": 5
+    },
+    "Pill": {
+      "font": "neometric-heavy",
+      "size": 50.0,
+      "fill": "#FFFFFFFF",
+      "box": {
+        "colour": "#101010CF",
+        "pad_x": 16.0,
+        "pad_y": 16.0,
+        "radius": 0.0,
+        "geometry": "libass_bs3"
+      },
+      "letter_spacing": 1.0,
+      "align": 7
+    },
+    "Speech": {
+      "font": "neometric-heavy",
+      "size": 86.0,
+      "fill": "#FFFFFFFF",
+      "outline": {
+        "width": 12.0,
+        "colour": "#000000FF",
+        "join": "round"
+      },
+      "shadow": {
+        "dx": 7.0,
+        "dy": 7.0,
+        "blur": 0.0,
+        "colour": "#000000FF",
+        "of": "fill_and_outline"
+      },
+      "align": 5
+    }
+  },
+  "parts": [
+    {
+      "id": "01-v5-payoff",
+      "out": [
+        0,
+        124
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 28301
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 45281600,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          28301,
+          28425
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 448.0,
+            "y": 140.0,
+            "w": 388.0,
+            "h": 480.0
+          },
+          "place": {
+            "x": 150.0,
+            "y": 420.0,
+            "w": 780.0,
+            "h": 964.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 200.0,
+            "y": 700.0,
+            "w": 32.0,
+            "h": 20.0
+          },
+          "place": {
+            "x": 0.0,
+            "y": 1900.0,
+            "w": 32.0,
+            "h": 20.0
+          },
+          "z": 1,
+          "visible": false
+        }
+      ]
+    },
+    {
+      "id": "02-v1-one-shot",
+      "out": [
+        124,
+        270
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 23408
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 37452800,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          23408,
+          23554
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "03-v1-eighty",
+      "out": [
+        270,
+        355
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 24109
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 38574400,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": null
+      },
+      "native": {
+        "frames": [
+          24109,
+          24194
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "04-v2",
+      "out": [
+        355,
+        799
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 24194
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 38710400,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": null,
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          24194,
+          24638
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "05a-v3",
+      "out": [
+        799,
+        889
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 24773
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 39636800,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": null
+      },
+      "native": {
+        "frames": [
+          24773,
+          24863
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "05b-v3-hold",
+      "out": [
+        889,
+        973
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 24863
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 39780800,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": null,
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          24863,
+          24947
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "hold",
+            "frame": 24860,
+            "provenance": {
+              "kind": "import",
+              "detail": {
+                "file": "plan.json",
+                "key": "cuts[5].hold_at"
+              }
+            }
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "06a-v4",
+      "out": [
+        973,
+        1182
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 25003
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 40004800,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": null
+      },
+      "native": {
+        "frames": [
+          25003,
+          25212
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "live"
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "06b-v4-hold",
+      "out": [
+        1182,
+        1307
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 25212
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 40339200,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": null,
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          25212,
+          25337
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 430.0,
+            "y": 80.0,
+            "w": 560.0,
+            "h": 570.0
+          },
+          "place": {
+            "x": 30.0,
+            "y": 250.0,
+            "w": 1020.0,
+            "h": 1038.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "hold",
+            "frame": 25209,
+            "provenance": {
+              "kind": "import",
+              "detail": {
+                "file": "plan.json",
+                "key": "cuts[7].hold_at"
+              }
+            }
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    },
+    {
+      "id": "07-v5-keeper",
+      "out": [
+        1307,
+        1523
+      ],
+      "picture": {
+        "source": "native",
+        "first_frame": 28962
+      },
+      "audio": {
+        "source": "native",
+        "first_sample": 46339200,
+        "rate": 48000,
+        "gain_db": 0.0,
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        }
+      },
+      "native": {
+        "frames": [
+          28962,
+          29178
+        ],
+        "fps": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "layers": [
+        {
+          "id": "screen",
+          "role": "screen",
+          "crop": {
+            "x": 448.0,
+            "y": 206.0,
+            "w": 388.0,
+            "h": 414.0
+          },
+          "place": {
+            "x": 120.0,
+            "y": 300.0,
+            "w": 838.0,
+            "h": 894.0
+          },
+          "z": 0,
+          "time_map": {
+            "mode": "hold",
+            "frame": 28356,
+            "provenance": {
+              "kind": "import",
+              "detail": {
+                "file": "plan.json",
+                "key": "cuts[8].hold_at"
+              }
+            }
+          }
+        },
+        {
+          "id": "cam",
+          "role": "cam",
+          "crop": {
+            "x": 0.0,
+            "y": 466.0,
+            "w": 320.0,
+            "h": 219.0
+          },
+          "place": {
+            "x": 280.0,
+            "y": 1370.0,
+            "w": 520.0,
+            "h": 356.0
+          },
+          "z": 1
+        }
+      ]
+    }
+  ],
+  "text_events": [
+    {
+      "id": "hook",
+      "out": [
+        0,
+        124
+      ],
+      "layer": 2,
+      "role": "text_hook",
+      "style": "Hook",
+      "pos": {
+        "x": 540.0,
+        "y": 305.0
+      },
+      "align": 5,
+      "size": 88.0,
+      "runs": [
+        {
+          "text": "My AI avatar\ntook "
+        },
+        {
+          "text": "5 versions.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 1"
+        }
+      }
+    },
+    {
+      "id": "pill-1",
+      "out": [
+        124,
+        355
+      ],
+      "layer": 3,
+      "role": "section_pill",
+      "style": "Pill",
+      "pos": {
+        "x": 48.0,
+        "y": 262.0
+      },
+      "align": 7,
+      "size": 50.0,
+      "runs": [
+        {
+          "text": "V1  "
+        },
+        {
+          "text": "one-shot",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 43"
+        }
+      }
+    },
+    {
+      "id": "pill-2",
+      "out": [
+        355,
+        799
+      ],
+      "layer": 3,
+      "role": "section_pill",
+      "style": "Pill",
+      "pos": {
+        "x": 48.0,
+        "y": 262.0
+      },
+      "align": 7,
+      "size": 50.0,
+      "runs": [
+        {
+          "text": "V2  "
+        },
+        {
+          "text": "better lip sync",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 44"
+        }
+      }
+    },
+    {
+      "id": "pill-3",
+      "out": [
+        799,
+        973
+      ],
+      "layer": 3,
+      "role": "section_pill",
+      "style": "Pill",
+      "pos": {
+        "x": 48.0,
+        "y": 262.0
+      },
+      "align": 7,
+      "size": 50.0,
+      "runs": [
+        {
+          "text": "V3  "
+        },
+        {
+          "text": "less wide head",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 45"
+        }
+      }
+    },
+    {
+      "id": "pill-4",
+      "out": [
+        973,
+        1308
+      ],
+      "layer": 3,
+      "role": "section_pill",
+      "style": "Pill",
+      "pos": {
+        "x": 48.0,
+        "y": 262.0
+      },
+      "align": 7,
+      "size": 50.0,
+      "runs": [
+        {
+          "text": "V4  "
+        },
+        {
+          "text": "kind of scary",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 46"
+        }
+      }
+    },
+    {
+      "id": "pill-5",
+      "out": [
+        1308,
+        1523
+      ],
+      "layer": 3,
+      "role": "section_pill",
+      "style": "Pill",
+      "pos": {
+        "x": 48.0,
+        "y": 262.0
+      },
+      "align": 7,
+      "size": 50.0,
+      "runs": [
+        {
+          "text": "V5  "
+        },
+        {
+          "text": "the keeper",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 47"
+        }
+      }
+    },
+    {
+      "id": "c01",
+      "out": [
+        124,
+        144
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "So this was"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 2"
+        }
+      }
+    },
+    {
+      "id": "c02",
+      "out": [
+        144,
+        180
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "the one shot."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 3"
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "out": [
+        180,
+        210
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "One shot of"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 4"
+        }
+      }
+    },
+    {
+      "id": "c04",
+      "out": [
+        210,
+        268
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "a "
+        },
+        {
+          "text": "3D",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "avatar.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 5"
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "out": [
+        268,
+        282
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Like not"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 6"
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "out": [
+        282,
+        294
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "a bad"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 7"
+        }
+      }
+    },
+    {
+      "id": "c07",
+      "out": [
+        294,
+        312
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "first shot."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 8"
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "out": [
+        312,
+        328
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Like that's like"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 9"
+        }
+      }
+    },
+    {
+      "id": "c09",
+      "out": [
+        328,
+        352
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "80%",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " there."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 10"
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "out": [
+        352,
+        364
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "And then I"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 11"
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "out": [
+        364,
+        384
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "was like, okay,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 12"
+        }
+      }
+    },
+    {
+      "id": "c12",
+      "out": [
+        384,
+        396
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "let's just keep"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 13"
+        }
+      }
+    },
+    {
+      "id": "c13",
+      "out": [
+        396,
+        444
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "making it "
+        },
+        {
+          "text": "better.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 14"
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "out": [
+        546,
+        553
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "So the"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 15"
+        }
+      }
+    },
+    {
+      "id": "c15",
+      "out": [
+        553,
+        582
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "lip",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " sync's working"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 16"
+        }
+      }
+    },
+    {
+      "id": "c16",
+      "out": [
+        582,
+        609
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "way feeling"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 17"
+        }
+      }
+    },
+    {
+      "id": "c17",
+      "out": [
+        609,
+        624
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "way "
+        },
+        {
+          "text": "better,",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 18"
+        }
+      }
+    },
+    {
+      "id": "c18",
+      "out": [
+        624,
+        630
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "I think"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 19"
+        }
+      }
+    },
+    {
+      "id": "c19",
+      "out": [
+        630,
+        648
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "the colors are"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 20"
+        }
+      }
+    },
+    {
+      "id": "c20",
+      "out": [
+        648,
+        681
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "better",
+          "fill": "#FFD400FF"
+        },
+        {
+          "text": " and that's"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 21"
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "out": [
+        681,
+        700
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "like eyebrows"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 22"
+        }
+      }
+    },
+    {
+      "id": "c22",
+      "out": [
+        700,
+        729
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "and stuff"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 23"
+        }
+      }
+    },
+    {
+      "id": "c23",
+      "out": [
+        744,
+        753
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "and like"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 24"
+        }
+      }
+    },
+    {
+      "id": "c24",
+      "out": [
+        753,
+        792
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "an idle thing."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 25"
+        }
+      }
+    },
+    {
+      "id": "c25",
+      "out": [
+        792,
+        831
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "This is "
+        },
+        {
+          "text": "V3.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 26"
+        }
+      }
+    },
+    {
+      "id": "c26",
+      "out": [
+        928,
+        940
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "A bit less"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 27"
+        }
+      }
+    },
+    {
+      "id": "c27",
+      "out": [
+        940,
+        975
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "of a wide head."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 28"
+        }
+      }
+    },
+    {
+      "id": "c28",
+      "out": [
+        981,
+        1020
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "And then yesterday"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 29"
+        }
+      }
+    },
+    {
+      "id": "c29",
+      "out": [
+        1020,
+        1047
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "V4."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 30"
+        }
+      }
+    },
+    {
+      "id": "c30",
+      "out": [
+        1086,
+        1108
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Mouth is more"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 31"
+        }
+      }
+    },
+    {
+      "id": "c31",
+      "out": [
+        1108,
+        1128
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "animated here"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 32"
+        }
+      }
+    },
+    {
+      "id": "c32",
+      "out": [
+        1128,
+        1144
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "with the beard,"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 33"
+        }
+      }
+    },
+    {
+      "id": "c33",
+      "out": [
+        1144,
+        1168
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "but it looks"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 34"
+        }
+      }
+    },
+    {
+      "id": "c34",
+      "out": [
+        1168,
+        1269
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "kind of "
+        },
+        {
+          "text": "scary.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 35"
+        }
+      }
+    },
+    {
+      "id": "c35",
+      "out": [
+        1269,
+        1305
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Oh boy."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 36"
+        }
+      }
+    },
+    {
+      "id": "c36",
+      "out": [
+        1305,
+        1329
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Yeah, I'm gonna"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 37"
+        }
+      }
+    },
+    {
+      "id": "c37",
+      "out": [
+        1329,
+        1341
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "use this as"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 38"
+        }
+      }
+    },
+    {
+      "id": "c38",
+      "out": [
+        1341,
+        1372
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "the "
+        },
+        {
+          "text": "avatar.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 39"
+        }
+      }
+    },
+    {
+      "id": "c39",
+      "out": [
+        1372,
+        1420
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Boom."
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 40"
+        }
+      }
+    },
+    {
+      "id": "c40",
+      "out": [
+        1420,
+        1482
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Pocoj "
+        },
+        {
+          "text": "Avatar.",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 41"
+        }
+      }
+    },
+    {
+      "id": "c41",
+      "out": [
+        1482,
+        1521
+      ],
+      "layer": 1,
+      "role": "caption",
+      "style": "Speech",
+      "pos": {
+        "x": 540.0,
+        "y": 1325.0
+      },
+      "size": 86.0,
+      "runs": [
+        {
+          "text": "Amazing",
+          "fill": "#FFD400FF"
+        }
+      ],
+      "provenance": {
+        "kind": "import",
+        "detail": {
+          "file": "captions-v5.ass",
+          "key": "Dialogue 42"
+        }
+      }
+    }
+  ],
+  "audio": {
+    "loudness": {
+      "mode": "static",
+      "integrated_lufs": -16.0,
+      "true_peak_dbtp": -1.5
+    }
+  },
+  "checks": {
+    "reference": {
+      "path": "reels/loc_086da141_h25/loc_086da141_h25-v5.mp4",
+      "sha256": "7774e5ec119b937c50036db1b0d295facef9cf7cdbf9511ab679e782767e336f",
+      "frames": 1523
+    },
+    "safe_zones": "instagram"
+  }
+}

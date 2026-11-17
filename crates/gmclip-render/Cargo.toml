@@ -1,0 +1,36 @@
+[package]
+name = "gmclip-render"
+description = "Compositor, shaders, text, export planner."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+gmclip-model.workspace = true
+gmclip-plan.workspace = true
+gmclip-media.workspace = true
+gmclip-gpu.workspace = true
+wgpu.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+# float_roundtrip: parse JSON numbers correctly rounded, as Python does (RT seconds and word
+# times, whose t·fps products decide tie rounding).
+serde_json = { workspace = true, features = ["float_roundtrip"] }
+parley = { version = "=0.12.0", default-features = false, features = ["std", "complex-scripts", "bytemuck"] }
+vello_cpu = { version = "=0.3.0", default-features = false, features = ["std", "u8_pipeline"] }
+# Same versions parley 0.12 resolves (no new crates): outlines/metrics, shaping for RT's
+# Pillow measure, and the scalar SIMD level the text raster is pinned to (SPEC §7 Text).
+skrifa = { version = "=0.44.0", default-features = false, features = ["std"] }
+harfrust = { version = "=0.12.0", default-features = false, features = ["std"] }
+fearless_simd = { version = "=0.7.0", default-features = false, features = ["std", "force_support_fallback"] }
+
+[features]
+# Tests that need AJ's machine: Metal / VideoToolbox (lane H), the golden-11 media
+# (read-only) and the commercial Neometric Heavy font, which is never committed.
+# `cargo test -p gmclip-render --features lab`.
+lab = ["gmclip-gpu/lab", "gmclip-media/lab"]
+
+[lints]
+workspace = true

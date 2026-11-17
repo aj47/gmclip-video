@@ -1,0 +1,224 @@
+/* Lane L views: library search (L.01/L.02), chat ribbon (L.03), new cut like this (L.05),
+ * consolidate (L.06). Tokens only; every layout reflows down to a phone-width window. */
+
+.libsearch {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface-app);
+}
+.libsearch-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--sep);
+  background: var(--surface-panel);
+}
+.libsearch-form {
+  flex: 1 1 240px;
+  min-width: 0;
+  display: flex;
+}
+.libsearch-form input {
+  flex: 1;
+  min-width: 0;
+  height: var(--control-lg);
+  font-size: var(--fs-15);
+}
+.libsearch-count {
+  white-space: nowrap;
+}
+.libsearch-note {
+  margin: 0;
+  padding: var(--s-2) var(--s-4);
+  border-bottom: 1px solid var(--sep);
+}
+.libsearch-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.libsearch-body.playing {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 44%);
+}
+.libsearch-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--s-2) var(--s-4);
+  overflow: auto;
+  min-width: 0;
+}
+.libsearch-viewer {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  border-left: 1px solid var(--sep);
+  background: var(--surface-stage);
+}
+.libsearch-viewer > * {
+  flex: 1;
+  min-width: 0;
+}
+.libsearch-empty {
+  padding: var(--s-6) 0;
+}
+.libsearch .hit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "meta actions" "text actions";
+  gap: var(--s-1) var(--s-3);
+  padding: var(--s-2) var(--s-2);
+  border-radius: var(--r-2);
+  border-bottom: 1px solid var(--sep);
+}
+.libsearch .hit.on {
+  background: var(--wash-selected);
+}
+.libsearch .hit.now {
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+.hit-meta {
+  grid-area: meta;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  min-width: 0;
+  font-size: var(--fs-12);
+}
+.hit-project {
+  font-weight: var(--fw-semibold);
+  color: var(--text-1);
+}
+.hit-time {
+  font-family: var(--font-mono);
+  color: var(--text-2);
+}
+.hit-text {
+  grid-area: text;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--fs-13);
+  line-height: var(--lh-body);
+}
+.hit-text mark {
+  background: var(--accent-wash-strong);
+  color: var(--text-1);
+  border-radius: var(--r-1);
+  padding: 0 2px;
+}
+.hit-actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+}
+
+/* Home's search box */
+.home-search {
+  display: flex;
+  gap: var(--s-2);
+  min-width: 0;
+}
+.home-search input {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .libsearch-body.playing {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .libsearch-viewer {
+    order: -1;
+    border-left: 0;
+    border-bottom: 1px solid var(--sep);
+    aspect-ratio: 16 / 9;
+    max-height: 40vh;
+  }
+  .libsearch .hit {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "meta" "text" "actions";
+  }
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ── New cut like this (L.05) */
+.keys-dialog.cutlike {
+  width: min(640px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.cutlike-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  min-height: 120px;
+  flex: 1;
+}
+.cutlike-list li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: var(--s-2);
+  padding: var(--s-1) var(--s-2);
+  border-radius: var(--r-2);
+  cursor: pointer;
+}
+.cutlike-list li.on {
+  background: var(--accent-wash);
+}
+.cutlike-list li:hover {
+  background: var(--wash-hover);
+}
+.cutlike-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cutlike-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+.cutlike-foot input[type="text"] {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+.cutlike-from {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 0;
+}
+.cutlike-from select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Consolidate (L.06) */
+.keys-dialog.consolidate {
+  width: min(560px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.consolidate-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}

@@ -1,0 +1,17 @@
+/* The Polish tab (Ideas 2026-10-16, lane K2): stressed words, punch-in, callouts, loop,
+   hold screen. Tokens only (design/tokens.css). */
+.polish-panel { overflow: auto; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: var(--s-4); padding: var(--s-3) var(--s-3) var(--s-5); }
+.polish-sec { display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+.polish-sec h3 { margin: 0; }
+.polish-sec .row { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; }
+.polish-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.polish-row { display: flex; align-items: center; gap: var(--s-2); min-width: 0; padding: 2px 0; border-bottom: 1px solid var(--sep, transparent); }
+.polish-row .tc { flex: none; font-variant-numeric: tabular-nums; font-size: var(--fs-12); padding: 0 4px; }
+.polish-main { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.polish-main b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.polish-main b.kw { color: var(--warning); }
+.polish-why { overflow-wrap: anywhere; }
+.polish-row .btn { flex: none; }
+.polish-all { align-self: flex-start; }
+.polish-intro { margin: 0; }
+.polish-sec p { margin: 0; }

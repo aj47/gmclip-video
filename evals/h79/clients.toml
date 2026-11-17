@@ -1,0 +1,31 @@
+# Client pins for the h79 eval and the launcher's tested ranges (SPEC §17.1.1, F24;
+# R-AGT-1 "a client version outside the tested range is refused").
+#
+# One tested patch per client: both ship behaviour changes in patch releases.
+# `versions` must equal `gmclip_ai::launcher::version::supported()` (a gmclip-eval test
+# checks it). `s7` is the verdict of `gmclip-eval s7` on the version tested
+# (spikes/S7/README.md); a failing version is unsupported and the launcher refuses it,
+# unless `accepted` records the owner's decision to run it with those findings (Codex,
+# decision 0012 amendment 2026-10-16). Flags are never weakened to make a version pass.
+
+wall_clock = "90m"
+
+[claude-code]
+versions = ">=2.1.300, <2.1.301"
+# the binary the probe ran (informational: a reinstall of the same version may differ)
+sha256 = "475517caa611e3318a2f298fa071287ec98955538df78c58f709ecc01e5ae2d3"
+tested = "2.1.300"
+s7 = "pass"
+model = "claude-opus-5-5"
+effort = "high"
+
+[codex]
+versions = ">=0.160.0, <0.160.1"
+sha256 = "112fae7a5a1223e673c8a1791d32338f37df8b527ff1159bb8adac6c4dbf1b4b"
+tested = "0.160.0"
+s7 = "fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)"
+accepted = "AJ 2026-10-16: dont worry about codex safety (decision 0012): runs like the others"
+# AJ's default model at freeze: not recorded yet (Needs AJ). The S7 probe ran on the
+# client's built-in default, which sent "gpt-6.1-sol".
+model = ""
+effort = "high"

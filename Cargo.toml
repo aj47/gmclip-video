@@ -1,0 +1,108 @@
+# gmclip workspace. Crate list: SPEC §3.1 (implementer Part C + `gmclip-plan`).
+# Dependency direction is enforced by `cargo xt deps` (xtask/src/deps.rs), not by convention.
+[workspace]
+resolver = "3"
+members = ["crates/*", "xtask"]
+# Negative fixtures are their own throwaway workspaces (cargo xt fixtures); never members.
+exclude = ["xtask/fixtures"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.97"
+publish = false
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/aj47/gmclip-video"
+
+[workspace.dependencies]
+# Internal crates (path only; `cargo xt deps` decides which edges are legal).
+gmclip-model = { path = "crates/gmclip-model" }
+gmclip-macros = { path = "crates/gmclip-macros" }
+gmclip-store = { path = "crates/gmclip-store" }
+gmclip-core = { path = "crates/gmclip-core" }
+gmclip-proto = { path = "crates/gmclip-proto" }
+gmclip-plan = { path = "crates/gmclip-plan" }
+gmclip-media = { path = "crates/gmclip-media" }
+gmclip-gpu = { path = "crates/gmclip-gpu" }
+gmclip-render = { path = "crates/gmclip-render" }
+gmclip-analysis = { path = "crates/gmclip-analysis" }
+gmclip-ml = { path = "crates/gmclip-ml" }
+gmclip-ai = { path = "crates/gmclip-ai" }
+gmclip-eval = { path = "crates/gmclip-eval" }
+gmclip-mcp = { path = "crates/gmclip-mcp" }
+gmclip-platform = { path = "crates/gmclip-platform" }
+
+# External crates. Every new entry needs a cargo-vet audit (SR R-SUP-1) and passes deny.toml.
+clap = { version = "4.5", default-features = false, features = ["std", "derive", "help", "usage", "error-context"] }
+schemars = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+# GPU and Apple media (Lane H). objc2 >= 0.6.5 is a floor: < 0.6.5 has a use-after-free in
+# `retain_autoreleased` on macOS 13–26, the path `CVMetalTextureGetTexture` takes
+# (implementer finding 15, objc2 #861).
+# Backends are chosen per target in gmclip-gpu.
+wgpu = { version = "=30.0.1", default-features = false, features = ["std", "parking_lot", "wgsl"] }
+objc2 = "0.6.5"
+objc2-core-foundation = "0.3.2"
+objc2-core-video = "0.3.2"
+objc2-core-media = "0.3.2"
+objc2-video-toolbox = "0.3.2"
+objc2-audio-toolbox = "0.3.2"
+objc2-core-audio-types = "0.3.2"
+# Already in the tree under objc2-audio-toolbox; direct for playback (device latency, host time).
+objc2-core-audio = "0.3.2"
+objc2-metal = "0.3.2"
+objc2-io-surface = "0.3.2"
+# Completion handlers for ScreenCaptureKit and AVFoundation (decision 0045). Already in the
+# tree under objc2-core-foundation; direct for `RcBlock`.
+block2 = "0.6.2"
+# M1 model/store/core (lane A2). New crates: AJ's cargo-vet audit pending (STATUS.md "Needs AJ").
+arc-swap = "1.7"
+ciborium = { version = "0.2.2", default-features = false, features = ["std"] }
+imbl = { version = "7", default-features = false }
+proc-macro2 = "1"
+proptest = { version = "1", default-features = false, features = ["std"] }
+quote = "1"
+rusqlite = { version = "0.40", default-features = false, features = ["bundled", "cache"] }
+syn = { version = "3", features = ["full", "extra-traits"] }
+# ASR and VAD (lane D, SPEC §9). One ORT per process, loaded by absolute path (R-LOAD-1):
+# `load-dynamic`, never ort's binary download. parakeet-rs re-exports this same `ort`.
+# Both are < 30 days old (R-SUP-1): AJ's call, STATUS.md "Needs AJ".
+ort = { version = "=2.0.0-rc.14", default-features = false, features = ["std", "ndarray", "load-dynamic"] }
+parakeet-rs = { version = "=0.4.1", default-features = false, features = ["load-dynamic"] }
+# M1 agent surface (lane A2): socket server, MCP, owner path. AJ's cargo-vet audit pending.
+cap-std = "4.0.3"
+getrandom = "0.4"
+hmac = "0.12"
+rmcp = { version = "=3.5.1", default-features = false, features = ["server"] }
+rustix = { version = "1", default-features = false, features = ["std", "process"] }
+sha2 = { version = "0.10", default-features = false }
+tokio = { version = "1.53", default-features = false, features = ["rt-multi-thread", "net", "io-util", "io-std", "sync", "time", "macros"] }
+
+[workspace.lints.rust]
+# `unsafe` is confined to gmclip-gpu (SPEC §3.1): the compiler forbids it in every crate
+# that inherits these lints (all but gmclip-gpu, which has its own table). `cargo xt deps`
+# checks every member inherits them, and every crate root also says
+# `#![forbid(unsafe_code)]` as a visible backstop.
+unsafe_code = "forbid"
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+
+# Disk budget on AJ's Mac (memory: disk-space-tight-parallel-builds): line tables only for
+# our crates, no debug info for dependencies. Keeps per-lane target dirs small.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+[profile.test]
+debug = "line-tables-only"
+
+[profile.release]
+panic = "unwind" # SPEC §3.12: catch_unwind around handlers

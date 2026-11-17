@@ -1,0 +1,213 @@
+# stream-sources.toml (W0-12, SPEC §5.16): where each lab stream's picture and audio come
+# from. Paths are relative to the lab media folder (GMCLIP_LAB_MEDIA, default
+# ~/Development/gmclip-lab-media; `tools/lab_media.sh` makes it). Checked by
+# `cargo xt stream-sources`; `cargo xt bench60` reads it.
+#
+# - `mode = "native"`: one file on the stream's own clock carries picture and audio.
+# - `mode = "hires_mkv"`: picture from the 1440p VP9 MKV (b) at a frame offset, audio
+#   from the stream's 720p proxy, which is on the native clock (the proxy's own
+#   timeline *is* native time): two-source parts, picture by MKV frame index, audio by
+#   proxy sample index (SPEC §5.16).
+#
+# Picture offset. `[[source.window]]` rows are the ten measured alignment windows (audio
+# xcorr, then frame MAE over ±8 frames; `hires/alignment.json`): -503 frames for the
+# windows at 195 s and 278 s, -1642 from 1201 s (the reference renders cut windows down
+# to 1196 s at -1642). The boundary between the regimes was not measured; SPEC §5.16
+# puts it at ~1000 s, so `[[source.offset]]` splits there. Native time inside a
+# `[[source.unmeasured]]` span is unverified: a plan must say so rather than trust either
+# offset there.
+#
+#   mkv_frame(t) = round_half_even(t * fps) + offset_at(t)
+#   offset_at(t) = frames of the [[source.offset]] with from_s <= t < until_s
+#
+# sha256s are the bytes on AJ's M4 Pro; each file is also a row of
+# test-media/manifest.toml (`*_manifest_id`), and `cargo xt stream-sources` requires the
+# two to agree.
+
+schema = "gmclip.stream-sources/0"
+fps = 30
+
+[provenance.alignment]
+path = "hires/alignment.json"
+sha256 = "d456091f94c6055665e7e124c60e53ea3b746de5af0974fb89f680296eedbfb7"
+
+[[source]]
+vid = "loc_4fadb756"
+mode = "hires_mkv"
+# (b): jMcAmooE53I source.mkv, VP9 Profile 0 1440p30 with cues. Its own audio is AAC
+# 44.1 kHz and is not used; audio comes from the 48 kHz proxy (the audio member).
+picture_path = "streams/jMcAmooE53I-source.mkv"
+picture_manifest_id = "b"
+picture_sha256 = "13ed3a2671ad918f9e1f79dea18e2b44d30a4293ce106ae44e3bbbfa3f2ddb48"
+picture_size = [2560, 1440]
+audio_path = "preview/loc_4fadb756.proxy.mp4"
+audio_manifest_id = "proxy-loc_4fadb756"
+audio_sha256 = "ad8e69cda5ba9dc10624bbd19a86cb9544a2d7c458952b6e53bf316e78deaa2d"
+audio_sample_rate = 48000
+# Codecs, for a plan's sources[].expect.
+picture_codec = "vp9"
+audio_codec = "aac"
+audio_channels = 2
+# The inner unmeasured span as single keys; [[source.unmeasured]] below lists every span.
+unmeasured_from_s = 307.0
+unmeasured_until_s = 1196.0
+
+[[source.unmeasured]]
+from_s = 0.0
+until_s = 195.0
+# before the first alignment window
+
+[[source.unmeasured]]
+from_s = 307.0
+until_s = 1196.0
+# between the -503 and -1642 measurements
+
+[[source.offset]]
+from_s = 0.0
+until_s = 1000.0
+frames = -503
+
+[[source.offset]]
+from_s = 1000.0
+until_s = 1000000000.0
+frames = -1642
+
+[[source.window]]
+start_s = 195
+end_s = 235
+mkv_first_frame = 5347
+frame_offset = -503
+audio_offset_s = -16.7509
+mean_mae = 0.118
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 278
+end_s = 307
+mkv_first_frame = 7837
+frame_offset = -503
+audio_offset_s = -16.7511
+mean_mae = 0.124
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 1201
+end_s = 1216
+mkv_first_frame = 34388
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.308
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 1248
+end_s = 1257
+mkv_first_frame = 35798
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.306
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 1280
+end_s = 1331
+mkv_first_frame = 36758
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.29
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 1667
+end_s = 1708
+mkv_first_frame = 48368
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.314
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 1740
+end_s = 1795
+mkv_first_frame = 50558
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.187
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 1793
+end_s = 1840
+mkv_first_frame = 52148
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.234
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 2565
+end_s = 2615
+mkv_first_frame = 75308
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.233
+local_offsets_nonzero = []
+
+[[source.window]]
+start_s = 2675
+end_s = 2730
+mkv_first_frame = 78608
+frame_offset = -1642
+audio_offset_s = -54.6762
+mean_mae = 0.161
+local_offsets_nonzero = [52]
+# local_offsets_nonzero: 1-s chunk(s) whose best local shift was not 0 (chunk 52 = native 2727 s); the window-level offset holds.
+
+[[source]]
+vid = "loc_bd89f38b"
+mode = "native"
+# (a): the Oct-01 MMO restream, H.264 High 1440p30 + AAC 48 kHz.
+picture_path = "streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-01-2026-restream.mp4"
+picture_manifest_id = "a"
+picture_sha256 = "2960ad899bb2139dd7084cdb514ca1de9a690a6f2d04c64229b648181a108852"
+picture_size = [2560, 1440]
+audio_path = "streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-01-2026-restream.mp4"
+audio_manifest_id = "a"
+audio_sha256 = "2960ad899bb2139dd7084cdb514ca1de9a690a6f2d04c64229b648181a108852"
+audio_sample_rate = 48000
+
+[[source]]
+vid = "loc_086da141"
+mode = "native"
+# The 720p proxy is the only copy; picture and audio are native.
+picture_path = "preview/loc_086da141.proxy.mp4"
+picture_manifest_id = "proxy-loc_086da141"
+picture_sha256 = "a8504505fb05deb0650fc76971e99de7800b1c1099d4c5ff74bd3333d63e08cc"
+picture_size = [1280, 720]
+audio_path = "preview/loc_086da141.proxy.mp4"
+audio_manifest_id = "proxy-loc_086da141"
+audio_sha256 = "a8504505fb05deb0650fc76971e99de7800b1c1099d4c5ff74bd3333d63e08cc"
+audio_sample_rate = 48000
+
+[[source]]
+vid = "loc_2fceb8f9"
+mode = "native"
+# The Oct-05 MMO restream; not used by the 11 golden cuts.
+picture_path = "streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-05-2026-restream.mp4"
+picture_manifest_id = "mmo-oct05"
+picture_sha256 = "244a22f6dd9f677c782bf3a3f0583d0ac6e2ddf44ec16854a2e985758a26be31"
+picture_size = [2560, 1440]
+audio_path = "streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-05-2026-restream.mp4"
+audio_manifest_id = "mmo-oct05"
+audio_sha256 = "244a22f6dd9f677c782bf3a3f0583d0ac6e2ddf44ec16854a2e985758a26be31"
+audio_sample_rate = 48000
+
+# The font file each ASS `Fontname` means, for a plan's fonts[] (RP §2.2: path, sha256,
+# em_per_size).
+[[font]]
+fontname = "Neometric Heavy"
+family = "Neometric"
+style = "Heavy"
+path = "fonts/Neometric Heavy (Bold).otf"
+sha256 = "9ece81e8896ebc740c5256985dcbbeee0251011e6df73f5e637c8e599ad6a76e"
+em_per_size = 0.8332

@@ -1,0 +1,156 @@
+/* First run (lane S): the setup sheet's picture tiles, the Home welcome card and the
+ * first-run checklist, the restore sheet and Settings › Storage. Tokens only. */
+
+.fr-sheet { max-width: 920px; }
+.fr-sheet .row { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; }
+.fr-sheet .spacer, .fr-welcome .spacer, .fr-checklist .spacer { flex: 1; }
+
+.fr-model {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-2) var(--s-3);
+  margin-bottom: var(--s-3);
+  border-radius: var(--r-3);
+  background: var(--surface-raised);
+}
+.fr-model progress { width: 100%; height: 6px; accent-color: var(--accent); }
+
+.fr-q {
+  margin: 0 0 var(--s-3);
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+.fr-q legend {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--text-1);
+}
+.fr-help { display: inline-flex; color: var(--text-3); cursor: help; }
+.fr-help:focus-visible { outline: 2px solid var(--focus-ring); border-radius: var(--r-1); }
+
+.fr-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: var(--s-2);
+}
+.fr-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-1);
+  min-height: 44px;
+  padding: var(--s-2);
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-3);
+  background: var(--surface-raised);
+  color: var(--text-1);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.fr-tile:hover:not(:disabled) { border-color: var(--border-control-hover); background: var(--wash-hover); }
+.fr-tile.on { border-color: var(--accent); background: var(--accent-wash); }
+.fr-tile:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+.fr-tile:disabled { cursor: not-allowed; opacity: 0.45; }
+.fr-tile-label { font-size: var(--fs-12); font-weight: var(--fw-medium); text-align: center; }
+.fr-tile-sub { font-size: var(--fs-11); color: var(--text-3); text-align: center; overflow-wrap: anywhere; }
+.fr-agent-icon { display: grid; place-items: center; width: 56px; height: 56px; color: var(--text-2); }
+
+.fr-pic { width: auto; height: 72px; }
+.fr-frame { fill: none; stroke: var(--sep-strong); }
+.fr-cam { fill: var(--lane-caption); stroke: var(--lane-caption-edge); }
+.fr-screen { fill: var(--lane-video); stroke: var(--lane-video-edge); }
+.fr-blank { fill: none; stroke: var(--sep-strong); stroke-dasharray: 3 3; }
+.fr-face { fill: none; stroke: var(--text-2); stroke-width: 1.5; }
+.fr-seam { stroke: var(--keyword-text); stroke-width: 2; }
+.fr-glyph { fill: var(--text-3); }
+.fr-code { stroke: var(--text-3); stroke-width: 2; stroke-linecap: round; fill: none; }
+.fr-zone { fill: var(--danger-wash); stroke: none; }
+.fr-label { fill: var(--text-2); font: var(--fw-semibold) 12px var(--font-ui); }
+
+.fr-media { display: flex; align-items: center; gap: var(--s-1); margin: var(--s-2) 0 0; }
+.fr-path { flex: 1; min-width: 0; }
+
+.fr-summary {
+  margin: var(--s-3) 0;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-3);
+  background: var(--surface-raised);
+}
+.fr-summary h3 { display: flex; align-items: center; gap: var(--s-1); margin: 0 0 var(--s-2); font-size: var(--fs-12); color: var(--text-2); }
+.fr-summary dl {
+  display: grid;
+  grid-template-columns: minmax(120px, max-content) 1fr;
+  gap: var(--s-1) var(--s-3);
+  margin: 0;
+  font-size: var(--fs-12);
+}
+.fr-summary dt { color: var(--text-3); }
+.fr-summary dd { margin: 0; overflow-wrap: anywhere; }
+
+.fr-welcome, .fr-checklist {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  margin: 0 0 var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-4);
+  background: var(--surface-raised);
+  border: 1px solid var(--sep);
+}
+.fr-checklist h2 { margin: 0; font-size: var(--fs-15); }
+/* the welcome: one line */
+.fr-welcome { flex-wrap: nowrap; gap: var(--s-2); padding: var(--s-1) var(--s-2) var(--s-1) var(--s-3); font-size: var(--fs-12); }
+.fr-welcome > span:not(.spacer) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fr-checklist { flex-direction: column; align-items: stretch; }
+.fr-checklist header { display: flex; align-items: center; gap: var(--s-2); }
+.fr-checklist ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fr-checklist li { display: flex; align-items: center; gap: var(--s-1); color: var(--text-2); font-size: var(--fs-13); }
+.fr-checklist li.done { color: var(--success); }
+
+.restore-sheet { max-width: 640px; }
+.restore-project h3 { display: flex; align-items: center; gap: var(--s-2); margin: var(--s-3) 0 var(--s-1); font-size: var(--fs-13); }
+.restore-list { margin: 0; padding: 0; list-style: none; }
+.restore-list li {
+  display: grid;
+  grid-template-columns: minmax(110px, max-content) 1fr auto;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-1) 0;
+  border-bottom: 1px solid var(--sep);
+}
+.restore-confirm {
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  border-radius: var(--r-3);
+  background: var(--warning-wash);
+}
+.restore-confirm .row { display: flex; gap: var(--s-2); }
+
+.settings-section { margin: var(--s-4) 0; }
+.settings-section h3 { margin: 0 0 var(--s-2); font-size: var(--fs-13); }
+.storage-table { border-collapse: collapse; margin-bottom: var(--s-2); font-size: var(--fs-12); }
+.storage-table th { text-align: left; font-weight: var(--fw-regular); padding: 2px var(--s-3) 2px 0; }
+.storage-table td { padding: 2px var(--s-3) 2px 0; }
+.storage-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.settings-section .row { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; }
+
+@media (max-width: 600px) {
+  .fr-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fr-summary dl { grid-template-columns: 1fr; }
+  .restore-list li { grid-template-columns: 1fr auto; }
+}

@@ -1,0 +1,4 @@
+GET /x/abc HTTP/1.1
+Host: 127.0.0.1:1
+Range: bytes=0-9
+Cookie: gmr=1

@@ -1,0 +1,8 @@
+# Negative fixture (W0-01): gmclip-core depending on gmclip-render must be rejected by
+# `cargo xt deps` (core reaches render only through its own `Renderer` trait).
+[workspace]
+resolver = "3"
+members = ["gmclip-core", "gmclip-render"]
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

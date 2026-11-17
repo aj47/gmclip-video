@@ -1,0 +1,341 @@
+{
+ "untrusted": true,
+ "cuts": {
+  "loc_4fadb756_h34": {
+   "hook_id": "loc_4fadb756_h34",
+   "video_id": "loc_4fadb756",
+   "brief": "",
+   "title": "1 prompt, 4 shots, made on my own PC",
+   "summary": "AJ gives a single video prompt four planned shots, then plays the generated rooftop sequence in ComfyUI. The original pause, shot-one read and resumed playback remain. He identifies pursuers in front rather than behind and visible artifacts, then qualifies that criticism with his positive cinematic reaction.",
+   "notes": "Selected native speech and same-frame UI show the four-shot prompt, paused and resumed output, specific placement error and qualified reaction. The request is not a guarantee that every shot matches. Large Neometric hook remains separate from simultaneous speech captions of one to three words. Original native API clock, offset zero. AJ review remains pending.\n\nAGENT EDIT PASS (2026-10-05, story reel v5): rebuilt payoff-first per AGENTS.md with the reel builder from production/reels-2026-10-05/loc_4fadb756_h34/plan.json. 9 parts; 0 hold the screen on an earlier frame while camera and audio stay live. Captions come from the render's own audio. The final is that render (loc_4fadb756_h34-v5.mp4); the editor's crops for these parts are not the render's layout, so 🎬 Render final in the station would replace it with a station render.",
+   "segments": [
+    {
+     "id": "01-payoff-trailer-plays",
+     "t_start": 1669.05,
+     "t_end": 1676.12,
+     "text": "Wow, audio as well. This is a full cinematic uh live action video. And",
+     "role": "hook",
+     "from": "hook",
+     "src": "reel-builder"
+    },
+    {
+     "id": "02-claim",
+     "t_start": 1649.22,
+     "t_end": 1657.74,
+     "text": "we've just generated this video here, five second video in under 10 minutes on my Windows PC locally.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "03-four-shot-storyboard",
+     "t_start": 1197.64,
+     "t_end": 1209.48,
+     "text": "there's a second by second storyboard. Each shot is a separate scene. So this is a five-second video where there's four separate scenes, four separate shots.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "04-run",
+     "t_start": 1281.96,
+     "t_end": 1283.5,
+     "text": "Alright, let's run this boom.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "05-seventy-percent",
+     "t_start": 1376.85,
+     "t_end": 1378.72,
+     "text": "Wow, we're at seventy percent.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "06-game-changing",
+     "t_start": 1390.5,
+     "t_end": 1393.88,
+     "text": "H three is truly a game changing model here.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07-shot-one-said",
+     "t_start": 1676.12,
+     "t_end": 1688.12,
+     "text": "it's even break broken down the storyboard here. Shot one high side angle protagonist sprinting at the roof edge pursuers appearing in the rooftop doorway behind him.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "08-got-things-wrong",
+     "t_start": 1692.0,
+     "t_end": 1700.38,
+     "text": "obviously got some things wrong here. The pursuers are in front of him and there's like some weird artifacts, but",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "09-looks-damn-good",
+     "t_start": 1702.2,
+     "t_end": 1712.06,
+     "text": "mean it looks pretty damn good, cinematic style, etc. So yeah, dude, we got that up and running in less than 20 minutes. I'm pretty impressed.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    }
+   ],
+   "suggestions": [],
+   "arc": [],
+   "suggested_at": "",
+   "stats": {},
+   "updated": "2026-10-05T08:56:11",
+   "updated_by": "agent:story-reel-v5"
+  },
+  "loc_4fadb756_h37": {
+   "hook_id": "loc_4fadb756_h37",
+   "video_id": "loc_4fadb756",
+   "brief": "",
+   "title": "My GPU went from 2% to 100%",
+   "summary": "AJ shows low GPU activity before starting a local AI video job in ComfyUI, then the current Task Manager graphs and readings rise. He describes system memory as about full and GPU activity as about 100 percent. The complete listening and outside-noise-qualified reaction remain; these are whole-PC readings and a personal noise impression, not isolated model memory use or a benchmark.",
+   "notes": "Selected native speech and same-frame UI show low GPU activity, actual Run action, rising whole-PC memory and GPU readings, and the full outside-noise-qualified personal reaction. The all 32 GB wording and unfinished-video timing claim are excluded. Large Neometric hook remains separate from simultaneous speech captions of one to three words. Original native API clock, offset zero. AJ review remains pending.\n\nAGENT EDIT PASS (2026-10-05, story reel v5): rebuilt payoff-first per AGENTS.md with the reel builder from production/reels-2026-10-05/loc_4fadb756_h37/plan.json. 10 parts; 0 hold the screen on an earlier frame while camera and audio stay live. Captions come from the render's own audio. The final is that render (loc_4fadb756_h37-v5.mp4); the editor's crops for these parts are not the render's layout, so 🎬 Render final in the station would replace it with a station render.",
+   "segments": [
+    {
+     "id": "01-payoff-gpu-100",
+     "t_start": 1301.3,
+     "t_end": 1307.66,
+     "text": "GPU is already at 60 degrees temperature and it's about at 100% usage.",
+     "role": "hook",
+     "from": "hook",
+     "src": "reel-builder"
+    },
+    {
+     "id": "02-task-manager",
+     "t_start": 1240.48,
+     "t_end": 1243.8,
+     "text": "we do that, I'm gonna actually bring up task manager.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "03-two-percent",
+     "t_start": 1251.43,
+     "t_end": 1262.16,
+     "text": "you can see right now my GPU is at about 2%. It's not really doing much, but when we press run, I expect this to hit up to 100%.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "04-forty-five-degrees",
+     "t_start": 1274.62,
+     "t_end": 1281.94,
+     "text": "see here in the bottom left, the temperature is about forty five degrees Celsius. I expect that to skyrocket as well.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "05-run",
+     "t_start": 1281.96,
+     "t_end": 1283.5,
+     "text": "Alright, let's run this boom.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "06a-spiked",
+     "t_start": 1290.52,
+     "t_end": 1295.27,
+     "text": "the GPU spiked a little bit. CPU spiked. Memory spiked. Memory",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "06b-memory-full",
+     "t_start": 1295.27,
+     "t_end": 1300.86,
+     "text": "is about full now. All my 32 gigabytes of DDR5 is being used.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07a-listen",
+     "t_start": 1308.1,
+     "t_end": 1312.0,
+     "text": "Fully utilizing the CP the GPU. Let me see if I can hear it.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07b-not-that-loud",
+     "t_start": 1314.3,
+     "t_end": 1317.36,
+     "text": "low-key? It's not actually s it doesn't actually sound that loud.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07c-as-loud-as-expected",
+     "t_start": 1323.4,
+     "t_end": 1327.14,
+     "text": "sound as loud as I would have expected for a hundred percent usage.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    }
+   ],
+   "suggestions": [],
+   "arc": [],
+   "suggested_at": "",
+   "stats": {},
+   "updated": "2026-10-05T08:56:12",
+   "updated_by": "agent:story-reel-v5"
+  },
+  "loc_4fadb756_h48": {
+   "hook_id": "loc_4fadb756_h48",
+   "video_id": "loc_4fadb756",
+   "brief": "",
+   "title": "Free AI video on my own PC: the setup",
+   "summary": "AJ explains his desktop download, then narrates a replay of his earlier ComfyUI first-run setup: choosing Local to avoid cloud charges and configuring his NVIDIA GPU. Current narration and the earlier replay remain visually distinct. The reel shows initial setup choices, without claiming a complete one-click installation or a finished generation.",
+   "notes": "Selected native speech explains the desktop download and narrates the earlier first-run Local and NVIDIA choices. Personal preference about cloud fees remains attributed to AJ. Current live camera remains distinct from the older replay camera. Large Neometric hook stays separate from simultaneous speech captions of one to three words. Original native API clock, offset zero. AJ review pending.\n\nAGENT EDIT PASS (2026-10-05, story reel v5): rebuilt payoff-first per AGENTS.md with the reel builder from production/reels-2026-10-05/loc_4fadb756_h48/plan.json. 13 parts; 1 hold the screen on an earlier frame while camera and audio stay live. Captions come from the render's own audio. The final is that render (loc_4fadb756_h48-v5.mp4); the editor's crops for these parts are not the render's layout, so 🎬 Render final in the station would replace it with a station render.",
+   "segments": [
+    {
+     "id": "01-viewer-asks",
+     "t_start": 1738.3,
+     "t_end": 1741.06,
+     "text": "Yeah, it's super easy. Let me just tell you guys how I did it.",
+     "role": "hook",
+     "from": "hook",
+     "src": "reel-builder"
+    },
+    {
+     "id": "02-comfy-org",
+     "t_start": 1741.44,
+     "t_end": 1748.64,
+     "text": "much I went to comfi.org. This is where you download comfy UI. I just pressed download desktop.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "03-local-not-cloud",
+     "t_start": 1777.56,
+     "t_end": 1787.65,
+     "text": "is what you see when you first run uh comfy UI. It'll be like do you want to cloud or local? I did local. I'm running this all locally. I want to do it for free. I don't want to pay for cloud stuff.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "04-pick-gpu",
+     "t_start": 1788.04,
+     "t_end": 1793.1,
+     "text": "you set up what GPU you have. I'm running a NVIDIA GPU set that up",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "05a-starter-workflow",
+     "t_start": 1793.27,
+     "t_end": 1806.12,
+     "text": "and then here this is like you can choose a starter workflow and this is the one that I just chose the minimax h3 this is the new open weights uh text to video model also does audio.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "05b-what-we-saw",
+     "t_start": 1808.35,
+     "t_end": 1810.31,
+     "text": "super good. It's what we just saw.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "06-clicked-it",
+     "t_start": 1812.1,
+     "t_end": 1817.22,
+     "text": "yeah, so I just clicked that workflow and that's it just pre-installed it. It had everything ready",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07a1-installed",
+     "t_start": 1817.22,
+     "t_end": 1819.27,
+     "text": "to go. So this is what you saw",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07a2-start-menu-hold",
+     "t_start": 1819.27,
+     "t_end": 1819.67,
+     "text": "once",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07a3-installed",
+     "t_start": 1819.67,
+     "t_end": 1822.44,
+     "text": "everything was installed and downloaded.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07b-prefilled",
+     "t_start": 1824.46,
+     "t_end": 1832.66,
+     "text": "It's like a node-based diagram. And it even had pre-filled this text prompt here. So that was all pre-filled.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "07c-easy",
+     "t_start": 1833.46,
+     "t_end": 1837.15,
+     "text": "yeah, it's all set up here. It was super easy to get going.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    },
+    {
+     "id": "08-anyone",
+     "t_start": 1838.5,
+     "t_end": 1840.9,
+     "text": "Yeah, I think anyone could do it.",
+     "role": "story",
+     "from": "manual",
+     "src": "reel-builder"
+    }
+   ],
+   "suggestions": [],
+   "arc": [],
+   "suggested_at": "",
+   "stats": {},
+   "updated": "2026-10-05T08:56:12",
+   "updated_by": "agent:story-reel-v5"
+  }
+ }
+}

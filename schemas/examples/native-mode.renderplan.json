@@ -1,0 +1,292 @@
+{
+ "schema": "gmclip.renderplan/0",
+ "meta": {
+  "title": "native-mode example (one source for picture and audio)",
+  "generator": {
+   "name": "schemas/examples/make_examples.py",
+   "version": "1"
+  }
+ },
+ "output": {
+  "canvas": {
+   "w": 1080,
+   "h": 1920
+  },
+  "fps": {
+   "num": 30,
+   "den": 1
+  },
+  "color": {
+   "matrix": "bt709",
+   "transfer": "bt709",
+   "primaries": "bt709",
+   "range": "limited"
+  },
+  "video": {
+   "codec": "h264",
+   "profile": "high",
+   "level": "4.0",
+   "bframes": 2,
+   "gop_frames": 30,
+   "closed_gop": true,
+   "rate": {
+    "mode": "vbr",
+    "target_bps": 16000000,
+    "max_bps": 24000000
+   },
+   "timescale": 15360
+  },
+  "audio": {
+   "codec": "aac_lc",
+   "rate": 48000,
+   "channels": 2,
+   "bitrate": 192000
+  },
+  "container": {
+   "moov_first": true,
+   "edit_lists": false
+  },
+  "frames": 360
+ },
+ "background": {
+  "kind": "plate",
+  "stops": [
+   "#0c1118",
+   "#1a2433"
+  ]
+ },
+ "sources": [
+  {
+   "id": "a-prime",
+   "path": "test-media/public/a-prime-1440p30-h264.mp4",
+   "expect": {
+    "video": {
+     "codec": "h264",
+     "w": 2560,
+     "h": 1440,
+     "fps": {
+      "num": 30,
+      "den": 1
+     },
+     "timescale": 15360
+    },
+    "audio": {
+     "codec": "aac",
+     "rate": 48000,
+     "channels": 2
+    }
+   }
+  }
+ ],
+ "parts": [
+  {
+   "id": "n1",
+   "label": "opening",
+   "out": [
+    0,
+    90
+   ],
+   "picture": {
+    "source": "a-prime",
+    "first_frame": 3000,
+    "expect_pts": {
+     "ticks": 1536000,
+     "timescale": 15360
+    }
+   },
+   "audio": {
+    "source": "a-prime",
+    "first_sample": 4800000,
+    "rate": 48000,
+    "fade_in": {
+     "samples": 192,
+     "shape": "raised_cosine"
+    },
+    "fade_out": null
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 640,
+      "y": 180,
+      "w": 1280,
+      "h": 900
+     },
+     "place": {
+      "x": 60,
+      "y": 260,
+      "w": 960,
+      "h": 675
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 521
+     },
+     "z": 1
+    }
+   ]
+  },
+  {
+   "id": "n2",
+   "label": "continues",
+   "out": [
+    90,
+    210
+   ],
+   "picture": {
+    "source": "a-prime",
+    "first_frame": 3090,
+    "expect_pts": {
+     "ticks": 1582080,
+     "timescale": 15360
+    }
+   },
+   "audio": {
+    "source": "a-prime",
+    "first_sample": 4944000,
+    "rate": 48000
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 640,
+      "y": 180,
+      "w": 1280,
+      "h": 900
+     },
+     "place": {
+      "x": 60,
+      "y": 260,
+      "w": 960,
+      "h": 675
+     },
+     "z": 0,
+     "time_map": {
+      "mode": "hold",
+      "frame": 3095,
+      "provenance": {
+       "kind": "human",
+       "detail": {
+        "note": "screen held on the prompt"
+       }
+      }
+     }
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 521
+     },
+     "z": 1
+    }
+   ]
+  },
+  {
+   "id": "n3",
+   "label": "callback",
+   "out": [
+    210,
+    360
+   ],
+   "picture": {
+    "source": "a-prime",
+    "first_frame": 1200,
+    "expect_pts": {
+     "ticks": 614400,
+     "timescale": 15360
+    }
+   },
+   "audio": {
+    "source": "a-prime",
+    "first_sample": 1920000,
+    "rate": 48000,
+    "fade_in": {
+     "samples": 144,
+     "shape": "linear"
+    },
+    "fade_out": {
+     "samples": 144,
+     "shape": "linear"
+    },
+    "gain_db": -2.5
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 640,
+      "y": 180,
+      "w": 1280,
+      "h": 900
+     },
+     "place": {
+      "x": 60,
+      "y": 260,
+      "w": 960,
+      "h": 675
+     },
+     "z": 0,
+     "time_map": {
+      "mode": "freeze_first"
+     },
+     "picture_source": "a-prime"
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 521
+     },
+     "z": 1,
+     "opacity": 0.85,
+     "resample": "lanczos3"
+    }
+   ]
+  }
+ ],
+ "audio": {
+  "loudness": {
+   "mode": "as_recorded"
+  }
+ },
+ "checks": {
+  "safe_zones": "instagram"
+ }
+}

@@ -1,0 +1,8 @@
+# Negative fixture (review of W0-01): a member without the `gmclip-` prefix must not
+# launder a forbidden edge (core -> shim -> render) or escape the unsafe policy.
+[workspace]
+resolver = "3"
+members = ["gmclip-core", "gmclip-render", "shim"]
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

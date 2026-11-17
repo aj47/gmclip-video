@@ -1,0 +1,6621 @@
+{
+  "audio": {
+    "envelopes": [
+      {
+        "curve": "linear_db",
+        "gain_db": 10,
+        "id": "lift",
+        "out_samples": [
+          480000,
+          960000
+        ],
+        "ramp_in_samples": 3840,
+        "ramp_out_samples": 5760
+      }
+    ],
+    "loudness": {
+      "integrated_lufs": -16,
+      "mode": "static",
+      "true_peak_dbtp": -1.5
+    }
+  },
+  "background": {
+    "kind": "colour",
+    "rgb": "#0c1118"
+  },
+  "checks": {
+    "safe_zones": "instagram"
+  },
+  "fonts": [
+    {
+      "em_per_size": 0.8332,
+      "family": "Neometric",
+      "id": "neometric-heavy",
+      "path": "fonts/Neometric Heavy (Bold).otf",
+      "sha256": "9ece81e8896ebc740c5256985dcbbeee0251011e6df73f5e637c8e599ad6a76e",
+      "style": "Heavy"
+    }
+  ],
+  "meta": {
+    "generator": {
+      "name": "cargo xt bench60",
+      "version": "0.0.1"
+    },
+    "import_report": [
+      "stream sources: test-media/stream-sources.toml, sha256 9c0755fa7768c862e353ddde4cd31b204d442353197856e13e6ef193e141aade",
+      "SPEC §13 BENCH-60-M0: 41 parts, 40 discontinuous joins alternating (a) loc_bd89f38b native and (b) loc_4fadb756 MKV picture + proxy audio",
+      "(b) parts only inside the measured alignment windows (>= 1201 s); starts on tenths of a second, visited out of order",
+      "4 layers per part; 66 captions, 6 pills, a run clock ending on DONE IN, one envelope; no key, no roto"
+    ],
+    "title": "BENCH-60-M0"
+  },
+  "output": {
+    "audio": {
+      "bitrate": 192000,
+      "channels": 2,
+      "codec": "aac_lc",
+      "rate": 48000
+    },
+    "canvas": {
+      "h": 1920,
+      "w": 1080
+    },
+    "color": {
+      "matrix": "bt709",
+      "primaries": "bt709",
+      "range": "limited",
+      "transfer": "bt709"
+    },
+    "container": {
+      "edit_lists": false,
+      "moov_first": true
+    },
+    "fps": {
+      "den": 1,
+      "num": 30
+    },
+    "frames": 1800,
+    "video": {
+      "bframes": 2,
+      "closed_gop": true,
+      "codec": "h264",
+      "gop_frames": 30,
+      "level": "4.0",
+      "profile": "high",
+      "rate": {
+        "max_bps": 24000000,
+        "mode": "vbr",
+        "target_bps": 16000000
+      },
+      "timescale": 15360
+    }
+  },
+  "parts": [
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 152659200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p01-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          95412,
+          95456
+        ]
+      },
+      "out": [
+        0,
+        44
+      ],
+      "picture": {
+        "first_frame": 95412,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 130142400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p02-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          81339,
+          81383
+        ]
+      },
+      "out": [
+        44,
+        88
+      ],
+      "picture": {
+        "first_frame": 79697,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 19809600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p03-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          12381,
+          12425
+        ]
+      },
+      "out": [
+        88,
+        132
+      ],
+      "picture": {
+        "first_frame": 12381,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 57763200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p04-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          36102,
+          36146
+        ]
+      },
+      "out": [
+        132,
+        176
+      ],
+      "picture": {
+        "first_frame": 34460,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 90729600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p05-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          56706,
+          56750
+        ]
+      },
+      "out": [
+        176,
+        220
+      ],
+      "picture": {
+        "first_frame": 56706,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 85521600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p06-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          53451,
+          53495
+        ]
+      },
+      "out": [
+        220,
+        264
+      ],
+      "picture": {
+        "first_frame": 51809,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 31483200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p07-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          19677,
+          19721
+        ]
+      },
+      "out": [
+        264,
+        308
+      ],
+      "picture": {
+        "first_frame": 19677,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 123273600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p08-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          77046,
+          77090
+        ]
+      },
+      "out": [
+        308,
+        352
+      ],
+      "picture": {
+        "first_frame": 75404,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 131582400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p09-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          82239,
+          82283
+        ]
+      },
+      "out": [
+        352,
+        396
+      ],
+      "picture": {
+        "first_frame": 82239,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 62299200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p10-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          38937,
+          38981
+        ]
+      },
+      "out": [
+        396,
+        440
+      ],
+      "picture": {
+        "first_frame": 37295,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 49612800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p11-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          31008,
+          31052
+        ]
+      },
+      "out": [
+        440,
+        484
+      ],
+      "picture": {
+        "first_frame": 31008,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 80836800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p12-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          50523,
+          50567
+        ]
+      },
+      "out": [
+        484,
+        528
+      ],
+      "picture": {
+        "first_frame": 48881,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 108902400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p13-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          68064,
+          68108
+        ]
+      },
+      "out": [
+        528,
+        572
+      ],
+      "picture": {
+        "first_frame": 68064,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 130752000,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p14-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          81720,
+          81764
+        ]
+      },
+      "out": [
+        572,
+        616
+      ],
+      "picture": {
+        "first_frame": 80078,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 14452800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p15-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          9033,
+          9077
+        ]
+      },
+      "out": [
+        616,
+        660
+      ],
+      "picture": {
+        "first_frame": 9033,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 60028800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p16-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          37518,
+          37562
+        ]
+      },
+      "out": [
+        660,
+        704
+      ],
+      "picture": {
+        "first_frame": 35876,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 72216000,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p17-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          45135,
+          45179
+        ]
+      },
+      "out": [
+        704,
+        748
+      ],
+      "picture": {
+        "first_frame": 45135,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 87134400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p18-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          54459,
+          54503
+        ]
+      },
+      "out": [
+        748,
+        792
+      ],
+      "picture": {
+        "first_frame": 52817,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 144513600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p19-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          90321,
+          90365
+        ]
+      },
+      "out": [
+        792,
+        836
+      ],
+      "picture": {
+        "first_frame": 90321,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 124982400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p20-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          78114,
+          78158
+        ]
+      },
+      "out": [
+        836,
+        880
+      ],
+      "picture": {
+        "first_frame": 76472,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 41774400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p21-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          26109,
+          26153
+        ]
+      },
+      "out": [
+        880,
+        924
+      ],
+      "picture": {
+        "first_frame": 26109,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 61593600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p22-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          38496,
+          38540
+        ]
+      },
+      "out": [
+        924,
+        968
+      ],
+      "picture": {
+        "first_frame": 36854,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 117868800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p23-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          73668,
+          73712
+        ]
+      },
+      "out": [
+        968,
+        1012
+      ],
+      "picture": {
+        "first_frame": 73668,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 83736000,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p24-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          52335,
+          52379
+        ]
+      },
+      "out": [
+        1012,
+        1056
+      ],
+      "picture": {
+        "first_frame": 50693,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 58166400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p25-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          36354,
+          36398
+        ]
+      },
+      "out": [
+        1056,
+        1100
+      ],
+      "picture": {
+        "first_frame": 36354,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 124324800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p26-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          77703,
+          77747
+        ]
+      },
+      "out": [
+        1100,
+        1144
+      ],
+      "picture": {
+        "first_frame": 76061,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 158361600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p27-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          98976,
+          99020
+        ]
+      },
+      "out": [
+        1144,
+        1188
+      ],
+      "picture": {
+        "first_frame": 98976,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 62961600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p28-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          39351,
+          39395
+        ]
+      },
+      "out": [
+        1188,
+        1232
+      ],
+      "picture": {
+        "first_frame": 37709,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 27043200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p29-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          16902,
+          16946
+        ]
+      },
+      "out": [
+        1232,
+        1276
+      ],
+      "picture": {
+        "first_frame": 16902,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 87955200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p30-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          54972,
+          55016
+        ]
+      },
+      "out": [
+        1276,
+        1320
+      ],
+      "picture": {
+        "first_frame": 53330,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 81643200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p31-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          51027,
+          51071
+        ]
+      },
+      "out": [
+        1320,
+        1364
+      ],
+      "picture": {
+        "first_frame": 51027,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 80203200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p32-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          50127,
+          50171
+        ]
+      },
+      "out": [
+        1364,
+        1408
+      ],
+      "picture": {
+        "first_frame": 48485,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 139320000,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p33-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          87075,
+          87119
+        ]
+      },
+      "out": [
+        1408,
+        1452
+      ],
+      "picture": {
+        "first_frame": 87075,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 129340800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p34-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          80838,
+          80882
+        ]
+      },
+      "out": [
+        1452,
+        1496
+      ],
+      "picture": {
+        "first_frame": 79196,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 66100800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p35-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          41313,
+          41357
+        ]
+      },
+      "out": [
+        1496,
+        1540
+      ],
+      "picture": {
+        "first_frame": 41313,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 63566400,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p36-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          39729,
+          39773
+        ]
+      },
+      "out": [
+        1540,
+        1584
+      ],
+      "picture": {
+        "first_frame": 38087,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 100243200,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p37-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          62652,
+          62696
+        ]
+      },
+      "out": [
+        1584,
+        1628
+      ],
+      "picture": {
+        "first_frame": 62652,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 84537600,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p38-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          52836,
+          52879
+        ]
+      },
+      "out": [
+        1628,
+        1671
+      ],
+      "picture": {
+        "first_frame": 51194,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 36508800,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p39-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          22818,
+          22861
+        ]
+      },
+      "out": [
+        1671,
+        1714
+      ],
+      "picture": {
+        "first_frame": 22818,
+        "source": "a"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 123912000,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "b-proxy"
+      },
+      "id": "p40-b",
+      "layers": [
+        {
+          "crop": {
+            "h": 900,
+            "w": 1280,
+            "x": 770,
+            "y": 220
+          },
+          "id": "screen",
+          "place": {
+            "h": 534,
+            "w": 760,
+            "x": 160,
+            "y": 420
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 340,
+            "w": 496,
+            "x": 2060,
+            "y": 634
+          },
+          "id": "cam",
+          "place": {
+            "h": 521,
+            "w": 760,
+            "x": 160,
+            "y": 1120
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 35,
+            "w": 425,
+            "x": 1074,
+            "y": 250
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 84,
+            "w": 1020,
+            "x": 30,
+            "y": 800
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 100,
+            "w": 600,
+            "x": 900,
+            "y": 600
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 100,
+            "w": 600,
+            "x": 240,
+            "y": 960
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          77445,
+          77488
+        ]
+      },
+      "out": [
+        1714,
+        1757
+      ],
+      "picture": {
+        "first_frame": 75803,
+        "source": "b-mkv"
+      }
+    },
+    {
+      "audio": {
+        "fade_in": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "fade_out": {
+          "samples": 144,
+          "shape": "linear"
+        },
+        "first_sample": 125424000,
+        "gain_db": 0,
+        "rate": 48000,
+        "source": "a"
+      },
+      "id": "p41-a",
+      "layers": [
+        {
+          "crop": {
+            "h": 570,
+            "w": 1080,
+            "x": 960,
+            "y": 700
+          },
+          "id": "screen",
+          "place": {
+            "h": 538,
+            "w": 1020,
+            "x": 30,
+            "y": 250
+          },
+          "role": "screen",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 0
+        },
+        {
+          "crop": {
+            "h": 350,
+            "w": 550,
+            "x": 0,
+            "y": 1090
+          },
+          "id": "cam",
+          "place": {
+            "h": 356,
+            "w": 560,
+            "x": 260,
+            "y": 1176
+          },
+          "role": "cam",
+          "z": 1
+        },
+        {
+          "crop": {
+            "h": 80,
+            "w": 800,
+            "x": 990,
+            "y": 1116
+          },
+          "id": "detail-0",
+          "place": {
+            "h": 102,
+            "w": 1020,
+            "x": 30,
+            "y": 876
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 2
+        },
+        {
+          "crop": {
+            "h": 780,
+            "w": 1004,
+            "x": 1426,
+            "y": 324
+          },
+          "id": "detail-1",
+          "place": {
+            "h": 373,
+            "w": 480,
+            "x": 540,
+            "y": 1560
+          },
+          "role": "detail",
+          "time_map": {
+            "mode": "live"
+          },
+          "z": 3
+        }
+      ],
+      "native": {
+        "fps": {
+          "den": 1,
+          "num": 30
+        },
+        "frames": [
+          78390,
+          78433
+        ]
+      },
+      "out": [
+        1757,
+        1800
+      ],
+      "picture": {
+        "first_frame": 78390,
+        "source": "a"
+      }
+    }
+  ],
+  "schema": "gmclip.renderplan/0",
+  "sources": [
+    {
+      "expect": {
+        "audio": {
+          "channels": 2,
+          "codec": "aac",
+          "rate": 48000
+        },
+        "video": {
+          "codec": "h264",
+          "fps": {
+            "den": 1,
+            "num": 30
+          },
+          "h": 1440,
+          "w": 2560
+        }
+      },
+      "fingerprint": {
+        "sha256": "2960ad899bb2139dd7084cdb514ca1de9a690a6f2d04c64229b648181a108852",
+        "size": 3146994507
+      },
+      "id": "a",
+      "path": "streams/i’m-building-an-mmo-where-bots-are-welcome-Oct-01-2026-restream.mp4"
+    },
+    {
+      "expect": {
+        "video": {
+          "codec": "vp9",
+          "fps": {
+            "den": 1,
+            "num": 30
+          },
+          "h": 1440,
+          "w": 2560
+        }
+      },
+      "fingerprint": {
+        "sha256": "13ed3a2671ad918f9e1f79dea18e2b44d30a4293ce106ae44e3bbbfa3f2ddb48",
+        "size": 1132838200
+      },
+      "id": "b-mkv",
+      "path": "streams/jMcAmooE53I-source.mkv"
+    },
+    {
+      "expect": {
+        "audio": {
+          "channels": 2,
+          "codec": "aac",
+          "rate": 48000
+        }
+      },
+      "fingerprint": {
+        "sha256": "ad8e69cda5ba9dc10624bbd19a86cb9544a2d7c458952b6e53bf316e78deaa2d",
+        "size": 614017711
+      },
+      "id": "b-proxy",
+      "path": "preview/loc_4fadb756.proxy.mp4"
+    }
+  ],
+  "text_events": [
+    {
+      "align": 5,
+      "id": "hook",
+      "layer": 2,
+      "out": [
+        0,
+        132
+      ],
+      "pos": {
+        "x": 540,
+        "y": 305
+      },
+      "role": "text_hook",
+      "runs": [
+        {
+          "text": "60 seconds,\n"
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "40 joins."
+        }
+      ],
+      "size": 88,
+      "style": "Hook"
+    },
+    {
+      "align": 7,
+      "id": "pill-1",
+      "layer": 3,
+      "out": [
+        132,
+        396
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "role": "section_pill",
+      "runs": [
+        {
+          "text": "STEP 1  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "the prompt"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "pill-2",
+      "layer": 3,
+      "out": [
+        396,
+        616
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "role": "section_pill",
+      "runs": [
+        {
+          "text": "STEP 2  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "the settings"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "pill-3",
+      "layer": 3,
+      "out": [
+        616,
+        880
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "role": "section_pill",
+      "runs": [
+        {
+          "text": "STEP 3  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "the first run"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "pill-4",
+      "layer": 3,
+      "out": [
+        880,
+        968
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "role": "section_pill",
+      "runs": [
+        {
+          "text": "STEP 4  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "the result"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "pill-5",
+      "layer": 3,
+      "out": [
+        1188,
+        1496
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "role": "section_pill",
+      "runs": [
+        {
+          "text": "STEP 5  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "a second take"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "pill-6",
+      "layer": 3,
+      "out": [
+        1496,
+        1800
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "role": "section_pill",
+      "runs": [
+        {
+          "text": "STEP 6  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "side by side"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "clock-1",
+      "layer": 3,
+      "out": [
+        968,
+        998
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "provenance": {
+        "detail": {
+          "note": "synthetic benchmark counter"
+        },
+        "kind": "agent"
+      },
+      "role": "run_clock",
+      "runs": [
+        {
+          "text": "GENERATING  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "0:00"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "clock-2",
+      "layer": 3,
+      "out": [
+        998,
+        1028
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "provenance": {
+        "detail": {
+          "note": "synthetic benchmark counter"
+        },
+        "kind": "agent"
+      },
+      "role": "run_clock",
+      "runs": [
+        {
+          "text": "GENERATING  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "0:01"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "clock-3",
+      "layer": 3,
+      "out": [
+        1028,
+        1058
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "provenance": {
+        "detail": {
+          "note": "synthetic benchmark counter"
+        },
+        "kind": "agent"
+      },
+      "role": "run_clock",
+      "runs": [
+        {
+          "text": "GENERATING  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "0:02"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "clock-4",
+      "layer": 3,
+      "out": [
+        1058,
+        1088
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "provenance": {
+        "detail": {
+          "note": "synthetic benchmark counter"
+        },
+        "kind": "agent"
+      },
+      "role": "run_clock",
+      "runs": [
+        {
+          "text": "GENERATING  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "0:03"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "clock-5",
+      "layer": 3,
+      "out": [
+        1088,
+        1118
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "provenance": {
+        "detail": {
+          "note": "synthetic benchmark counter"
+        },
+        "kind": "agent"
+      },
+      "role": "run_clock",
+      "runs": [
+        {
+          "text": "GENERATING  "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "0:04"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "align": 7,
+      "id": "clock-6",
+      "layer": 3,
+      "out": [
+        1118,
+        1188
+      ],
+      "pos": {
+        "x": 48,
+        "y": 262
+      },
+      "provenance": {
+        "detail": {
+          "note": "synthetic benchmark counter"
+        },
+        "kind": "agent"
+      },
+      "role": "run_clock",
+      "runs": [
+        {
+          "fill": "#3DDC84FF",
+          "text": "DONE IN  "
+        },
+        {
+          "text": "0:05"
+        }
+      ],
+      "size": 50,
+      "style": "Pill"
+    },
+    {
+      "id": "c01",
+      "layer": 1,
+      "out": [
+        60,
+        86
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "so here's "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "the"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c02",
+      "layer": 1,
+      "out": [
+        86,
+        112
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "first full run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c03",
+      "layer": 1,
+      "out": [
+        112,
+        139
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "on my own PC"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c04",
+      "layer": 1,
+      "out": [
+        139,
+        165
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "and it takes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c05",
+      "layer": 1,
+      "out": [
+        165,
+        191
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "about two minutes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c06",
+      "layer": 1,
+      "out": [
+        191,
+        218
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "watch the "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "bar"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c07",
+      "layer": 1,
+      "out": [
+        218,
+        244
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "fill up here"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c08",
+      "layer": 1,
+      "out": [
+        244,
+        270
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "every single frame"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c09",
+      "layer": 1,
+      "out": [
+        270,
+        297
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "gets rendered"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c10",
+      "layer": 1,
+      "out": [
+        297,
+        323
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "then we check"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c11",
+      "layer": 1,
+      "out": [
+        323,
+        350
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "the final "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "result"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c12",
+      "layer": 1,
+      "out": [
+        350,
+        376
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "right on screen"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c13",
+      "layer": 1,
+      "out": [
+        376,
+        402
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "that's pretty good"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c14",
+      "layer": 1,
+      "out": [
+        402,
+        429
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "for a local run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c15",
+      "layer": 1,
+      "out": [
+        429,
+        455
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "let's try again"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c16",
+      "layer": 1,
+      "out": [
+        455,
+        481
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "with a new "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "prompt"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c17",
+      "layer": 1,
+      "out": [
+        481,
+        508
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "so here's the"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c18",
+      "layer": 1,
+      "out": [
+        508,
+        534
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "first full run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c19",
+      "layer": 1,
+      "out": [
+        534,
+        560
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "on my own PC"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c20",
+      "layer": 1,
+      "out": [
+        560,
+        587
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "and it takes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c21",
+      "layer": 1,
+      "out": [
+        587,
+        613
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "about two "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "minutes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c22",
+      "layer": 1,
+      "out": [
+        613,
+        640
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "watch the bar"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c23",
+      "layer": 1,
+      "out": [
+        640,
+        666
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "fill up here"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c24",
+      "layer": 1,
+      "out": [
+        666,
+        692
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "every single frame"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c25",
+      "layer": 1,
+      "out": [
+        692,
+        719
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "gets rendered"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c26",
+      "layer": 1,
+      "out": [
+        719,
+        745
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "then we "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "check"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c27",
+      "layer": 1,
+      "out": [
+        745,
+        771
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "the final result"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c28",
+      "layer": 1,
+      "out": [
+        771,
+        798
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "right on screen"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c29",
+      "layer": 1,
+      "out": [
+        798,
+        824
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "that's pretty good"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c30",
+      "layer": 1,
+      "out": [
+        824,
+        850
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "for a local run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c31",
+      "layer": 1,
+      "out": [
+        850,
+        877
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "let's try "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "again"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c32",
+      "layer": 1,
+      "out": [
+        877,
+        903
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "with a new prompt"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c33",
+      "layer": 1,
+      "out": [
+        903,
+        930
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "so here's the"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c34",
+      "layer": 1,
+      "out": [
+        930,
+        956
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "first full run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c35",
+      "layer": 1,
+      "out": [
+        956,
+        982
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "on my own PC"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c36",
+      "layer": 1,
+      "out": [
+        982,
+        1009
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "and it "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "takes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c37",
+      "layer": 1,
+      "out": [
+        1009,
+        1035
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "about two minutes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c38",
+      "layer": 1,
+      "out": [
+        1035,
+        1061
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "watch the bar"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c39",
+      "layer": 1,
+      "out": [
+        1061,
+        1088
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "fill up here"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c40",
+      "layer": 1,
+      "out": [
+        1088,
+        1114
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "every single frame"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c41",
+      "layer": 1,
+      "out": [
+        1114,
+        1140
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "gets "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "rendered"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c42",
+      "layer": 1,
+      "out": [
+        1140,
+        1167
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "then we check"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c43",
+      "layer": 1,
+      "out": [
+        1167,
+        1193
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "the final result"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c44",
+      "layer": 1,
+      "out": [
+        1193,
+        1220
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "right on screen"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c45",
+      "layer": 1,
+      "out": [
+        1220,
+        1246
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "that's pretty good"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c46",
+      "layer": 1,
+      "out": [
+        1246,
+        1272
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "for a local "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c47",
+      "layer": 1,
+      "out": [
+        1272,
+        1299
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "let's try again"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c48",
+      "layer": 1,
+      "out": [
+        1299,
+        1325
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "with a new prompt"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c49",
+      "layer": 1,
+      "out": [
+        1325,
+        1351
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "so here's the"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c50",
+      "layer": 1,
+      "out": [
+        1351,
+        1378
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "first full run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c51",
+      "layer": 1,
+      "out": [
+        1378,
+        1404
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "on my own "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "PC"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c52",
+      "layer": 1,
+      "out": [
+        1404,
+        1430
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "and it takes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c53",
+      "layer": 1,
+      "out": [
+        1430,
+        1457
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "about two minutes"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c54",
+      "layer": 1,
+      "out": [
+        1457,
+        1483
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "watch the bar"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c55",
+      "layer": 1,
+      "out": [
+        1483,
+        1510
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "fill up here"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c56",
+      "layer": 1,
+      "out": [
+        1510,
+        1536
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "every single "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "frame"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c57",
+      "layer": 1,
+      "out": [
+        1536,
+        1562
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "gets rendered"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c58",
+      "layer": 1,
+      "out": [
+        1562,
+        1589
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "then we check"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c59",
+      "layer": 1,
+      "out": [
+        1589,
+        1615
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "the final result"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c60",
+      "layer": 1,
+      "out": [
+        1615,
+        1641
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "right on screen"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c61",
+      "layer": 1,
+      "out": [
+        1641,
+        1668
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "that's pretty "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "good"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c62",
+      "layer": 1,
+      "out": [
+        1668,
+        1694
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "for a local run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c63",
+      "layer": 1,
+      "out": [
+        1694,
+        1720
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "let's try again"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c64",
+      "layer": 1,
+      "out": [
+        1720,
+        1747
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "with a new prompt"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c65",
+      "layer": 1,
+      "out": [
+        1747,
+        1773
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "so here's the"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    },
+    {
+      "id": "c66",
+      "layer": 1,
+      "out": [
+        1773,
+        1800
+      ],
+      "pos": {
+        "x": 540,
+        "y": 1065
+      },
+      "role": "caption",
+      "runs": [
+        {
+          "text": "first full "
+        },
+        {
+          "fill": "#FFD400FF",
+          "text": "run"
+        }
+      ],
+      "size": 86,
+      "style": "Speech"
+    }
+  ],
+  "text_styles": {
+    "Hook": {
+      "align": 5,
+      "fill": "#FFFFFFFF",
+      "font": "neometric-heavy",
+      "outline": {
+        "colour": "#000000FF",
+        "join": "round",
+        "width": 12
+      },
+      "shadow": {
+        "blur": 0,
+        "colour": "#000000FF",
+        "dx": 7,
+        "dy": 7,
+        "of": "fill_and_outline"
+      },
+      "size": 88
+    },
+    "Pill": {
+      "align": 7,
+      "box": {
+        "colour": "#101010CF",
+        "geometry": "libass_bs3",
+        "pad_x": 16,
+        "pad_y": 16,
+        "radius": 0
+      },
+      "fill": "#FFFFFFFF",
+      "font": "neometric-heavy",
+      "letter_spacing": 1,
+      "size": 50
+    },
+    "Speech": {
+      "align": 5,
+      "fill": "#FFFFFFFF",
+      "font": "neometric-heavy",
+      "outline": {
+        "colour": "#000000FF",
+        "join": "round",
+        "width": 12
+      },
+      "shadow": {
+        "blur": 0,
+        "colour": "#000000FF",
+        "dx": 7,
+        "dy": 7,
+        "of": "fill_and_outline"
+      },
+      "size": 86
+    }
+  }
+}

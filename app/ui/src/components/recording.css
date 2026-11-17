@@ -1,0 +1,83 @@
+/* Recording (decision 0045): Settings › Recording's permissions, the Record sheet, the
+ * countdown and the recording bar over every view. Tokens only. */
+
+.rec-perms { list-style: none; margin: var(--s-2) 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-1); max-width: 640px; }
+.rec-perm { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-1) var(--s-2); padding: var(--s-1) 0; border-bottom: 1px solid var(--sep); }
+.rec-perm-name { flex: 1; min-width: 200px; }
+.rec-perm-fix { flex-basis: 100%; }
+.rec-settings .switch-row { max-width: 640px; }
+
+.rec-sheet { max-width: 560px; }
+.rec-field { display: flex; flex-direction: column; gap: var(--s-1); margin-bottom: var(--s-3); }
+.rec-field .row { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; }
+.rec-field .switch-row { flex: 1; min-width: 160px; }
+.rec-label { font-size: var(--fs-13); font-weight: var(--fw-semibold); color: var(--text-1); }
+.rec-displays { display: flex; flex-direction: column; gap: var(--s-1); }
+.rec-check { display: flex; align-items: center; gap: var(--s-2); }
+
+.rec-countdown {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  background: var(--scrim);
+  backdrop-filter: blur(2px);
+  color: var(--text-1);
+  text-align: center;
+}
+.rec-count { font-size: 120px; line-height: 1; font-weight: var(--fw-semibold); }
+
+.rec-bar {
+  position: fixed;
+  top: calc(var(--bar-h, 44px) + var(--s-2));
+  left: 50%;
+  z-index: 85;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  max-width: calc(100vw - 2 * var(--s-4));
+  padding: var(--s-1) var(--s-2) var(--s-1) var(--s-3);
+  border-radius: var(--r-3);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-pop);
+  flex-wrap: wrap;
+}
+.rec-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--danger); animation: rec-pulse 1.2s ease-in-out infinite; }
+.rec-time { font-weight: var(--fw-semibold); min-width: 3.5em; }
+.rec-trouble { color: var(--danger); max-width: 280px; }
+@keyframes rec-pulse { 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .rec-dot { animation: none; } }
+
+/* the camera as it will be recorded, while the Record sheet is open */
+.rec-cam-preview {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-3);
+  background: var(--surface-sunken, #000);
+  overflow: hidden;
+}
+.rec-cam-preview {
+  position: relative;
+}
+.rec-cam-preview canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  visibility: hidden;
+}
+.rec-cam-preview canvas.live {
+  visibility: visible;
+}
+
+.rec-recovery { max-width: min(720px, calc(100vw - 2 * var(--s-4))); overflow-wrap: anywhere; }
+.rec-recovery .selectable { user-select: text; }

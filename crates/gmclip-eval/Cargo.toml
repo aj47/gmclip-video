@@ -1,0 +1,20 @@
+[package]
+name = "gmclip-eval"
+description = "Agent evals (SPEC §17.1): the S7 launcher probe, the h79 grader G0–G14 and its self-tests, the injection cases. The gmclip-eval binary is a dev tool, never shipped; the app links the library for the S7 probe it runs on a new client build."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "gmclip-eval"
+path = "src/main.rs"
+
+[dependencies]
+gmclip-ai.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

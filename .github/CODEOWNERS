@@ -1,0 +1,32 @@
+# Paths only AJ may approve (SR R-SUP-2, SPEC §15.0, §15.4, §19.2). This bites once the
+# repo exists on GitHub and `main` has branch protection with "Require review from Code
+# Owners" (W0-11; AJ's 15 minutes). Coding agents may not edit this file.
+
+# CI workflows and this file
+/.github/                       @aj47
+
+# Supply-chain configuration and the code that enforces it
+/Cargo.toml                     @aj47
+/deny.toml                      @aj47
+/supply-chain/                  @aj47
+/rust-toolchain.toml            @aj47
+/.cargo/config.toml             @aj47
+/xtask/src/deps.rs              @aj47
+/xtask/src/supply.rs            @aj47
+/xtask/src/fixtures.rs          @aj47
+/xtask/src/codeowners.rs        @aj47
+/xtask/fixtures/                @aj47
+
+# Tauri capabilities, entitlements, updater and signing config (M2/M3)
+/app/src-tauri/capabilities/    @aj47
+/app/src-tauri/tauri.conf.json  @aj47
+*.entitlements                  @aj47
+/app/src-tauri/signing/         @aj47
+
+# The codec allowed-fields list and the code that reads those fields (legal; SPEC D3,
+# §15.0, §19.2; A-04): any change under a codec/ directory, in any crate, or to a
+# codec.rs module root needs AJ, not only the list itself. Keep these lines last:
+# `cargo xt codeowners --check` refuses any later rule that narrows into them.
+**/codec/ALLOWED_FIELDS.md      @aj47
+codec/                          @aj47
+codec.rs                        @aj47

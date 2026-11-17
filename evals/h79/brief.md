@@ -1,0 +1,1 @@
+Make the ~60 s payoff-first vertical short from my staged "talking banana" moment, following my style rules. Open on the result. Tell the story in order with whole-sentence takes. Measure how long the generation took from the footage and use that number in the text hook. Captions on. Keep one steady layout. Export the 9:16 when lint is clean.

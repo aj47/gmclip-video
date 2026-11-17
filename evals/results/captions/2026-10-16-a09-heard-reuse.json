@@ -1,0 +1,1026 @@
+{
+  "asr": {
+    "build": "release",
+    "cut_seconds": 497.733,
+    "hear_wall_seconds_all": 67.601,
+    "hear_wall_seconds_rule": 1.168,
+    "heard_seconds_by_rule": 7.067
+  },
+  "backlog": "A.09",
+  "bar": {
+    "f1_min": 0.9,
+    "source": "SPEC §5.10 R-CAP-1 [M1] / F17",
+    "wer_max": 0.03
+  },
+  "decision": "0022: captions from the cut's own audio; a part whose voice mix is identical to its source (same source and track, no gain, envelope or fade beyond a de-click) reuses the source words, the rest is heard (AJ 2026-10-16)",
+  "measure": "cue-boundary F1 (gmclip_ml::wer::cue_boundaries on the normalised word alignment), caption-word WER and exact-text cue agreement between plans of the same cut: rule = plan-cut --captions heard --hear rule; all = --hear all (the whole voice mix heard by gmclip's parakeet); reuse = --hear none (the stream's master ASR through every part, what stream captions were); rt = the cut as imported (RT's captions-v5.ass, rt_story_v5 over RT's qa/heard.json)",
+  "pooled": {
+    "all_vs_rt": {
+      "all": {
+        "caption_word_wer": 0.041,
+        "cuts": 10,
+        "exact_text_agreement": 0.807,
+        "f1": 0.87,
+        "matched_breaks": 436,
+        "median_break_delta_ms": 67.0,
+        "precision": 0.865,
+        "recall": 0.876,
+        "reference_breaks": 498,
+        "reference_words": 1280
+      },
+      "mixed": {
+        "caption_word_wer": 0.026,
+        "cuts": 1,
+        "exact_text_agreement": 0.746,
+        "f1": 0.864,
+        "matched_breaks": 51,
+        "median_break_delta_ms": 100.0,
+        "precision": 0.85,
+        "recall": 0.879,
+        "reference_breaks": 58,
+        "reference_words": 151
+      },
+      "reused_only": {
+        "caption_word_wer": 0.043,
+        "cuts": 9,
+        "exact_text_agreement": 0.815,
+        "f1": 0.871,
+        "matched_breaks": 385,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.867,
+        "recall": 0.875,
+        "reference_breaks": 440,
+        "reference_words": 1129
+      }
+    },
+    "reuse_vs_all": {
+      "all": {
+        "caption_word_wer": 0.055,
+        "cuts": 10,
+        "exact_text_agreement": 0.739,
+        "f1": 0.812,
+        "matched_breaks": 407,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.817,
+        "recall": 0.808,
+        "reference_breaks": 504,
+        "reference_words": 1281
+      },
+      "mixed": {
+        "caption_word_wer": 0.033,
+        "cuts": 1,
+        "exact_text_agreement": 0.754,
+        "f1": 0.8,
+        "matched_breaks": 48,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.8,
+        "recall": 0.8,
+        "reference_breaks": 60,
+        "reference_words": 151
+      },
+      "reused_only": {
+        "caption_word_wer": 0.058,
+        "cuts": 9,
+        "exact_text_agreement": 0.737,
+        "f1": 0.814,
+        "matched_breaks": 359,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.82,
+        "recall": 0.809,
+        "reference_breaks": 444,
+        "reference_words": 1130
+      }
+    },
+    "rule_vs_all": {
+      "all": {
+        "caption_word_wer": 0.054,
+        "cuts": 10,
+        "exact_text_agreement": 0.739,
+        "f1": 0.813,
+        "matched_breaks": 407,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.819,
+        "recall": 0.808,
+        "reference_breaks": 504,
+        "reference_words": 1281
+      },
+      "mixed": {
+        "caption_word_wer": 0.026,
+        "cuts": 1,
+        "exact_text_agreement": 0.754,
+        "f1": 0.807,
+        "matched_breaks": 48,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.814,
+        "recall": 0.8,
+        "reference_breaks": 60,
+        "reference_words": 151
+      },
+      "reused_only": {
+        "caption_word_wer": 0.058,
+        "cuts": 9,
+        "exact_text_agreement": 0.737,
+        "f1": 0.814,
+        "matched_breaks": 359,
+        "median_break_delta_ms": 33.0,
+        "precision": 0.82,
+        "recall": 0.809,
+        "reference_breaks": 444,
+        "reference_words": 1130
+      }
+    },
+    "rule_vs_rt": {
+      "all": {
+        "caption_word_wer": 0.028,
+        "cuts": 10,
+        "exact_text_agreement": 0.78,
+        "f1": 0.846,
+        "matched_breaks": 421,
+        "median_break_delta_ms": 67.0,
+        "precision": 0.847,
+        "recall": 0.845,
+        "reference_breaks": 498,
+        "reference_words": 1280
+      },
+      "mixed": {
+        "caption_word_wer": 0.04,
+        "cuts": 1,
+        "exact_text_agreement": 0.61,
+        "f1": 0.718,
+        "matched_breaks": 42,
+        "median_break_delta_ms": 100.0,
+        "precision": 0.712,
+        "recall": 0.724,
+        "reference_breaks": 58,
+        "reference_words": 151
+      },
+      "reused_only": {
+        "caption_word_wer": 0.027,
+        "cuts": 9,
+        "exact_text_agreement": 0.802,
+        "f1": 0.863,
+        "matched_breaks": 379,
+        "median_break_delta_ms": 67.0,
+        "precision": 0.865,
+        "recall": 0.861,
+        "reference_breaks": 440,
+        "reference_words": 1129
+      }
+    }
+  },
+  "rows": [
+    {
+      "all_vs_rt": {
+        "breaks": [
+          36,
+          36,
+          29
+        ],
+        "f1": 0.806,
+        "same_cues": [
+          28,
+          37
+        ],
+        "wer": 0.021
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 37,
+        "reuse": 37,
+        "rt": 37,
+        "rule": 37
+      },
+      "cut": "loc_086da141_h03",
+      "hear_seconds": {
+        "all": 10.731767541,
+        "rule": 0.0
+      },
+      "parts": 11,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          36,
+          36,
+          27
+        ],
+        "f1": 0.75,
+        "same_cues": [
+          25,
+          37
+        ],
+        "wer": 0.043
+      },
+      "rule_vs_all": {
+        "breaks": [
+          36,
+          36,
+          27
+        ],
+        "f1": 0.75,
+        "same_cues": [
+          25,
+          37
+        ],
+        "wer": 0.043
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          36,
+          36,
+          32
+        ],
+        "f1": 0.889,
+        "same_cues": [
+          31,
+          37
+        ],
+        "wer": 0.021
+      },
+      "seconds": {
+        "cut": 39.567,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          40,
+          39,
+          33
+        ],
+        "f1": 0.835,
+        "same_cues": [
+          31,
+          41
+        ],
+        "wer": 0.136
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 40,
+        "reuse": 40,
+        "rt": 41,
+        "rule": 40
+      },
+      "cut": "loc_086da141_h25",
+      "hear_seconds": {
+        "all": 11.508407625,
+        "rule": 0.0
+      },
+      "parts": 9,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          39,
+          39,
+          31
+        ],
+        "f1": 0.795,
+        "same_cues": [
+          28,
+          40
+        ],
+        "wer": 0.135
+      },
+      "rule_vs_all": {
+        "breaks": [
+          39,
+          39,
+          31
+        ],
+        "f1": 0.795,
+        "same_cues": [
+          28,
+          40
+        ],
+        "wer": 0.135
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          40,
+          39,
+          37
+        ],
+        "f1": 0.937,
+        "same_cues": [
+          37,
+          41
+        ],
+        "wer": 0.029
+      },
+      "seconds": {
+        "cut": 50.767,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          73,
+          76,
+          67
+        ],
+        "f1": 0.899,
+        "same_cues": [
+          62,
+          74
+        ],
+        "wer": 0.031
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 77,
+        "reuse": 75,
+        "rt": 74,
+        "rule": 75
+      },
+      "cut": "loc_086da141_h47",
+      "hear_seconds": {
+        "all": 4.011482542,
+        "rule": 0.0
+      },
+      "parts": 8,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          76,
+          74,
+          64
+        ],
+        "f1": 0.853,
+        "same_cues": [
+          60,
+          77
+        ],
+        "wer": 0.066
+      },
+      "rule_vs_all": {
+        "breaks": [
+          76,
+          74,
+          64
+        ],
+        "f1": 0.853,
+        "same_cues": [
+          60,
+          77
+        ],
+        "wer": 0.066
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          73,
+          74,
+          64
+        ],
+        "f1": 0.871,
+        "same_cues": [
+          63,
+          74
+        ],
+        "wer": 0.036
+      },
+      "seconds": {
+        "cut": 69.233,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          58,
+          60,
+          51
+        ],
+        "f1": 0.864,
+        "same_cues": [
+          44,
+          59
+        ],
+        "wer": 0.026
+      },
+      "category": "mixed",
+      "cues": {
+        "all": 61,
+        "reuse": 61,
+        "rt": 59,
+        "rule": 60
+      },
+      "cut": "loc_4fadb756_h34",
+      "hear_seconds": {
+        "all": 17.139919792,
+        "rule": 1.168456875
+      },
+      "parts": 9,
+      "parts_heard": 1,
+      "reuse_vs_all": {
+        "breaks": [
+          60,
+          60,
+          48
+        ],
+        "f1": 0.8,
+        "same_cues": [
+          46,
+          61
+        ],
+        "wer": 0.033
+      },
+      "rule_vs_all": {
+        "breaks": [
+          60,
+          59,
+          48
+        ],
+        "f1": 0.807,
+        "same_cues": [
+          46,
+          61
+        ],
+        "wer": 0.026
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          58,
+          59,
+          42
+        ],
+        "f1": 0.718,
+        "same_cues": [
+          36,
+          59
+        ],
+        "wer": 0.04
+      },
+      "seconds": {
+        "cut": 64.4,
+        "heard": 7.067,
+        "transcribed": 9.067
+      },
+      "why": [
+        [
+          "envelope"
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          55,
+          58,
+          50
+        ],
+        "f1": 0.885,
+        "same_cues": [
+          48,
+          56
+        ],
+        "wer": 0.079
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 59,
+        "reuse": 54,
+        "rt": 56,
+        "rule": 54
+      },
+      "cut": "loc_4fadb756_h37",
+      "hear_seconds": {
+        "all": 11.683848083,
+        "rule": 0.0
+      },
+      "parts": 10,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          58,
+          53,
+          48
+        ],
+        "f1": 0.865,
+        "same_cues": [
+          47,
+          59
+        ],
+        "wer": 0.083
+      },
+      "rule_vs_all": {
+        "breaks": [
+          58,
+          53,
+          48
+        ],
+        "f1": 0.865,
+        "same_cues": [
+          47,
+          59
+        ],
+        "wer": 0.083
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          55,
+          53,
+          48
+        ],
+        "f1": 0.889,
+        "same_cues": [
+          48,
+          56
+        ],
+        "wer": 0.022
+      },
+      "seconds": {
+        "cut": 50.3,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          77,
+          80,
+          71
+        ],
+        "f1": 0.904,
+        "same_cues": [
+          66,
+          78
+        ],
+        "wer": 0.014
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 81,
+        "reuse": 81,
+        "rt": 78,
+        "rule": 81
+      },
+      "cut": "loc_4fadb756_h48",
+      "hear_seconds": {
+        "all": 3.286532667,
+        "rule": 0.0
+      },
+      "parts": 13,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          80,
+          80,
+          65
+        ],
+        "f1": 0.813,
+        "same_cues": [
+          61,
+          81
+        ],
+        "wer": 0.014
+      },
+      "rule_vs_all": {
+        "breaks": [
+          80,
+          80,
+          65
+        ],
+        "f1": 0.813,
+        "same_cues": [
+          61,
+          81
+        ],
+        "wer": 0.014
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          77,
+          80,
+          61
+        ],
+        "f1": 0.777,
+        "same_cues": [
+          56,
+          78
+        ],
+        "wer": 0.019
+      },
+      "seconds": {
+        "cut": 64.567,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          49,
+          49,
+          45
+        ],
+        "f1": 0.918,
+        "same_cues": [
+          44,
+          50
+        ],
+        "wer": 0.031
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 50,
+        "reuse": 50,
+        "rt": 50,
+        "rule": 50
+      },
+      "cut": "loc_bd89f38b_h41",
+      "hear_seconds": {
+        "all": 3.203968458,
+        "rule": 0.0
+      },
+      "parts": 10,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          49,
+          49,
+          44
+        ],
+        "f1": 0.898,
+        "same_cues": [
+          41,
+          50
+        ],
+        "wer": 0.056
+      },
+      "rule_vs_all": {
+        "breaks": [
+          49,
+          49,
+          44
+        ],
+        "f1": 0.898,
+        "same_cues": [
+          41,
+          50
+        ],
+        "wer": 0.056
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          49,
+          49,
+          44
+        ],
+        "f1": 0.898,
+        "same_cues": [
+          41,
+          50
+        ],
+        "wer": 0.024
+      },
+      "seconds": {
+        "cut": 56.267,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          42,
+          41,
+          38
+        ],
+        "f1": 0.916,
+        "same_cues": [
+          37,
+          43
+        ],
+        "wer": 0.01
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 42,
+        "reuse": 44,
+        "rt": 43,
+        "rule": 44
+      },
+      "cut": "loc_bd89f38b_h43",
+      "hear_seconds": {
+        "all": 2.342149416,
+        "rule": 0.0
+      },
+      "parts": 12,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          41,
+          43,
+          38
+        ],
+        "f1": 0.905,
+        "same_cues": [
+          37,
+          42
+        ],
+        "wer": 0.01
+      },
+      "rule_vs_all": {
+        "breaks": [
+          41,
+          43,
+          38
+        ],
+        "f1": 0.905,
+        "same_cues": [
+          37,
+          42
+        ],
+        "wer": 0.01
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          42,
+          43,
+          41
+        ],
+        "f1": 0.965,
+        "same_cues": [
+          40,
+          43
+        ],
+        "wer": 0.0
+      },
+      "seconds": {
+        "cut": 40.933,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          22,
+          19,
+          12
+        ],
+        "f1": 0.585,
+        "same_cues": [
+          10,
+          23
+        ],
+        "wer": 0.037
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 20,
+        "reuse": 24,
+        "rt": 23,
+        "rule": 24
+      },
+      "cut": "loc_bd89f38b_h53",
+      "hear_seconds": {
+        "all": 0.836582083,
+        "rule": 0.0
+      },
+      "parts": 4,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          19,
+          23,
+          13
+        ],
+        "f1": 0.619,
+        "same_cues": [
+          10,
+          20
+        ],
+        "wer": 0.055
+      },
+      "rule_vs_all": {
+        "breaks": [
+          19,
+          23,
+          13
+        ],
+        "f1": 0.619,
+        "same_cues": [
+          10,
+          20
+        ],
+        "wer": 0.055
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          22,
+          23,
+          19
+        ],
+        "f1": 0.844,
+        "same_cues": [
+          16,
+          23
+        ],
+        "wer": 0.019
+      },
+      "seconds": {
+        "cut": 17.333,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "all_vs_rt": {
+        "breaks": [
+          46,
+          46,
+          40
+        ],
+        "f1": 0.87,
+        "same_cues": [
+          40,
+          47
+        ],
+        "wer": 0.046
+      },
+      "category": "reused_only",
+      "cues": {
+        "all": 47,
+        "reuse": 42,
+        "rt": 47,
+        "rule": 42
+      },
+      "cut": "loc_bd89f38b_h88",
+      "hear_seconds": {
+        "all": 2.8563671250000002,
+        "rule": 0.0
+      },
+      "parts": 15,
+      "parts_heard": 0,
+      "reuse_vs_all": {
+        "breaks": [
+          46,
+          41,
+          29
+        ],
+        "f1": 0.667,
+        "same_cues": [
+          25,
+          47
+        ],
+        "wer": 0.085
+      },
+      "rule_vs_all": {
+        "breaks": [
+          46,
+          41,
+          29
+        ],
+        "f1": 0.667,
+        "same_cues": [
+          25,
+          47
+        ],
+        "wer": 0.085
+      },
+      "rule_vs_rt": {
+        "breaks": [
+          46,
+          41,
+          33
+        ],
+        "f1": 0.759,
+        "same_cues": [
+          28,
+          47
+        ],
+        "wer": 0.065
+      },
+      "seconds": {
+        "cut": 44.367,
+        "heard": -0.0,
+        "transcribed": -0.0
+      },
+      "why": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    }
+  ]
+}

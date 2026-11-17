@@ -1,0 +1,146 @@
+{
+  "backlog": "D.03",
+  "fillers_vs_asr_events_proxy": {
+    "asr_events": 59,
+    "cuts": 23,
+    "note": "the parakeet pass's own filler events, not hand labels: recall/precision vs hand labels on 2 streams waits for AJ's labels (A.10)",
+    "precision": 1.0,
+    "recall": 0.407,
+    "skipped_fused": 36
+  },
+  "params": {
+    "keep_s": 0.15,
+    "min_s": 0.4,
+    "tolerance_ms": 10.0
+  },
+  "pauses": {
+    "fragments": 471,
+    "matched_within_10ms": 471,
+    "max_delta_ms": 0.0,
+    "reference": "tools/pauses_ref.py",
+    "reference_fragments": 471
+  },
+  "rows": [
+    {
+      "asr_filler_events": 5,
+      "cut": "loc_086da141_h03",
+      "filler_cuts": 1,
+      "filler_skipped": 4,
+      "matched_10ms": 24,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 12,
+      "pause_fragments": 24,
+      "reference_fragments": 24
+    },
+    {
+      "asr_filler_events": 5,
+      "cut": "loc_086da141_h25",
+      "filler_cuts": 2,
+      "filler_skipped": 3,
+      "matched_10ms": 53,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 10,
+      "pause_fragments": 53,
+      "reference_fragments": 53
+    },
+    {
+      "asr_filler_events": 2,
+      "cut": "loc_086da141_h47",
+      "filler_cuts": 0,
+      "filler_skipped": 2,
+      "matched_10ms": 56,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 9,
+      "pause_fragments": 56,
+      "reference_fragments": 56
+    },
+    {
+      "asr_filler_events": 19,
+      "cut": "loc_4fadb756_h34",
+      "filler_cuts": 7,
+      "filler_skipped": 12,
+      "matched_10ms": 69,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 10,
+      "pause_fragments": 69,
+      "reference_fragments": 69
+    },
+    {
+      "asr_filler_events": 3,
+      "cut": "loc_4fadb756_h37",
+      "filler_cuts": 2,
+      "filler_skipped": 1,
+      "matched_10ms": 30,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 11,
+      "pause_fragments": 30,
+      "reference_fragments": 30
+    },
+    {
+      "asr_filler_events": 9,
+      "cut": "loc_4fadb756_h48",
+      "filler_cuts": 6,
+      "filler_skipped": 3,
+      "matched_10ms": 32,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 14,
+      "pause_fragments": 32,
+      "reference_fragments": 32
+    },
+    {
+      "asr_filler_events": 5,
+      "cut": "loc_bd89f38b_h41",
+      "filler_cuts": 2,
+      "filler_skipped": 3,
+      "matched_10ms": 86,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 11,
+      "pause_fragments": 86,
+      "reference_fragments": 86
+    },
+    {
+      "asr_filler_events": 0,
+      "cut": "loc_bd89f38b_h43",
+      "filler_cuts": 0,
+      "filler_skipped": 0,
+      "matched_10ms": 30,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 13,
+      "pause_fragments": 30,
+      "reference_fragments": 30
+    },
+    {
+      "asr_filler_events": 0,
+      "cut": "loc_bd89f38b_h53",
+      "filler_cuts": 0,
+      "filler_skipped": 0,
+      "matched_10ms": 4,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 5,
+      "pause_fragments": 4,
+      "reference_fragments": 4
+    },
+    {
+      "asr_filler_events": 11,
+      "cut": "loc_bd89f38b_h88",
+      "filler_cuts": 3,
+      "filler_skipped": 8,
+      "matched_10ms": 87,
+      "max_delta_ms": 0.0,
+      "mismatches": [],
+      "parts": 16,
+      "pause_fragments": 87,
+      "reference_fragments": 87
+    }
+  ],
+  "schema": "gmclip.lab.sweeps/0"
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-gm-call"
+description = "Enables the gm_call command without any pre-configured scope."
+commands.allow = ["gm_call"]
+
+[[permission]]
+identifier = "deny-gm-call"
+description = "Denies the gm_call command without any pre-configured scope."
+commands.deny = ["gm_call"]

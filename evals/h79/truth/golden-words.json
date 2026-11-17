@@ -1,0 +1,715 @@
+{
+ "schema": "gmclip.eval.words/0",
+ "source": {
+  "path": "clip-library/production/h79-v3-2026-10-04/qa/asr-v4/out.json",
+  "sha256": "4d16cbcfd02c612436eafc037587bdd28fa13023adebbad838009b3d8da1229f"
+ },
+ "clock": "output seconds of h79-v4.mp4",
+ "words": [
+  {
+   "word": "Hi,",
+   "start": 0.16,
+   "end": 0.72
+  },
+  {
+   "word": "I'm",
+   "start": 0.72,
+   "end": 0.96
+  },
+  {
+   "word": "a",
+   "start": 0.96,
+   "end": 1.12
+  },
+  {
+   "word": "banana.",
+   "start": 1.12,
+   "end": 1.84
+  },
+  {
+   "word": "We",
+   "start": 1.84,
+   "end": 2.0
+  },
+  {
+   "word": "were",
+   "start": 2.0,
+   "end": 2.16
+  },
+  {
+   "word": "able",
+   "start": 2.16,
+   "end": 2.32
+  },
+  {
+   "word": "to",
+   "start": 2.32,
+   "end": 2.48
+  },
+  {
+   "word": "generate",
+   "start": 2.48,
+   "end": 2.8
+  },
+  {
+   "word": "that",
+   "start": 2.8,
+   "end": 2.96
+  },
+  {
+   "word": "five",
+   "start": 2.96,
+   "end": 3.2
+  },
+  {
+   "word": "second",
+   "start": 3.28,
+   "end": 3.6
+  },
+  {
+   "word": "video",
+   "start": 3.76,
+   "end": 4.08
+  },
+  {
+   "word": "in",
+   "start": 4.08,
+   "end": 4.24
+  },
+  {
+   "word": "less",
+   "start": 4.24,
+   "end": 4.64
+  },
+  {
+   "word": "than",
+   "start": 4.64,
+   "end": 4.88
+  },
+  {
+   "word": "two",
+   "start": 4.88,
+   "end": 5.2
+  },
+  {
+   "word": "minutes.",
+   "start": 5.2,
+   "end": 5.92
+  },
+  {
+   "word": "I",
+   "start": 6.32,
+   "end": 6.4
+  },
+  {
+   "word": "mean",
+   "start": 6.4,
+   "end": 6.56
+  },
+  {
+   "word": "this",
+   "start": 6.64,
+   "end": 6.72
+  },
+  {
+   "word": "is",
+   "start": 6.72,
+   "end": 6.8
+  },
+  {
+   "word": "gonna",
+   "start": 6.88,
+   "end": 7.04
+  },
+  {
+   "word": "be",
+   "start": 7.04,
+   "end": 7.2
+  },
+  {
+   "word": "a",
+   "start": 7.2,
+   "end": 7.28
+  },
+  {
+   "word": "terrible",
+   "start": 7.28,
+   "end": 7.68
+  },
+  {
+   "word": "prompt,",
+   "start": 7.68,
+   "end": 8.16
+  },
+  {
+   "word": "but",
+   "start": 8.16,
+   "end": 8.32
+  },
+  {
+   "word": "let's",
+   "start": 8.32,
+   "end": 8.56
+  },
+  {
+   "word": "just",
+   "start": 8.56,
+   "end": 8.72
+  },
+  {
+   "word": "say",
+   "start": 8.72,
+   "end": 8.96
+  },
+  {
+   "word": "a",
+   "start": 8.96,
+   "end": 9.2
+  },
+  {
+   "word": "cartoon",
+   "start": 9.2,
+   "end": 10.08
+  },
+  {
+   "word": "banana",
+   "start": 10.4,
+   "end": 11.04
+  },
+  {
+   "word": "peeling",
+   "start": 11.6,
+   "end": 12.4
+  },
+  {
+   "word": "itself.",
+   "start": 12.4,
+   "end": 13.2
+  },
+  {
+   "word": "Uh",
+   "start": 13.2,
+   "end": 13.44
+  },
+  {
+   "word": "let's",
+   "start": 13.44,
+   "end": 13.68
+  },
+  {
+   "word": "also",
+   "start": 13.68,
+   "end": 13.92
+  },
+  {
+   "word": "try",
+   "start": 13.92,
+   "end": 14.24
+  },
+  {
+   "word": "some",
+   "start": 14.24,
+   "end": 14.48
+  },
+  {
+   "word": "uh",
+   "start": 14.96,
+   "end": 15.2
+  },
+  {
+   "word": "voice,",
+   "start": 15.44,
+   "end": 16.0
+  },
+  {
+   "word": "let's",
+   "start": 16.0,
+   "end": 16.48
+  },
+  {
+   "word": "say,",
+   "start": 16.4,
+   "end": 16.88
+  },
+  {
+   "word": "and",
+   "start": 16.88,
+   "end": 17.2
+  },
+  {
+   "word": "says",
+   "start": 17.2,
+   "end": 17.84
+  },
+  {
+   "word": "Hi,",
+   "start": 18.32,
+   "end": 18.88
+  },
+  {
+   "word": "I'm",
+   "start": 18.88,
+   "end": 19.28
+  },
+  {
+   "word": "a",
+   "start": 19.28,
+   "end": 19.52
+  },
+  {
+   "word": "banana.",
+   "start": 19.52,
+   "end": 20.48
+  },
+  {
+   "word": "Uh",
+   "start": 20.48,
+   "end": 20.72
+  },
+  {
+   "word": "let's",
+   "start": 20.72,
+   "end": 21.04
+  },
+  {
+   "word": "see",
+   "start": 21.04,
+   "end": 21.2
+  },
+  {
+   "word": "how",
+   "start": 21.2,
+   "end": 21.36
+  },
+  {
+   "word": "long",
+   "start": 21.36,
+   "end": 21.52
+  },
+  {
+   "word": "that",
+   "start": 21.52,
+   "end": 21.68
+  },
+  {
+   "word": "takes.",
+   "start": 21.68,
+   "end": 22.0
+  },
+  {
+   "word": "Alright,",
+   "start": 22.0,
+   "end": 22.32
+  },
+  {
+   "word": "let's",
+   "start": 22.32,
+   "end": 22.56
+  },
+  {
+   "word": "start",
+   "start": 22.48,
+   "end": 22.72
+  },
+  {
+   "word": "the",
+   "start": 22.72,
+   "end": 22.8
+  },
+  {
+   "word": "clock.",
+   "start": 22.8,
+   "end": 23.2
+  },
+  {
+   "word": "What's",
+   "start": 23.2,
+   "end": 23.6
+  },
+  {
+   "word": "the",
+   "start": 23.52,
+   "end": 23.68
+  },
+  {
+   "word": "time?",
+   "start": 23.68,
+   "end": 24.08
+  },
+  {
+   "word": "12:15.",
+   "start": 24.08,
+   "end": 25.84
+  },
+  {
+   "word": "Run.",
+   "start": 25.84,
+   "end": 26.4
+  },
+  {
+   "word": "I",
+   "start": 26.4,
+   "end": 26.48
+  },
+  {
+   "word": "have",
+   "start": 26.48,
+   "end": 26.64
+  },
+  {
+   "word": "an",
+   "start": 26.64,
+   "end": 26.8
+  },
+  {
+   "word": "NVIDIA",
+   "start": 26.8,
+   "end": 27.52
+  },
+  {
+   "word": "5080",
+   "start": 27.52,
+   "end": 28.24
+  },
+  {
+   "word": "GPU",
+   "start": 28.24,
+   "end": 28.88
+  },
+  {
+   "word": "here",
+   "start": 28.88,
+   "end": 29.2
+  },
+  {
+   "word": "and",
+   "start": 29.44,
+   "end": 29.76
+  },
+  {
+   "word": "it",
+   "start": 29.76,
+   "end": 30.0
+  },
+  {
+   "word": "just",
+   "start": 30.0,
+   "end": 30.24
+  },
+  {
+   "word": "works",
+   "start": 30.24,
+   "end": 30.56
+  },
+  {
+   "word": "much",
+   "start": 30.56,
+   "end": 30.8
+  },
+  {
+   "word": "better",
+   "start": 30.8,
+   "end": 31.2
+  },
+  {
+   "word": "with",
+   "start": 31.2,
+   "end": 31.44
+  },
+  {
+   "word": "a",
+   "start": 31.44,
+   "end": 31.6
+  },
+  {
+   "word": "Windows",
+   "start": 31.6,
+   "end": 32.16
+  },
+  {
+   "word": "PC.",
+   "start": 32.16,
+   "end": 32.88
+  },
+  {
+   "word": "Okay,",
+   "start": 32.88,
+   "end": 33.28
+  },
+  {
+   "word": "this",
+   "start": 33.28,
+   "end": 33.44
+  },
+  {
+   "word": "is",
+   "start": 33.44,
+   "end": 33.6
+  },
+  {
+   "word": "the",
+   "start": 33.6,
+   "end": 33.76
+  },
+  {
+   "word": "video.",
+   "start": 33.76,
+   "end": 34.08
+  },
+  {
+   "word": "Dude,",
+   "start": 34.08,
+   "end": 34.48
+  },
+  {
+   "word": "that",
+   "start": 34.48,
+   "end": 34.72
+  },
+  {
+   "word": "was",
+   "start": 34.72,
+   "end": 34.96
+  },
+  {
+   "word": "less",
+   "start": 34.96,
+   "end": 35.36
+  },
+  {
+   "word": "than",
+   "start": 35.36,
+   "end": 35.6
+  },
+  {
+   "word": "two",
+   "start": 35.6,
+   "end": 35.92
+  },
+  {
+   "word": "minutes.",
+   "start": 35.92,
+   "end": 36.4
+  },
+  {
+   "word": "We",
+   "start": 36.4,
+   "end": 36.56
+  },
+  {
+   "word": "have",
+   "start": 36.56,
+   "end": 36.72
+  },
+  {
+   "word": "a",
+   "start": 36.72,
+   "end": 36.88
+  },
+  {
+   "word": "vertical",
+   "start": 36.88,
+   "end": 37.44
+  },
+  {
+   "word": "video",
+   "start": 37.44,
+   "end": 37.68
+  },
+  {
+   "word": "of",
+   "start": 37.68,
+   "end": 37.84
+  },
+  {
+   "word": "a",
+   "start": 37.84,
+   "end": 37.92
+  },
+  {
+   "word": "banana",
+   "start": 37.92,
+   "end": 38.4
+  },
+  {
+   "word": "peeling",
+   "start": 38.4,
+   "end": 38.8
+  },
+  {
+   "word": "itself",
+   "start": 38.8,
+   "end": 39.04
+  },
+  {
+   "word": "and",
+   "start": 39.12,
+   "end": 39.44
+  },
+  {
+   "word": "let'",
+   "start": 39.44,
+   "end": 39.68
+  },
+  {
+   "word": "lets's",
+   "start": 39.6,
+   "end": 39.84
+  },
+  {
+   "word": "see",
+   "start": 39.84,
+   "end": 39.92
+  },
+  {
+   "word": "if",
+   "start": 39.92,
+   "end": 40.08
+  },
+  {
+   "word": "it",
+   "start": 40.08,
+   "end": 40.16
+  },
+  {
+   "word": "also",
+   "start": 40.16,
+   "end": 40.32
+  },
+  {
+   "word": "has",
+   "start": 40.32,
+   "end": 40.48
+  },
+  {
+   "word": "voice.",
+   "start": 40.88,
+   "end": 44.56
+  },
+  {
+   "word": "Hi,",
+   "start": 44.56,
+   "end": 45.2
+  },
+  {
+   "word": "I'm",
+   "start": 45.2,
+   "end": 45.52
+  },
+  {
+   "word": "a",
+   "start": 45.52,
+   "end": 45.76
+  },
+  {
+   "word": "banana.",
+   "start": 45.76,
+   "end": 46.88
+  },
+  {
+   "word": "Wow.",
+   "start": 46.88,
+   "end": 48.72
+  },
+  {
+   "word": "Wow.",
+   "start": 48.72,
+   "end": 49.92
+  },
+  {
+   "word": "I",
+   "start": 49.92,
+   "end": 50.24
+  },
+  {
+   "word": "am",
+   "start": 50.24,
+   "end": 50.56
+  },
+  {
+   "word": "actually",
+   "start": 50.56,
+   "end": 51.04
+  },
+  {
+   "word": "blown",
+   "start": 51.04,
+   "end": 51.76
+  },
+  {
+   "word": "away",
+   "start": 51.76,
+   "end": 52.4
+  },
+  {
+   "word": "by",
+   "start": 52.88,
+   "end": 53.12
+  },
+  {
+   "word": "that.",
+   "start": 53.28,
+   "end": 53.84
+  },
+  {
+   "word": "Incredible.",
+   "start": 53.84,
+   "end": 54.8
+  },
+  {
+   "word": "Locally,",
+   "start": 54.8,
+   "end": 55.52
+  },
+  {
+   "word": "yes.",
+   "start": 55.52,
+   "end": 56.4
+  },
+  {
+   "word": "Locally.",
+   "start": 56.4,
+   "end": 57.04
+  },
+  {
+   "word": "This",
+   "start": 57.04,
+   "end": 57.28
+  },
+  {
+   "word": "is",
+   "start": 57.28,
+   "end": 57.52
+  },
+  {
+   "word": "all",
+   "start": 57.52,
+   "end": 57.76
+  },
+  {
+   "word": "on",
+   "start": 57.76,
+   "end": 58.0
+  },
+  {
+   "word": "my",
+   "start": 58.0,
+   "end": 58.24
+  },
+  {
+   "word": "local",
+   "start": 58.24,
+   "end": 58.88
+  },
+  {
+   "word": "Windows",
+   "start": 58.88,
+   "end": 59.52
+  },
+  {
+   "word": "PC.",
+   "start": 59.52,
+   "end": 60.16
+  }
+ ]
+}

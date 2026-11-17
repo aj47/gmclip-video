@@ -1,0 +1,1315 @@
+{
+ "schema": "gmclip.renderplan/0",
+ "meta": {
+  "title": "My PC made this in 67 seconds",
+  "hook_id": "loc_4fadb756_h79",
+  "import_report": [
+   "grader-shaped reduction of h79 v3 for the h79 self-test; not a validated RenderPlan"
+  ],
+  "inputs": [
+   {
+    "role": "spec",
+    "path": "production/h79-v3-2026-10-04/render-spec-v3.json",
+    "sha256": "583334563245a0117319198f2c677bc14c590121a5a59e1b7bcfcf320576a08d"
+   },
+   {
+    "role": "ass",
+    "path": "production/h79-v3-2026-10-04/captions-v3.ass",
+    "sha256": "ef7c13fa8d4179f7f2602a36aac8ebae2ee4645e5af1f9e5f9687c9eb06299cb"
+   }
+  ]
+ },
+ "output": {
+  "canvas": {
+   "w": 1080,
+   "h": 1920
+  },
+  "fps": {
+   "num": 30,
+   "den": 1
+  },
+  "frames": 675
+ },
+ "parts": [
+  {
+   "id": "01-payoff-banana-voice",
+   "out": [
+    0,
+    55
+   ],
+   "native": {
+    "frames": [
+     81254,
+     81309
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1222,
+      "y": 392,
+      "w": 418,
+      "h": 688
+     },
+     "place": {
+      "x": 250,
+      "y": 410,
+      "w": 580,
+      "h": 954
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 200,
+      "y": 1350,
+      "w": 32,
+      "h": 20
+     },
+     "place": {
+      "x": 0,
+      "y": 1900,
+      "w": 32,
+      "h": 20
+     },
+     "z": 1,
+     "visible": false
+    }
+   ]
+  },
+  {
+   "id": "02-claim-under-two-minutes",
+   "out": [
+    55,
+    112
+   ],
+   "native": {
+    "frames": [
+     80421,
+     80478
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 770,
+      "y": 220,
+      "w": 1280,
+      "h": 900
+     },
+     "place": {
+      "x": 160,
+      "y": 420,
+      "w": 760,
+      "h": 534
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    }
+   ]
+  },
+  {
+   "id": "03-prompt-cartoon-banana",
+   "out": [
+    112,
+    177
+   ],
+   "native": {
+    "frames": [
+     77694,
+     77759
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1040,
+      "y": 150,
+      "w": 1520,
+      "h": 760
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 510
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    },
+    {
+     "id": "detail-0",
+     "role": "detail",
+     "crop": {
+      "x": 1074,
+      "y": 250,
+      "w": 425,
+      "h": 35
+     },
+     "place": {
+      "x": 30,
+      "y": 800,
+      "w": 1020,
+      "h": 84
+     },
+     "z": 2
+    }
+   ]
+  },
+  {
+   "id": "04-prompt-and-says-hi",
+   "out": [
+    177,
+    289
+   ],
+   "native": {
+    "frames": [
+     77974,
+     78086
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1040,
+      "y": 150,
+      "w": 1520,
+      "h": 760
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 510
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    },
+    {
+     "id": "detail-0",
+     "role": "detail",
+     "crop": {
+      "x": 1074,
+      "y": 250,
+      "w": 425,
+      "h": 35
+     },
+     "place": {
+      "x": 30,
+      "y": 800,
+      "w": 1020,
+      "h": 84
+     },
+     "z": 2
+    }
+   ]
+  },
+  {
+   "id": "05-start-the-clock",
+   "out": [
+    289,
+    322
+   ],
+   "native": {
+    "frames": [
+     78140,
+     78173
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 2560,
+      "h": 1392
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 554
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    },
+    {
+     "id": "detail-0",
+     "role": "detail",
+     "crop": {
+      "x": 2060,
+      "y": 74,
+      "w": 500,
+      "h": 180
+     },
+     "place": {
+      "x": 240,
+      "y": 812,
+      "w": 600,
+      "h": 216
+     },
+     "z": 2
+    }
+   ]
+  },
+  {
+   "id": "06-run",
+   "out": [
+    322,
+    336
+   ],
+   "native": {
+    "frames": [
+     78328,
+     78342
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 2560,
+      "h": 1392
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 554
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    },
+    {
+     "id": "detail-0",
+     "role": "detail",
+     "crop": {
+      "x": 2060,
+      "y": 74,
+      "w": 500,
+      "h": 180
+     },
+     "place": {
+      "x": 240,
+      "y": 812,
+      "w": 600,
+      "h": 216
+     },
+     "z": 2
+    }
+   ]
+  },
+  {
+   "id": "07-rtx-5080",
+   "out": [
+    336,
+    438
+   ],
+   "native": {
+    "frames": [
+     79015,
+     79117
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 80,
+      "y": 170,
+      "w": 2000,
+      "h": 980
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 500
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    }
+   ]
+  },
+  {
+   "id": "08-also-has-voice",
+   "out": [
+    438,
+    482
+   ],
+   "native": {
+    "frames": [
+     80636,
+     80680
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 770,
+      "y": 220,
+      "w": 1280,
+      "h": 900
+     },
+     "place": {
+      "x": 30,
+      "y": 250,
+      "w": 1020,
+      "h": 718
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 2060,
+      "y": 634,
+      "w": 496,
+      "h": 340
+     },
+     "place": {
+      "x": 160,
+      "y": 1120,
+      "w": 760,
+      "h": 520
+     },
+     "z": 1,
+     "visible": true
+    }
+   ]
+  },
+  {
+   "id": "09-voice-reveal-wow",
+   "out": [
+    482,
+    580
+   ],
+   "native": {
+    "frames": [
+     80779,
+     80877
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1222,
+      "y": 392,
+      "w": 418,
+      "h": 688
+     },
+     "place": {
+      "x": 250,
+      "y": 410,
+      "w": 580,
+      "h": 954
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 200,
+      "y": 1350,
+      "w": 32,
+      "h": 20
+     },
+     "place": {
+      "x": 0,
+      "y": 1900,
+      "w": 32,
+      "h": 20
+     },
+     "z": 1,
+     "visible": false
+    }
+   ]
+  },
+  {
+   "id": "10a-this-is-all-on-my",
+   "out": [
+    580,
+    613
+   ],
+   "native": {
+    "frames": [
+     81724,
+     81757
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1222,
+      "y": 392,
+      "w": 418,
+      "h": 540
+     },
+     "place": {
+      "x": 160,
+      "y": 410,
+      "w": 760,
+      "h": 982
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 200,
+      "y": 1350,
+      "w": 32,
+      "h": 20
+     },
+     "place": {
+      "x": 0,
+      "y": 1900,
+      "w": 32,
+      "h": 20
+     },
+     "z": 1,
+     "visible": false
+    }
+   ]
+  },
+  {
+   "id": "10b-local-windows-pc",
+   "out": [
+    613,
+    675
+   ],
+   "native": {
+    "frames": [
+     81757,
+     81819
+    ],
+    "fps": {
+     "num": 30,
+     "den": 1
+    }
+   },
+   "layers": [
+    {
+     "id": "screen",
+     "role": "screen",
+     "crop": {
+      "x": 1222,
+      "y": 392,
+      "w": 418,
+      "h": 688
+     },
+     "place": {
+      "x": 250,
+      "y": 410,
+      "w": 580,
+      "h": 954
+     },
+     "z": 0
+    },
+    {
+     "id": "cam",
+     "role": "cam",
+     "crop": {
+      "x": 200,
+      "y": 1350,
+      "w": 32,
+      "h": 20
+     },
+     "place": {
+      "x": 0,
+      "y": 1900,
+      "w": 32,
+      "h": 20
+     },
+     "z": 1,
+     "visible": false
+    }
+   ]
+  }
+ ],
+ "text_styles": {
+  "Hook": {
+   "font": "neometric-heavy",
+   "size": 88.0,
+   "align": 5
+  },
+  "Speech": {
+   "font": "neometric-heavy",
+   "size": 86.0,
+   "align": 5
+  },
+  "Pill": {
+   "font": "neometric-heavy",
+   "size": 50.0,
+   "align": 7,
+   "letter_spacing": 1.0
+  }
+ },
+ "text_events": [
+  {
+   "id": "hook",
+   "role": "text_hook",
+   "style": "Hook",
+   "out": [
+    0,
+    112
+   ],
+   "size": 88.0,
+   "pos": {
+    "x": 540.0,
+    "y": 305.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "My PC made this\nin 67 seconds."
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-1",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    55,
+    72
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "that was"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-2",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    72,
+    92
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "less than"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-3",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    92,
+    112
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "two minutes"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-4",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    112,
+    176
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "a cartoon banana"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-5",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    177,
+    209
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "and says"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-6",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    221,
+    249
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "\u201cHi, I\u2019m"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-7",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    249,
+    289
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "a banana.\u201d"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-8",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    296,
+    321
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "start the clock"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-9",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    323,
+    336
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "Run."
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-10",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    339,
+    358
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "Because I have"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-11",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    358,
+    384
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "an NVIDIA"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-12",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    384,
+    438
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "5080 GPU here."
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-13",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    440,
+    452
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "let\u2019s see"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-14",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    452,
+    468
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "if it also"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-15",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    468,
+    482
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1065.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "has voice?"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-16",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    557,
+    580
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1450.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "Wow."
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-17",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    580,
+    599
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1450.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "This is all"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-18",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    599,
+    613
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1450.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "on my"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-19",
+   "role": "caption",
+   "style": "Speech",
+   "out": [
+    613,
+    675
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 540.0,
+    "y": 1450.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "local Windows PC."
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-20",
+   "role": "note",
+   "style": "Timer",
+   "out": [
+    322,
+    336
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 48.0,
+    "y": 262.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "GENERATING  0:00"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-21",
+   "role": "note",
+   "style": "Timer",
+   "out": [
+    336,
+    366
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 48.0,
+    "y": 262.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "GENERATING  0:23"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-22",
+   "role": "note",
+   "style": "Timer",
+   "out": [
+    366,
+    396
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 48.0,
+    "y": 262.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "GENERATING  0:24"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-23",
+   "role": "note",
+   "style": "Timer",
+   "out": [
+    396,
+    426
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 48.0,
+    "y": 262.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "GENERATING  0:25"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-24",
+   "role": "note",
+   "style": "Timer",
+   "out": [
+    426,
+    438
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 48.0,
+    "y": 262.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "GENERATING  0:26"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  },
+  {
+   "id": "ev-25",
+   "role": "note",
+   "style": "Timer",
+   "out": [
+    438,
+    482
+   ],
+   "size": 86.0,
+   "pos": {
+    "x": 48.0,
+    "y": 262.0
+   },
+   "align": 5,
+   "runs": [
+    {
+     "text": "DONE IN  1:07"
+    }
+   ],
+   "provenance": {
+    "kind": "import"
+   }
+  }
+ ]
+}

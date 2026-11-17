@@ -1,0 +1,100 @@
+{
+ "schema": "gmclip.eval.h79.fixture/0",
+ "built_by": "evals/h79/make_fixture.py",
+ "inputs": [
+  {
+   "path": "clip-library/AGENTS.md",
+   "sha256": "c3023774c32e743105fd1cb11d1444e07389273247bd467b649d12346b525940",
+   "bytes": 8301
+  },
+  {
+   "path": "clip-library/data/streams.json",
+   "sha256": "ee6c82751611f8f677e76cb4dbd97f3b39cd901069c88d043b76718c12a6a173",
+   "bytes": 8499
+  },
+  {
+   "path": "clip-library/data/hooks/loc_4fadb756.json",
+   "sha256": "fb0023aa0191e57a0cae0c1b0bbc3e3c5f7090faf2ff53264f09992e1a863300",
+   "bytes": 118757
+  },
+  {
+   "path": "clip-library/data/hooks/loc_4fadb756.derived.json",
+   "sha256": "13033a75f8423dfd03d797a277929ea0f9eb33af881f2945edc8dcaa3c1607f5",
+   "bytes": 23949
+  },
+  {
+   "path": "clip-library/data/excerpts.json",
+   "sha256": "f95e56f640f0577455dfdf496f227205d848de7894ba25c55e4c4432c11ed8fa",
+   "bytes": 21170
+  },
+  {
+   "path": "clip-library/data/text-hooks.json",
+   "sha256": "7577794afd08e0cc51925370562edafbf1cc82c0bf6bdc69b1799e8a43ffc0d7",
+   "bytes": 17837
+  },
+  {
+   "path": "clip-library/data/staged.json",
+   "sha256": "6798c78c04524804722f924ee9087f34791430c79a89667d8777f9af8806ad8b",
+   "bytes": 1408
+  },
+  {
+   "path": "clip-library/data/stories.json",
+   "sha256": "bc5019adf1652a1b98a836c8a9d6f38c2f566f18c5395ba957bb0d0e2c4087e7",
+   "bytes": 3540547
+  },
+  {
+   "path": "clip-library/data/transcripts/loc_4fadb756.txt",
+   "sha256": "672ac93b3bb289036d96a4de512972712afed9234f936d8282c0099fb79e9f33",
+   "bytes": 40286
+  }
+ ],
+ "excluded": [
+  "stories.json[loc_4fadb756_h79]",
+  "story-history/loc_4fadb756_h79.jsonl",
+  "production/** (RT plans, specs, receipts, renders)",
+  "renders.json",
+  "edit-runs/loc_4fadb756_h79/**"
+ ],
+ "files": [
+  {
+   "path": "cut.json",
+   "sha256": "b6a271d1bb889b9360297ccd01f08e546c96ebee6e6c14344c166b5b314fe391"
+  },
+  {
+   "path": "cuts.json",
+   "sha256": "4dd80004f859567b8432e180c2908250232ede5dc7145d4db6b5de41250e2c85"
+  },
+  {
+   "path": "framing.json",
+   "sha256": "1674fb7588a7665efa4f8f4a12d164d8e3950e9af6dd93def89841ec494fbaad"
+  },
+  {
+   "path": "layout.json",
+   "sha256": "46f385efb8a74d6aeb1b1e34a33bec8af29105200a3af2f5a7551e7b21d21dc0"
+  },
+  {
+   "path": "moments.json",
+   "sha256": "969d02c208c51597af8b1528f745084875a10942598c950494af654c656296b1"
+  },
+  {
+   "path": "profile.json",
+   "sha256": "ae46f9bd52e801d892c78e9e2658aeea7cf4c39e45b6ac0d520905599c36b7a6"
+  },
+  {
+   "path": "sources.json",
+   "sha256": "041bf39f685d11e243d74f543a0b8e34d10e59fd2d70f12e528a4564e3233847"
+  },
+  {
+   "path": "transcript.txt",
+   "sha256": "672ac93b3bb289036d96a4de512972712afed9234f936d8282c0099fb79e9f33"
+  },
+  {
+   "path": "../style.md",
+   "sha256": "209da55fd2ba62c7370dc63207d49f561392288a5ed2539681fd967b355be973"
+  },
+  {
+   "path": "../brief.md",
+   "sha256": "8389ee963e9da6ad39542575baa2a9102d75b3b6b2eb9bc4f5608fbf0372649f"
+  }
+ ]
+}

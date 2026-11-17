@@ -1,0 +1,454 @@
+[00:00:00.2 - 00:00:00.5] YouTube
+[00:00:02.3 - 00:00:03.4] and um
+[00:00:05.1 - 00:00:08.6] yeah any second now
+[00:00:10.1 - 00:00:18.3] let's see let's see if this works come on let's do a test okay it says I'm live
+[00:00:20.0 - 00:00:20.6] though
+[00:00:24.6 - 00:00:26.1] though I don't see
+[00:00:28.5 - 00:00:34.9] the actual stream coming through which is not good not a good sign
+[00:00:36.2 - 00:00:38.2] um we double check
+[00:00:39.6 - 00:00:42.2] oh okay no that's good that's good okay
+[00:00:44.1 - 00:00:44.4] um
+[00:00:45.7 - 00:00:55.1] yes alright we're good tricks is joined too all right so today um I want to do video
+[00:00:55.4 - 00:01:04.3] generation with the minimax H3 model and I have my Windows computer here hopefully this is the first
+[00:01:04.3 - 00:01:08.9] time we're streaming the Windows PC um
+[00:01:12.4 - 00:01:12.7] from
+[00:01:14.2 - 00:01:21.0] I'm actually on my Mac running OBS with Windows I don't know there's a lot going on and
+[00:01:22.2 - 00:01:29.2] we will go through it all let's uh let's give bring up Excalibur if we can so we
+[00:01:29.2 - 00:01:36.7] can whiteboard out how everything's going to go so a few so today
+[00:01:39.1 - 00:01:49.7] setting up Windows PC with comfy UI, this is the user interface for a lot of media generation
+[00:01:50.0 - 00:01:58.0] uh with local models. We're gonna get the Mini Max h3 uh model in download.
+[00:01:58.0 - 00:02:02.2] So that's probably the first thing I'll do because I think that'll take a while.
+[00:02:02.2 - 00:02:07.9] Um actually we might have to do comfy UI first, and then we're gonna try to make music
+[00:02:08.2 - 00:02:12.4] video for AGI before
+[00:02:13.9 - 00:02:17.9] GTA6. This is my
+[00:02:19.6 - 00:02:30.7] uh that's GTA5. This is I mean4. This is my video music video title.
+[00:02:30.7 - 00:02:34.5] If you haven't heard the teaser, it's in one of my reels.
+[00:02:34.5 - 00:02:37.7] So this is the the setup, this is the plan today.
+[00:02:37.7 - 00:02:44.2] Thanks, uh DJ Rich forever for joining early. PMoves AI, thank you for joining.
+[00:02:44.2 - 00:02:48.7] Uh what version of Kimi are you using? Uh I'm not using Kimi at the moment, but if
+[00:02:48.7 - 00:02:52.5] I was probably K3. Alright, so let's get into it.
+[00:02:52.5 - 00:03:00.9] Let's get uh Comfy UI straight away. Because I think we might have to install uh everything through
+[00:03:00.9 - 00:03:06.6] comfy UI. Not sure. Just Comfy UI desktop. We can just download it for desktop here.
+[00:03:06.6 - 00:03:10.6] Or or you could try the cloud for free. That's interesting.
+[00:03:10.6 - 00:03:17.5] Um you get five free runs. I kind of want a long-term solution, so that's why I'm going
+[00:03:17.5 - 00:03:24.4] to do uh the local install. So my desktop specs.
+[00:03:24.4 - 00:03:24.8] Um
+[00:03:26.3 - 00:03:30.5] see I'm also gonna open open code. So I just downloaded open code for a quick and easy
+[00:03:30.7 - 00:03:36.7] free agent on my computer. So I can say list all my specs.
+[00:03:36.7 - 00:03:42.7] So you get a free Musepark usage with open code on my PC.
+[00:03:42.7 - 00:03:44.1] So GPPUU
+[00:03:45.5 - 00:03:45.0] RAM C, etc. .
+[00:03:47.9 - 00:03:55.5] Let's see what it comes up with While we're doing that, we're gonna install Comfy UI.
+[00:03:55.5 - 00:04:03.7] You're welcome, P moves. Thank you for coming through. Um yeah.
+[00:04:03.7 - 00:04:11.3] So that's the plan today. Hope you guys are doing well.
+[00:04:11.3 - 00:04:11.6] Um
+[00:04:13.4 - 00:04:26.2] rename this. For some reason the titles
+[00:04:29.0 - 00:04:42.2] on X never get updated properly. But hopefully, hopefully they do.
+[00:04:42.2 - 00:04:49.1] Looks like some some kind of glitch. Uh okay. So this is my specs.
+[00:04:49.1 - 00:04:55.2] Right now we got the GTX. I mean the GForce RTX5080.
+[00:04:55.2 - 00:05:00.5] That's my GPU. That's probably the main thing. Uh with16 gigabytes of VRAM.
+[00:05:00.5 - 00:05:05.0] This is enough to run a quantized version of the Mini Max H3 model.
+[00:05:05.0 - 00:05:10.0] So I'm gonna install Comfy UI here, the install finished, I mean the download finished, we're gonna install
+[00:05:10.0 - 00:05:29.4] it just to default. Uh sure we'll add a desktop shortcut, that's fine.
+[00:05:29.4 - 00:05:38.4] Um okay, we're gonna do local. Create a new instance.
+[00:05:38.6 - 00:05:43.7] New we'll just call this comfy UI short. I mean, can do we need to
+[00:05:45.2 - 00:05:54.1] confide release, stable release, stable version. We're using an NVIDIA GPU, install location default.
+[00:05:54.1 - 00:06:03.4] It'll take about five gigabytes of space. So we can actually choose the Minimax M3 starter workflow straight
+[00:06:03.4 - 00:06:09.6] away with the Comfy UI desktop. They kind of give you that.
+[00:06:09.6 - 00:06:15.4] We'll try that out, but there it could be the case that the model that they recommend isn't
+[00:06:15.4 - 00:06:22.2] the optimal model for my hardware. Because these things are changing so fast, it could be the case
+[00:06:22.2 - 00:06:29.3] that Comfy UI hasn't updated to whatever the latest best quantized model is for my hardware.
+[00:06:29.3 - 00:06:33.3] So we might have to manually download uh a model in the future.
+[00:06:33.3 - 00:06:39.6] But we'll see how this goes. So we're downloading at about38 megabytes per second right now, uh all
+[00:06:39.6 - 00:06:47.9] through the comfy UI app. So it says26 uh seconds remaining, but I think that's just for the
+[00:06:47.9 - 00:06:51.7] app itself. The model is the big one. I think that's50 gigabytes.
+[00:06:51.7 - 00:06:57.1] That might take an hour or so. So uh we might be here for a while and I
+[00:06:57.1 - 00:07:00.6] don't know what we'll be working on, but that's the plan today.
+[00:07:00.6 - 00:07:04.2] yo Yo,, Figs, what's up? Not what I expected from you to be streaming.
+[00:07:04.2 - 00:07:06.8] I've been working on this since Minimax H3 came out.
+[00:07:06.8 - 00:07:13.8] Okay, Figs. Figs is the absolute OG. It seems like whatever I'm doing, he's already done it before.
+[00:07:13.8 - 00:07:18.6] So yeah, if you got any tips, Figs, please please let me know.
+[00:07:18.6 - 00:07:22.4] I'm gonna send Spark to watch after it gotta run.
+[00:07:22.4 - 00:07:30.1] Alright, man, I'll I'll catch you later. Uh how can I generate one hour long clip for instance?
+[00:07:30.1 - 00:07:33.0] Do you have any logic for this? That's a good question.
+[00:07:33.0 - 00:07:39.1] I don't know. I've only just started getting into this kind of generation.
+[00:07:39.1 - 00:07:43.3] It could be as easy as just setting a variable.
+[00:07:49.4 - 00:07:53.6] And I think if you try to keep going, it get the results get worse.
+[00:07:53.6 - 00:07:57.3] That's why they limit it to three seconds. But you could always do it on a loop, so
+[00:07:57.3 - 00:08:01.0] you just start from the last frame and generate the next three seconds.
+[00:08:01.0 - 00:08:07.2] Um but you obviously you'd probably want different scenes, so there's some kind of workflow you can set
+[00:08:07.2 - 00:08:13.0] up to create that loop with an LLM agent to generate the next scene or generate the whole
+[00:08:13.0 - 00:08:16.2] plan and then generate age three seconds by three seconds.
+[00:08:16.2 - 00:08:20.2] And comfy UI will actually help you uh design these workflows.
+[00:08:20.2 - 00:08:23.2] That's kind of like the whole point of comfy UI.
+[00:08:23.2 - 00:08:27.5] It's like a user interface where you can um create these workflows.
+[00:08:27.5 - 00:08:33.0] It's like you know, the node-based diagrams. This node uh links into that node, so you could have
+[00:08:33.1 - 00:08:35.1] let's go on the whiteboard actually. Let's
+[00:08:36.8 - 00:08:48.6] so let's say um you have an LLM node. And it can create
+[00:08:49.8 - 00:09:03.5] scene X. And then it will or like create the scene X like description.
+[00:09:03.5 - 00:08:59.9] Plant. .
+[00:09:04.0 - 00:09:07.6] Let's just say plan And that can go into
+[00:09:11.0 - 00:09:20.0] the vid gen. Or, you know, straight from like tech.
+[00:09:20.0 - 00:09:30.0] So the VGN model can do text to image. Text to video.
+[00:09:30.4 - 00:09:37.9] And that could just loop. I mean, that's a pretty shit one, but but yeah.
+[00:09:37.9 - 00:09:46.3] But then you could also have like things in here, like maybe you want uh text to image.
+[00:09:46.3 - 00:09:50.7] Right? Because that way instead of waiting, because this vid gen will take a long time, instead of
+[00:09:50.7 - 00:09:55.2] waiting for a whole video to generate to see if it's good, you could uh have a plan
+[00:09:55.7 - 00:10:00.8] and images, like a storyboard. You could have a step in between here to create a storyboard, and
+[00:10:00.8 - 00:10:05.7] then from that storyboard generate the images. There's like different ways you could do it, but essentially, like
+[00:10:05.8 - 00:10:10.4] if you wanted to go for hours, it's some kind of loop that just keeps going back and
+[00:10:10.4 - 00:10:16.9] forth. Uh yeah, we'll see. We'll experiment with different ways to do things.
+[00:10:16.9 - 00:10:24.7] Uh this will probably take some time. And my room is gonna get quite hot right now.
+[00:10:24.7 - 00:10:31.6] We're starting with27 degrees Celsius. Um who wants to guess how much that is in Fahrenheit?
+[00:10:31.6 - 00:10:39.4] Why is this reversed? Let's flip. L'ets flip. Wait, right hand, left hand.
+[00:10:39.4 - 00:10:50.4] Should we flip it? I'm gonna flip my camera here.
+[00:10:44.8 - 00:10:45.0] .
+[00:10:50.4 - 00:10:55.9] I can't Oh, it's locked.
+[00:10:59.8 - 00:11:15.4] Oh crap, I flipped the wrong one. Okay. There we go.
+[00:11:15.4 - 00:11:21.8] Twenty-seven degrees Celsius. Who knows what that is in Fahrenheit.
+[00:11:21.8 - 00:11:26.9] Environment consistency is the issue, says T Bag. Okay. Expand on that.
+[00:11:26.9 - 00:11:30.4] No Santoni. Thanks for jumping through. Curious to see how this turns out.
+[00:11:30.4 - 00:11:36.1] Yeah, me too. Okay, time's up for the Fahrenheit. Um I'm also trying to learn my Fahrenheit uh
+[00:11:36.2 - 00:11:45.4] estimates. So27. I think that might be close to like eighty degrees.
+[00:11:45.4 - 00:11:52.5] That might be like79. What do you guys think? I'm gonna find out.
+[00:11:52.5 - 00:12:00.4] I'm gonna press the button. Uh81, damn. I was close-ish.
+[00:12:00.4 - 00:12:09.2] Okay. It's hot, and it's probably gonna get hotter as the as the GPU starts working.
+[00:12:09.2 - 00:12:13.0] I started working on this package system in Pasteum on Discord.
+[00:12:13.0 - 00:12:18.2] It's not fully done. My only tip is to test out different custom workflows.
+[00:12:18.2 - 00:12:22.5] I can share a few, but Reddit also has list of workflows.
+[00:12:22.5 - 00:12:30.0] Band Delco Discord has a lot too. Okay, okay. Let's see if we can jump over to.
+[00:12:31.3 - 00:12:32.1] Discord
+[00:12:33.4 - 00:12:35.2] One moment please
+[00:12:40.0 - 00:12:44.4] get TikTok again.
+[00:12:56.0 - 00:12:56.4] Um
+[00:13:00.9 - 00:13:23.2] TikTok. Why are you playing with me? Oh my god is just crashing completely.
+[00:13:23.2 - 00:13:35.2] What piece of shit should I update it? Hopefully we don't crash again okay.
+[00:13:35.4 - 00:13:38.0] So let's see
+[00:13:39.2 - 00:13:45.5] that did that bring us back? I'm back okay. Good.
+[00:13:45.5 - 00:13:53.6] Um it's still kinda weirdly frozen on my screen. I'm just gonna okay.
+[00:13:53.6 - 00:13:60.0] Okay it's back on my screen. Now I'm kinda scared I was trying to hop to
+[00:14:02.1 - 00:14:02.4] uh
+[00:14:04.5 - 00:14:10.8] hop to Discord. But as soon as I change scenes, OBS crashed so I not'm sure if I
+[00:14:10.8 - 00:14:15.0] want to do that again. Um what I can do.
+[00:14:15.0 - 00:14:21.7] Open AI try to base me exactly. They're trying to slow the progress.
+[00:14:23.0 - 00:14:29.1] Yo, bro, got the codec sticker. Let's dope. Alright, I'm just gonna open Discord on my phone and
+[00:14:29.1 - 00:14:34.1] then maybe show the screen on my phone. Okay, so shout out KCFs.
+[00:14:34.1 - 00:14:38.2] They have sent through a link to
+[00:14:39.8 - 00:14:44.8] uh comfy workflows. Um
+[00:14:47.8 - 00:14:57.6] which I assume has some workflows. But we can just search, let's just search for uh mini max
+[00:14:57.9 - 00:15:03.8] h3 on a5080 on red. Let's see what does that come up any anything?
+[00:15:03.8 - 00:15:05.3] Okay.
+[00:15:13.4 - 00:15:22.4] Uh you'll have a blast. Check out Pixarama's channel on YouTube.
+[00:15:22.4 - 00:15:33.2] Okay, that sounds like fun. Check out Pixarama. Let's see if they got anything on H3.
+[00:15:34.5 - 00:15:37.8] Oh, they got a lot of videos on mini match H3.
+[00:15:37.8 - 00:15:43.6] Should we watch Speed Laura plus VRAM monitor nodes or best video generation workflow?
+[00:15:43.6 - 00:15:51.4] Let's probably start with this one. Um we got ads because I don't have YouTube premium on this.
+[00:15:51.0 - 00:15:58.4] . Oh fine Do we have audio? Oh crap, we don't have audio.
+[00:15:58.4 - 00:16:04.1] Uh how could we get audio?
+[00:16:07.2 - 00:16:16.8] Let's go here. Today I will show you how to use the new Minac H3 video model so
+[00:16:16.8 - 00:16:23.3] you can create awesome video. Welcome to my Comfy UI setup where every cable has a purpose.
+[00:16:23.3 - 00:16:30.4] Probably. Perfect. I have now connected everything exactly the way I was not supposed to.
+[00:16:30.4 - 00:16:34.7] Oh no, I lost the webcam. I guess we are buying more VRAM.
+[00:16:34.7 - 00:16:40.4] What is your name? I am Pink Subunny. Where are you coming from?
+[00:16:48.2 - 00:16:51.2] You always look at how to understand everything. Okay.
+[00:16:53.4 - 00:16:57.2] Uh updating as you know, I usually come to UI to install.
+[00:16:57.4 - 00:16:59.8] Easy install. Because it has a lot of useful script.
+[00:16:60.0 - 00:17:11.2] Oh shit. Okay, so Comfy UI finished installing. But I think we are still downloading.
+[00:17:11.2 - 00:17:11.6] Um
+[00:17:14.8 - 00:17:22.4] whoa. Hold on. So we have a few Minimax H3 models here.
+[00:17:22.4 - 00:17:29.0] Oh wow, we actually finished installing the full diffusion model for Minimax H3.
+[00:17:29.0 - 00:17:32.4] Okay, that's good. So maybe we can try run something.
+[00:17:32.4 - 00:17:40.8] How much memory do I have in GPU? So I have the5080, which has16 gigabytes of VRAM.
+[00:17:40.8 - 00:17:44.4] So not that much. This is like a decent amount.
+[00:17:44.4 - 00:17:50.6] This is enough. This is like probably the bare minimum enough to run like a decent Minimax H3
+[00:17:52.2 - 00:17:59.8] model. And then for actual RAM, I have two16GB, so32 megabytes of uh gigabytes of RAM.
+[00:17:59.8 - 00:18:03.0] I should have mentioned that I mainly use Comfy headlessly.
+[00:18:03.0 - 00:18:07.9] Oh nice. Speed LoRas are not worth the quality drop, in my opinion.
+[00:18:07.9 - 00:18:12.2] Okay. Good to know. Uh that's the reason I created that website package.
+[00:18:12.2 - 00:18:18.5] Oh, that's your website. Sick. It's a code first attempt at Comfy that compiles to JSON.
+[00:18:18.6 - 00:18:24.9] Yo. You know, that's not bad. Okay, so
+[00:18:28.7 - 00:18:42.1] hold the phone. Okay. So this is the video minimax H3 text to video workflow that comes with
+[00:18:42.2 - 00:18:47.6] the official Comfy UI app. So if we zoom in here, we might be able to see the
+[00:18:47.6 - 00:18:58.2] actual node description. Um there's a guide, there's the links to the models, the LoRa's, the location of
+[00:18:58.2 - 00:19:04.6] storage, prompt embedding description, and how to report issues. Okay.
+[00:19:04.6 - 00:19:11.6] Up here, what do we got here? Minimax H3 is a Minimax general purpose omni-modal generation model.
+[00:19:11.6 - 00:19:21.5] It jointly understands text, image, video, and audio, and generates video with native stereo audio, voice, sound effects,
+[00:19:21.5 - 00:19:27.7] and music. It's all modeled jointly in a single forward pass, not layered on afterwards.
+[00:19:27.7 - 00:19:34.8] Output is up to2K resolution24 FPS and up to about15 seconds.
+[00:19:29.8 - 00:19:29.9] .
+[00:19:34.8 - 00:19:41.3] Awesome Okay, so let's see. So we can just run the default prompt here.
+[00:19:41.3 - 00:19:47.2] Live action cinematic action movie trailer photography style, blah blah blah.
+[00:19:47.2 - 00:19:52.4] Um, and this is gonna generate a video from this big text prompt.
+[00:19:52.4 - 00:19:59.6] You can see it's quite detailed. There's a short description, there's a scene overview, there's a second by
+[00:19:59.6 - 00:20:07.7] second storyboard. Each shot is a separate scene. So this is a five-second video where there's four separate
+[00:20:07.7 - 00:20:13.9] scenes, four separate shots. Each shot is described in this single prompt in the storyboard.
+[00:20:13.9 - 00:20:19.1] This is great. I love working with storyboards, so we could set up a flow like that in
+[00:20:19.1 - 00:20:25.6] the future. Uh it has a little description about the camera, description about the audio, and some anti-prompting
+[00:20:25.6 - 00:20:30.3] or negative prompting as well. It seems here. So that sounds awesome.
+[00:20:30.3 - 00:20:37.6] Duration five seconds, seed, okay, okay. And there's some notes there.
+[00:20:37.6 - 00:20:40.4] I think if we just press run, we can see it run.
+[00:20:40.4 - 00:20:44.4] Before we do that, I'm gonna actually bring up task manager.
+[00:20:44.4 - 00:20:50.8] Let's see if we can split windows here, so we can get a bit of like a performance
+[00:20:50.8 - 00:20:55.6] overview. So you can see right now my GPU is at about two percent.
+[00:20:55.6 - 00:21:01.3] It's not really doing much, but when we press run, I expect this to hit up to a
+[00:21:01.3 - 00:21:05.4] hundred percent, and also let's look at the temperature, it's about forty five.
+[00:21:05.4 - 00:21:12.4] Oh, you can't see that. Uh hold on one sec.
+[00:21:12.4 - 00:21:18.1] I'm gonna move myself here. You can see here in the bottom left, the temperature is about45 degrees
+[00:21:18.1 - 00:21:15.0] Celsius. .
+[00:21:19.4 - 00:21:23.1] I expect that to skyrocket as well Alright, let's run this.
+[00:21:23.1 - 00:21:32.4] Boom. It's queuing up. Uh currently zero. Oop. The GPU spiked a little bit.
+[00:21:32.4 - 00:21:41.3] CPU spiked. Memory spiked. Memory is about full now. All my32 gigabytes of DDR5 is being used.
+[00:21:41.3 - 00:21:48.1] GPU is already at60 degrees temperature, and it's about at100% usage.
+[00:21:48.1 - 00:21:54.1] Fully utilizing the CP the GPU. Let me see if I can hear it.
+[00:21:54.1 - 00:21:57.9] Yo, low key it's not actually it doesn't actually sound that loud.
+[00:21:58.2 - 00:22:01.8] There's a lot of noise coming from outside, but the actual GPU itself is
+[00:22:03.1 - 00:22:09.2] doesn't sound as loud as I would have expected for100% usage.
+[00:22:12.6 - 00:22:24.5] Hey, yo. That's cool. Um let's get Claude on this computer so we can do that.
+[00:22:24.5 - 00:22:24.8] Um
+[00:22:26.6 - 00:22:31.5] install Claude. There's some weird shit going on in the background, but it's fine.
+[00:22:31.5 - 00:22:39.8] Uh Claude Desktop. Is there a clawed desktop on search claude desktop codecs desktop comes up?
+[00:22:39.8 - 00:22:49.2] Claude Desktop on uh windows, yes. Nice. Let's get Claude up and running.
+[00:22:49.2 - 00:23:02.6] Meanwhile. Um. Yeah, so I wow, we're at70%. Guys, this we're getting a a five-second video in under
+[00:23:02.6 - 00:23:09.2] ten minutes, which is likemazing. Um, this wasn't possible at like a few months ago or whenever before
+[00:23:09.4 - 00:23:14.6] H3 came out. H3 is truly a game changing model here.
+[00:23:14.6 - 00:23:19.1] Uh let's see if I can log in. Um
+[00:23:24.4 - 00:23:35.9] there another way. Okay. Um, what can I do here?
+[00:23:35.9 - 00:23:43.9] Let me let me try log in here without exposing too much info.
+[00:23:43.9 - 00:23:46.5] Oh, I could have just done that to show Discord.
+[00:23:46.5 - 00:23:51.9] Okay, interesting. That's good to know for next time. Um yeah, I'm just gonna try log in to
+[00:23:54.8 - 00:24:37.2] Claude on desktop here. One moment, please. So figs recommends the latent upscaler.
+[00:24:37.2 - 00:24:39.4] Saves a lot of time. I'll send you that one in the script note.
+[00:24:39.4 - 00:24:41.9] Appreciate you, Figs.
+[00:25:00.2 - 00:25:08.7] I'll show you what I'm building in a moment. Just trying to log on to my Claude here
+[00:25:08.7 - 00:25:16.1] on the desktop so we can do some agency driven development.
+[00:25:29.1 - 00:25:31.8] Let's see, let's see.
+[00:26:22.6 - 00:26:23.2] Uh
+[00:26:45.1 - 00:26:53.7] see if this works. Okay. We are in
+[00:26:54.9 - 00:27:00.4] on Claude. All right, all right, all right. Alright, now I can show my screen again and I'll
+[00:27:00.4 - 00:27:04.8] just explain everything to Alex. Yo, I see through. What's up?
+[00:27:04.8 - 00:27:10.1] What's up? What's up? Boom. Okay. So what I'm doing right now, I have
+[00:27:12.2 - 00:27:20.0] hold on. Accidentally started that YouTube video. I this stream I have installed from scratch, Comfy UI.
+[00:27:20.0 - 00:27:27.0] This is my Windows desktop, and this is the Mini Max H3 model that can take either image
+[00:27:27.0 - 00:27:33.9] to video or text to video. And we've just generated this video here, five second video in under
+[00:27:33.9 - 00:27:38.0] ten minutes on my Windows PC locally.
+[00:27:50.2 - 00:27:56.0] Wow, audio as well. This is a full cinematic uh live action video.
+[00:27:56.0 - 00:28:03.6] And it's even break broken down the storyboard here. Shot one high side angle, protagonist sprinting at the
+[00:28:03.6 - 00:28:08.5] roof edge, pursuers appearing in the rooftop doorway behind him.
+[00:28:08.2 - 00:28:08.5] .
+[00:28:11.8 - 00:28:18.5] It's obviously got some things wrong here The pursuers are in front of him, and there's like some
+[00:28:18.5 - 00:28:20.4] weird artifacts, but
+[00:28:22.0 - 00:28:26.2] I mean it looks pretty damn good, cinematic style, etc.
+[00:28:26.3 - 00:28:30.6] So yeah, dude, we got that up and running in less than20 minutes.
+[00:28:30.6 - 00:28:35.9] I'm pretty impressed. I didn't expect it to be so uh seamless.
+[00:28:35.9 - 00:28:43.8] What's the app? Yo, Weedle, what's up? This is um comfy UI C O M F Y UI.
+[00:28:43.8 - 00:28:51.3] It's pretty much been the go-to app for image generation and now video generation uh locally.
+[00:28:51.3 - 00:28:56.1] Yeah, it's great. Looks good, says Davy. Thank you. Fanny for the follow, thank you.
+[00:28:56.1 - 00:28:58.3] Oh, it was late. I'd love to see how you set it up.
+[00:28:58.3 - 00:29:01.4] Yeah, it's super easy. Let me just tell you guys how I did it.
+[00:29:01.4 - 00:29:06.7] Pretty much I went to comfy.org. This is where you download comfy UI.
+[00:29:06.7 - 00:29:13.2] I just pressed download desktop. Once that opened up, uh we actually might be able to show you
+[00:29:13.2 - 00:29:16.0] in the stream VOD. Uh
+[00:29:18.1 - 00:29:19.4] we just log into
+[00:29:23.8 - 00:29:25.5] boop boop okay.
+[00:29:26.7 - 00:29:28.5] Let me show you. So
+[00:29:32.5 - 00:29:40.6] yeah, I downloaded it. And then boom. This is what you see when you first run uh comfy
+[00:29:40.7 - 00:29:43.0] UI. It'll be like, Do you want to cloud or local?
+[00:29:43.0 - 00:29:46.6] I did local. I'm running this all locally. I want to do it for free, I don't want
+[00:29:46.6 - 00:29:50.1] to pay for cloud stuff. Um you set up what GPU you have.
+[00:29:50.1 - 00:29:55.0] I'm running a NVIDIA GPU. Set that up. Um, and then here, this is like you can choose
+[00:29:55.0 - 00:29:58.0] a starter workflow, and this is the one that I just chose.
+[00:29:58.0 - 00:30:04.3] The Mini Max H3. This is the new open weights text-to-video model.
+[00:30:04.3 - 00:30:08.3] Also does audio. I think it also does image to video.
+[00:30:08.3 - 00:30:14.8] It's super good. It's what we just saw. Yeah, so I just clicked that workflow, and that's it,
+[00:30:14.8 - 00:30:20.8] just pre-installed it. It had everything ready to go. So this is what you saw once everything was
+[00:30:20.8 - 00:30:26.7] installed and downloaded. Is this workflow? It's like a node-based diagram.
+[00:30:26.7 - 00:30:32.8] And it even had pre-filled this text prompt here. So that was all pre-filled.
+[00:30:32.8 - 00:30:38.5] And yeah, it's all set up here. It was super easy to get going.
+[00:30:39.3 - 00:30:42.4] Yeah, I think anyone could do it. You could watch back this VOD.
+[00:30:42.4 - 00:30:49.5] All my uh live stream VODs are on YouTube. So if you want to watch those, you can
+[00:30:49.5 - 00:30:53.6] do that there. Um I'll also be making short form on TikTok, Instagram, etc.
+[00:30:53.7 - 00:30:58.1] So did Hermes handle everything? No, this is all manual.
+[00:30:58.1 - 00:31:05.0] Only now I've just also installed uh Clawed desktop here.
+[00:31:05.0 - 00:31:08.2] So now let me show you what I'm gonna do now.
+[00:31:08.2 - 00:31:11.2] I'm going to say, let's
+[00:31:14.1 - 00:31:16.0] use Opus. I'm gonna say
+[00:31:17.5 - 00:31:21.1] Sonic. We're gonna we want it fast. We don't need that much intelligence here.
+[00:31:21.1 - 00:31:24.3] Set up Comfy UI MCP
+[00:31:26.3 - 00:31:33.6] so we can configure Comfy UI together. Okay, so I'm gonna set up Comfy UI MCP.
+[00:31:33.6 - 00:31:41.5] So this essentially will let me edit these workflows, create new workflows, edit the text, all within
+[00:31:43.4 - 00:31:47.0] Claude. So I don't have to manually mess with the UI.
+[00:31:47.0 - 00:31:59.4] That is the plan here. I also don't recommend writing your own prompts.
+[00:31:59.4 - 00:32:01.8] I would use a language model for your prompts. Yep.
+[00:32:01.8 - 00:32:07.7] Or use a custom workflow. Yep, yep. We will do that.
+[00:32:07.7 - 00:32:13.7] Okay, is Comfy UR already running? Yes, already running. For the MCV server, do you have a preference?
+[00:32:13.7 - 00:32:19.1] Uh pretty good well maintained one. I have a specific repo in mind.
+[00:32:19.1 - 00:32:23.6] Uh yes. Find the best one. I don't have it in mind.
+[00:32:23.7 - 00:32:46.9] I assume there's an official one. But we'll see. Okay, so what we're gonna work on once this
+[00:32:46.9 - 00:32:54.6] MCP is set up is making a music video for uh our song
+[00:32:57.0 - 00:33:03.4] AGI before GTA6. Let's see if we can find that without because I don't I haven't logged into
+[00:33:03.5 - 00:33:11.9] Discord here, but if I go to tech friendcommunity.com, I can see our Discord without having to log
+[00:33:11.9 - 00:33:19.0] in, which is really cool. Uh shout out KC Figs, they just shared the latent upscaler.
+[00:33:19.0 - 00:33:25.1] Which will so if if you guys don't know what an upscaler is, it takes uh video with
+[00:33:25.1 - 00:33:29.3] lower resolution and can upscale it to be um
+[00:33:30.6 - 00:33:33.6] higher resolution. I think okay, so the top left is the one.
+[00:33:33.6 - 00:33:40.0] These are all just comparing different upscalers. Um yeah, so we might try that out too.
+[00:33:40.0 - 00:33:46.6] But what I'm looking at for right now is let's go to media dump and try find the
+[00:33:46.6 - 00:33:52.8] GTA before I mean AGI before GTA six song. Um
+[00:34:00.0 - 00:34:00.7] is it
+[00:34:11.0 - 00:34:27.3] This is it? No, it's not available. Oh, so I uploaded it.
+[00:34:27.4 - 00:34:28.2] Up up
+[00:34:31.2 - 00:34:40.1] Interesting. Okay. So it looks like the website won't display that.
+[00:34:40.1 - 00:34:40.4] Um
+[00:34:42.4 - 00:34:49.0] I think let's see if I go Suno. Okay, it's got some of my s oh no, this
+[00:34:49.0 - 00:34:55.8] is Lazy's playlist. Let's see. Oh wait, actually, it could log me in here.
+[00:34:55.8 - 00:34:59.3] Okay, perfect. Oh, okay, good. We got all our songs here.
+[00:34:59.3 - 00:35:06.4] Okay, great, good. So I think the one I actually liked was this one.
+[00:35:08.6 - 00:35:10.1] Oh, you guys can't hear that.
+[00:35:12.7 - 00:35:15.6] Okay, that's cool. I can play it through uh
+[00:35:18.5 - 00:35:22.9] I can play it through the Mac so you will be able to hear it.
+[00:35:22.9 - 00:35:24.3] Pretty sure this is the one we want.
+[00:35:37.7 - 00:35:41.2] We got we got we got AI got my job.
+[00:35:41.2 - 00:35:47.0] A I took my bitch. A AI made a movie and AI made a hit.
+[00:35:47.0 - 00:35:54.4] A um replacement before I take a shit. We got A G I before G T A six.
+[00:35:54.4 - 00:35:58.5] I used to write code by hand. Now AI hold my hand.
+[00:35:58.5 - 00:36:03.0] Now A I code my plans. I just type. Okay, so that's pretty much it.
+[00:36:03.0 - 00:36:04.8] I think it might be this one.
+[00:36:08.3 - 00:36:11.8] A guy. Wait, because it's all saying we got a guy.
+[00:36:11.8 - 00:36:13.1] Oh no, it's this one.
+[00:36:20.9 - 00:36:22.9] What the fuck? Windows block some of my shit.
+[00:36:29.1 - 00:36:30.3] I'm gonna go sit down.
+[00:36:37.8 - 00:36:39.0] Yeah, yeah, it's this one.
+[00:36:41.5 - 00:36:49.9] Okay, let's see if I can download this. Oh, actually.
+[00:36:49.9 - 00:36:56.6] Okay, I'm gonna copy the lyrics. I'm gonna go into a new claude session.
+[00:36:56.6 - 00:37:00.9] Um say plan a storyboard and
+[00:37:02.8 - 00:37:03.1] uh
+[00:37:05.6 - 00:37:19.0] and text prompts. Oops, accidentally text prompts five seconds each prompt to go into the minimax h3 model
+[00:37:22.4 - 00:37:31.6] for prompts to make a music video for the following lyrics and song.
+[00:37:31.6 - 00:37:42.2] Um I'll probably also download the song. Let's see, download MP3 unlock and download.
+[00:37:42.2 - 00:37:49.6] What does that mean? I don't know what that means, but yeah, okay.
+[00:37:49.6 - 00:37:52.4] Um I kinda need to pee too, so
+[00:37:53.6 - 00:37:56.5] let me just submit this prompt and I'll be right back.
+[00:37:56.5 - 00:38:01.0] And we can actually play the song while I go.
+[00:38:01.0 - 00:38:05.6] Okay, boom. Uh alright, I'm gonna play the song and be back.
+[00:38:05.6 - 00:38:08.8] We weep weep weep weep weep weep weep, we got a j
+[00:38:10.8 - 00:38:13.1] before G T A six
+[00:38:18.4 - 00:38:24.7] test we got we got we got A I got my job, a I took my bitch.
+[00:38:24.7 - 00:38:28.6] A AI made a movie and AI made a hit.
+[00:38:28.6 - 00:38:35.3] A um replace me before I take a shit. We got aG GI A before G T A
+[00:38:35.5 - 00:38:40.0] six. I used to write code by hand. Now AI hold my hand.
+[00:38:40.0 - 00:38:43.8] Now AI called my plans. I just type, make it better.
+[00:38:43.8 - 00:38:50.6] Then pretend I understand. One prompt, whole app. One click.
+[00:38:51.4 - 00:38:57.7] Whole stack. Spent four years learning code. Shoulda learned how to chat.
+[00:38:57.7 - 00:39:05.2] Clawed in one tab. Codex in the back. Chat GPT knows me better than half of my contacts.
+[00:39:05.2 - 00:39:13.0] Everybody got an agent. Everybody got a clone. My AI answering emails while I'm scrolling on my phone.
+[00:39:13.3 - 00:39:18.2] What the fuck is happening? Nobody playin' for this. Rock star.
+[00:39:18.2 - 00:39:24.6] Been cooking since I was a kid. We got a job before GTA Six.
+[00:39:24.6 - 00:39:31.9] Robots got careers before GTA Six. AI making films before GTA Six.
+[00:39:31.9 - 00:39:40.1] I might be unemployed before GTA six. We got a job before GTA six.
+[00:39:40.2 - 00:39:45.8] Whole damn world got patched and switched. Ten years later, rocks.
+[00:39:45.8 - 00:39:49.2] Still won't ship. We got AI.
+[00:39:51.6 - 00:39:59.2] My fridge got Wi-Fi. My car can drive. My phone made a song and the singer ain't alive.
+[00:39:59.2 - 00:40:04.8] D D fake me once. D fake me twice. Saw myself selling crypto.
+[00:40:04.8 - 00:40:08.6] I ain't even know the price. CEO said AI first.
+[00:40:08.6 - 00:40:14.2] That's corporate for your cooks. Whole team got deleted. Then the stock price went up.
+[00:40:14.2 - 00:40:18.1] Used to fear sky net. Now I pay it twenty bucks.
+[00:40:18.1 - 00:40:23.8] ASIC for business plan. It told me good luck. Got the therapist bot.
+[00:40:23.8 - 00:40:29.6] Got my girlfriend bot. Got an AI influencer making more than my job.
+[00:40:29.6 - 00:40:33.3] Got a robot with the body doing flips inside the lab.
+[00:40:29.3 - 00:40:29.4] .
+[00:40:33.6 - 00:40:35.8] I still can't enter my city
+[00:40:39.5 - 00:40:50.6] Twenty thirteen. GTA V. Twenty twenty-two. Chat GPT. Twenty twenty six.
+[00:40:50.6 - 00:40:54.6] Machines can think things. Rockstar.
+[00:40:56.9 - 00:41:03.9] We got HIB4 GTA six. Robots got careers before G T A six.
+[00:41:04.1 - 00:41:11.6] AI making films before GTA C Grandma Pro Engineering before G T A six.
+[00:41:11.6 - 00:41:15.6] We got AJ before G T A six.
+[00:41:19.3 - 00:41:24.8] AI saw the future. Fox still won't ship. We be we we got we can hear a bit
+[00:41:24.8 - 00:41:26.6] less. We got AI.
+[00:41:34.4 - 00:41:39.4] Teach you how to AI when GTR coming out. You just talk to it, bro.
+[00:41:39.4 - 00:41:44.1] That's the hack. But I don't have access to future release information.
+[00:41:44.1 - 00:41:49.4] Man, fuck this shit. Texture windows, yes. That's a new era.
+[00:41:49.4 - 00:41:54.2] The idea with the latent upscaler is you generate like zero point two megapixels since it's way faster
+[00:41:54.3 - 00:42:00.5] than upscale it to whatever. Okay. Finally a decent stream.
+[00:42:00.5 - 00:42:11.2] Yo, Sam, what's up? What's up, gassing? Okay. Um, so yeah, if you guys just joined today, we
+[00:42:11.2 - 00:42:23.2] started with a fresh Windows PC. essentially We downloaded Comfy UI desktop uh from here, and then one
+[00:42:23.2 - 00:42:32.2] of their default workflows was Mini Max H3, which generates if we generated this video in like five
+[00:42:32.2 - 00:42:41.7] minutes, I think, from text, like completely unique video, all generated locally from this text prompt.
+[00:42:41.7 - 00:42:50.2] So yeah, so Figs is saying if we do0.2 megapixels here, so you can actually set the resolution
+[00:42:50.2 - 00:42:54.7] if we do0.2. Let's try also do a portrait video.
+[00:42:54.7 - 00:43:03.4] Uh9x16. So this is like uh TikTok style. Let's try do a Cocoa Melon prompt.
+[00:43:03.4 - 00:43:03.7] Um
+[00:43:05.8 - 00:43:13.2] uh I mean this is gonna be a terrible prompt, but let's just say a cartoon banana peeling
+[00:43:13.2 - 00:43:21.8] itself. I don't know. Uh let's also try some uh voice, let's say, and says Hi, I'm a
+[00:43:21.8 - 00:43:25.8] banana. Uh let's see how long that takes. Alright, let's start the clock.
+[00:43:25.8 - 00:43:34.6] What's the time? 1215. Uh, whatever. Okay, run. So this is a shit prompt.
+[00:43:34.6 - 00:43:40.6] I just want to see what'll happen. I've never tried creating a vertical and my camera cut out.
+[00:43:40.6 - 00:43:44.7] Oh, we're back. Okay. Never tried creating a vertical uh video before.
+[00:43:44.7 - 00:43:53.6] We're already at15%, not even a minute down. Uh yes, I see through we're on Windows.
+[00:43:53.6 - 00:44:01.0] Because I have an NVIDIA5080 GPU here, and it just works much better with a Windows PC than
+[00:44:01.0 - 00:43:59.9] trying to get that shit working on my Mac. .
+[00:44:03.5 - 00:44:09.2] So let's see Okay, we've pretty much maybe crossed a minute soon.
+[00:44:09.2 - 00:44:16.1] Um yeah, we're generating videos here, and then also I've set up Claude so we can get Claude
+[00:44:16.2 - 00:44:23.1] to actually generate the um the storyboard and the prompts for us.
+[00:44:23.1 - 00:44:27.2] So I'm actually making a music video for the song you might have heard if you were here
+[00:44:27.2 - 00:44:33.5] like three minutes ago. AGI before GTA6. Uh we have the prompts here.
+[00:44:33.5 - 00:44:39.2] Uh this was all generated by Sonnet. So I don't know if that's gonna be good or bad.
+[00:44:39.2 - 00:44:44.5] Okay, this is the video, dude. That was less than two minutes, maybe even less than one minute.
+[00:44:44.5 - 00:44:49.7] We have a vertical video of a banana peeling itself, and let's see if it also has voice.
+[00:44:52.8 - 00:45:00.0] Hi, I'm a banana. Wow. Wow. Hi, I'm a banana.
+[00:45:00.1 - 00:45:15.1] Oh, I'm a banana. Oh, I'm a banana. I am actually blown away by that.
+[00:45:15.1 - 00:45:20.7] Uh we were able to generate that five second video in less than two minutes.
+[00:45:20.7 - 00:45:28.9] Incredible. Locally, yes. Locally. This is all on my local Windows PC.
+[00:45:28.9 - 00:45:32.9] Oh man, it sucks that my camera keeps cutting out, but um
+[00:45:34.4 - 00:45:39.2] I'll just have to get a new capture card. Yeah, dude, that's actually incredible.
+[00:45:39.2 - 00:45:45.0] So yeah, shout out to Figs. Uh KC Figs. They have given us a lot of tips.
+[00:45:45.0 - 00:45:50.6] So they just le recent tip they gave us is to use just a low megapixel0.2 here.
+[00:45:44.8 - 00:45:44.8] .
+[00:45:50.6 - 00:45:56.0] Previously it was at0.4 And then what you can do is for all the loss of quality that
+[00:45:56.0 - 00:46:00.6] you make there, you can make it up with the upscaler, which we haven't uh linked in just
+[00:46:00.6 - 00:46:09.4] yet, but but yeah. Sam asks, uh local LLM2. So far we haven't used any LLMs for this
+[00:46:09.4 - 00:46:15.5] workflow, and no, we're uh I'm using Claude on the cloud for all this LLM work.
+[00:46:15.5 - 00:46:22.8] So what what I want to do now is we have asked Claude in this session, let me
+[00:46:22.9 - 00:46:29.0] try to find it. We have asked Claude here to set up the Comfy UI MCP.
+[00:46:29.0 - 00:46:35.9] So what that enables us to do is use Claude here to do all the editing in Comfy
+[00:46:36.0 - 00:46:39.4] UI without me having to do it manually. That's the plan.
+[00:46:39.4 - 00:46:41.6] Did it work? Let's see.
+[00:46:44.4 - 00:46:47.1] Okay. Okay, okay. Um
+[00:46:49.5 - 00:46:51.3] apparently we have uh
+[00:46:52.8 - 00:46:54.3] we have we have
+[00:46:56.9 - 00:47:08.0] music video production protagonist AR. Okay. So blah blah blah blah.
+[00:47:08.0 - 00:47:18.1] Let's see. I'm gonna set up I'm gonna I think I'm gonna start from scratch, maybe.
+[00:47:18.1 - 00:47:32.8] Um, let's just say make the protagonist me, AJ, aka tech friend, uh Persian. man in blue hoodie
+[00:47:34.0 - 00:47:34.6] Uh
+[00:47:36.0 - 00:47:44.4] maybe we should try text to video. Do you have access to the comfy UI
+[00:47:45.6 - 00:47:52.2] MCP question mark? Let's go opus here. This is what I actually wanted to do is opus.
+[00:47:52.2 - 00:47:52.5] Um
+[00:47:53.8 - 00:47:58.4] might lose cash, but I think probably lost it on that five minutes anyway.
+[00:47:58.4 - 00:48:02.8] So yeah, and interestingly, you know, we're still at27 degrees.
+[00:48:02.8 - 00:48:06.8] I thought it'd be a lot hotter now, but I guess we've only ran two videos.
+[00:48:06.8 - 00:48:16.0] I I definitely feel a lot hotter. Um let's see if they have access to MCP, and then
+[00:48:16.0 - 00:48:20.4] also I'm gonna start a new session. Let's get this upscaler here.
+[00:48:20.4 - 00:48:29.0] The one figs linked. Where can I find that? Oh, yep, I can find it on techfriends community.com.
+[00:48:29.0 - 00:48:34.2] Uh let's go to the here here. Let's see, latent upscaler.
+[00:48:34.2 - 00:48:44.1] Let's see if we can also ask Claude. Can you add boop to a new comfy UI workflow
+[00:48:44.1 - 00:48:57.5] with mini max h3? Uh we want to generate with mini max at0.2 megapixel and then upscale.
+[00:48:57.5 - 00:49:01.7] Let's see if that works. So we got two sessions.
+[00:49:01.7 - 00:49:07.2] Uh okay, so this one doesn't have okay. We're just gonna stop this.
+[00:49:07.2 - 00:49:07.6] Um
+[00:49:10.3 - 00:49:12.2] fork this okay
+[00:49:13.6 - 00:49:14.2] okay
+[00:49:15.8 - 00:49:23.3] okay this isn't really gonna work let's delete that let's create a new thread gonna give it the
+[00:49:23.3 - 00:49:29.8] same prompt I'm gonna also link the video we're gonna do fable for this one
+[00:49:31.7 - 00:49:40.8] main character me is AJ tech friend Persian man in blue hoodie
+[00:49:42.6 - 00:49:44.5] software engineer
+[00:49:45.8 - 00:49:51.5] at content creator okay all right we're gonna get fable to come up with the lyrics this time
+[00:49:52.9 - 00:50:02.7] um okay let's see what happened here okay that's a different one okay um minimax did it
+[00:50:04.9 - 00:50:06.6] I feel like we're missing the
+[00:50:08.2 - 00:50:09.7] what's going on here
+[00:50:13.0 - 00:50:13.6] okay
+[00:50:17.0 - 00:50:17.3] um
+[00:50:23.2 - 00:50:23.8] okay
+[00:50:29.0 - 00:50:30.8] this will take a minute
+[00:50:37.9 - 00:50:43.4] everything looks good on the platforms
+[00:50:48.8 - 00:51:01.7] wait we're not live on Restream. Let's fix that. Oh shit, where did my multi stream go?
+[00:51:01.7 - 00:51:14.8] Hmm. Some reason. Crap.
+[00:51:18.0 - 00:51:29.8] Oh, okay, it's back. We are live on Restream.

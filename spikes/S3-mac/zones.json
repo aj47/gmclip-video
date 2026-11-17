@@ -1,0 +1,13 @@
+{
+  "frame": { "width": 1080, "height": 1920 },
+  "units": "px on the 1080x1920 frame; rects are [x, y, w, h]",
+  "platforms": {
+    "instagram": {
+      "status": "from SPEC §5.x safe zones (AGENTS.md rule 9), not re-measured in S3",
+      "keep_out": [[0, 0, 1080, 220], [0, 1560, 1080, 360], [960, 1000, 120, 560]]
+    },
+    "tiktok": { "status": "needs AJ's app screenshots (see README)", "keep_out": null },
+    "youtube_shorts": { "status": "needs AJ's app screenshots (see README)", "keep_out": null },
+    "youtube": { "status": "needs AJ's app screenshots (see README)", "keep_out": null }
+  }
+}

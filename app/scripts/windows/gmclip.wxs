@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  gmclip's Windows installer (WiX 3.14; built by app/scripts/bundle-win.ps1, which passes
+  the variables below). Per-machine into Program Files\gmclip: the executable, the
+  bundled caption fonts (resources\fonts, harvested into the Resources component group)
+  and a Start menu shortcut. Unsigned: no code-signing identity exists yet (AJ's call).
+
+  The UpgradeCode never changes: a newer MSI replaces an older one in place; an older one
+  is refused over a newer.
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="gmclip"
+           Language="1033"
+           Version="$(var.Version)"
+           Manufacturer="gmclip"
+           UpgradeCode="2E715766-2FCF-4D9F-ADD1-2CB4FE6971D3">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" Platform="x64"
+             Description="gmclip $(var.Version)" Comments="Edits long recordings into short clips." />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer gmclip is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <!-- Windows 10 1809 / Windows 11 and the WebView2 runtime (Windows 11 ships it) -->
+    <Condition Message="gmclip needs 64-bit Windows 10 (1809) or later.">
+      <![CDATA[Installed OR (VersionNT64 >= 603)]]>
+    </Condition>
+    <Property Id="WEBVIEW2_MACHINE">
+      <RegistrySearch Id="WebView2Machine" Root="HKLM" Win64="no"
+                      Key="SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"
+                      Name="pv" Type="raw" />
+    </Property>
+    <Property Id="WEBVIEW2_USER">
+      <RegistrySearch Id="WebView2User" Root="HKCU"
+                      Key="Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"
+                      Name="pv" Type="raw" />
+    </Property>
+    <Condition Message="gmclip needs the Microsoft Edge WebView2 Runtime (developer.microsoft.com/microsoft-edge/webview2). Install it, then run this installer again.">
+      <![CDATA[Installed OR WEBVIEW2_MACHINE OR WEBVIEW2_USER]]>
+    </Condition>
+
+    <Icon Id="gmclip.ico" SourceFile="$(var.Icon)" />
+    <Property Id="ARPPRODUCTICON" Value="gmclip.ico" />
+    <Property Id="ARPNOMODIFY" Value="1" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLDIR" Name="gmclip" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder" />
+    </Directory>
+
+    <DirectoryRef Id="INSTALLDIR">
+      <Component Id="App" Guid="*" Win64="yes">
+        <File Id="GmclipExe" Source="$(var.Exe)" Name="gmclip-app.exe" KeyPath="yes" Checksum="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="ProgramMenuFolder">
+      <Component Id="StartMenu" Guid="*">
+        <Shortcut Id="GmclipShortcut" Name="gmclip" Description="Edit long recordings into short clips"
+                  Target="[INSTALLDIR]gmclip-app.exe" WorkingDirectory="INSTALLDIR" Icon="gmclip.ico" />
+        <RegistryValue Root="HKCU" Key="Software\gmclip\installer" Name="shortcut" Type="integer"
+                       Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="Main" Title="gmclip" Level="1">
+      <ComponentRef Id="App" />
+      <ComponentRef Id="StartMenu" />
+      <ComponentGroupRef Id="Resources" />
+    </Feature>
+  </Product>
+</Wix>

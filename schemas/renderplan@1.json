@@ -1,0 +1,2215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gmclip:renderplan:1",
+  "title": "gmclip.renderplan/1",
+  "type": "object",
+  "required": [
+    "schema",
+    "output",
+    "background",
+    "sources",
+    "parts",
+    "audio"
+  ],
+  "additionalProperties": false,
+  "dependentRequired": {
+    "text_events": [
+      "fonts",
+      "text_styles"
+    ],
+    "image_events": [
+      "images"
+    ]
+  },
+  "properties": {
+    "schema": {
+      "const": "gmclip.renderplan/1"
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "hook_id": {
+          "type": "string"
+        },
+        "content_id": {
+          "type": "string"
+        },
+        "covers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "the content ids of the cuts merged into this one"
+        },
+        "generator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "version"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "role",
+              "path"
+            ],
+            "properties": {
+              "role": {
+                "enum": [
+                  "reference_mp4",
+                  "model"
+                ]
+              },
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        "import_report": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canvas",
+        "fps",
+        "frames",
+        "video",
+        "audio"
+      ],
+      "properties": {
+        "canvas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "w",
+            "h"
+          ],
+          "properties": {
+            "w": {
+              "$ref": "#/$defs/even"
+            },
+            "h": {
+              "$ref": "#/$defs/even"
+            }
+          }
+        },
+        "fps": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "num",
+            "den"
+          ],
+          "properties": {
+            "num": {
+              "enum": [
+                24,
+                25,
+                30,
+                48,
+                50,
+                60,
+                24000,
+                30000,
+                60000
+              ]
+            },
+            "den": {
+              "enum": [
+                1,
+                1001
+              ]
+            }
+          }
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "color": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "matrix": {
+              "const": "bt709"
+            },
+            "transfer": {
+              "const": "bt709"
+            },
+            "primaries": {
+              "const": "bt709"
+            },
+            "range": {
+              "enum": [
+                "limited",
+                "full"
+              ]
+            }
+          }
+        },
+        "video": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "codec"
+          ],
+          "properties": {
+            "codec": {
+              "const": "h264"
+            },
+            "profile": {
+              "enum": [
+                "high",
+                "main",
+                "constrained_baseline"
+              ]
+            },
+            "level": {
+              "type": "string"
+            },
+            "bframes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "gop_frames": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "closed_gop": {
+              "type": "boolean"
+            },
+            "rate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode"
+              ],
+              "properties": {
+                "mode": {
+                  "const": "vbr"
+                },
+                "target_bps": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_bps": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 300000000,
+                  "description": "above 25000000 only on a landscape canvas, at most the level's MaxBR (decision 0027)"
+                }
+              }
+            },
+            "timescale": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "codec",
+            "rate",
+            "channels"
+          ],
+          "properties": {
+            "codec": {
+              "const": "aac_lc"
+            },
+            "rate": {
+              "const": 48000
+            },
+            "channels": {
+              "const": 2
+            },
+            "bitrate": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "container": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "moov_first": {
+              "type": "boolean"
+            },
+            "edit_lists": {
+              "const": false
+            }
+          }
+        }
+      }
+    },
+    "background": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "rgb"
+          ],
+          "properties": {
+            "kind": {
+              "const": "colour",
+              "description": "SPEC 'solid colour'"
+            },
+            "rgb": {
+              "$ref": "#/$defs/rgb"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "stops"
+          ],
+          "properties": {
+            "kind": {
+              "const": "plate"
+            },
+            "stops": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "$ref": "#/$defs/rgb"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "rgb",
+            "blur",
+            "dim"
+          ],
+          "properties": {
+            "kind": {
+              "const": "blurred_source",
+              "description": "the part's picture covering the canvas, blurred and dimmed (decision 0014)"
+            },
+            "rgb": {
+              "$ref": "#/$defs/rgb"
+            },
+            "blur": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 64,
+              "description": "the picture is resampled to canvas/blur and back up"
+            },
+            "dim": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "rgb",
+            "crop",
+            "place"
+          ],
+          "properties": {
+            "kind": {
+              "const": "backdrop",
+              "description": "a video or still under every part on the output clock (decision 0028)"
+            },
+            "rgb": {
+              "$ref": "#/$defs/rgb"
+            },
+            "crop": {
+              "$ref": "#/$defs/rect"
+            },
+            "place": {
+              "$ref": "#/$defs/rect"
+            },
+            "video": {
+              "$ref": "#/$defs/clip_picture"
+            },
+            "image": {
+              "$ref": "#/$defs/id",
+              "description": "an images[].id"
+            }
+          }
+        }
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "path": {
+            "type": "string"
+          },
+          "audio_track": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "the container track id parts' audio is read from (decision 0009); absent = the first audio track"
+          },
+          "fingerprint": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "size": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mtime_ns": {
+                "type": "integer"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "expect": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "video": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codec": {
+                    "enum": [
+                      "h264",
+                      "hevc",
+                      "vp9",
+                      "av1"
+                    ]
+                  },
+                  "w": {
+                    "type": "integer"
+                  },
+                  "h": {
+                    "type": "integer"
+                  },
+                  "fps": {
+                    "$ref": "#/$defs/rational"
+                  },
+                  "timescale": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "audio": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codec": {
+                    "type": "string"
+                  },
+                  "rate": {
+                    "type": "integer"
+                  },
+                  "channels": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fonts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "sha256",
+          "em_per_size"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "family": {
+            "type": "string"
+          },
+          "style": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "em_per_size": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 2,
+            "description": "unitsPerEm/(usWinAscent+usWinDescent); hhea ascent−descent when OS/2 is absent; verified in S4"
+          }
+        }
+      }
+    },
+    "text_styles": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/id"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/text_style"
+      }
+    },
+    "parts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/part"
+      }
+    },
+    "text_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text_event"
+      }
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "sha256",
+          "w",
+          "h"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "w": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8192
+          },
+          "h": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8192
+          }
+        }
+      }
+    },
+    "image_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/image_event"
+      }
+    },
+    "shape_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/shape_event"
+      }
+    },
+    "clip_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/clip_event"
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/event_track"
+      }
+    },
+    "cursors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/cursor_track"
+      }
+    },
+    "zooms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/zoom"
+      }
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "loudness"
+      ],
+      "properties": {
+        "envelopes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "out_samples",
+              "gain_db",
+              "ramp_in_samples",
+              "ramp_out_samples",
+              "curve"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "out_samples": {
+                "$ref": "#/$defs/range"
+              },
+              "gain_db": {
+                "type": "number",
+                "minimum": -30,
+                "maximum": 24
+              },
+              "ramp_in_samples": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "ramp_out_samples": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "curve": {
+                "const": "linear_db"
+              },
+              "provenance": {
+                "$ref": "#/$defs/provenance"
+              }
+            }
+          }
+        },
+        "overlays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/audio_overlay"
+          }
+        },
+        "speech": {
+          "type": "array",
+          "maxItems": 100000,
+          "items": {
+            "$ref": "#/$defs/range"
+          }
+        },
+        "loudness": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode"
+              ],
+              "properties": {
+                "mode": {
+                  "const": "as_recorded"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "integrated_lufs",
+                "true_peak_dbtp"
+              ],
+              "properties": {
+                "mode": {
+                  "const": "static"
+                },
+                "integrated_lufs": {
+                  "type": "number"
+                },
+                "true_peak_dbtp": {
+                  "type": "number",
+                  "maximum": 0
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "frames": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "safe_zones": {
+          "enum": [
+            "instagram"
+          ],
+          "description": "TikTok/Shorts/YouTube zones join in /1 (S3-mac measures them)"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,96}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "even": {
+      "type": "integer",
+      "minimum": 2,
+      "multipleOf": 2
+    },
+    "rational": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "num",
+        "den"
+      ],
+      "properties": {
+        "num": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "den": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "range": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "integer",
+          "minimum": 1
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "[start, end) integers; start < end is a validator rule"
+    },
+    "rgb": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
+    "rgba": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{8}$"
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      }
+    },
+    "rect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "w": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "h": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "import",
+            "measurement",
+            "transcript",
+            "ocr",
+            "human",
+            "agent"
+          ],
+          "description": "agent = an agent-typed value with no other provenance"
+        },
+        "detail": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "file": {
+              "type": "string"
+            },
+            "key": {
+              "type": "string"
+            },
+            "measurement": {
+              "type": "string"
+            },
+            "words": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "fade": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "samples",
+            "shape"
+          ],
+          "properties": {
+            "samples": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "shape": {
+              "enum": [
+                "linear",
+                "raised_cosine"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "time_map": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode"
+          ],
+          "properties": {
+            "mode": {
+              "const": "live"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode"
+          ],
+          "properties": {
+            "mode": {
+              "const": "freeze_first"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "frame"
+          ],
+          "properties": {
+            "mode": {
+              "const": "hold"
+            },
+            "frame": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            }
+          }
+        }
+      ]
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "crop",
+        "place",
+        "z"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "type": "string",
+          "pattern": "^[a-z_]{1,32}$",
+          "description": "SPEC RegionRole, detail, or other (rule 5)"
+        },
+        "picture_source": {
+          "$ref": "#/$defs/id"
+        },
+        "crop": {
+          "$ref": "#/$defs/rect"
+        },
+        "place": {
+          "$ref": "#/$defs/rect"
+        },
+        "z": {
+          "type": "integer"
+        },
+        "visible": {
+          "type": "boolean",
+          "default": true
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 1
+        },
+        "resample": {
+          "const": "lanczos3"
+        },
+        "time_map": {
+          "$ref": "#/$defs/time_map"
+        },
+        "matte": {
+          "$ref": "#/$defs/matte",
+          "description": "a roto cut-out (decision 0013)"
+        },
+        "ease": {
+          "$ref": "#/$defs/layer_ease",
+          "description": "an eased visual split: crop, place and opacity move from from_* to the layer's own over the part's first frames (decision 0016)"
+        },
+        "cover": {
+          "$ref": "#/$defs/layer_cover",
+          "description": "a cover layer: its crop is drawn into place blurred, pixelated or as a solid fill (decision 0021)"
+        },
+        "track": {
+          "$ref": "#/$defs/layer_track"
+        },
+        "cursor": {
+          "$ref": "#/$defs/id",
+          "description": "a cursors[].id of the layer's picture source, drawn over it through its crop and place (decision 0045)"
+        },
+        "frame": {
+          "$ref": "#/$defs/layer_frame",
+          "description": "rounded corners, a shadow beneath and a border on top (decision 0046)"
+        },
+        "first_frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "with picture_source: that source read live from this frame at the part's first output frame (decision 0046)"
+        },
+        "fps": {
+          "$ref": "#/$defs/rational",
+          "description": "with picture_source: that source's nominal rate when it differs from output.fps; first_frame then counts output.fps frames on its presentation clock (decision 0047)"
+        }
+      }
+    },
+    "layer_track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "keys"
+      ],
+      "description": "a cover pinned to a moving point: on output frame f its place moves by p(f) - (x, y) rounded to whole pixels and its crop by that move scaled by crop/place (decision 0033)",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "frame",
+              "x",
+              "y"
+            ],
+            "properties": {
+              "frame": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "layer_cover": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "radius"
+          ],
+          "properties": {
+            "kind": {
+              "const": "blur"
+            },
+            "radius": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 400,
+              "description": "canvas px: the crop is resampled down to place/radius and back up with a cubic B-spline"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "block"
+          ],
+          "properties": {
+            "kind": {
+              "const": "pixelate"
+            },
+            "block": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 400,
+              "description": "canvas px per block"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "rgb"
+          ],
+          "properties": {
+            "kind": {
+              "const": "solid"
+            },
+            "rgb": {
+              "$ref": "#/$defs/rgb"
+            }
+          }
+        }
+      ]
+    },
+    "layer_ease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from_crop",
+        "from_place",
+        "frames",
+        "curve"
+      ],
+      "properties": {
+        "from_crop": {
+          "$ref": "#/$defs/rect"
+        },
+        "from_place": {
+          "$ref": "#/$defs/rect"
+        },
+        "from_opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "curve": {
+          "enum": [
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out"
+          ]
+        }
+      }
+    },
+    "layer_frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radius"
+      ],
+      "properties": {
+        "radius": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.5,
+          "description": "corner radius as a fraction of the placed rectangle's short side (0.5 on a square place: a circle)"
+        },
+        "shadow": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "blur",
+            "offset_y",
+            "opacity",
+            "rgb"
+          ],
+          "properties": {
+            "blur": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.5,
+              "description": "the soft edge's width, a fraction of the canvas's short side"
+            },
+            "offset_y": {
+              "type": "number",
+              "minimum": -0.5,
+              "maximum": 0.5,
+              "description": "moved down by this fraction of the canvas's short side"
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "the shadow's alpha"
+            },
+            "rgb": {
+              "$ref": "#/$defs/rgb"
+            }
+          }
+        },
+        "border": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "width",
+            "rgb"
+          ],
+          "properties": {
+            "width": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.1,
+              "description": "inside the rounded edge, a fraction of the canvas's short side"
+            },
+            "rgb": {
+              "$ref": "#/$defs/rgb"
+            }
+          }
+        }
+      }
+    },
+    "matte": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "model"
+      ],
+      "properties": {
+        "kind": {
+          "const": "roto"
+        },
+        "model": {
+          "type": "string",
+          "description": "segmentation model family, e.g. apple_vision"
+        },
+        "soften": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 32,
+          "default": 0,
+          "description": "edge softening radius, source pixels"
+        },
+        "strokes": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "$ref": "#/$defs/matte_stroke"
+          }
+        }
+      }
+    },
+    "matte_stroke": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "radius",
+        "points"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "add",
+            "subtract"
+          ]
+        },
+        "radius": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 4096,
+          "description": "source pixels"
+        },
+        "feather": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4096,
+          "items": {
+            "$ref": "#/$defs/point"
+          }
+        }
+      }
+    },
+    "part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "out",
+        "picture",
+        "audio",
+        "layers"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "out": {
+          "$ref": "#/$defs/range"
+        },
+        "picture": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "first_frame"
+          ],
+          "properties": {
+            "source": {
+              "$ref": "#/$defs/id"
+            },
+            "first_frame": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fps": {
+              "$ref": "#/$defs/rational"
+            },
+            "expect_pts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "ticks",
+                "timescale"
+              ],
+              "properties": {
+                "ticks": {
+                  "type": "integer"
+                },
+                "timescale": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "first_sample",
+            "rate"
+          ],
+          "properties": {
+            "source": {
+              "$ref": "#/$defs/id"
+            },
+            "first_sample": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rate": {
+              "const": 48000
+            },
+            "gain_db": {
+              "type": "number",
+              "minimum": -30,
+              "maximum": 12,
+              "default": 0
+            },
+            "fade_in": {
+              "$ref": "#/$defs/fade"
+            },
+            "fade_out": {
+              "$ref": "#/$defs/fade"
+            },
+            "under": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 8,
+              "description": "other sources heard under the part's audio, each at its own gain (decision 0051)",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "source",
+                  "first_sample",
+                  "gain_db"
+                ],
+                "properties": {
+                  "source": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "first_sample": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "gain_db": {
+                    "type": "number",
+                    "minimum": -60,
+                    "maximum": 12
+                  }
+                }
+              }
+            }
+          }
+        },
+        "native": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "informational: the stream-clock frame range this part came from",
+          "properties": {
+            "frames": {
+              "$ref": "#/$defs/range"
+            },
+            "fps": {
+              "$ref": "#/$defs/rational"
+            }
+          }
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer"
+          }
+        },
+        "speed": {
+          "$ref": "#/$defs/part_speed"
+        }
+      }
+    },
+    "text_style": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "font",
+        "size"
+      ],
+      "properties": {
+        "font": {
+          "$ref": "#/$defs/id",
+          "description": "a fonts[].id (rule 10)"
+        },
+        "size": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "nominal; ASS units at PlayResY = canvas.h"
+        },
+        "fill": {
+          "$ref": "#/$defs/rgba"
+        },
+        "outline": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "colour": {
+              "$ref": "#/$defs/rgba"
+            },
+            "join": {
+              "const": "round"
+            }
+          }
+        },
+        "shadow": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dx": {
+              "type": "number"
+            },
+            "dy": {
+              "type": "number"
+            },
+            "blur": {
+              "type": "number",
+              "minimum": 0,
+              "default": 0
+            },
+            "colour": {
+              "$ref": "#/$defs/rgba"
+            },
+            "of": {
+              "enum": [
+                "fill_and_outline",
+                "fill"
+              ]
+            }
+          }
+        },
+        "box": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "colour": {
+              "$ref": "#/$defs/rgba"
+            },
+            "pad_x": {
+              "type": "number",
+              "minimum": 0
+            },
+            "pad_y": {
+              "type": "number",
+              "minimum": 0
+            },
+            "radius": {
+              "type": "number",
+              "minimum": 0,
+              "default": 0
+            },
+            "geometry": {
+              "const": "libass_bs3"
+            }
+          }
+        },
+        "letter_spacing": {
+          "type": "number",
+          "default": 0
+        },
+        "align": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        }
+      }
+    },
+    "text_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "out",
+        "style",
+        "size",
+        "pos",
+        "runs",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "out": {
+          "$ref": "#/$defs/range"
+        },
+        "layer": {
+          "type": "integer",
+          "default": 0
+        },
+        "role": {
+          "enum": [
+            "caption",
+            "text_hook",
+            "section_pill",
+            "run_clock",
+            "note"
+          ]
+        },
+        "style": {
+          "$ref": "#/$defs/id",
+          "description": "a text_styles key (rule 10)"
+        },
+        "pos": {
+          "$ref": "#/$defs/point"
+        },
+        "align": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        },
+        "size": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "final size, ASS units (\\fs); renderers never refit (rule 6)"
+        },
+        "runs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "fill": {
+                "$ref": "#/$defs/rgba"
+              }
+            }
+          }
+        },
+        "anim": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "bounce",
+                "pop",
+                "fade"
+              ]
+            },
+            "pop_runs": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "description": "runs whose fill pops in (keyword animation)"
+            }
+          }
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "image_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "out",
+        "image",
+        "place"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "out": {
+          "$ref": "#/$defs/range"
+        },
+        "layer": {
+          "type": "integer"
+        },
+        "image": {
+          "$ref": "#/$defs/id",
+          "description": "an images[].id"
+        },
+        "place": {
+          "$ref": "#/$defs/rect"
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "z": {
+          "type": "integer",
+          "description": "drawn among the part's layers, in their z space (decision 0042)"
+        }
+      }
+    },
+    "shape_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "out",
+        "shape"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "out": {
+          "$ref": "#/$defs/range"
+        },
+        "layer": {
+          "type": "integer"
+        },
+        "shape": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "rect",
+                "width"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "box"
+                },
+                "rect": {
+                  "$ref": "#/$defs/rect"
+                },
+                "width": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "stroke": {
+                  "$ref": "#/$defs/rgba"
+                },
+                "fill": {
+                  "$ref": "#/$defs/rgba"
+                },
+                "radius": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2000
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "kind",
+                "from",
+                "to",
+                "width",
+                "stroke"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "arrow"
+                },
+                "from": {
+                  "$ref": "#/$defs/point"
+                },
+                "to": {
+                  "$ref": "#/$defs/point"
+                },
+                "width": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 200
+                },
+                "stroke": {
+                  "$ref": "#/$defs/rgba"
+                },
+                "head": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 2000
+                }
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "clip_picture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "first_frame"
+      ],
+      "description": "which frame of a video a backdrop or clip event shows (decision 0028)",
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/id"
+        },
+        "first_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fps": {
+          "$ref": "#/$defs/rational"
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "the media's length in output frames"
+        },
+        "loop": {
+          "type": "boolean"
+        }
+      }
+    },
+    "clip_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "out",
+        "picture",
+        "crop",
+        "place"
+      ],
+      "description": "a video picture-in-picture over [out[0], out[1]), above every part layer, under every overlay (decision 0028); with z, among the part's layers, and a matte cuts it out (decision 0042)",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "out": {
+          "$ref": "#/$defs/range"
+        },
+        "layer": {
+          "type": "integer"
+        },
+        "picture": {
+          "$ref": "#/$defs/clip_picture"
+        },
+        "crop": {
+          "$ref": "#/$defs/rect"
+        },
+        "place": {
+          "$ref": "#/$defs/rect"
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "z": {
+          "type": "integer",
+          "description": "drawn among the part's layers, in their z space (decision 0042)"
+        },
+        "matte": {
+          "$ref": "#/$defs/matte"
+        }
+      }
+    },
+    "audio_overlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "first_sample",
+        "out_samples",
+        "gain_db"
+      ],
+      "description": "music or a sound effect over the output samples out_samples, read from first_sample on (decision 0051)",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source": {
+          "$ref": "#/$defs/id"
+        },
+        "first_sample": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "out_samples": {
+          "$ref": "#/$defs/range"
+        },
+        "gain_db": {
+          "type": "number",
+          "minimum": -60,
+          "maximum": 12
+        },
+        "fade_in_samples": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fade_out_samples": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duck": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "depth_db",
+            "attack_samples",
+            "release_samples"
+          ],
+          "description": "lowered by depth_db inside audio.speech, eased over attack_samples before and release_samples after",
+          "properties": {
+            "depth_db": {
+              "type": "number",
+              "minimum": -40,
+              "maximum": 0
+            },
+            "attack_samples": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 240000
+            },
+            "release_samples": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 240000
+            }
+          }
+        }
+      }
+    },
+    "part_speed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "num",
+        "den"
+      ],
+      "description": "a part played at num/den times (1/4 to 4, never 1 unless it ramps; decision 0030), or ramping from it (decision 0033)",
+      "properties": {
+        "num": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "den": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "audio": {
+          "enum": [
+            "stretch",
+            "mute"
+          ]
+        },
+        "ramp": {
+          "$ref": "#/$defs/speed_ramp"
+        }
+      }
+    },
+    "speed_ramp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "to",
+        "from",
+        "frames",
+        "curve"
+      ],
+      "description": "the speed eases from the part's num/den to `to` over output frames [from, from + frames) of the part, then holds `to`; the source advances by the speed's integral (decision 0033)",
+      "properties": {
+        "to": {
+          "$ref": "#/$defs/rational"
+        },
+        "from": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "curve": {
+          "enum": [
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out"
+          ]
+        }
+      }
+    },
+    "cursor_track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "path",
+        "sha256",
+        "shapes",
+        "scale"
+      ],
+      "description": "a recorded cursor: one picture source's gmclip.input/1 track and its cursor images by shape index (decision 0045)",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source": {
+          "$ref": "#/$defs/id"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "shapes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 8
+        },
+        "smooth_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "hide_idle_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 600000
+        },
+        "clicks": {
+          "type": "boolean"
+        },
+        "click": {
+          "enum": [
+            "none",
+            "ring",
+            "ripple"
+          ]
+        },
+        "smoothness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "click_shrink": {
+          "type": "boolean"
+        },
+        "shake_px": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "loop_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "motion_blur": {
+          "type": "boolean"
+        }
+      }
+    },
+    "layer_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "part",
+        "layer"
+      ],
+      "description": "a layer of one part: parts[].id and that part's layers[].id",
+      "properties": {
+        "part": {
+          "$ref": "#/$defs/id"
+        },
+        "layer": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "zoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "out",
+        "layers",
+        "depth",
+        "target",
+        "ease_in",
+        "ease_out"
+      ],
+      "description": "a zoom section (decision 0046): the named layers drawn through a crop depth x tighter, centred on the target, eased in and out",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "out": {
+          "$ref": "#/$defs/range"
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer_ref"
+          }
+        },
+        "depth": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "target": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "cursor"
+              ],
+              "properties": {
+                "cursor": {
+                  "$ref": "#/$defs/id"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "focus"
+              ],
+              "properties": {
+                "focus": {
+                  "$ref": "#/$defs/id"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "point"
+              ],
+              "properties": {
+                "point": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "ease_in": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ease_out": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "camera_scale": {
+          "type": "number",
+          "minimum": 0.3,
+          "maximum": 1
+        },
+        "camera_layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer_ref"
+          }
+        },
+        "motion_blur": {
+          "type": "boolean"
+        }
+      }
+    },
+    "event_track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "event",
+        "keys"
+      ],
+      "description": "an overlay pinned to a moving point (decision 0031)",
+      "properties": {
+        "kind": {
+          "enum": [
+            "text",
+            "image",
+            "shape"
+          ]
+        },
+        "event": {
+          "$ref": "#/$defs/id"
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "frame",
+              "x",
+              "y"
+            ],
+            "properties": {
+              "frame": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+# Third-party crates that run code at build time (SR R-SUP-1), checked by `cargo xt supply`.
+# One "<crate> <kind>" per line, kind = custom-build | proc-macro.
+# CODEOWNERS: AJ. A new line means AJ audited the crate's build script / macro; coding
+# agents may not add lines (R-SUP-2).
+#
+# W0 baseline (2026-10-14), written when the skeleton landed: needs AJ's sign-off.
+clap_derive proc-macro
+proc-macro2 custom-build
+quote custom-build
+ref-cast custom-build
+ref-cast-impl proc-macro
+schemars_derive proc-macro
+serde custom-build
+serde_core custom-build
+serde_derive proc-macro
+serde_json custom-build
+thiserror custom-build
+thiserror-impl proc-macro
+zmij custom-build
+#
+# Added on main 2026-10-14 under decision 0002 (lane-a2: rusqlite bundled, imbl, ciborium deps): PENDING AJ AUDIT.
+crunchy custom-build
+getrandom custom-build
+libc custom-build
+libsqlite3-sys custom-build
+num-traits custom-build
+#
+# Added on main 2026-10-14 under decision 0002 (lane-h: wgpu, objc2, Metal stack): PENDING AJ AUDIT.
+ash custom-build
+bytemuck_derive proc-macro
+document-features proc-macro
+libm custom-build
+naga custom-build
+objc2 custom-build
+parking_lot_core custom-build
+portable-atomic custom-build
+portable-atomic-util custom-build
+rustversion custom-build
+rustversion proc-macro
+wasm-bindgen custom-build
+wasm-bindgen-macro proc-macro
+wasm-bindgen-shared custom-build
+wgpu custom-build
+wgpu-core custom-build
+wgpu-hal custom-build
+windows-implement proc-macro
+windows-interface proc-macro
+zerocopy custom-build
+zerocopy-derive proc-macro
+#
+# Added on main 2026-10-14 under decision 0002 (lane-c: parley/icu text stack): PENDING AJ AUDIT.
+displaydoc proc-macro
+icu_locale_fallback_data custom-build
+icu_normalizer_data custom-build
+icu_properties_data custom-build
+icu_segmenter_data custom-build
+yoke-derive proc-macro
+zerofrom-derive proc-macro
+zerovec-derive proc-macro
+#
+# Added on lane-a2 2026-10-14 under decision 0002 (lane-a2 agent surface: rmcp =3.5.1, tokio, cap-std, hmac/sha2, chrono via rmcp; windows_*/nix/iana-time-zone-haiku are other-target or dev-only): PENDING AJ AUDIT.
+cap-primitives custom-build
+cap-std custom-build
+futures-macro proc-macro
+generic-array custom-build
+iana-time-zone-haiku custom-build
+io-extras custom-build
+io-lifetimes custom-build
+nix custom-build
+pastey proc-macro
+rmcp custom-build
+rustix custom-build
+tokio-macros proc-macro
+tracing-attributes proc-macro
+windows_aarch64_gnullvm custom-build
+windows_aarch64_msvc custom-build
+windows_i686_gnu custom-build
+windows_i686_gnullvm custom-build
+windows_i686_msvc custom-build
+windows_x86_64_gnu custom-build
+windows_x86_64_gnullvm custom-build
+windows_x86_64_msvc custom-build
+#
+# Added on main 2026-10-14 under decision 0002 (lane-d: parakeet-rs/ort/tokenizers): PENDING AJ AUDIT.
+ahash custom-build
+crossbeam-deque custom-build
+crossbeam-epoch custom-build
+crossbeam-utils custom-build
+darling_macro proc-macro
+derive_builder_macro proc-macro
+esaxx-rs custom-build
+eyre custom-build
+macro_rules_attribute-proc_macro proc-macro
+matrixmultiply custom-build
+monostate-impl proc-macro
+onig_sys custom-build
+ort-sys custom-build
+paste custom-build
+paste proc-macro
+rayon-core custom-build
+wit-bindgen custom-build
+#
+# Added on lane-u 2026-10-15 (overlay images, R-MEDIA-SEC-3: png 0.18.1 → flate2 → crc32fast): PENDING AJ AUDIT.
+crc32fast custom-build

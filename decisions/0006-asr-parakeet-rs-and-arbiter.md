@@ -1,0 +1,5 @@
+# 0006 — Keep parakeet-rs for M1 ASR; arbiter moves to forced alignment
+
+- **Context.** Lane D: parakeet-rs ASR matches AJ's Parakeet transcripts (WER 3.35% pooled on h79 windows; 90.3% word agreement over a 51.6 min stream; start median 0 ms). It pulls `tokenizers` (unused by the TDT path) which brings 17 build-time crates and the unmaintained `paste` advisory. The arbiter's free-decoding probes are erratic on Parakeet v3 (14/150 abutting edges resolved; same behaviour in Python onnx-asr), so most edges fall back to `energy_min`.
+- **Decision.** (1) Keep parakeet-rs at M1 (SPEC §9); ignore the `paste` advisory in `deny.toml` with this reason; revisit "own TDT decoder" (drops tokenizers/paste) only if AJ asks or S5 shows a need. (2) Replace arbiter free decoding with **forced alignment** of the known words on both sides of a candidate edge (CTC/TDT alignment scores over candidate cut points), keeping `energy_min` as fallback; R-ANC-2's acceptance is re-measured once AJ marks the 300 edges.
+- **Sections changed.** SPEC §9 arbiter row (method), R-ANC-2 (method only).

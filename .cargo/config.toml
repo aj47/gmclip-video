@@ -1,0 +1,7 @@
+[env]
+# SPEC §2: macOS 13 is the floor.
+MACOSX_DEPLOYMENT_TARGET = "13.0"
+
+[alias]
+# --locked: xtask never updates Cargo.lock either (SR R-SUP-1).
+xt = "run --locked --quiet --package xtask --"

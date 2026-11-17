@@ -1,0 +1,46 @@
+[package]
+name = "gmclip-platform"
+description = "Keychain, font dirs, capability probe, display link, QoS; the Windows FFI (ACLs, named pipes, process identity)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+
+# Windows only (decisions/0019): owner-only DACLs, named-pipe peer identity, process
+# image paths and disk space. Both crates were already in Cargo.lock (tokio's own
+# windows-sys); no new crate.
+[target.'cfg(windows)'.dependencies]
+tokio.workspace = true
+windows-sys = { version = "0.61.2", features = [
+    "Win32_Foundation",
+    "Win32_Media",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_Security_Cryptography",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Console",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_JobObjects",
+    "Win32_System_Pipes",
+    "Win32_System_Power",
+    "Win32_System_Threading",
+    "Win32_UI_Controls_Dialogs",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+# Not `workspace = true` (decisions/0019): the workspace forbids `unsafe_code`, and the
+# Windows FFI module needs a scoped `allow`. Off Windows the crate root still says
+# `forbid(unsafe_code)`, so on macOS and Linux nothing changes. Same lints otherwise;
+# keep in step with [workspace.lints] in the root Cargo.toml.
+[lints.rust]
+unsafe_code = "deny"
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+
+[lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+undocumented_unsafe_blocks = "deny"

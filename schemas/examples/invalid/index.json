@@ -1,0 +1,224 @@
+[
+ {
+  "file": "range-empty.json",
+  "rule": "1",
+  "code": "Invalid",
+  "path": "/text_events/2/out"
+ },
+ {
+  "file": "parts-overlap.json",
+  "rule": "2",
+  "code": "Invalid",
+  "path": "/parts/1/out"
+ },
+ {
+  "file": "first-part-not-zero.json",
+  "rule": "2",
+  "code": "Invalid",
+  "path": "/parts/0/out"
+ },
+ {
+  "file": "parts-past-frames.json",
+  "rule": "2",
+  "code": "Invalid",
+  "path": "/output/frames"
+ },
+ {
+  "file": "aspect-off.json",
+  "rule": "5",
+  "code": "Invalid",
+  "path": "/parts/1/layers/0/place"
+ },
+ {
+  "file": "layer-role-unknown.json",
+  "rule": "5",
+  "code": "Invalid",
+  "path": "/parts/0/layers/1/role"
+ },
+ {
+  "file": "dup-part-id.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/parts/2/id"
+ },
+ {
+  "file": "dup-layer-id.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/parts/2/layers/2/id"
+ },
+ {
+  "file": "dup-source-id.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/sources/1/id"
+ },
+ {
+  "file": "layer-source-dangling.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/parts/2/layers/2/picture_source"
+ },
+ {
+  "file": "audio-source-dangling.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/parts/0/audio/source"
+ },
+ {
+  "file": "envelopes-overlap.json",
+  "rule": "7",
+  "code": "Invalid",
+  "path": "/audio/envelopes/1/out_samples"
+ },
+ {
+  "file": "envelope-past-end.json",
+  "rule": "4",
+  "code": "Invalid",
+  "path": "/audio/envelopes/0/out_samples"
+ },
+ {
+  "file": "fade-longer-than-part.json",
+  "rule": "7",
+  "code": "Invalid",
+  "path": "/parts/0/audio/fade_out"
+ },
+ {
+  "file": "sha256-uppercase.json",
+  "rule": "schema",
+  "code": "Invalid",
+  "path": "/sources/0/fingerprint/sha256"
+ },
+ {
+  "file": "canvas-odd.json",
+  "rule": "schema",
+  "code": "Invalid",
+  "path": "/output/canvas/w"
+ },
+ {
+  "file": "fps-den-2.json",
+  "rule": "4",
+  "code": "Invalid",
+  "path": "/output/fps/den"
+ },
+ {
+  "file": "frames-not-integer.json",
+  "rule": "1",
+  "code": "Invalid",
+  "path": "/output/frames"
+ },
+ {
+  "file": "id-with-space.json",
+  "rule": "schema",
+  "code": "Invalid",
+  "path": "/parts/0/id"
+ },
+ {
+  "file": "schema-version.json",
+  "rule": "12",
+  "code": "Invalid",
+  "path": "/schema"
+ },
+ {
+  "file": "styles-missing.json",
+  "rule": "schema",
+  "code": "Invalid",
+  "path": "/text_styles"
+ },
+ {
+  "file": "true-peak-positive.json",
+  "rule": "8",
+  "code": "Invalid",
+  "path": "/audio/loudness/true_peak_dbtp"
+ },
+ {
+  "file": "time-map-mode-unknown.json",
+  "rule": "schema",
+  "code": "Invalid",
+  "path": "/parts/0/layers/0/time_map/mode"
+ },
+ {
+  "file": "sources-empty.json",
+  "rule": "schema",
+  "code": "Invalid",
+  "path": "/sources"
+ },
+ {
+  "file": "negative-first-frame.json",
+  "rule": "1",
+  "code": "Invalid",
+  "path": "/parts/0/picture/first_frame"
+ },
+ {
+  "file": "duplicate-json-key.json",
+  "rule": "11",
+  "code": "Invalid",
+  "path": "/output/frames"
+ },
+ {
+  "file": "long-unknown-key.json",
+  "rule": "11",
+  "code": "Invalid",
+  "path": "/meta/a_very_long_unkn…"
+ },
+ {
+  "file": "fps-num-float.json",
+  "rule": "1",
+  "code": "Invalid",
+  "path": "/output/fps/num"
+ },
+ {
+  "file": "audio-rate-float.json",
+  "rule": "1",
+  "code": "Invalid",
+  "path": "/parts/1/audio/rate"
+ },
+ {
+  "file": "dup-font-id.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/fonts/1/id"
+ },
+ {
+  "file": "dup-envelope-id.json",
+  "rule": "10",
+  "code": "Invalid",
+  "path": "/audio/envelopes/1/id"
+ },
+ {
+  "file": "native-frames-empty.json",
+  "rule": "1",
+  "code": "Invalid",
+  "path": "/parts/0/native/frames"
+ },
+ {
+  "file": "first-frame-past-i64.json",
+  "rule": "3",
+  "code": "Invalid",
+  "path": "/parts/0/picture/first_frame"
+ },
+ {
+  "file": "ramp-in-too-long.json",
+  "rule": "7",
+  "code": "Invalid",
+  "path": "/audio/envelopes/0/ramp_in_samples"
+ },
+ {
+  "file": "picture-fps-mismatch.json",
+  "rule": "3",
+  "code": "Unsupported",
+  "path": "/sources/0/expect/video/fps"
+ },
+ {
+  "file": "audio-rate-44k.json",
+  "rule": "4",
+  "code": "Unsupported",
+  "path": "/sources/1/expect/audio/rate"
+ },
+ {
+  "file": "audio-track-zero.json",
+  "rule": "4",
+  "code": "Invalid",
+  "path": "/sources/1/audio_track"
+ }
+]

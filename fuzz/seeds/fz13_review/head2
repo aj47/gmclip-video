@@ -1,0 +1,4 @@
+GET /m/abc123 HTTP/1.1
+Host: 127.0.0.1:9
+Cookie: a=1; gmr=0123456789abcdef
+Range: bytes=0-99

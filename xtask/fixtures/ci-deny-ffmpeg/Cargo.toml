@@ -1,0 +1,15 @@
+# Negative fixture (W0-02): depending on `ffmpeg-next` turns `cargo deny check bans` red.
+# The dependency is a local stand-in with the banned name, so the fixture needs no
+# network and never compiles FFmpeg; bans match on the crate name.
+[workspace]
+members = ["ffmpeg-next"]
+
+[package]
+name = "fixture-ffmpeg"
+version = "0.0.0"
+edition = "2024"
+publish = false
+license = "MIT"
+
+[dependencies]
+ffmpeg-next = { path = "ffmpeg-next", version = "7.1.0" }

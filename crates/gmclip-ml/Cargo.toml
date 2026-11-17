@@ -1,0 +1,37 @@
+[package]
+name = "gmclip-ml"
+description = "ASR backend trait and model manager."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+gmclip-model.workspace = true
+gmclip-analysis.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+ort.workspace = true
+parakeet-rs.workspace = true
+
+[features]
+# `lab` tests need the pinned models and the ORT dylib in ~/Library/Caches/gmclip and AJ's
+# media; `cargo test -p gmclip-ml --release --features lab` on the lab.
+lab = []
+
+[[example]]
+name = "asr_diff"
+required-features = ["lab"]
+
+[[example]]
+name = "tokens_dump"
+required-features = ["lab"]
+
+[[example]]
+name = "score_edges"
+required-features = ["lab"]
+
+[lints]
+workspace = true

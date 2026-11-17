@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-gm-subscribe"
+description = "Enables the gm_subscribe command without any pre-configured scope."
+commands.allow = ["gm_subscribe"]
+
+[[permission]]
+identifier = "deny-gm-subscribe"
+description = "Denies the gm_subscribe command without any pre-configured scope."
+commands.deny = ["gm_subscribe"]

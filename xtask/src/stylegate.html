@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style gate</title>
+<style>
+  :root { --bg: #ffffff; --fg: #15171a; --muted: #5b6270; --card: #f3f4f6; --line: #d6d9de; --accent: #1f6feb; --on: #ffffff; --warn: #9a5b00; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1013; --fg: #e8eaed; --muted: #9aa1ad; --card: #1a1d22; --line: #2c3038; --accent: #4c8dff; --on: #0e1013; --warn: #f0b35a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  header, main, footer { max-width: 560px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p { margin: 4px 0; color: var(--muted); }
+  .note { color: var(--warn); }
+  .pair { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 0 0 16px; }
+  .pair h2 { font-size: 17px; margin: 0 0 8px; display: flex; justify-content: space-between; }
+  .player video { width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 8px; display: block; }
+  .player video[hidden] { display: none; }
+  .ab { display: flex; gap: 8px; margin: 8px 0; }
+  .ab button { flex: 1; }
+  .ab button[aria-pressed="true"] { background: var(--accent); color: var(--on); }
+  fieldset.rate { border: 0; padding: 0; margin: 8px 0; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  fieldset.rate legend { color: var(--muted); padding: 0; margin-bottom: 4px; width: 100%; }
+  fieldset.rate label { flex: 1; min-width: 70px; position: relative; }
+  fieldset.rate input { position: absolute; opacity: 0; inset: 0; }
+  fieldset.rate span { display: block; text-align: center; padding: 10px 4px; border: 1px solid var(--line); border-radius: 8px; }
+  fieldset.rate input:checked + span { background: var(--accent); color: var(--on); border-color: var(--accent); }
+  fieldset.rate input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  textarea { width: 100%; min-height: 44px; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+  button { font: inherit; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; }
+  button.primary { background: var(--accent); color: var(--on); }
+  .bar { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); }
+  .bar footer { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  #out { display: none; width: 100%; min-height: 120px; font: 12px/1.3 ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Style gate</h1>
+  <p>Each pair is the same cut rendered two ways. Which is which, and the order, are random. Watch A, switch to B (the time carries over), then rate <b>B compared with A</b>. Answers stay on this device; send them with the button at the bottom when you are done.</p>
+  <noscript><p class="note">This page needs JavaScript to keep and send ratings. On an iPhone, open it in Safari from its https address (not from Files or AirDrop, which show a preview without JavaScript).</p></noscript>
+  <p class="note" id="audio-note" hidden></p>
+  <button class="primary" id="start" type="button" hidden>Start (turn on matched sound)</button>
+</header>
+<main id="pairs">
+<!--PAIRS-->
+</main>
+<div class="bar"><footer>
+  <span id="progress" aria-live="polite"></span>
+  <button class="primary" id="send" type="button">Save results</button>
+  <button id="show" type="button">Show JSON</button>
+  <textarea id="out" readonly aria-label="Results JSON"></textarea>
+</footer></div>
+<script>
+"use strict";
+const DATA = /*DATA*/null;
+const KEY = "stylegate:" + DATA.page_id;
+const byN = Object.fromEntries(DATA.pairs.map(p => [p.n, p]));
+const note = document.getElementById("audio-note");
+function say(t) { note.textContent = t; note.hidden = !t; }
+
+// Storage: answers survive a reload; say so if they cannot.
+let state = {};
+let canStore = true;
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); localStorage.setItem(KEY + ":probe", "1"); }
+catch (e) { canStore = false; }
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); }
+  catch (e) { if (canStore) { canStore = false; say("This browser is not keeping answers; save them before leaving the page."); } }
+  progress();
+}
+if (!canStore) say("This browser is not keeping answers; save them before leaving the page.");
+
+// Loudness match by playback gain only (R-COMP-2); every gain is <= 0 dB.
+const gainOf = db => Math.pow(10, db / 20);
+const videos = [...document.querySelectorAll("video")];
+const dbOf = v => byN[v.closest(".pair").dataset.n]["gain_" + v.dataset.side + "_db"];
+const anyGain = DATA.pairs.some(p => p.gain_a_db !== 0 || p.gain_b_db !== 0);
+let ctx = null;
+function webAudio() {
+  // Called from a tap on Start: iOS only runs an AudioContext started by a gesture.
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = "playback";
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state === "suspended") ctx.resume();
+    for (const v of videos) {
+      const g = ctx.createGain();
+      g.gain.value = gainOf(dbOf(v));
+      ctx.createMediaElementSource(v).connect(g).connect(ctx.destination);
+    }
+    return true;
+  } catch (e) { ctx = null; return false; }
+}
+const httpish = location.protocol === "http:" || location.protocol === "https:";
+const start = document.getElementById("start");
+if (httpish && anyGain) {
+  start.hidden = false;
+  start.addEventListener("click", () => {
+    const ok = webAudio();
+    start.hidden = true;
+    setTimeout(() => {
+      if (!ok || !ctx || ctx.state !== "running") {
+        for (const v of videos) v.volume = Math.min(1, gainOf(dbOf(v)));
+        say("Levels are matched only where this browser lets a page set the volume (not on iPhone).");
+      }
+    }, 300);
+  }, { once: true });
+} else {
+  // A folder on a computer: the element's own volume carries the gain.
+  for (const v of videos) v.volume = Math.min(1, gainOf(dbOf(v)));
+  if (anyGain && /iPhone|iPad/.test(navigator.userAgent)) say("Levels are not matched here; open the https address in Safari instead.");
+}
+
+// One player per pair: A and B share a playhead.
+for (const sec of document.querySelectorAll(".pair")) {
+  const n = sec.dataset.n;
+  const s = state[n] = state[n] || {};
+  const [va, vb] = sec.querySelectorAll("video");
+  const show = side => {
+    const [from, to] = side === "a" ? [vb, va] : [va, vb];
+    if (!to.hidden) return;
+    const t = from.currentTime, playing = !from.paused;
+    from.pause();
+    from.hidden = true; to.hidden = false;
+    try { to.currentTime = t; } catch (e) {}
+    if (playing) to.play().catch(() => {});
+    for (const b of sec.querySelectorAll(".ab button")) b.setAttribute("aria-pressed", String(b.dataset.show === side));
+  };
+  for (const b of sec.querySelectorAll(".ab button")) b.addEventListener("click", () => show(b.dataset.show));
+  for (const v of [va, vb]) v.addEventListener("play", () => {
+    for (const o of videos) if (o !== v) o.pause();
+    s[v.dataset.side + "_played"] = true; save();
+  });
+  for (const r of sec.querySelectorAll("input[type=radio]")) {
+    if (s.rating === r.value) r.checked = true;
+    r.addEventListener("click", () => {
+      // Tapping the chosen answer again clears it.
+      if (s.rating === r.value) { r.checked = false; delete s.rating; } else { s.rating = r.value; }
+      save();
+    });
+  }
+  const t = sec.querySelector("textarea");
+  t.value = s.note || "";
+  t.addEventListener("input", () => { s.note = t.value; save(); });
+}
+
+function results() {
+  return {
+    schema: "gmclip.stylegate.results/0",
+    page_id: DATA.page_id,
+    exported: new Date().toISOString(),
+    ratings: DATA.pairs.map(p => {
+      const s = state[p.n] || {};
+      return { n: p.n, rating: s.rating || null, note: s.note || "", a_played: !!s.a_played, b_played: !!s.b_played };
+    })
+  };
+}
+function progress() {
+  const done = DATA.pairs.filter(p => (state[p.n] || {}).rating).length;
+  document.getElementById("progress").textContent = done + " of " + DATA.pairs.length + " rated";
+  for (const sec of document.querySelectorAll(".pair")) {
+    sec.querySelector(".done").textContent = (state[sec.dataset.n] || {}).rating ? "rated" : "";
+  }
+}
+document.getElementById("send").addEventListener("click", async () => {
+  const text = JSON.stringify(results(), null, 1);
+  const name = "stylegate-results-" + DATA.page_id.slice(0, 8) + ".json";
+  const file = typeof File === "function" ? new File([text], name, { type: "application/json" }) : null;
+  try {
+    if (file && navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file] }); return; }
+  } catch (e) { if (e && e.name === "AbortError") return; }
+  const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+  const a = document.createElement("a");
+  a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+});
+document.getElementById("show").addEventListener("click", async () => {
+  const out = document.getElementById("out");
+  out.style.display = "block";
+  out.value = JSON.stringify(results(), null, 1);
+  try { await navigator.clipboard.writeText(out.value); say("Results copied to the clipboard."); } catch (e) { out.focus(); out.setSelectionRange(0, out.value.length); }
+});
+progress();
+</script>
+</body>
+</html>

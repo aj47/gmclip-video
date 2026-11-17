@@ -1,0 +1,13 @@
+# Negative fixture (W0-11): a dependency with no audit and no exemption turns
+# `cargo vet` red. Checked against the repo's own supply-chain/ store.
+[workspace]
+
+[package]
+name = "fixture-vet"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+# Not in the repo's audits or exemptions.
+either = "=1.13.0"

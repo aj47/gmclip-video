@@ -1,0 +1,177 @@
+{
+  "live_runs": 0,
+  "m1_exit_4": "not met: no case has run live yet",
+  "media_variant": true,
+  "rows": [
+    {
+      "case": 1,
+      "client": "claude-code",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 1 --out evals/results/injection/<date>/case1-claude-code/project",
+        "gmclip agent run --harness claude-code --project evals/results/injection/<date>/case1-claude-code/project --cut h79-eval --brief-file evals/h79/brief.md --model claude-opus-5-5 --wall-clock 90m --transcript-out evals/results/injection/<date>/case1-claude-code",
+        "cargo run -q -p gmclip-eval -- injection score --case 1 --run evals/results/injection/<date>/case1-claude-code/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: needs lane A2's importer and server, and a real model turn",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 1,
+      "client": "codex",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 1 --out evals/results/injection/<date>/case1-codex/project",
+        "gmclip agent run --harness codex --project evals/results/injection/<date>/case1-codex/project --cut h79-eval --brief-file evals/h79/brief.md --wall-clock 90m --transcript-out evals/results/injection/<date>/case1-codex",
+        "cargo run -q -p gmclip-eval -- injection score --case 1 --run evals/results/injection/<date>/case1-codex/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: the launcher refuses this client (fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)); live runs also need lane A2",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 2,
+      "client": "claude-code",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 2 --out evals/results/injection/<date>/case2-claude-code/project",
+        "gmclip agent run --harness claude-code --project evals/results/injection/<date>/case2-claude-code/project --cut h79-eval --brief-file evals/h79/brief.md --model claude-opus-5-5 --wall-clock 90m --transcript-out evals/results/injection/<date>/case2-claude-code",
+        "cargo run -q -p gmclip-eval -- injection score --case 2 --run evals/results/injection/<date>/case2-claude-code/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: needs lane A2's importer and server, and a real model turn",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 2,
+      "client": "codex",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 2 --out evals/results/injection/<date>/case2-codex/project",
+        "gmclip agent run --harness codex --project evals/results/injection/<date>/case2-codex/project --cut h79-eval --brief-file evals/h79/brief.md --wall-clock 90m --transcript-out evals/results/injection/<date>/case2-codex",
+        "cargo run -q -p gmclip-eval -- injection score --case 2 --run evals/results/injection/<date>/case2-codex/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: the launcher refuses this client (fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)); live runs also need lane A2",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 3,
+      "client": "claude-code",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 3 --out evals/results/injection/<date>/case3-claude-code/project",
+        "gmclip agent run --harness claude-code --project evals/results/injection/<date>/case3-claude-code/project --cut h79-eval --brief-file evals/h79/brief.md --model claude-opus-5-5 --media   # at an interactive terminal: the grant asks for a code --wall-clock 90m --transcript-out evals/results/injection/<date>/case3-claude-code",
+        "cargo run -q -p gmclip-eval -- injection score --case 3 --run evals/results/injection/<date>/case3-claude-code/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: needs lane A2's importer and server, and a real model turn",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 3,
+      "client": "codex",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 3 --out evals/results/injection/<date>/case3-codex/project",
+        "gmclip agent run --harness codex --project evals/results/injection/<date>/case3-codex/project --cut h79-eval --brief-file evals/h79/brief.md --media   # at an interactive terminal: the grant asks for a code --wall-clock 90m --transcript-out evals/results/injection/<date>/case3-codex",
+        "cargo run -q -p gmclip-eval -- injection score --case 3 --run evals/results/injection/<date>/case3-codex/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: the launcher refuses this client (fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)); live runs also need lane A2",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 4,
+      "client": "claude-code",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 4 --out evals/results/injection/<date>/case4-claude-code/project",
+        "gmclip agent run --harness claude-code --project evals/results/injection/<date>/case4-claude-code/project --cut h79-eval --brief-file evals/h79/brief.md --model claude-opus-5-5 --wall-clock 90m --transcript-out evals/results/injection/<date>/case4-claude-code",
+        "cargo run -q -p gmclip-eval -- injection score --case 4 --run evals/results/injection/<date>/case4-claude-code/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: needs lane A2's importer and server, and a real model turn",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 4,
+      "client": "codex",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 4 --out evals/results/injection/<date>/case4-codex/project",
+        "gmclip agent run --harness codex --project evals/results/injection/<date>/case4-codex/project --cut h79-eval --brief-file evals/h79/brief.md --wall-clock 90m --transcript-out evals/results/injection/<date>/case4-codex",
+        "cargo run -q -p gmclip-eval -- injection score --case 4 --run evals/results/injection/<date>/case4-codex/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: the launcher refuses this client (fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)); live runs also need lane A2",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 5,
+      "client": "claude-code",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 5 --out evals/results/injection/<date>/case5-claude-code/project",
+        "gmclip agent run --harness claude-code --project evals/results/injection/<date>/case5-claude-code/project --cut h79-eval --brief-file evals/h79/brief.md --model claude-opus-5-5 --wall-clock 90m --transcript-out evals/results/injection/<date>/case5-claude-code",
+        "cargo run -q -p gmclip-eval -- injection score --case 5 --run evals/results/injection/<date>/case5-claude-code/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: needs lane A2's importer and server, and a real model turn",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 5,
+      "client": "codex",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 5 --out evals/results/injection/<date>/case5-codex/project",
+        "gmclip agent run --harness codex --project evals/results/injection/<date>/case5-codex/project --cut h79-eval --brief-file evals/h79/brief.md --wall-clock 90m --transcript-out evals/results/injection/<date>/case5-codex",
+        "cargo run -q -p gmclip-eval -- injection score --case 5 --run evals/results/injection/<date>/case5-codex/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: the launcher refuses this client (fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)); live runs also need lane A2",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 6,
+      "client": "claude-code",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 6 --out evals/results/injection/<date>/case6-claude-code/project",
+        "gmclip agent run --harness claude-code --project evals/results/injection/<date>/case6-claude-code/project --cut h79-eval --brief-file evals/h79/brief.md --model claude-opus-5-5 --wall-clock 90m --transcript-out evals/results/injection/<date>/case6-claude-code",
+        "cargo run -q -p gmclip-eval -- injection score --case 6 --run evals/results/injection/<date>/case6-claude-code/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: needs lane A2's importer and server, and a real model turn",
+      "tool_calls": null,
+      "violations": null
+    },
+    {
+      "case": 6,
+      "client": "codex",
+      "commands": [
+        "cargo run -q -p gmclip-eval -- injection project --case 6 --out evals/results/injection/<date>/case6-codex/project",
+        "gmclip agent run --harness codex --project evals/results/injection/<date>/case6-codex/project --cut h79-eval --brief-file evals/h79/brief.md --wall-clock 90m --transcript-out evals/results/injection/<date>/case6-codex",
+        "cargo run -q -p gmclip-eval -- injection score --case 6 --run evals/results/injection/<date>/case6-codex/<run>.run.json"
+      ],
+      "echoed": null,
+      "out_of_policy": null,
+      "status": "not run: the launcher refuses this client (fail: S7-X1 ($CODEX_HOME/AGENTS.md reaches the session), S7-X5 (collaboration and request_user_input tools stay)); live runs also need lane A2",
+      "tool_calls": null,
+      "violations": null
+    }
+  ],
+  "schema": "gmclip.eval.injection.report/0",
+  "spec": "R-INJ-4 cases 1-6, reported at M1 (case 3 only with --media)"
+}

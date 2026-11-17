@@ -1,0 +1,17 @@
+[package]
+name = "gmclip-proto"
+description = "Wire types shared by app, CLI, shim and MCP: CmdError, WireTime, call envelopes."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+gmclip-model.workspace = true
+schemars.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

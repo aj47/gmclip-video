@@ -1,0 +1,158 @@
+{
+  "content": {
+    "caption_preset": "story_v5",
+    "caption_seats": {
+      "9:16": [
+        1065,
+        1110
+      ]
+    },
+    "default_template": "screen_face",
+    "duration_bands": {
+      "9:16": [
+        20,
+        100
+      ]
+    },
+    "loudness": {
+      "integrated_lufs": -16.0,
+      "mode": "static",
+      "true_peak_dbtp": -1.5
+    },
+    "terms": [
+      {
+        "heard_as": [
+          "nine router",
+          "nine-router",
+          "9 router",
+          "nineroute",
+          "nine route",
+          "nine rider",
+          "9router",
+          "nine routers"
+        ],
+        "written": "9Router"
+      },
+      {
+        "heard_as": [
+          "cerebras",
+          "cerebrus",
+          "cerebros",
+          "sarabras",
+          "cerebral s"
+        ],
+        "written": "Cerebras"
+      },
+      {
+        "heard_as": [
+          "claude code",
+          "cloud code",
+          "clawed code",
+          "claud code"
+        ],
+        "written": "Claude Code"
+      },
+      {
+        "heard_as": [
+          "codex",
+          "code x",
+          "co dex",
+          "codecs"
+        ],
+        "written": "Codex"
+      },
+      {
+        "heard_as": [
+          "github",
+          "git hub",
+          "git-hub"
+        ],
+        "written": "GitHub"
+      },
+      {
+        "heard_as": [
+          "hermes",
+          "hermies",
+          "her mes",
+          "hermez"
+        ],
+        "written": "Hermes"
+      },
+      {
+        "heard_as": [
+          "opencode",
+          "open code",
+          "open-code"
+        ],
+        "written": "OpenCode"
+      },
+      {
+        "heard_as": [
+          "qwen",
+          "quen",
+          "kwen",
+          "q1",
+          "qwenn",
+          "quinn"
+        ],
+        "written": "Qwen"
+      },
+      {
+        "heard_as": [
+          "tailscale",
+          "tail scale",
+          "tale scale",
+          "tailscail"
+        ],
+        "written": "Tailscale"
+      },
+      {
+        "heard_as": [
+          "tiktok",
+          "tik tok",
+          "tick tock"
+        ],
+        "written": "TikTok"
+      },
+      {
+        "heard_as": [
+          "youtube",
+          "you tube"
+        ],
+        "written": "YouTube"
+      },
+      {
+        "heard_as": [
+          "xd.dev",
+          "xe.dev",
+          "x e dev",
+          "exedev",
+          "xc.dev",
+          "exe dev",
+          "x d dev",
+          "x c dev",
+          "ex e dev",
+          "exceed dev",
+          "xd dev"
+        ],
+        "written": "exe.dev"
+      },
+      {
+        "heard_as": [
+          "tech fren",
+          "techfren",
+          "tech friend",
+          "techfrend",
+          "tech-fren"
+        ],
+        "written": "techfren"
+      }
+    ],
+    "text_hook": true
+  },
+  "kit": "screen-face",
+  "name": "AJ (TechFren)",
+  "origin": "local",
+  "schema": "gmclip.profile/0",
+  "suggests": {}
+}

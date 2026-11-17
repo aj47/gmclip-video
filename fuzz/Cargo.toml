@@ -1,0 +1,83 @@
+# fuzz/ (B-17, SR §3.2): cargo-fuzz targets for the demuxers and codec header readers.
+# Its own workspace and lockfile, so libfuzzer-sys never enters the shipped graph
+# (root `cargo deny`/`cargo vet` do not see it; AJ audits its crates separately). Needs
+# nightly and cargo-fuzz:
+#   cargo +nightly fuzz run -s none fz1_mp4 fuzz/corpus/fz1_mp4 fuzz/seeds/fz1_mp4 -- \
+#     -rss_limit_mb=256 -timeout=2 -max_len=65536      # fz2_mkv: -max_len=1048576
+# `-s none`: the code under test is safe Rust (`forbid(unsafe_code)`), so ASan finds
+# nothing extra, and on macOS its shadow memory alone exceeds the 256 MB RSS limit at
+# start-up. Overflow checks and debug assertions stay on. The harness bodies
+# (gmclip_media::fuzz) assert the SR §3.2 invariants, including read volume ≤ 4× the
+# input; crashers go to fuzz/regressions/<target>/ and replay in
+# crates/gmclip-media/tests/fuzz_regressions.rs on hosted CI.
+[package]
+name = "gmclip-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+gmclip-media = { path = "../crates/gmclip-media" }
+# FZ13 parses the review link's JSON write bodies (decision 0015); already in this lock.
+serde_json = "1"
+
+[workspace]
+members = ["."]
+
+[profile.release]
+debug = 1
+# Overflow checks on, so arithmetic overflow from file bytes is a crash here too.
+overflow-checks = true
+
+[[bin]]
+name = "fz1_mp4"
+path = "fuzz_targets/fz1_mp4.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fz2_mkv"
+path = "fuzz_targets/fz2_mkv.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fz3_codec"
+path = "fuzz_targets/fz3_codec.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fz10_paths"
+path = "fuzz_targets/fz10_paths.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fz14_frame"
+path = "fuzz_targets/fz14_frame.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fz15_gm"
+path = "fuzz_targets/fz15_gm.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fz13_review"
+path = "fuzz_targets/fz13_review.rs"
+test = false
+doc = false
+bench = false

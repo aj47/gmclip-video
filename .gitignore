@@ -1,0 +1,13 @@
+/target
+**/target
+.DS_Store
+# Corpus media and full golden dumps (W0-05/W0-06): large, never committed.
+/test-media/local/
+# cargo-fuzz build output and working corpora (B-17).
+/fuzz/target/
+/fuzz/corpus/
+/fuzz/artifacts/
+/fuzz/coverage/
+__pycache__/
+# Screenshots the e2e shot specs write (app/ui/tests/e2e/shots.spec.ts, ux-*.spec.ts).
+/milestones/

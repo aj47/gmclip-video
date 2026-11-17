@@ -1,0 +1,73 @@
+{
+ "about": "The reference density numbers for five streams (moments, active-talk minutes, rate, target, verdict, uncarded stretches), measured 2026-10-16 by the reference implementation the local density gate was ported from; the streams are the frozen projects in the lab media folder (fixtures/projects/*.json).",
+ "streams": [
+  {
+   "video_id": "loc_54b47e51",
+   "hooks": 118,
+   "active_min": 142.8,
+   "per_min": 0.83,
+   "one_per": 1.2,
+   "target": 114,
+   "short_by": 0,
+   "ok": true,
+   "gaps": []
+  },
+  {
+   "video_id": "Btcs-kuuQ2Y",
+   "hooks": 108,
+   "active_min": 128.2,
+   "per_min": 0.84,
+   "one_per": 1.2,
+   "target": 103,
+   "short_by": 0,
+   "ok": true,
+   "gaps": [
+    {
+     "t_start": 5832.2,
+     "t_end": 6134.8,
+     "minutes": 5.0,
+     "words": 503
+    },
+    {
+     "t_start": 2812.6,
+     "t_end": 2998.7,
+     "minutes": 3.1,
+     "words": 191
+    }
+   ]
+  },
+  {
+   "video_id": "Tg4qTpEDRRo",
+   "hooks": 100,
+   "active_min": 82.1,
+   "per_min": 1.22,
+   "one_per": 0.8,
+   "target": 66,
+   "short_by": 0,
+   "ok": true,
+   "gaps": []
+  },
+  {
+   "video_id": "loc_4fadb756",
+   "hooks": 112,
+   "active_min": 51.0,
+   "per_min": 2.2,
+   "one_per": 0.5,
+   "target": 41,
+   "short_by": 0,
+   "ok": true,
+   "gaps": []
+  },
+  {
+   "video_id": "loc_086da141",
+   "hooks": 120,
+   "active_min": 52.7,
+   "per_min": 2.28,
+   "one_per": 0.4,
+   "target": 42,
+   "short_by": 0,
+   "ok": true,
+   "gaps": []
+  }
+ ]
+}

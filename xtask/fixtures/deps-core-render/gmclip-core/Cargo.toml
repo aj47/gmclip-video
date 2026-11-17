@@ -1,0 +1,11 @@
+[package]
+name = "gmclip-core"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+gmclip-render = { path = "../gmclip-render" }
+
+[lints]
+workspace = true

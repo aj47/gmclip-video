@@ -1,0 +1,8 @@
+# Pinned to the stable toolchain installed on AJ's Mac at W0 (rustup 1.97.1, 2026-07-14).
+# Homebrew's cargo (/opt/homebrew/bin) ignores this file: put ~/.cargo/bin first on PATH.
+# Bumping the pin is a supply-chain change (CODEOWNERS: AJ).
+[toolchain]
+channel = "1.97.1"
+components = ["rustfmt", "clippy"]
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-pc-windows-msvc", "aarch64-pc-windows-msvc"]
+profile = "minimal"

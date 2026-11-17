@@ -1,0 +1,35 @@
+{
+  "all": {
+    "hear_seconds": 30.381,
+    "parts": 20,
+    "parts_reused": 0,
+    "policy": "all",
+    "seconds": {
+      "cut": 600.0,
+      "heard": 600.0,
+      "reused": 0.0,
+      "transcribed": 600.0
+    },
+    "stretches": 1,
+    "words": 1139
+  },
+  "backlog": "A.09",
+  "build": "release",
+  "measure": "wall seconds of gmclip plan hear (render the voice mix, resample to 16 kHz, parakeet TDT v3 int8; the model loaded first) on a 10-minute long-form: 20 takes of 30 s of the loc_bd89f38b restream from 600 s, 35 s apart; take 6 at +4 dB, a +6 dB envelope over 365–385 s of output; delivery loudness static (not heard)",
+  "rule": {
+    "hear_seconds": 5.268,
+    "parts": 20,
+    "parts_reused": 18,
+    "policy": "rule",
+    "seconds": {
+      "cut": 600.0,
+      "heard": 60.0,
+      "reused": 540.0,
+      "transcribed": 66.0
+    },
+    "stretches": 2,
+    "words": 81
+  },
+  "saved_fraction": 0.827,
+  "saved_wall_seconds": 25.113
+}

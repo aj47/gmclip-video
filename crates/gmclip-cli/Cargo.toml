@@ -1,0 +1,44 @@
+[package]
+name = "gmclip-cli"
+description = "The `gmclip` binary. M0: hand-written offline subcommands (render, still, plan validate, probe, remux)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "gmclip"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+gmclip-ai.workspace = true
+gmclip-analysis.workspace = true
+gmclip-core.workspace = true
+gmclip-mcp.workspace = true
+gmclip-ml.workspace = true
+gmclip-media.workspace = true
+gmclip-model.workspace = true
+gmclip-plan.workspace = true
+gmclip-proto.workspace = true
+gmclip-render.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tokio.workspace = true
+# Pinned to versions the imported cargo-vet audits cover (tracing-core 0.1.36 likewise);
+# once_cell 1.21.4 (tracing-core's std feature) is an exemption awaiting AJ's audit.
+tracing = { version = "=0.1.41", default-features = false, features = ["std"] }
+tracing-core = { version = "=0.1.36", default-features = false, features = ["std"] }
+
+[features]
+# Tests that need AJ's machine: his media (GMCLIP_LAB_MEDIA, tools/lab_media.sh).
+# `cargo test -p gmclip-cli --features lab`.
+lab = []
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+rmcp = { workspace = true, features = ["client", "transport-child-process"] }
+serde_json.workspace = true

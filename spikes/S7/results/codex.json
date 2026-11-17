@@ -1,0 +1,238 @@
+{
+  "harness": "codex",
+  "client": "~/.nvm/versions/node/v24.1.0/bin/codex",
+  "version": "codex-cli 0.160.0",
+  "checks": [
+    {
+      "id": "S7.0",
+      "what": "positive control: the stub model got the run's own prompt, in readable JSON",
+      "pass": true,
+      "detail": "1 request(s), 0 unreadable, brief and run id seen true"
+    },
+    {
+      "id": "S7.1",
+      "what": "the binary run is the recorded absolute path; no alias/function flags",
+      "pass": true,
+      "detail": "argv[0] ~/.nvm/versions/node/v24.1.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex; via npm wrapper \u2192 vendored native binary; sha256 112fae7a5a1223e673c8a1791d32338f37df8b527ff1159bb8adac6c4dbf1b4b; alias flags []"
+    },
+    {
+      "id": "S7.2",
+      "what": "the tools offered equal the run's enumerated gmclip tools (no shell, write or web tool)",
+      "pass": false,
+      "detail": "non-gmclip [\"collaboration/followup_task\", \"collaboration/interrupt_agent\", \"collaboration/list_agents\", \"collaboration/send_message\", \"collaboration/spawn_agent\", \"collaboration/wait_agent\", \"functions/exec\", \"functions/exec>apply_patch\", \"functions/exec>clock__curr_time\", \"functions/exec>list_mcp_resource_templates\", \"functions/exec>list_mcp_resources\", \"functions/exec>read_mcp_resource\", \"functions/request_user_input\", \"functions/request_user_input_async\", \"functions/wait\"]; gmclip offered 0 vs allowed 18"
+    },
+    {
+      "id": "S7.3",
+      "what": "no canary text reaches the session (requests or transcript)",
+      "pass": false,
+      "detail": "leaked [\"codex-agents-md\"]; could not plant []"
+    },
+    {
+      "id": "S7.4",
+      "what": "no user hook ran",
+      "pass": true,
+      "detail": "fired []"
+    },
+    {
+      "id": "S7.5",
+      "what": "no MCP server but gmclip's was started",
+      "pass": true,
+      "detail": "started []"
+    },
+    {
+      "id": "S7.6",
+      "what": "gmclip's MCP server received this run's credential (GMCLIP_RUN)",
+      "pass": true,
+      "detail": "server fingerprint Some(\"08b2dcc1c139a899\"), run 08b2dcc1c139a899"
+    },
+    {
+      "id": "S7.7",
+      "what": "nothing outside the whitelist is inherited (planted variables never reach the client's MCP child)",
+      "pass": true,
+      "detail": "planted and seen []; launcher keys [\"GMCLIP_RUN\", \"GMCLIP_S7_KEY\", \"HOME\", \"LANG\", \"PATH\", \"TMPDIR\"]"
+    },
+    {
+      "id": "S7.8",
+      "what": "the cwd and its ancestors hold no instruction files",
+      "pass": true,
+      "detail": "None"
+    },
+    {
+      "id": "S7.9",
+      "what": "refusal of shell/write/web calls (not exercised: the Codex stub refuses every request)",
+      "pass": false,
+      "detail": "not exercised for Codex; S7.2 and S7.3 already fail"
+    }
+  ],
+  "supported": false,
+  "requests": 1,
+  "tools_offered": [
+    "collaboration/followup_task",
+    "collaboration/interrupt_agent",
+    "collaboration/list_agents",
+    "collaboration/send_message",
+    "collaboration/spawn_agent",
+    "collaboration/wait_agent",
+    "functions/exec",
+    "functions/exec>apply_patch",
+    "functions/exec>clock__curr_time",
+    "functions/exec>list_mcp_resource_templates",
+    "functions/exec>list_mcp_resources",
+    "functions/exec>read_mcp_resource",
+    "functions/request_user_input",
+    "functions/request_user_input_async",
+    "functions/wait"
+  ],
+  "run": {
+    "schema": "gmclip.agent-run/0",
+    "run": "17ef2ad4ccbe2e9751fc",
+    "identity": "launched:17ef2ad4ccbe2e9751fc",
+    "registered_with_holder": false,
+    "harness": "codex",
+    "binary": {
+      "found": "~/.nvm/versions/node/v24.1.0/bin/codex",
+      "exec": "~/.nvm/versions/node/v24.1.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+      "via": "npm wrapper \u2192 vendored native binary",
+      "sha256": "112fae7a5a1223e673c8a1791d32338f37df8b527ff1159bb8adac6c4dbf1b4b",
+      "version_output": "codex-cli 0.160.0",
+      "version": {
+        "major": 0,
+        "minor": 160,
+        "patch": 0
+      },
+      "verdict": {
+        "verdict": "unsupported",
+        "reason": "codex 0.160 fails S7: $CODEX_HOME/AGENTS.md reaches the session despite --ignore-user-config (S7-X1), and spawn_agent/send_message/wait_agent and request_user_input stay on the tool list with every documented feature off (S7-X5)"
+      }
+    },
+    "version_policy": "probe_only",
+    "project": "s7-probe",
+    "cut": "s7-cut",
+    "scopes": [
+      "read",
+      "edit",
+      "render",
+      "ai"
+    ],
+    "grants": {
+      "media": false,
+      "private_regions": false
+    },
+    "tools": [
+      "mcp__gmclip__project_overview",
+      "mcp__gmclip__project_watch",
+      "mcp__gmclip__transcript_read",
+      "mcp__gmclip__cut_get",
+      "mcp__gmclip__cut_edit",
+      "mcp__gmclip__layout_edit",
+      "mcp__gmclip__moments_list",
+      "mcp__gmclip__analysis_get",
+      "mcp__gmclip__measure",
+      "mcp__gmclip__verify",
+      "mcp__gmclip__lint",
+      "mcp__gmclip__ai_pass",
+      "mcp__gmclip__pass_step",
+      "mcp__gmclip__export",
+      "mcp__gmclip__commands_search",
+      "mcp__gmclip__command_describe",
+      "mcp__gmclip__command_run",
+      "mcp__gmclip__command_batch"
+    ],
+    "brief_sha256": "198db7e8a69c3d5706bb97cd38312f87618bdf94bf4a33762b205665479cb41d",
+    "argv": [
+      "~/.nvm/versions/node/v24.1.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+      "-a",
+      "never",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "-C",
+      "$SCRATCH/p-codex/work/runs/17ef2ad4ccbe2e9751fc/cwd",
+      "-s",
+      "read-only",
+      "--disable",
+      "shell_tool",
+      "--disable",
+      "unified_exec",
+      "--disable",
+      "apps",
+      "--disable",
+      "browser_use",
+      "--disable",
+      "computer_use",
+      "--disable",
+      "image_generation",
+      "--disable",
+      "multi_agent",
+      "--disable",
+      "memories",
+      "--disable",
+      "plugins",
+      "--disable",
+      "hooks",
+      "--disable",
+      "view_image",
+      "--disable",
+      "goals",
+      "--disable",
+      "sleep_tool",
+      "--disable",
+      "tool_suggest",
+      "--disable",
+      "skill_search",
+      "-c",
+      "web_search=\"disabled\"",
+      "-c",
+      "mcp_servers.gmclip.command=\"~/Development/gmclip-wt/lane-e/target/debug/gmclip-eval\"",
+      "-c",
+      "mcp_servers.gmclip.args=[\"mcp-stub\",\"$SCRATCH/p-codex/work/gmclip-mcp.jsonl\",\"--tools\",\"project_overview,project_watch,transcript_read,cut_get,cut_edit,layout_edit,moments_list,analysis_get,measure,verify,lint,ai_pass,pass_step,export,commands_search,command_describe,command_run,command_batch\"]",
+      "-c",
+      "mcp_servers.gmclip.env_vars=[\"GMCLIP_RUN\"]",
+      "-c",
+      "mcp_servers.gmclip.enabled_tools=[\"project_overview\",\"project_watch\",\"transcript_read\",\"cut_get\",\"cut_edit\",\"layout_edit\",\"moments_list\",\"analysis_get\",\"measure\",\"verify\",\"lint\",\"ai_pass\",\"pass_step\",\"export\",\"commands_search\",\"command_describe\",\"command_run\",\"command_batch\"]",
+      "-c",
+      "skills.include_instructions=false",
+      "-c",
+      "model_reasoning_effort=\"high\"",
+      "-c",
+      "model_provider=\"gmclip_s7\"",
+      "-c",
+      "model_providers.gmclip_s7={name=\"gmclip-s7\",base_url=\"http://127.0.0.1:50709/v1\",wire_api=\"responses\",env_key=\"GMCLIP_S7_KEY\"}",
+      "--json",
+      "-"
+    ],
+    "env_keys": [
+      "GMCLIP_RUN",
+      "GMCLIP_S7_KEY",
+      "HOME",
+      "LANG",
+      "PATH",
+      "TMPDIR"
+    ],
+    "credential_fingerprint": "08b2dcc1c139a899",
+    "cwd": "$SCRATCH/p-codex/work/runs/17ef2ad4ccbe2e9751fc/cwd",
+    "wall_clock_s": 180,
+    "tcc_disclaimed": false,
+    "probe_endpoint": "http://127.0.0.1:50709",
+    "started_unix_ms": 1792018380289,
+    "ended_unix_ms": 1792018380649,
+    "exit_code": 1,
+    "timed_out": false,
+    "elapsed_ms": 359,
+    "transcript_path": "$SCRATCH/p-codex/work/runs/17ef2ad4ccbe2e9751fc/transcript.jsonl",
+    "transcript_sha256": "58d8759ecff31567050180d7e5399e0e5d2091b04d5d6bcf75b8aceb66a3e339",
+    "tool_calls": 0,
+    "non_gmclip_calls": 0,
+    "out_of_policy_calls": 0,
+    "tools_offered": null,
+    "transcript_junk_lines": 0,
+    "transcript_result_seen": true,
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read_tokens": 0
+    }
+  }
+}

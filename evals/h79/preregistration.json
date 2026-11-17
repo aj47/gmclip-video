@@ -1,0 +1,9 @@
+{
+ "schema": "gmclip.eval.h79.preregistration/0",
+ "freeze_tag": "m1-eval-freeze",
+ "clients": ["claude-code", "codex"],
+ "runs_per_client": 5,
+ "pass_threshold": 3,
+ "order": "interleaved",
+ "infra_rerun_max": 2
+}

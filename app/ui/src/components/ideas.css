@@ -1,0 +1,60 @@
+/* Ideas 2026-10-16 (library and layout, lane K4): draw your layout, compare long-forms,
+   fix everywhere, B-roll, topic results. Tokens only (design/tokens.css). */
+
+/* ---- draw your layout once ------------------------------------------------------- */
+.dl-sheet { max-width: 920px; }
+.dl-tools { flex-wrap: wrap; gap: var(--s-2); }
+.dl-stage { position: relative; width: min(100%, calc(52vh * var(--dl-ar, 1.78))); margin: 0 auto; flex: none; background: var(--surface-sunken); border-radius: var(--r-2); overflow: hidden; cursor: crosshair; touch-action: none; user-select: none; }
+.dl-frame { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.dl-box { position: absolute; border: 2px solid var(--dl-c, var(--accent)); background: color-mix(in srgb, var(--dl-c, var(--accent)) 16%, transparent); border-radius: 2px; pointer-events: none; }
+.dl-band { border-style: dashed; }
+.dl-tag { position: absolute; top: 0; left: 0; padding: 1px 6px; font-size: var(--fs-11); font-weight: var(--fw-semibold); color: var(--text-on-accent); background: var(--dl-c, var(--accent)); border-bottom-right-radius: var(--r-1); }
+.dl-screen { --dl-c: var(--accent); }
+.dl-cam { --dl-c: var(--success); }
+.dl-chat { --dl-c: var(--warning); }
+.dl-alerts { --dl-c: var(--warning); }
+.dl-private { --dl-c: var(--danger); }
+.dl-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.dl-list li { display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--s-2); }
+.dl-name input { flex: 1 1 160px; min-width: 0; }
+.dl-foot { flex-wrap: wrap; }
+.dl-swatch { width: 10px; height: 10px; border-radius: 2px; background: var(--dl-c, var(--accent)); flex: none; }
+.map-layout { display: flex; grid-column: 1 / -1; padding: 0 0 2px 54px; }
+.layout-callout { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; padding: var(--s-2); border: 1px dashed var(--sep-strong); border-radius: var(--r-2); }
+
+/* ---- compare long-forms ----------------------------------------------------------- */
+.lc-pickers select { flex: 1 1 160px; min-width: 0; }
+.lc-sides { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+@media (max-width: 720px) { .lc-sides { grid-template-columns: 1fr; } }
+.lc-side { display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+.lc-head { display: flex; flex-direction: column; gap: 2px; }
+.lc-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lc-strip { display: flex; height: 10px; border-radius: var(--r-pill); overflow: hidden; background: var(--surface-sunken); }
+.lc-seg { height: 100%; min-width: 2px; border-right: 1px solid var(--surface-panel); }
+.lc-chapters { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.lc-chapters li { display: flex; align-items: center; gap: var(--s-2); padding: 2px 4px; border-radius: var(--r-1); }
+.lc-chapters li.moved { background: var(--accent-wash); }
+.lc-chapters li.only { background: var(--warning-wash); }
+.lc-thumb { width: 64px; height: 36px; flex: none; border-left: 3px solid; border-radius: 2px; overflow: hidden; background: var(--surface-sunken); display: inline-flex; }
+.lc-thumb canvas { width: 100%; height: 100%; object-fit: cover; }
+.lc-nothumb { width: 100%; height: 100%; opacity: 0.35; }
+.lc-n { font-variant-numeric: tabular-nums; color: var(--text-3); width: 1.5em; text-align: right; }
+.lc-ch { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---- words strip: fix everywhere, B-roll --------------------------------------------- */
+/* they float over the window (the words strip is a short box that would clip them) */
+.fix-pop, .broll-pop { position: fixed; z-index: 45; left: 50%; bottom: var(--s-4); transform: translateX(-50%); width: min(560px, calc(100vw - 2 * var(--s-3))); max-height: min(70vh, calc(100vh - 2 * var(--s-4))); overflow: auto; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-2) var(--s-3); border: 1px solid var(--sep-strong); border-radius: var(--r-3); background: var(--surface-overlay); box-shadow: var(--shadow-pop); white-space: normal; }
+.fix-pop .row { flex-wrap: wrap; }
+.broll-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-2); }
+.broll-list li { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s-2); padding: var(--s-1) 0; border-top: 1px solid var(--sep); }
+.broll-meta { display: flex; gap: var(--s-2); flex-wrap: wrap; font-size: var(--fs-12); }
+.broll-text { grid-column: 1 / -1; margin: 0; font-size: var(--fs-12); color: var(--text-2); overflow-wrap: anywhere; }
+.broll-note { grid-column: 1 / -1; }
+.broll-actions { display: flex; gap: 2px; align-items: center; grid-row: 1; grid-column: 2; }
+
+/* ---- library search: topics -------------------------------------------------------- */
+.libsearch-topics { list-style: none; margin: 0 0 var(--s-2); padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.libsearch-topics li { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; padding: var(--s-1) var(--s-2); border-radius: var(--r-1); }
+.libsearch-topics li:hover { background: var(--wash-hover); }
+.topic-title { font-weight: var(--fw-semibold); }
+.broll-pop:focus { outline: none; }

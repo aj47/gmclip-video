@@ -1,0 +1,9 @@
+# Negative fixture (W0-02): a GPL-3.0 crate turns `cargo deny check licenses` red.
+# Not `publish = false`, so deny.toml's private-crate exemption does not apply.
+[workspace]
+
+[package]
+name = "fixture-gpl"
+version = "0.0.0"
+edition = "2024"
+license = "GPL-3.0-only"

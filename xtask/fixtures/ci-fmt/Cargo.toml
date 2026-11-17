@@ -1,0 +1,8 @@
+# Negative fixture (W0-02): badly formatted code turns `cargo fmt --check` red.
+[workspace]
+
+[package]
+name = "fixture-fmt"
+version = "0.0.0"
+edition = "2024"
+publish = false

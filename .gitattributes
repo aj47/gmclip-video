@@ -1,0 +1,8 @@
+# LF in every working copy, whatever core.autocrlf says: fixtures are hashed and golden
+# files compared byte for byte, so a Windows checkout with autocrlf=true must not
+# rewrite them. Git still detects binaries (text=auto).
+* text=auto eol=lf
+
+# Line endings and merges for files several agent branches write (see xtask/src/status.rs).
+STATUS.md text eol=lf merge=union
+plan/status.toml text eol=lf
