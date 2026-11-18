@@ -44,13 +44,36 @@ If Homebrew's cargo is on your `PATH` ahead of rustup's, it ignores the pinned t
 put `~/.cargo/bin` first.
 
 Speech-to-text uses Parakeet TDT and Silero VAD, which run locally. The app downloads
-them on first use; `tools/fetch_models.sh` fills the same cache for development.
+them on first use; `tools/fetch_models.sh` (`tools\fetch_models.ps1` on Windows) fills the
+same cache for development.
 
 The command-line tool builds from the root workspace:
 
 ```bash
 cargo build -p gmclip-cli        # target/debug/gmclip
 ```
+
+### Windows (not yet supported)
+
+The Windows code builds and runs on Windows 11 x64 with rustup, Node, pnpm, the Visual
+Studio Build Tools (the "Desktop development with C++" workload) and the WebView2 runtime,
+which Windows 11 ships. In PowerShell:
+
+```powershell
+cd app\ui; pnpm install --frozen-lockfile; pnpm exec vite build
+cd ..\src-tauri; cargo build --release --features custom-protocol
+target\release\gmclip-app.exe
+```
+
+`gmclip-app.exe` is a console program (it is the MCP server and `call` too). Run from a
+terminal it uses that terminal and prints its errors there; started from Explorer or a
+shortcut it would open a console window of its own beside the app. `gmclip-launch.exe`,
+built next to it, starts it without that window, and is what the Start menu shortcut of
+the installer (`app\scripts\bundle-win.ps1`) runs.
+
+If the build stops with "The paging file is too small for this operation to complete"
+(os error 1455), the machine ran out of memory for that many compilers at once: add
+`-j 8` to `cargo build`.
 
 ## Agents
 

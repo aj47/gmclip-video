@@ -56,16 +56,34 @@ if ((Test-Path -LiteralPath (Join-Path $D $Dll)) -and ((Sha (Join-Path $D $Dll))
     New-Item -ItemType Directory -Force $tmp | Out-Null
     try {
         $zip = Join-Path $tmp 'ort.zip'
-        & $Curl -fsSL --proto '=https' -o $zip 'https://github.com/microsoft/onnxruntime/releases/download/v1.30.0/onnxruntime-win-x64-1.30.0.zip'
-        if ($LASTEXITCODE -ne 0) { throw 'ORT download failed' }
-        if ((Sha $zip) -ne 'c6ba983baf5681af108599675d2a89c2d145512d02de28aed0bff177cd0ba949') { throw 'ORT archive hash mismatch' }
-        $m = 'onnxruntime-win-x64-1.30.0'
-        & $Tar -xf $zip -C $tmp "$m/lib/$Dll" "$m/LICENSE" "$m/ThirdPartyNotices.txt"
+        # judged by its exit code: with stderr redirected, Windows PowerShell 5.1 turns
+        # the line curl writes for an HTTP error into an error record, and 'Stop' ends there
+        $ErrorActionPreference = 'Continue'
+        try {
+            & $Curl -fsSL --proto '=https' -o $zip 'https://github.com/microsoft/onnxruntime/releases/download/v1.30.0/onnxruntime-win-x64-1.30.0.zip'
+        } finally { $ErrorActionPreference = 'Stop' }
+        if ($LASTEXITCODE -eq 0) {
+            if ((Sha $zip) -ne 'c6ba983baf5681af108599675d2a89c2d145512d02de28aed0bff177cd0ba949') { throw 'ORT archive hash mismatch' }
+            $m = 'onnxruntime-win-x64-1.30.0'
+            $lib = "$m/lib/$Dll"
+            $notes = "$m/LICENSE", "$m/ThirdPartyNotices.txt"
+        } else {
+            # The release could not be fetched (github.com/microsoft/onnxruntime answered
+            # 404 on 2026-11-18): Microsoft.ML.OnnxRuntime 1.30.0 on nuget.org holds the
+            # same DLL, byte for byte (the app's mirror too, app/src-tauri/src/models.rs).
+            $zip = Join-Path $tmp 'ort.nupkg'
+            & $Curl -fsSL --proto '=https' -o $zip 'https://api.nuget.org/v3-flatcontainer/microsoft.ml.onnxruntime/1.30.0/microsoft.ml.onnxruntime.1.30.0.nupkg'
+            if ($LASTEXITCODE -ne 0) { throw 'ORT download failed (GitHub release and NuGet)' }
+            if ((Sha $zip) -ne '30df119bd9164eaa187666d93147448fdd4a9a1a3caf83f1505daf7af2d1c5d2') { throw 'ORT NuGet package hash mismatch' }
+            $lib = "runtimes/win-x64/native/$Dll"
+            $notes = 'LICENSE', 'ThirdPartyNotices.txt'
+        }
+        & $Tar -xf $zip -C $tmp $lib $notes[0] $notes[1]
         if ($LASTEXITCODE -ne 0) { throw 'extracting ORT failed' }
-        if ((Sha (Join-Path $tmp "$m/lib/$Dll")) -ne $DllSha) { throw 'ORT DLL hash mismatch' }
+        if ((Sha (Join-Path $tmp $lib)) -ne $DllSha) { throw 'ORT DLL hash mismatch' }
         New-Item -ItemType Directory -Force $D | Out-Null
-        Move-Item -Force (Join-Path $tmp "$m/lib/$Dll") (Join-Path $D $Dll)
-        Move-Item -Force (Join-Path $tmp "$m/LICENSE"), (Join-Path $tmp "$m/ThirdPartyNotices.txt") $D
+        Move-Item -Force (Join-Path $tmp $lib) (Join-Path $D $Dll)
+        Move-Item -Force (Join-Path $tmp $notes[0]), (Join-Path $tmp $notes[1]) $D
         "fetched models/onnxruntime-1.30.0-win-x64/$Dll"
     } finally {
         Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue

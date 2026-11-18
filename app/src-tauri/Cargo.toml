@@ -19,6 +19,8 @@ edition = "2024"
 rust-version = "1.97"
 publish = false
 license = "MIT OR Apache-2.0"
+# `src/bin/gmclip-launch.rs` is a second binary: `cargo run` means the app.
+default-run = "gmclip-app"
 
 [[bin]]
 name = "gmclip-app"

@@ -60,6 +60,9 @@ $Stage = Join-Path $Out "stage"
 if (Test-Path $Stage) { Remove-Item -Recurse -Force $Stage }
 New-Item -ItemType Directory -Force (Join-Path $Stage "resources\fonts") | Out-Null
 Copy-Item $Bin (Join-Path $Stage "gmclip-app.exe")
+# what the Start menu shortcut runs: starts gmclip-app.exe without a console window
+$Launcher = Join-Path $Here "src-tauri\target\release\gmclip-launch.exe"
+Copy-Item $Launcher (Join-Path $Stage "gmclip-launch.exe")
 
 Run "fonts (the faces captions use, hash-checked; resolved from resources\fonts at run time)" {
     & $Bin bundle-fonts (Join-Path $Stage "resources\fonts")
@@ -79,6 +82,7 @@ $Msi = Join-Path $Out "gmclip-$Version-x64.msi"
 Run "compile" {
     & (Join-Path $Wix "candle.exe") -nologo -arch x64 -out "$Obj\" `
         "-dVersion=$Version" "-dExe=$(Join-Path $Stage 'gmclip-app.exe')" `
+        "-dLauncher=$(Join-Path $Stage 'gmclip-launch.exe')" `
         "-dIcon=$(Join-Path $Here 'src-tauri\icons\icon.ico')" "-dResourcesDir=$(Join-Path $Stage 'resources')" `
         (Join-Path $PSScriptRoot "windows\gmclip.wxs") $Res
 }
