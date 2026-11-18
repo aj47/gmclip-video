@@ -54,12 +54,18 @@
       <Component Id="App" Guid="*" Win64="yes">
         <File Id="GmclipExe" Source="$(var.Exe)" Name="gmclip-app.exe" KeyPath="yes" Checksum="yes" />
       </Component>
+      <!-- gmclip-app.exe is a console program (it is the MCP shim and `call` too), so the
+           shortcut runs this windowless launcher, which starts it without a console
+           window (src/bin/gmclip-launch.rs). -->
+      <Component Id="Launcher" Guid="*" Win64="yes">
+        <File Id="GmclipLaunchExe" Source="$(var.Launcher)" Name="gmclip-launch.exe" KeyPath="yes" Checksum="yes" />
+      </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="ProgramMenuFolder">
       <Component Id="StartMenu" Guid="*">
         <Shortcut Id="GmclipShortcut" Name="gmclip" Description="Edit long recordings into short clips"
-                  Target="[INSTALLDIR]gmclip-app.exe" WorkingDirectory="INSTALLDIR" Icon="gmclip.ico" />
+                  Target="[INSTALLDIR]gmclip-launch.exe" WorkingDirectory="INSTALLDIR" Icon="gmclip.ico" />
         <RegistryValue Root="HKCU" Key="Software\gmclip\installer" Name="shortcut" Type="integer"
                        Value="1" KeyPath="yes" />
       </Component>
@@ -67,6 +73,7 @@
 
     <Feature Id="Main" Title="gmclip" Level="1">
       <ComponentRef Id="App" />
+      <ComponentRef Id="Launcher" />
       <ComponentRef Id="StartMenu" />
       <ComponentGroupRef Id="Resources" />
     </Feature>
