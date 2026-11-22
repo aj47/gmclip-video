@@ -1105,8 +1105,12 @@ async fn a_wrong_server_names_the_binary_to_run() {
     .unwrap_err()
     .to_string();
     assert!(e.contains("not gmclip"), "{e}");
+    // Windows: our_exe() is canonical (`\\?\D:\…`); the message names the server's
+    // image path as the OS reports it, without that prefix
+    let me = me.display().to_string();
+    let me = me.strip_prefix(r"\\?\").unwrap_or(&me);
     assert!(
-        e.contains(&format!("'{}' mcp", me.display())),
+        e.contains(&format!("'{me}' mcp")),
         "names the binary serving it: {e}"
     );
 }

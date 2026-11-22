@@ -248,7 +248,7 @@ pub fn check_private_dir(dir: &Path) -> Result<(), PathError> {
     if sec.owner_sid != me {
         return Err(PathError::Unsafe(dir.to_owned(), "not owned by this user"));
     }
-    if !gmclip_platform::sddl::dacl_private_to(&sec.dacl_sddl, &me) {
+    if !sec.dacl_private_to(&me) {
         return Err(PathError::Unsafe(
             dir.to_owned(),
             "its ACL lets other accounts in",

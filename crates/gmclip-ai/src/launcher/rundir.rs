@@ -240,7 +240,7 @@ fn ensure_private_dir(p: &Path, stop: &Path) -> Result<(), RunDirError> {
                     if sec.owner_sid != me {
                         return Err(RunDirError::UnsafeRoot(dir, "is not owned by this user"));
                     }
-                    if !gmclip_platform::sddl::dacl_private_to(&sec.dacl_sddl, &me) {
+                    if !sec.dacl_private_to(&me) {
                         return Err(RunDirError::UnsafeRoot(
                             dir,
                             "lets other accounts in (want an owner-only ACL)",

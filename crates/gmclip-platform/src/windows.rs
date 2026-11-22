@@ -317,8 +317,14 @@ pub struct FileSecurity {
 impl FileSecurity {
     /// Owned by this user and nobody else let in.
     pub fn is_private_to(&self, sid: &str) -> bool {
-        self.owner_sid == sid
-            && sddl::dacl_private_to_resolving(&self.dacl_sddl, sid, |a| alias_sid(a).ok())
+        self.owner_sid == sid && self.dacl_private_to(sid)
+    }
+
+    /// The DACL lets nobody but `sid` in. A trustee printed as an SDDL alias counts as
+    /// `sid` only when the alias resolves to exactly it (the built-in Administrator
+    /// prints as `LA`).
+    pub fn dacl_private_to(&self, sid: &str) -> bool {
+        sddl::dacl_private_to_resolving(&self.dacl_sddl, sid, |a| alias_sid(a).ok())
     }
 }
 
