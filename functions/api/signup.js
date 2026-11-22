@@ -36,7 +36,7 @@ export async function onRequest({ request, env }) {
     if (limit.count > 10) return reply({ error: 'Too many attempts. Please try again in an hour.' }, 429);
     await env.DB.batch([
       env.DB.prepare('DELETE FROM signup_limits WHERE hour < ?').bind(hour - 24),
-      env.DB.prepare("INSERT INTO signups (email, consent_version) VALUES (?, 'early-access-v1') ON CONFLICT(email) DO NOTHING").bind(email),
+      env.DB.prepare("INSERT INTO signups (email, consent_version) VALUES (?, 'updates-v1') ON CONFLICT(email) DO NOTHING").bind(email),
     ]);
     // Same response for existing addresses; do not expose membership.
     return reply({ ok: true });

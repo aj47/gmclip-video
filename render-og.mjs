@@ -11,7 +11,7 @@ try {
     await document.fonts.ready;
     await Promise.all([...document.images].map(img => img.decode()));
   });
-  const path = fileURLToPath(new URL('./assets/og-gmclip-v2.jpg', import.meta.url));
+  const path = fileURLToPath(new URL('./assets/og-gmclip-v3.jpg', import.meta.url));
   await page.screenshot({ path, type: 'jpeg', quality: 94 });
   console.log(path);
 } finally {

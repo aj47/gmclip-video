@@ -69,6 +69,6 @@ form.addEventListener('submit', async (event) => {
       : error.message;
   } finally {
     submit.disabled = false;
-    submitLabel.textContent = 'Get early access';
+    submitLabel.textContent = 'Get updates';
   }
 });

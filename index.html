@@ -10,17 +10,17 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="gmclip" />
   <meta property="og:url" content="https://gmclip.com/" />
-  <meta property="og:image" content="https://gmclip.com/assets/og-gmclip-v2.jpg" />
-  <meta property="og:image:secure_url" content="https://gmclip.com/assets/og-gmclip-v2.jpg" />
+  <meta property="og:image" content="https://gmclip.com/assets/og-gmclip-v3.jpg" />
+  <meta property="og:image:secure_url" content="https://gmclip.com/assets/og-gmclip-v3.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="gmclip: Edit video like a doc. A cream and blue card with the smiling sun logo and an editor preview featuring AJ’s exe.dev Short. Long recordings. Great clips." />
+  <meta property="og:image:alt" content="gmclip: Edit video like a doc. A cream and blue card with the yellow smiling sun logo and the gmclip 0.1.0 editor with AJ’s exe.dev Short. Long recordings. Great clips." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="gmclip: edit video like a doc" />
   <meta name="twitter:description" content="Long recordings. Great clips. Strike words to cut, reframe for Shorts and YouTube, and burn in captions. Open source for macOS and Windows." />
-  <meta name="twitter:image" content="https://gmclip.com/assets/og-gmclip-v2.jpg" />
-  <meta name="twitter:image:alt" content="gmclip: Edit video like a doc. A cream and blue card with the smiling sun logo and an editor preview featuring AJ’s exe.dev Short. Long recordings. Great clips." />
+  <meta name="twitter:image" content="https://gmclip.com/assets/og-gmclip-v3.jpg" />
+  <meta name="twitter:image:alt" content="gmclip: Edit video like a doc. A cream and blue card with the yellow smiling sun logo and the gmclip 0.1.0 editor with AJ’s exe.dev Short. Long recordings. Great clips." />
   <link rel="canonical" href="https://gmclip.com/" />
   <meta name="theme-color" content="#fff8ec" />
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
@@ -40,7 +40,7 @@
         <a href="#themes">Light &amp; dark</a>
         <a href="https://github.com/aj47/gmclip-video" rel="noopener">GitHub</a>
       </nav>
-      <button class="btn btn-primary" type="button" data-signup-open aria-haspopup="dialog" aria-controls="signup-dialog">Get early access</button>
+      <a class="btn btn-primary" href="#download">Download</a>
     </div>
   </header>
 
@@ -52,13 +52,15 @@
       </div>
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow">☀︎ Open source · macOS &amp; Windows</span>
+          <span class="eyebrow">☀︎ v0.1.0 · Open source · macOS &amp; Windows</span>
           <h1>Edit video <span class="hl">like a doc.</span></h1>
           <p class="lede">gmclip turns long recordings into Shorts and YouTube cuts. Strike words in the transcript to cut, frame for 9:16 and 16:9, burn in captions, and let your own AI agent find the moments worth posting.</p>
-          <div class="hero-ctas">
-            <button class="btn btn-primary" type="button" data-signup-open aria-haspopup="dialog" aria-controls="signup-dialog">Get early access</button>
-            <a class="btn btn-sun" href="https://github.com/aj47/gmclip-video" rel="noopener">View the source on GitHub</a>
+          <div class="hero-ctas" id="download">
+            <a class="btn btn-primary" href="https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-macos-arm64.dmg">Download for Mac <span class="btn-sub">Apple chip</span></a>
+            <a class="btn btn-sun" href="https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-macos-x64.dmg">Mac <span class="btn-sub">Intel</span></a>
+            <a class="btn" href="https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-windows-x64.msi">Windows <span class="btn-sub">x64</span></a>
           </div>
+          <p class="hero-note download-note">The installers aren’t signed yet. On a Mac, open System Settings → Privacy &amp; Security and click <b>Open Anyway</b> the first time; on Windows, click <b>More info</b>, then <b>Run anyway</b>. <a href="https://github.com/aj47/gmclip-video/releases/tag/v0.1.0" rel="noopener">Release notes and checksums</a>.</p>
           <p class="hero-note">Open source under MIT or Apache-2.0. Transcription runs on your machine. No ffmpeg inside. Bring Claude Code, Codex, pi or opencode.</p>
         </div>
         <div class="hero-sun"><img src="assets/icon-512.png" srcset="assets/icon-512.png 1x, assets/icon-1024.png 2x" alt="The gmclip app icon: a smiling sun" width="512" height="512" /></div>
@@ -72,8 +74,8 @@
           <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
         </div>
         <div class="screen">
-          <img class="light" src="assets/shots/exe-dev-v1/editor-plan-light.webp" alt="The gmclip editor with AJ’s exe.dev Short, its transcript, project map, and an eight-part timeline" width="2000" height="1250" />
-          <img class="dark" src="assets/shots/exe-dev-v1/editor-plan-dark.webp" alt="The same editor in the dark theme" width="2000" height="1250" loading="lazy" />
+          <img class="light" src="assets/shots/v0.1.0/editor-topics-light.webp" alt="The gmclip editor with AJ’s exe.dev Short: topics, a long video and a short in the project map, the Words panel as prose, and an eight-part timeline" width="2000" height="1250" />
+          <img class="dark" src="assets/shots/v0.1.0/editor-topics-dark.webp" alt="The same editor in the dark theme" width="2000" height="1250" loading="lazy" />
         </div>
       </div>
     </section>
@@ -87,7 +89,7 @@
         </div>
         <div class="facts">
           <div class="fact"><b>0</b><span>ffmpeg. Decoding and encoding use your OS's own codecs.</span></div>
-          <div class="fact"><b>2</b><span>framings from one cut: 9:16 for Shorts and Reels, 16:9 for YouTube.</span></div>
+          <div class="fact"><b>2</b><span>shapes from one cut: 9:16 for Shorts and Reels, 16:9 for YouTube.</span></div>
           <div class="fact"><b>4</b><span>agents it can drive: Claude Code, Codex, pi and opencode.</span></div>
           <div class="fact"><b>−16</b><span>LUFS loudness on export, so every clip sounds the same.</span></div>
         </div>
@@ -122,37 +124,37 @@
               <li>Named versions and a History you can browse</li>
             </ul>
           </div>
-          <div class="screen"><img src="assets/shots/exe-dev-v1/editor-vertical-light.webp" alt="A vertical cut with the transcript beside the picture" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/editor-vertical-light.webp" alt="A vertical cut with the Words panel beside the picture" width="2000" height="1250" loading="lazy" /></div>
         </div>
 
         <div class="feature flip">
           <div class="feature-copy">
             <span class="tag blue">Framing</span>
             <h3>9:16 and 16:9 from the same cut.</h3>
-            <p>Each cut keeps both framings. Switch with one click and the edit follows. Presets for full screen and screen-plus-facecam get you most of the way, and crop boxes do the rest.</p>
+            <p>Each cut keeps both, 9:16 and 16:9. Switch with one click and the edit follows. Presets for full screen and screen-plus-facecam get you most of the way, and crop boxes do the rest.</p>
             <ul>
-              <li>Crops that apply to every part at once</li>
+              <li>Crops that apply to every part at once, and crop versions to switch between</li>
               <li>"Follow the action" crop that tracks what moves</li>
               <li>Blurred fill and gradient plates behind the picture</li>
               <li>Background cut-out without a green screen (Mac)</li>
             </ul>
           </div>
-          <div class="screen"><img src="assets/shots/exe-dev-v1/editor-horizontal-dark.webp" alt="The same cut framed 16:9 in the dark theme" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/editor-horizontal-dark.webp" alt="The same cut at 16:9 in the dark theme" width="2000" height="1250" loading="lazy" /></div>
         </div>
 
         <div class="feature">
           <div class="feature-copy">
             <span class="tag coral">Timeline</span>
-            <h3>Captions, gain and text, each on its own lane.</h3>
-            <p>Put several videos in one project and arrange them on a single timeline. Trims there only hide footage, so nothing is lost. Captions, gain envelopes and on-screen text sit on lanes you can see and drag.</p>
+            <h3>Captions, volume and text, each on its own lane.</h3>
+            <p>Put several videos in one project and arrange them on a single timeline. Trims there only hide footage, so nothing is lost. Captions, volume levels and on-screen text sit on lanes you can see and drag.</p>
             <ul>
               <li>Burned-in captions of 1–3 words, keywords in yellow</li>
               <li>Bounce, pop and fade, a style gallery, and "save as my style"</li>
-              <li>Gain per part or over a span, with fades</li>
+              <li>Volume per part or over a span, with fades</li>
               <li>Pair a voice track with a hi-res picture, synced for you</li>
             </ul>
           </div>
-          <div class="screen"><img src="assets/shots/exe-dev-v1/editor-plan-dark.webp" alt="The exe.dev edit with eight video parts, a waveform, and separate gain, caption and text lanes" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/editor-vertical-dark.webp" alt="The exe.dev edit with eight video parts, a waveform and a text lane" width="2000" height="1250" loading="lazy" /></div>
         </div>
 
         <div class="feature flip">
@@ -166,7 +168,7 @@
               <li>Panes you can hide, resize and lay out your way</li>
             </ul>
           </div>
-          <div class="screen"><img src="assets/shots/exe-dev-v1/keys-light.webp" alt="The keyboard shortcuts sheet" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/keys-light.webp" alt="The keyboard shortcuts sheet" width="2000" height="1250" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -201,7 +203,7 @@
             <div class="card-icon bg-coral" aria-hidden="true">Aa</div>
             <h3>Captions and text</h3>
             <p>Burned in, styled and timed to each cut's own audio.</p>
-            <ul><li>Keyword highlights</li><li>Text hooks, section pills, run clocks</li><li>Stressed-word emphasis and punch-ins</li><li>Caption style gallery</li></ul>
+            <ul><li>Keyword highlights</li><li>Text hooks, section labels, stopwatch</li><li>Stressed-word emphasis and punch-ins</li><li>Caption style gallery</li><li>Short titles from the hook or topic</li></ul>
           </article>
           <article class="card">
             <div class="card-icon bg-teal" aria-hidden="true">≡</div>
@@ -213,13 +215,13 @@
             <div class="card-icon bg-yellow" aria-hidden="true">∿</div>
             <h3>Audio</h3>
             <p>Levels that hold up on every platform.</p>
-            <ul><li>Audio lane and waveforms</li><li>Gain per part and per span</li><li>Fades</li><li>−16 LUFS loudness on export</li></ul>
+            <ul><li>Audio lane and waveforms</li><li>Volume per part and per span</li><li>Fades</li><li>−16 LUFS loudness on export</li></ul>
           </article>
           <article class="card">
             <div class="card-icon bg-blue" aria-hidden="true">⇪</div>
             <h3>Export and packaging</h3>
             <p>Ready to post, not just rendered.</p>
-            <ul><li>Reels and YouTube 1080p / 1440p presets</li><li>Thumbnails with versions</li><li>Copy drafts per platform</li><li>Alternate openings to test</li></ul>
+            <ul><li>Reels and YouTube 1080p / 1440p / 4K presets</li><li>Thumbnails with versions</li><li>Copy drafts per platform</li><li>Alternate openings to test</li></ul>
           </article>
           <article class="card">
             <div class="card-icon bg-violet" aria-hidden="true">⌘</div>
@@ -263,8 +265,8 @@
           <p>A cream theme and a night-ink theme, both following your system by default.</p>
         </div>
         <div class="duo">
-          <div class="screen"><img src="assets/shots/exe-dev-v1/home-light.webp" alt="Home in the light theme" width="2000" height="1250" loading="lazy" /></div>
-          <div class="screen"><img src="assets/shots/exe-dev-v1/home-dark.webp" alt="Home in the dark theme" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/home-light.webp" alt="Home in the light theme" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/home-dark.webp" alt="Home in the dark theme" width="2000" height="1250" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -274,9 +276,10 @@
         <div class="cta">
           <img src="assets/icon-512.png" alt="" width="512" height="512" />
           <h2>Good morning. Clip it.</h2>
-          <p>gmclip is open source: build it from GitHub today for macOS or Windows, or get an email when a signed build is ready.</p>
+          <p>Download gmclip 0.1.0 for macOS or Windows, or build it from source. Leave your email to hear when a new version is out.</p>
           <div class="hero-ctas" style="justify-content:center;margin-top:0">
-            <button class="btn btn-primary" type="button" data-signup-open aria-haspopup="dialog" aria-controls="signup-dialog">Get early access <span aria-hidden="true">↗</span></button>
+            <a class="btn btn-primary" href="#download">Download</a>
+            <button class="btn btn-sun" type="button" data-signup-open aria-haspopup="dialog" aria-controls="signup-dialog">Get updates <span aria-hidden="true">↗</span></button>
             <a class="btn" href="https://github.com/aj47/gmclip-video" rel="noopener">Build it from source</a>
           </div>
         </div>
@@ -297,22 +300,22 @@
     <div class="signup-card">
       <button class="signup-close" type="button" aria-label="Close signup" data-signup-close><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
       <div class="signup-intro">
-        <div class="signup-heading"><img src="assets/icon.svg" alt="" width="64" height="64" /><span class="signup-badge"><span aria-hidden="true">✦</span> A little head start</span></div>
-        <h2 id="signup-title">Be first to clip.</h2>
-        <p id="signup-description">Good clips are worth the wait. Leave your email and we’ll let you know when gmclip is ready for you.</p>
+        <div class="signup-heading"><img src="assets/icon.svg" alt="" width="64" height="64" /><span class="signup-badge"><span aria-hidden="true">✦</span> New versions</span></div>
+        <h2 id="signup-title">Get updates.</h2>
+        <p id="signup-description">Leave your email and we’ll tell you when a new version of gmclip is out.</p>
       </div>
       <form class="signup" action="/api/signup" method="post">
         <label for="signup-email">Email address</label>
         <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required aria-describedby="signup-note signup-status" autofocus />
         <div class="signup-trap" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off" /></label></div>
-        <button class="btn btn-primary signup-submit" type="submit"><span>Get early access</span><span aria-hidden="true">↗</span></button>
+        <button class="btn btn-primary signup-submit" type="submit"><span>Get updates</span><span aria-hidden="true">↗</span></button>
         <p id="signup-status" class="signup-status" role="status" aria-live="polite"></p>
-        <p id="signup-note" class="signup-note">By joining, you agree to receive gmclip early-access emails. Your email is stored with Cloudflare and used only for gmclip updates.</p>
+        <p id="signup-note" class="signup-note">By joining, you agree to receive emails about new gmclip versions. Your email is stored with Cloudflare and used only for gmclip updates.</p>
       </form>
       <div class="signup-success" hidden role="status" tabindex="-1">
         <span class="signup-check" aria-hidden="true">✓</span>
         <h2>You’re on the list.</h2>
-        <p>We’ll email you when early access is ready.<br />Until then, keep the good takes rolling.</p>
+        <p>We’ll email you when a new version is out.<br />Until then, keep the good takes rolling.</p>
         <button class="btn btn-primary" type="button" data-signup-close>Sounds good <span aria-hidden="true">☀︎</span></button>
       </div>
       <div class="signup-footer"><span class="signup-dot" aria-hidden="true"></span> macOS <span aria-hidden="true">·</span> Windows</div>
