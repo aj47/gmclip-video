@@ -129,7 +129,7 @@ pub fn owner_of(m: &Moment) -> String {
 }
 
 /// An anchor's source time, with line anchors through the transcript.
-fn anchor_time(doc: &Doc, a: &Anchor, t: Option<&Transcript>) -> Option<Flicks> {
+pub(crate) fn anchor_time(doc: &Doc, a: &Anchor, t: Option<&Transcript>) -> Option<Flicks> {
     match a {
         Anchor::LineStart(l) => t?.lines.get(l.line as usize).map(|l| Flicks(l.start)),
         Anchor::LineEnd(l) => t?.lines.get(l.line as usize).map(|l| Flicks(l.end)),

@@ -110,7 +110,7 @@ test("export → the file and the agent's note in the cut; Pause needs the Owner
   await expect(page.getByTestId("agent-working")).toBeVisible();
   const pill = page.getByTestId("checks");
   await expect(pill.getByTestId("handoff-chip")).toBeVisible({ timeout: 20_000 });
-  await pill.locator("summary").click();
+  await pill.locator("summary").first().click();
   const handoff = pill.getByTestId("handoff");
   await expect(handoff).toContainText(said);
   await expect(handoff).toContainText("Lifted part one <b>6 dB</b>");

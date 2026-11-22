@@ -7,7 +7,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { transcribed } from "./analysed";
 import { STATE } from "./global-setup";
 import { labMedia } from "./lab";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 const VIDEO = labMedia("h79/h79-v4.mp4");
 
@@ -45,6 +45,7 @@ test("hook lines on measured and spoken numbers, one click each", async ({ brows
   const cut = proj.cuts.find((c) => c.title === "h79-v4")!.id;
 
   await openTab(page, "Short");
+  await rowOn(page, "hook");
   const lines = page.getByTestId("hook-line");
   // spoken numbers first: "…in less than two minutes" is said in the clip
   await expect(lines.first()).toBeVisible({ timeout: 30_000 });
@@ -56,6 +57,8 @@ test("hook lines on measured and spoken numbers, one click each", async ({ brows
   await bridge(page, "run_measure_src", { cut, from_s: 12, to_s: 79.4 }, proj.id);
   await openTab(page, "Inspector");
   await openTab(page, "Short");
+  // the hook row is on while the cut has a hook; with none yet, back on to see the lines
+  await rowOn(page, "hook");
   await expect(lines.first()).toHaveAttribute("data-kind", "measured", { timeout: 20_000 });
   await expect(lines.first()).toContainText("Watch it finish in 67 seconds");
   await expect(lines.first()).toContainText("a measured run: 67.4 s");

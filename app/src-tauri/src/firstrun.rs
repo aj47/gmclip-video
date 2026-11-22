@@ -451,28 +451,29 @@ pub fn checklist(core: &AppCore) -> Value {
         exported |= !p.exports.lock().map(|e| e.is_empty()).unwrap_or(true);
     }
     let steps = [
+        // (the id stays "layout": the step is done by a vertical framing or a drawn layout)
         (
             "layout",
-            "Set the layout",
-            "Pick a vertical layout for a cut (Layout tab).",
+            "Make it vertical",
+            "Switch the cut to 9:16 at the top of the cut.",
             layout,
         ),
         (
             "moment",
             "Pick a moment",
-            "Stage a moment, or make a cut from one (Moments).",
+            "Find the bit worth a short: search what you said (⌘⇧F) and press ＋, or ask your agent.",
             moment,
         ),
         (
             "trim",
             "Trim by words",
-            "Strike words or split a part where it drags (Words).",
+            "Strike words or split a part where it drags (the words under the picture, or Words).",
             trimmed,
         ),
         (
             "captions",
             "Check captions",
-            "Turn captions on and read them through (Short tab).",
+            "Turn captions on and read them through (Captions).",
             captions,
         ),
         ("export", "Export", "Export the cut (⌘E).", exported),

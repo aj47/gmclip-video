@@ -533,7 +533,6 @@ fn part_edges(cx: &Cx<'_>, cut: Id<Cut>) -> Vec<(Id<Part>, i64, i64)> {
         .tx
         .peek()
         .children::<Part>(cut.entity())
-        .into_iter()
         .filter_map(|p| {
             let a = cut_time(cx, cut, &part_start(p), "/").ok()?;
             let b = cut_time(cx, cut, &part_end(p), "/").ok()?;

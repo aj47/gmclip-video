@@ -46,7 +46,6 @@ export function Appearance() {
           <input id="pref-read-size" type="range" min="14" max="34" step="1" value={prefs.read_size} data-testid="pref-read-size" onInput={(e) => setPref("read_size", Number(e.currentTarget.value))} />
           <span class="small tabular">{prefs.read_size} px</span>
         </span>
-        <span class="appearance-label">Transcript</span>
         <label class="appearance-label" for="pref-open-panes">A cut opens with</label>
         <select id="pref-open-panes" data-testid="pref-open-panes" value={prefs.open_panes} onChange={(e) => setPref("open_panes", e.currentTarget.value as "last" | "all" | "focus")}>
           <option value="last">The panes as I left them</option>
@@ -60,7 +59,6 @@ export function Appearance() {
           </Button>
         </span>
       </div>
-      <p class="muted small">Every pane also shows and hides from <b>View</b> in the top bar of a cut, with its key (⌥1–⌥5, ⌥R reads the transcript, ⌥F focuses).</p>
     </section>
   );
 }

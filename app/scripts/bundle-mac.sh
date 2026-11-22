@@ -19,7 +19,7 @@ echo "== UI (frozen lockfile)"
 (cd "$HERE/ui" && pnpm install --frozen-lockfile --ignore-scripts >/dev/null && pnpm run build >/dev/null)
 
 echo "== release binary (custom-protocol, no dev bridge)"
-(cd "$HERE/src-tauri" && CARGO_PROFILE_RELEASE_DEBUG=false cargo build --release --features custom-protocol)
+(cd "$HERE/src-tauri" && CARGO_PROFILE_RELEASE_DEBUG=false cargo build --release --locked --features custom-protocol)
 BIN="$HERE/src-tauri/target/release/gmclip-app"
 (cd "$ROOT" && cargo xt assert-no-dev-bridge "$BIN")
 

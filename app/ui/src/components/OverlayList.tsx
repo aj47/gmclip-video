@@ -140,7 +140,7 @@ export function OverlayList() {
     o.shape ? (o.shape.kind === "arrow" ? "Arrow" : "Box")
       : o.kind === "image" ? "Image"
       : o.kind === "video" ? "Video"
-      : ({ text_hook: "Hook", section_pill: "Pill", run_clock: "Run clock" } as Record<string, string>)[o.role ?? ""] ?? (o.band === "lower_third" ? "Lower third" : o.band === "end_card" ? "End card" : "Text");
+      : ({ text_hook: "Hook", section_pill: "Section label", run_clock: "Stopwatch" } as Record<string, string>)[o.role ?? ""] ?? (o.band === "lower_third" ? "Lower third" : o.band === "end_card" ? "End card" : "Text");
   const secs = (o: OverlayRow) => (o.out ? `${(o.out[0] / fps()).toFixed(1)}–${(o.out[1] / fps()).toFixed(1)} s` : o.label ? `“${o.label}”` : "");
   const add = (kind: "box" | "arrow") => {
     const v = cutView();

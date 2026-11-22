@@ -377,19 +377,12 @@ pub fn apply(core: &AppCore, project: &str, t: &CutTemplate, moment: &str) -> Ap
             }
         }
     }
-    let title: String = m
-        .text_hook
-        .clone()
-        .filter(|x| !x.trim().is_empty())
-        .unwrap_or_else(|| m.excerpt.text.clone())
-        .chars()
-        .take(120)
-        .collect();
-    let title = if title.trim().is_empty() {
-        "New cut".to_owned()
-    } else {
-        title
-    };
+    // a short's name in a few words, as a new short from a moment gets (cutnew.rs)
+    let title = crate::cutnew::short_title(
+        m.text_hook.as_deref(),
+        crate::cutnew::topic_at(&doc, m, span.0, tr.as_deref()).as_deref(),
+        &m.excerpt.text,
+    );
     let cut = out(
         &core.call(
             project,

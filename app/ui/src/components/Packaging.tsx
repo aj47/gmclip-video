@@ -59,8 +59,10 @@ export function HookLines(props: { until: () => number | null; durMs: () => numb
   };
   return (
     <div class="hook-lines" data-testid="hook-lines">
-      <p class="muted small">Suggested from the clip — every number is measured or said in it:</p>
-      <Show when={(lines()?.suggestions ?? []).length} fallback={<p class="muted small" data-testid="hook-lines-none" role="status">{lines.loading ? "Reading the clip's numbers…" : lines()?.note ?? "No numbers in this clip to build a hook line on."}</p>}>
+      {/* ideas only when there are some: an empty list is one quiet line, the core's own
+          note (for agents) in its tooltip */}
+      <Show when={(lines()?.suggestions ?? []).length} fallback={<p class="muted small" data-testid="hook-lines-none" role="status" data-tip={lines()?.note ?? undefined}>{lines.loading ? "Reading the clip's numbers…" : "Hook ideas show here when the clip says or measures a number."}</p>}>
+        <p class="muted small">Ideas from the clip (every number in them is said or measured):</p>
         <ul class="hook-options" aria-label="Suggested hook lines">
           <For each={lines()!.suggestions}>
             {(l) => (

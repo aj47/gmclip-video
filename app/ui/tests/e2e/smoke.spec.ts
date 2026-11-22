@@ -90,7 +90,9 @@ test("Home reachable at both sizes; a new project; an RT import opens the cut", 
   for (const vp of VIEWPORTS) {
     await page.setViewportSize(vp);
     await expect(page.getByRole("main", { name: "Home" })).toBeVisible();
-    for (const sel of ["[aria-label='Search everything you said']", "[aria-label='Open a video']", "nav[aria-label=Main]"]) await inViewport(sel);
+    for (const sel of ["[aria-label='Open a video']", "nav[aria-label=Main]"]) await inViewport(sel);
+    // an empty library has nothing said to search: the box waits for the first video
+    await expect(page.getByTestId("home-search")).toHaveCount(0);
     // nothing running: no Activity row for it
     await expect(page.locator("[aria-label=Running]")).toHaveCount(0);
   }
@@ -105,14 +107,14 @@ for (const vp of VIEWPORTS) {
     // The side panel opens on the transcript; the inspector is a tab beside it.
     await openTab(page, "Inspector");
     // (the words strip shows only when the cut has words; this imported plan has none)
-    for (const sel of [".viewer-canvas", ".transport", ".inspector", ".timeline-canvas", "[data-testid=export]", "nav[aria-label=Main]"]) {
+    for (const sel of [".viewer-canvas", ".transport", "[data-testid=look-pane]", ".timeline-canvas", "[data-testid=export]", "nav[aria-label=Main]"]) {
       await inViewport(sel);
     }
     await expect(page.getByRole("button", { name: /^(Play|Pause)$/ })).toBeVisible();
     // Frames arrive over the frame socket and are drawn at the displayed size.
     await expect(page.getByTestId("viewer-stats")).toContainText("×", { timeout: 30_000 });
     await expect(page.locator(".words")).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: /^Part / })).toBeVisible();
+    await expect(page.getByTestId("insp-part").getByRole("heading", { name: /^Part / })).toBeVisible();
   });
 }
 
@@ -146,7 +148,7 @@ test("trim from the inspector by keyboard; move a layer by number", async () => 
   const third = page.getByRole("list", { name: "Parts" }).getByRole("button").nth(2);
   await third.focus();
   await page.keyboard.press("Enter");
-  await expect(page.getByRole("heading", { name: "Part 3" })).toBeVisible();
+  await expect(page.getByTestId("insp-part").getByRole("heading", { name: "Part 3" })).toBeVisible();
   const before = (await parts())[2]!;
   if (!(await page.getByRole("button", { name: "Move the out point one frame earlier" }).isVisible())) await page.getByText("Trim by frames and hold").click();
   await page.getByRole("button", { name: "Move the out point one frame earlier" }).click();

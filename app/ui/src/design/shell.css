@@ -43,6 +43,39 @@
   align-items: center;
   gap: 2px;
 }
+/* Home · Agents · Settings: icon and name, the current one washed */
+.tb-nav {
+  height: var(--control-md);
+  min-height: var(--control-md);
+  padding: 0 var(--s-2);
+  gap: 6px;
+  font-size: var(--fs-13);
+  font-weight: var(--fw-medium);
+  border-radius: var(--r-2);
+}
+.tb-nav .icon {
+  color: var(--text-3);
+}
+.tb-nav:hover .icon,
+.tb-nav.nav-on .icon {
+  color: var(--text-1);
+}
+/* in a cut the bar is the cut's header: icons only (the tooltip names them) */
+.tb-icons .tb-nav {
+  width: var(--control-md);
+  padding: 0;
+}
+.tb-icons .tb-nav-label {
+  display: none;
+}
+.tb-agents {
+  display: inline-flex;
+  align-items: center;
+}
+.tb-group:not(.tb-icons) .tb-badge {
+  position: static;
+  margin: 0 var(--s-1) 0 -2px;
+}
 .tb-crumb {
   display: inline-flex;
   align-items: center;
@@ -105,7 +138,8 @@
 }
 .cut-head h1 {
   margin: 0;
-  max-width: 100%;
+  /* + the 4 px it hangs left by (else every title loses its last letters) */
+  max-width: calc(100% + 4px);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -256,11 +290,41 @@
 .status-pill .status-line {
   color: var(--text-2);
 }
+/* the cut's header clips (one line, overflow hidden): the pill's list hangs from the
+ * window instead, under the bar at the right, or nobody could read it */
+.checks.status-pill > ul {
+  position: fixed;
+  top: calc(var(--bar-h) + 6px);
+  right: var(--s-3);
+  width: min(440px, calc(100vw - 24px));
+  max-width: none;
+}
+.status-pill .tidy-head {
+  margin-top: var(--s-2);
+  padding-top: var(--s-2);
+  border-top: 1px solid var(--sep);
+  color: var(--text-1);
+  font-weight: var(--fw-semibold);
+}
+.status-pill .tidy-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: var(--text-2);
+}
+.status-pill .tidy-row .icon {
+  color: var(--text-3);
+}
+.status-pill .tidy-go {
+  margin-top: var(--s-1);
+}
 .checks summary::-webkit-details-marker {
   display: none;
 }
 .checks ul {
   top: calc(100% + 6px);
+  max-height: calc(100vh - var(--bar-h) - 24px);
+  overflow: auto;
   border: none;
   border-radius: var(--r-3);
   background: var(--surface-overlay);
@@ -815,6 +879,9 @@
 /* the trim monitor's readout by a dragged part edge (decision 0053): frames moved */
 .tl-trim-readout {
   position: absolute;
+  /* PARTS_Y − RULER + 4 (Timeline.tsx). Here, not in style={{}}: Solid compiled the
+     constant into the template as an inline style attribute, which the CSP refuses. */
+  top: 22px;
   z-index: 2;
   pointer-events: none;
   padding: 1px 5px;
@@ -1030,7 +1097,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: var(--s-4);
-  align-items: stretch;
+  /* Activity is as tall as what it lists, not the dropzone */
+  align-items: start;
 }
 /* nothing running, waiting or new: the dropzone alone */
 .home-hero.solo {
@@ -1087,6 +1155,50 @@
 .dropzone .path input {
   flex: 1;
   min-width: 0;
+}
+/* a library with videos in it: your projects come first and the dropzone is a band under
+ * them (its icon and words at the left, its buttons at the right) */
+.home:has(> .home-hero.compact) > :not(.fr-welcome, .fr-checklist, .home-projects) {
+  order: 2;
+}
+.home-hero.compact .dropzone {
+  min-height: 0;
+  padding: var(--s-3) var(--s-4);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "icon title actions"
+    "icon text actions"
+    "path path more";
+  align-items: center;
+  justify-items: start;
+  gap: 2px var(--s-3);
+  text-align: left;
+}
+.home-hero.compact .dropzone .drop-icon {
+  grid-area: icon;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+}
+.home-hero.compact .dropzone h1 {
+  grid-area: title;
+  font-size: var(--fs-15);
+}
+.home-hero.compact .dropzone > p {
+  grid-area: text;
+}
+.home-hero.compact .dropzone .drop-actions {
+  grid-area: actions;
+}
+.home-hero.compact .dropzone .path {
+  grid-column: 1 / 3;
+  margin-top: var(--s-2);
+}
+.home-hero.compact .dropzone > :last-child {
+  grid-area: more;
+  justify-self: end;
+  margin-top: var(--s-2);
 }
 .home-section-head {
   display: flex;
@@ -1186,6 +1298,14 @@
   border-radius: var(--r-4);
   box-shadow: var(--lift-lg);
   padding: var(--s-3) var(--s-4);
+}
+/* .col is Home's card; a side panel's form that stacks its fields as a column is not */
+.side .col {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
 }
 .col h2,
 .projects h2 {
@@ -1390,6 +1510,36 @@
   text-transform: uppercase;
   color: var(--text-3);
   margin: var(--s-5) 0 var(--s-2);
+}
+/* a settings page reads as sections: each starts with a real heading over a rule */
+.settings > section > h3,
+.settings > .settings-section > h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-15);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-1);
+  margin: var(--s-6) 0 var(--s-3);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--sep);
+}
+.settings > .agent-picker {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--sep);
+}
+.settings > .agent-picker > .row > h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-15);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-1);
+  margin: 0;
+}
+.settings > section:first-of-type > h3 {
+  margin-top: var(--s-3);
+  padding-top: 0;
+  border-top: none;
 }
 .transcript > .coach {
   margin: 0 var(--s-2) var(--s-1);
@@ -2859,4 +3009,469 @@ button.lt-name[aria-pressed="true"] {
   cursor: move;
   border: 2px solid var(--lane-video-edge);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Home › Your projects (2026-11-22): every project once. An open one is a card with its
+ * picture, its cuts and its actions; closed ones are the smaller "Opened before" cards. */
+.home-projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+}
+.home-projects > .home-section-head {
+  align-items: center;
+  margin: 0;
+}
+.home-projects > .home-section-head h2 {
+  font-size: var(--fs-15);
+}
+.home-projects .home-search {
+  flex: 0 1 440px;
+}
+.home-projects .empty {
+  margin: 0;
+  color: var(--text-3);
+}
+.home-sub {
+  margin: var(--s-2) 0 0;
+  font-family: var(--font-ui);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  color: var(--text-3);
+}
+.home-projects .project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-4);
+  align-items: start;
+  margin: 0;
+  padding: var(--s-3);
+  background: var(--surface-panel);
+  border: var(--outline-w) solid var(--outline);
+  border-radius: var(--r-4);
+  box-shadow: var(--lift-lg);
+}
+.home-projects .project.has-thumb {
+  grid-template-columns: 208px minmax(0, 1fr);
+}
+/* the picture inside an open project's card: no card of its own */
+.home-projects .project .recent-card {
+  border: none;
+  box-shadow: none;
+  background: none;
+  border-radius: var(--r-2);
+}
+.home-projects .project .recent-card:hover:not(:disabled) {
+  transform: none;
+  box-shadow: none;
+  background: var(--wash-hover);
+}
+.home-projects .project .recent-thumb {
+  border-radius: var(--r-2);
+  overflow: hidden;
+}
+.home-projects .project .recent-meta {
+  padding: var(--s-1) 2px 0;
+}
+.home-projects .project .recent-name {
+  display: none;
+}
+.project-body {
+  min-width: 0;
+}
+.project-body > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  margin-bottom: var(--s-1);
+}
+.home-projects .project h3 {
+  margin: 0;
+  font-size: var(--fs-15);
+}
+.project-body .item {
+  padding: 6px 0;
+}
+.project-body .item .cut-name {
+  font-weight: var(--fw-medium);
+}
+.library-rows .item {
+  padding: 6px 0;
+}
+@media (max-width: 640px) {
+  .home-projects .project.has-thumb {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home-projects > .home-section-head {
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Top bar, 2026-11-22: the yellow sun is the Agents button; Home and Settings named */
+.tb-sun {
+  padding: 0 var(--s-2) 0 2px;
+}
+.tb-sun .brand {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+/* a cut in a window under 1280 px: the names give way (the tooltips say them) */
+@media (max-width: 1279px) {
+  .tb-cut .tb-nav-label {
+    display: none;
+  }
+  .tb-cut .tb-nav {
+    width: var(--control-md);
+    padding: 0;
+  }
+  .tb-cut .tb-sun {
+    padding: 0 2px;
+    width: auto;
+  }
+}
+/* Export's menu: rows like a menu's, then Quality */
+.export-split .popover .menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  width: 100%;
+}
+.export-split .popover .export-both {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.export-split .popover .pop-sub {
+  margin: var(--s-2) 0 0;
+  padding-top: var(--s-2);
+  border-top: 1px solid var(--sep);
+  font-size: var(--fs-11);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+/* timeline tools: the two tools named; a greyed action's wrapper takes its hover */
+.tl-tool {
+  gap: 4px;
+  padding: 0 var(--s-2);
+}
+.tl-tool[aria-pressed="true"] {
+  color: var(--accent-text);
+  background: var(--accent-wash);
+}
+.tip-wrap {
+  display: inline-flex;
+}
+.tip-wrap > button:disabled {
+  pointer-events: none;
+}
+.timeline-body {
+  position: relative;
+}
+/* the Export menu opens on "Also export…": no rule or gap above it (it was a section
+ * under Loudness before 2026-11-22) */
+.export-split .popover .export-both {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* ── The Words panel reads as prose (AJ 2026-11-22), like the reading view: a transcriber's
+ * lines (cut at every pause or restart) run together inline, and a paragraph starts only
+ * where reading starts one (a long pause, a topic, a long run ending at a full stop). */
+.transcript .tr-body {
+  line-height: 1.55;
+}
+.transcript .tr-para {
+  display: block;
+  margin: 0 0 0.7em;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 72px;
+}
+.transcript .tr-line {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  content-visibility: visible;
+}
+.transcript .tr-line.topic,
+.transcript .tr-line.topic.proposed {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+/* a topic's paragraphs carry its colour at the left, as the lines did */
+.transcript:not(.reading) .tr-para.topic {
+  box-shadow: inset 3px 0 0 var(--topic);
+  padding-left: 9px;
+}
+.transcript:not(.reading) .tr-para.topic.proposed {
+  box-shadow: none;
+  border-left: 3px dashed var(--topic);
+  padding-left: 6px;
+}
+.transcript .tr-body .w {
+  padding: 0 2px;
+}
+/* said again just after (a retake): the first try is marked; once cut it is struck */
+.transcript .tr-body .w.again:not(.out) {
+  text-decoration: underline wavy color-mix(in srgb, var(--warning) 70%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+/* coverage chips: the cut's name in full on hover, more of it shown */
+.transcript .cov-chip {
+  gap: 3px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.transcript .cov-chip .cov-name {
+  max-width: 26ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* the cut's title gets the room the bar has (a short's title is often a sentence); the
+ * whole title is in its tooltip */
+.cut-titles {
+  max-width: min(48%, 640px);
+}
+
+/* ── Home, round 5: one search field; a project card's rows open their cut */
+.home-search-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 var(--s-2);
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-2);
+  background: var(--surface-raised);
+}
+.home-search-field .icon {
+  color: var(--text-3);
+}
+.home-search-field input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+.home-projects .project-body > header .menu-trigger {
+  opacity: 0.7;
+}
+.project-body .item {
+  padding: 0;
+  border-bottom: 1px solid var(--sep);
+}
+.project-body .item:last-child {
+  border-bottom: none;
+}
+button.item-open {
+  width: 100%;
+  justify-content: flex-start;
+  gap: var(--s-2);
+  min-height: 34px;
+  padding: 0 var(--s-1);
+  border: none;
+  border-radius: var(--r-1);
+  background: transparent;
+  box-shadow: none;
+  font-weight: var(--fw-regular);
+  text-align: left;
+}
+button.item-open:hover:not(:disabled) {
+  background: var(--wash-hover);
+  transform: none;
+  box-shadow: none;
+}
+button.item-open .cut-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: var(--fw-medium);
+}
+button.item-open .icon {
+  color: var(--text-3);
+}
+/* the picture of an open project: no folder name under it */
+.home-projects .project .recent-meta {
+  display: none;
+}
+
+/* ── Settings, round 5: a list of sections at the left; one label column for every section */
+.settings {
+  --set-label-w: 190px;
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: start;
+  max-width: 1100px;
+}
+.settings-nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 52px;
+}
+.settings-nav-item {
+  justify-content: flex-start;
+  font-weight: var(--fw-medium);
+}
+.settings-body {
+  min-width: 0;
+  max-width: 760px;
+}
+.settings-anchor {
+  height: 0;
+  scroll-margin-top: var(--s-3);
+}
+.settings-body > section > h3,
+.settings-body > .settings-section > h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-15);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-1);
+  margin: var(--s-6) 0 var(--s-3);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--sep);
+}
+.settings-body > section:first-of-type > h3 {
+  margin-top: var(--s-3);
+  padding-top: 0;
+  border-top: none;
+}
+.settings-body > .agent-picker {
+  margin-top: var(--s-5);
+}
+.settings-body > .agent-picker > .row > h3 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-13);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-1);
+  margin: 0;
+}
+/* labels at the left, controls after, the same column in every section */
+.settings .appearance-grid,
+.settings .settings-grid,
+.settings dl.setup-defaults {
+  display: grid;
+  grid-template-columns: var(--set-label-w) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  max-width: none;
+  margin: var(--s-3) 0 0;
+}
+.settings dl.setup-defaults dt,
+.settings .settings-label,
+.settings .appearance-label {
+  color: var(--text-2);
+}
+.settings dl.setup-defaults dd {
+  margin: 0;
+}
+.settings-control {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.rec-folder {
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+  overflow-wrap: anywhere;
+}
+.settings .switch-row {
+  max-width: 640px;
+}
+.settings .mac-caps {
+  margin: 0;
+}
+@media (max-width: 799px) {
+  .settings {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .settings-nav {
+    display: none;
+  }
+  .settings .appearance-grid,
+  .settings .settings-grid,
+  .settings dl.setup-defaults {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+
+/* ── Keyboard shortcuts, round 5: one column of groups, one line a row, the keys in one
+ * column the same width in every group */
+.keys-dialog header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.keys-dialog header h2 {
+  flex: none;
+}
+.keys-search {
+  flex: 1;
+  min-width: 0;
+}
+.keys-dialog .keys-groups {
+  display: block;
+  columns: auto;
+}
+.keys-dialog .keys-group {
+  break-inside: avoid;
+  margin: 0 0 var(--s-4);
+}
+.keys-dialog .keys-group[hidden] {
+  display: none;
+}
+.keys-dialog .keys-group dl {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 4px var(--s-3);
+  margin: 0;
+}
+.keys-dialog .keys-group dd {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-2);
+}
+.keys-dialog .keys-group dt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.keys-essentials dd {
+  color: var(--text-1) !important;
+}
+.keys-all {
+  margin: 0 0 var(--s-4);
+}
+/* a topic's start and end handles: shown on hover of its header (their tooltips say what) */
+.topic-head .topic-edge {
+  opacity: 0;
+  cursor: ew-resize;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+.topic-head:hover .topic-edge,
+.topic-head .topic-edge:focus-visible {
+  opacity: 0.8;
 }

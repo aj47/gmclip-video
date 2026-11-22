@@ -595,7 +595,9 @@ mod tests {
     }
 
     /// U.12: a live text move draws the event exactly as a plan that placed it there
-    /// would (the preview after release is that plan), and moves nothing else.
+    /// would (the preview after release is that plan), and moves nothing else. The
+    /// preview session exists where the export pipeline does (macOS, Windows).
+    #[cfg(any(target_os = "macos", windows))]
     #[test]
     fn a_moved_event_is_the_tile_of_the_plan_that_moves_it() {
         let plan = plan();

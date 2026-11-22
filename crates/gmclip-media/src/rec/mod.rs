@@ -197,6 +197,8 @@ impl Session {
         Ok(s)
     }
 
+    /// The recorder (macOS only for now) is the one writer.
+    #[cfg(target_os = "macos")]
     pub(crate) fn write(&self, dir: &Path) -> Result<(), RecError> {
         let p = dir.join(SESSION_FILE);
         let tmp = dir.join(".session.json.tmp");

@@ -135,6 +135,10 @@ impl Sandbox {
             ("HOME", self.home.clone().into_os_string()),
             ("TMPDIR", self.tmp.clone().into_os_string()),
         ];
+        if cfg!(all(unix, not(target_os = "macos"))) {
+            // Linux: the holder's socket directory (`$XDG_RUNTIME_DIR/gmclip`)
+            v.push(("XDG_RUNTIME_DIR", self.tmp.clone().into_os_string()));
+        }
         if cfg!(windows) {
             v.extend([
                 ("USERPROFILE", self.home.clone().into_os_string()),

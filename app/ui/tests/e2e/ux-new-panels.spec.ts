@@ -15,7 +15,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { labMedia } from "./lab";
 import { openPage, SIZES } from "./ux-lib";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 const VIDEO = labMedia("renders/own-vm-1080.mp4");
 const LONG = labMedia("preview/loc_684c44b6.proxy.mp4");
@@ -339,7 +339,11 @@ test("every new panel at every window size", async ({ browser }) => {
   // ---- the Short tab: hook lines, openings, end card
   await check(page, {
     name: "short-tab",
-    open: () => sideTab(page, "short", "Short"),
+    open: async () => {
+      await sideTab(page, "short", "Short");
+      await rowOn(page, "openings");
+      await rowOn(page, "hook");
+    },
     root: side,
     primaries: [
       ["Add opening", () => page.getByTestId("opening-add")],
@@ -620,12 +624,13 @@ test("every new panel is in the View menu or ⌘K", async ({ browser }) => {
     await item.click();
     await expect(page.getByRole("tab", { name: label, exact: true })).toHaveAttribute("aria-selected", "true");
   }
-  // Tighten is in Words
+  // Tighten is in the status dropdown (2026-11-22: one Tighten)
   await page.keyboard.press("ControlOrMeta+k");
   await page.getByTestId("palette-input").fill("tighten");
-  await page.getByTestId("palette-item").filter({ hasText: "Tighten: pauses and fillers" }).click();
-  await expect(page.getByRole("tab", { name: "Words", exact: true })).toHaveAttribute("aria-selected", "true");
+  await page.getByTestId("palette-item").filter({ hasText: "Tighten: pauses, fillers and retakes" }).click();
+  await expect(page.getByTestId("checks")).toHaveAttribute("open", "");
   await expect(page.getByTestId("words-tighten")).toHaveAttribute("open", "");
+  await page.getByTestId("checks").locator("summary").first().click();
   // ⌘K: each new feature by the words a person would type
   for (const [q, want] of [
     ["openings", "Compare openings"],

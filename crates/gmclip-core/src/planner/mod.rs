@@ -2480,7 +2480,7 @@ fn plan_cut_inner(
                     picture: rp::ClipPicture {
                         source: source.clone(),
                         first_frame,
-                        fps: fps.clone(),
+                        fps,
                         frames: Some(frames),
                         r#loop: v.r#loop.then_some(true),
                     },

@@ -196,6 +196,7 @@ pub const APP_COMMANDS: &[&str] = &[
     "recording_stop",
     "recording_cancel",
     "recording_open",
+    "recording_reveal",
     // the Screen Studio look in one click (decision 0046)
     "screen_studio_apply",
     "zoom_auto_app",
@@ -774,6 +775,14 @@ pub(crate) fn dispatch_inner(ctx: &Ctx, req: &CallRequestWire) -> AppResult<Valu
                 .name("gmclip-style-sheet".into())
                 .spawn(move || {
                     let _ = crate::owner::style_changes_sheet(&core, false);
+                });
+            // the agent clients are found once (a few seconds: each is probed) and kept:
+            // found now, Settings and Agents open with them (Settings said "Loading…")
+            let core = ctx.core.clone();
+            let _ = std::thread::Builder::new()
+                .name("gmclip-agent-detect".into())
+                .spawn(move || {
+                    let _ = crate::agent::detected(&core, false);
                 });
             Ok(json!({}))
         }
@@ -1498,6 +1507,11 @@ pub(crate) fn dispatch_inner(ctx: &Ctx, req: &CallRequestWire) -> AppResult<Valu
         "agent_client_allow" => crate::clientcheck::allow(core, s(a, "sha256")?),
         "video_inspect" => crate::importsheet::inspect(core, s(a, "path")?),
         "recording_status" => crate::recording::status(core),
+        "recording_reveal" => {
+            let dir = crate::recording::reveal_folder(core)?;
+            reveal(&dir)?;
+            Ok(json!({"folder": dir}))
+        }
         "recording_enable" => {
             crate::recording::enable(core, a.get("on").and_then(Value::as_bool).unwrap_or(true))
         }

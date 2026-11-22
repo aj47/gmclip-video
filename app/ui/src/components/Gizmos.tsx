@@ -13,7 +13,7 @@ import { attempt, cutView, editing, selectedOverlay, setSelectedOverlay, viewer 
 import { escCancels, hold, type Held } from "../gesture";
 import type { CanvasRect } from "./Viewer";
 
-const ROLE: Record<string, string> = { text_hook: "Hook", section_pill: "Pill", run_clock: "Run clock", note: "Text" };
+const ROLE: Record<string, string> = { text_hook: "Hook", section_pill: "Section label", run_clock: "Stopwatch", note: "Text" };
 /** Snap distance to the frame's centre line, in screen px (⌥ off). */
 const SNAP_PX = 8;
 

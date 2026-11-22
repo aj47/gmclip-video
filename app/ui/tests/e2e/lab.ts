@@ -54,6 +54,8 @@ export function labProject(name: string): string {
  * goes to its first cut; a fixture with no cut stays on Home, its row shown. */
 export async function openLabProject(page: Page, name: string) {
   const home = labProject(name);
+  // "A project folder…" is under "Other ways to open" (2026-11-22)
+  await page.getByTestId("open-more").click();
   await page.getByTestId("open-folder").click();
   await page.getByLabel("Project folder").fill(home);
   await page.getByLabel("Project folder").press("Enter");
@@ -78,6 +80,7 @@ export async function importPlanProject(page: Page, name: string, plan: string):
   };
   const p = await call<{ id: string; home: string }>("project_new", { name });
   const cut = await call<{ cut: string; title: string }>("cut_import", { path: plan }, p.id);
+  await page.getByTestId("open-more").click();
   await page.getByTestId("open-folder").click();
   await page.getByLabel("Project folder").fill(p.home);
   await page.getByLabel("Project folder").press("Enter");
@@ -91,6 +94,7 @@ export async function openCutFromHome(page: Page, project: string, title?: strin
   await expect(row).toBeVisible({ timeout: 30_000 });
   const cuts = row.locator(".item[data-framed=yes]");
   const cut = title ? cuts.filter({ hasText: title }).first() : cuts.first();
-  await cut.getByRole("button", { name: "Open", exact: true }).click();
+  // the whole row is the button, named "Open <its title>" (2026-11-22)
+  await cut.getByRole("button", { name: /^Open\b/ }).click();
   await expect(page.getByTestId("cut-title")).toBeVisible({ timeout: 60_000 });
 }

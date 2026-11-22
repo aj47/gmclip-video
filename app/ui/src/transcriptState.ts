@@ -5,6 +5,8 @@ import { actions, type TranscriptData } from "./actions";
 import { attempt, cutView, say } from "./store";
 
 export const [trData, setTrData] = createSignal<TranscriptData | null>(null);
+/** The Words panel keeps the playhead's word in view (on; ⌘K turns it off). */
+export const [trFollow, setTrFollow] = createSignal(true);
 export const [trAnchor, setTrAnchor] = createSignal<number | null>(null);
 export const [trFocus, setTrFocus] = createSignal<number | null>(null);
 export const [trHover, setTrHover] = createSignal<number | null>(null);

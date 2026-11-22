@@ -24,14 +24,15 @@ const CHUNK = 240;
 export function WordsStrip() {
   let strip!: HTMLDivElement;
   const [data, { refetch }] = createResource(
-    () => cutView() && { p: cutView()!.project, c: cutView()!.cut, rev: cutView()!.rev },
+    // (nothing fetched while the strip is retired)
+    () => paneShown("words") && cutView() && { p: cutView()!.project, c: cutView()!.cut, rev: cutView()!.rev },
     async (k) => (await attempt(() => actions.cutWords(k.p, k.c))) ?? { state: "none", words: [] as CutWord[] },
   );
   const words = () => data()?.words ?? [];
   // the stream edit's topics on these words (any cut that plays them): each word's
   // topic, accepted ones first, and where each run of a topic starts (its chip)
   const [overlay] = createResource(
-    () => cutView() && { p: cutView()!.project, c: cutView()!.cut, rev: cutView()!.rev },
+    () => paneShown("words") && cutView() && { p: cutView()!.project, c: cutView()!.cut, rev: cutView()!.rev },
     async (k) => (await attempt(() => actions.streamOverlay(k.p, k.c))) ?? null,
   );
   const topicOf = createMemo(() => {
@@ -327,7 +328,8 @@ export function WordsStrip() {
   const partsCrossed = () => new Set(selected().map((w) => w.part)).size;
 
   return (
-    <Show when={data()?.state === "ok" && words().length}>
+    // retired 2026-11-22 (paneShown("words") is false): nothing renders; the component stays
+    <Show when={paneShown("words") && data()?.state === "ok" && words().length}>
     <section class="words" aria-label="Words" data-tall={String(wordsTall())}>
       <div class="words-bar">
         <span class="lbl" data-tip="Click a word to seek; drag or ⇧-click to select; d strikes, f re-spells, * keywords">Words</span>

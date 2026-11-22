@@ -96,7 +96,7 @@ test("small windows, portrait windows and the vertical frame", async ({ browser 
   await page.getByRole("button", { name: "Show the side panel" }).click();
   await expect(side).toBeVisible();
   await onScreen(page, "side drawer", side);
-  await expect(page.getByRole("tab", { name: "Look" })).toBeVisible();
+  await expect(page.getByRole("tab", { name: "Words" })).toBeVisible();
   await page.getByRole("button", { name: "Hide the side panel" }).click();
   await expect(side).toBeHidden();
 
@@ -147,8 +147,13 @@ test("small windows, portrait windows and the vertical frame", async ({ browser 
   // its view (a window ≤ 600 px tall clipped the caption and text lanes before).
   await page.setViewportSize({ width: 800, height: 600 });
   const body = page.getByTestId("timeline-body");
+  // the Volume lane hides while the cut has no level (2026-11-22): shown for this check
+  const showGain = page.getByTestId("lane-gain-show");
+  if ((await showGain.getAttribute("aria-pressed")) !== "true") await showGain.click();
   for (const lane of ["video", "gain", "captions", "text"]) {
     const head = page.locator(`.lane-head.lane-${lane}`);
+    // (captions and text lanes show once they have something, 2026-11-22)
+    if (!(await head.count())) continue;
     await head.scrollIntoViewIfNeeded();
     const hb = (await head.boundingBox())!;
     const bb = (await body.boundingBox())!;

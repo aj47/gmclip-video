@@ -72,7 +72,7 @@ test("accessible names everywhere the person works", async ({ browser }) => {
   await page.getByRole("button", { name: "Export options" }).click();
   problems.push(...(await audit(page, "cut/export options")));
   await page.getByRole("button", { name: "Export options" }).click();
-  await page.getByTestId("checks").locator("summary").click();
+  await page.getByTestId("checks").locator("summary").first().click();
   problems.push(...(await audit(page, "cut/status")));
   console.log(problems.join("\n"));
   expect(problems).toEqual([]);

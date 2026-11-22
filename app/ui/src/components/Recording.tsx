@@ -2,7 +2,7 @@
 // permissions, the folder), the Record sheet (what to record, camera, mic, system sound,
 // frame rate), and the countdown and recording bar shown over every view.
 import { createEffect, createResource, createSignal, For, on, onCleanup, onMount, Show } from "solid-js";
-import { recordingActions, type RecPermKind, type RecStatus } from "../actions";
+import { actions, recordingActions, type RecPermKind, type RecStatus } from "../actions";
 import { Button, Chip, SegmentedControl, Sheet, Switch } from "../design/components";
 import { previewPref } from "../prefs";
 import { addMarker, cancelCountdown, countdown, rec, recMissing, recRecovery, recStopping, openRecording, setRecRecovery, startRecording, stopRecording } from "../recordingState";
@@ -75,6 +75,19 @@ export function RecordingSettings() {
     const k = next(r);
     if (k) await ask(k);
   };
+  // the recordings folder: shown with ~, changed here (an absolute folder), revealed in Finder
+  const [changing, setChanging] = createSignal(false);
+  const [folderText, setFolderText] = createSignal("");
+  const saveFolder = async (path: string) => {
+    const p = path.trim();
+    if (p && !/^(\/|[A-Za-z]:[\\/])/.test(p)) return say("An absolute folder, like /Users/you/Movies/Recordings", "error");
+    // saved first (the core refuses a folder that is not absolute), then read back
+    if ((await attempt(() => actions.uiPrefsSet({ recordings_folder: p }))) === undefined) return;
+    previewPref("recordings_folder", p);
+    setChanging(false);
+    void refetch();
+    say(p ? "Recordings go to the new folder" : "Recordings go to the default folder");
+  };
   const relaunch = (s: RecStatus) => perm(s, "screen")?.state === "denied" || perm(s, "input")?.state === "denied";
   return (
     <section class="settings-section rec-settings" aria-label="Recording" data-testid="rec-settings" aria-busy={busy()}>
@@ -93,56 +106,79 @@ export function RecordingSettings() {
             <Show when={busy()}>
               <p class="muted small" data-testid="rec-asking">Asking macOS: answer its prompt, then the next one is asked here…</p>
             </Show>
-            <ul class="rec-perms" aria-label="Permissions">
-              <For each={PERMS}>
-                {(p) => {
-                  const v = () => perm(s(), p.kind);
-                  const state = () => STATE[v()?.state ?? "not_asked"] ?? STATE.not_asked!;
-                  return (
-                    <li class="rec-perm" data-testid="rec-perm" data-kind={p.kind} data-state={v()?.state ?? "not_asked"}>
-                      <span class="rec-perm-name">
-                        <b>{p.name}</b> <span class="muted small">{p.why}</span>
-                      </span>
-                      <Chip tone={state().tone} dot>{state().label}</Chip>
-                      <Show when={s().enabled && next(s()) === p.kind}>
-                        <Button size="sm" variant="primary" data-testid="rec-perm-ask" disabled={busy()} onClick={() => void ask(p.kind)}>
-                          {v()?.state === "denied" && (p.kind === "camera" || p.kind === "microphone") ? "Open Settings" : "Ask"}
-                        </Button>
-                      </Show>
-                      <Show when={v() && v()!.state !== "granted"}>
-                        <span class="rec-perm-fix muted small">
-                          System Settings › Privacy & Security › {p.pane}{" "}
-                          <button
-                            type="button"
-                            class="ghost small"
-                            data-testid="rec-perm-copy"
-                            data-tip={v()!.settings}
-                            onClick={() => void navigator.clipboard?.writeText(v()!.settings).then(() => say("Link copied: paste it in Safari's address bar"), () => say(v()!.settings))}
-                          >
-                            Copy link
-                          </button>
+            {/* the permissions only matter once recording is on */}
+            <Show when={s().enabled}>
+              <ul class="rec-perms" aria-label="Permissions">
+                <For each={PERMS}>
+                  {(p) => {
+                    const v = () => perm(s(), p.kind);
+                    const state = () => STATE[v()?.state ?? "not_asked"] ?? STATE.not_asked!;
+                    return (
+                      <li class="rec-perm" data-testid="rec-perm" data-kind={p.kind} data-state={v()?.state ?? "not_asked"}>
+                        <span class="rec-perm-name">
+                          <b>{p.name}</b> <span class="muted small">{p.why}</span>
                         </span>
-                      </Show>
-                    </li>
-                  );
-                }}
-              </For>
-            </ul>
-            <Show when={s().bundled === false && (perm(s(), "camera")?.state !== "granted" || perm(s(), "microphone")?.state !== "granted")}>
-              <p class="small" data-testid="rec-unbundled">
-                gmclip was started from a terminal, so macOS asks that app for the camera and microphone and may never show the sheet. Open gmclip.app instead (<code>app/scripts/dev-app-mac.sh</code> for a dev build).
+                        <Chip tone={state().tone} dot>{state().label}</Chip>
+                        <Show when={s().enabled && next(s()) === p.kind}>
+                          <Button size="sm" variant="primary" data-testid="rec-perm-ask" disabled={busy()} onClick={() => void ask(p.kind)}>
+                            {v()?.state === "denied" && (p.kind === "camera" || p.kind === "microphone") ? "Open Settings" : "Ask"}
+                          </Button>
+                        </Show>
+                        <Show when={v() && v()!.state !== "granted"}>
+                          <span class="rec-perm-fix muted small">
+                            System Settings › Privacy & Security › {p.pane}{" "}
+                            <button
+                              type="button"
+                              class="ghost small"
+                              data-testid="rec-perm-copy"
+                              data-tip={v()!.settings}
+                              onClick={() => void navigator.clipboard?.writeText(v()!.settings).then(() => say("Link copied: paste it in Safari's address bar"), () => say(v()!.settings))}
+                            >
+                              Copy link
+                            </button>
+                          </span>
+                        </Show>
+                      </li>
+                    );
+                  }}
+                </For>
+              </ul>
+              <Show when={s().bundled === false && (perm(s(), "camera")?.state !== "granted" || perm(s(), "microphone")?.state !== "granted")}>
+                <p class="small" data-testid="rec-unbundled">
+                  gmclip was started from a terminal, so macOS asks that app for the camera and microphone and may never show the sheet. Open gmclip.app instead (<code>app/scripts/dev-app-mac.sh</code> for a dev build).
+                </p>
+              </Show>
+              <Show when={relaunch(s())}>
+                <p class="small" data-testid="rec-relaunch">Screen Recording and Input Monitoring take effect after you quit and reopen gmclip.</p>
+              </Show>
+              <p class="small">
+                <Button size="sm" variant="ghost" icon="restore" data-testid="rec-recheck" onClick={() => void refetch()}>Check again</Button>
               </p>
             </Show>
-            <Show when={relaunch(s())}>
-              <p class="small" data-testid="rec-relaunch">Screen Recording and Input Monitoring take effect after you quit and reopen gmclip.</p>
-            </Show>
-            <p class="small">
-              <Button size="sm" variant="ghost" icon="restore" data-testid="rec-recheck" onClick={() => void refetch()}>Check again</Button>
-            </p>
-            <dl class="setup-defaults">
-              <dt>Recordings go to</dt><dd data-testid="rec-folder">{s().folder}</dd>
-              <dt>While recording</dt><dd>⌃⌥S stops · ⌃⌥M drops a marker</dd>
-            </dl>
+            <div class="settings-grid">
+              <span class="settings-label">Recordings go to</span>
+              <span class="settings-control rec-folder-row">
+                <Show
+                  when={changing()}
+                  fallback={
+                    <>
+                      <span class="rec-folder" data-testid="rec-folder" data-tip={s().folder}>{s().folder_short ?? s().folder}</span>
+                      <Button size="sm" variant="ghost" data-testid="rec-folder-change" onClick={() => { setFolderText(s().folder); setChanging(true); }}>Change…</Button>
+                      <Button size="sm" variant="ghost" icon="folder-open" data-testid="rec-folder-reveal" onClick={() => void attempt(recordingActions.reveal)}>Reveal</Button>
+                    </>
+                  }
+                >
+                  <form class="row" onSubmit={(e) => { e.preventDefault(); void saveFolder(folderText()); }}>
+                    <input type="text" aria-label="Recordings folder" placeholder="/Users/you/Movies/Recordings" value={folderText()} onInput={(e) => setFolderText(e.currentTarget.value)} ref={(el) => queueMicrotask(() => el.select())} />
+                    <Button type="submit" size="sm" variant="primary" disabled={!folderText().trim()}>Use this folder</Button>
+                    <Button size="sm" variant="ghost" onClick={() => void saveFolder("")} tooltip="Back to the folder beside your library">Default</Button>
+                    <Button size="sm" variant="ghost" onClick={() => setChanging(false)}>Cancel</Button>
+                  </form>
+                </Show>
+              </span>
+              <span class="settings-label">While recording</span>
+              <span class="settings-control">⌃⌥S stops · ⌃⌥M drops a marker</span>
+            </div>
           </Show>
         )}
       </Show>

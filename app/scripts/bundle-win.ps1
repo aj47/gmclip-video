@@ -45,7 +45,7 @@ Run "release binary (custom-protocol, no dev bridge)" {
     Push-Location (Join-Path $Here "src-tauri")
     try {
         $env:CARGO_PROFILE_RELEASE_DEBUG = "false"
-        cargo build --release --features custom-protocol
+        cargo build --release --locked --features custom-protocol
     } finally { Pop-Location }
 }
 $Bin = Join-Path $Here "src-tauri\target\release\gmclip-app.exe"

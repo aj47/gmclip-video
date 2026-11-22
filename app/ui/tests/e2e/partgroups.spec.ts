@@ -138,6 +138,6 @@ test("group parts, drag them together, ungroup", async ({ browser }) => {
   await expect(page.locator(".toast")).toContainText("4 parts grouped");
   // a click in the empty space clears the selection, and no gain segment was made
   await page.mouse.click(g.x(f[0]![0] + 10), under);
-  await expect(page.getByRole("list", { name: "Gain" }).getByRole("button")).toHaveCount(0);
+  await expect(page.getByRole("list", { name: "Volume" }).getByRole("button")).toHaveCount(0);
   expect(errors).toEqual([]);
 });

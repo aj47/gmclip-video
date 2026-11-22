@@ -18,15 +18,15 @@
 import { thisMachine } from "../platform";
 import { about } from "../eta";
 import { createEffect, createMemo, createResource, createSignal, For, on, onCleanup, Show } from "solid-js";
-import { IconButton, SegmentedControl } from "../design/components";
+import { Button, IconButton, SegmentedControl, Switch } from "../design/components";
 import { Icon } from "../design/Icon";
 import { askBroll } from "./Broll";
 import { paneShown, reading, setReading } from "../layout";
 import { prefs, setPref } from "../prefs";
-import { actions, type CoverageRow, type FluffRow, type TopicBand, type TranscriptData } from "../actions";
-import { analysisTick, attempt, cutView, modelsProgress, openCut, say, viewer } from "../store";
+import { actions, ideaActions, type CoverageRow, type FluffRow, type TopicBand, type TranscriptData } from "../actions";
+import { analysisTick, attempt, cutView, modelsProgress, openCut, refreshCut, say, viewer } from "../store";
 import { applyPending, labelAsk, noteTitle, overlay, overlayAll, pendingTopic, recentTitles, refreshOverlay, setLabelAsk, setOverlay, setPendingTopic, topicAt } from "../streamState";
-import { EDGE_STEPS, edgeStep, findRequest, respelling, setEdgeStep, setFindRequest, setRespelling, setTrAnchor, setTrData, setTrFocus, setTrHover, setTrOwner, setTuning, strikeOrRestore, trAnchor, trData, trFocus, trOwner, trSel, tuning, wordAtFrame } from "../transcriptState";
+import { EDGE_STEPS, edgeStep, trFollow, findRequest, respelling, setEdgeStep, setFindRequest, setRespelling, setTrAnchor, setTrData, setTrFocus, setTrHover, setTrOwner, setTuning, strikeOrRestore, trAnchor, trData, trFocus, trOwner, trSel, tuning, wordAtFrame } from "../transcriptState";
 
 interface LineRow {
   key: string;
@@ -167,12 +167,14 @@ export function Transcript() {
   };
   const topicHeads = createMemo(() => startsAt<TopicBand>(!browsing() ? (overlay()?.topics ?? []) : []));
   const fluffHeads = createMemo(() => startsAt<FluffRow>(isStream() ? (overlay()?.fluff ?? []) : []));
+  // a cut that uses these words: its chip once per topic (not on every paragraph of it)
   const chips = createMemo(() => {
     const seen = new Set<string>();
     const xs: CoverageRow[] = [];
     for (const c of overlay()?.coverage ?? []) {
-      if (c.kind === "stream" || seen.has(c.cut + ":" + lineOf(c.w0))) continue;
-      seen.add(c.cut + ":" + lineOf(c.w0));
+      const k = `${c.cut}:${topicAt(c.w0)?.id ?? `line${lineOf(c.w0)}`}`;
+      if (c.kind === "stream" || seen.has(k)) continue;
+      seen.add(k);
       xs.push(c);
     }
     return startsAt(xs);
@@ -205,6 +207,24 @@ export function Transcript() {
       k = j + 1;
     }
     return { heads, hidden };
+  });
+  // Retakes (decision 0040): the first try of something said again just after, as the
+  // retakes sweep finds it (its output-frame ranges, mapped onto the words). The panel
+  // marks them now the lines run together as prose (a line break no longer shows them).
+  const [retakes] = createResource(
+    () => { const v = cutView(); const t = d(); return v && t?.revision && !browsing() ? { p: v.project, c: v.cut, r: v.rev, rev: t.revision } : undefined; },
+    async (k) => (await actions.sweepPreview(k.p, k.c, "retakes", 0.4, 0.1).catch(() => null))?.cuts ?? [],
+  );
+  const againWords = createMemo(() => {
+    const t = d();
+    const set = new Set<number>();
+    const rs = (retakes() ?? []).filter((x) => x.out);
+    if (!t || !rs.length) return set;
+    for (let i = 0; i < t.frame.length; i++) {
+      const f = t.frame[i]!;
+      if (f >= 0 && rs.some((x) => f >= x.out![0] && f < x.out![1])) set.add(i);
+    }
+    return set;
   });
   // Paragraphs (the reading view's; in the panel a paragraph is invisible, `display:
   // contents`): a new one after a pause, at a topic, fluff or collapsed-run edge, and at a
@@ -340,7 +360,9 @@ export function Transcript() {
     return bf[lo]![1];
   });
   // ⌖ follow the playhead: the playhead's word stays in view while playing and stepping
-  const [follow, setFollow] = createSignal(true);
+  // following the playhead: on, ⌘K "Words: follow the playhead" turns it off (its ⌖ button
+  // left the bar 2026-11-22)
+  const follow = trFollow;
   createEffect(on([nowWord, paras, follow], ([w, , f], prev) => {
     const was = prev ? (prev[0] as number) : -1;
     paint("now", was >= 0 ? [was] : [], w >= 0 ? [w] : []);
@@ -404,6 +426,29 @@ export function Transcript() {
   const cutSel = async () => {
     const s = sel();
     if (s) await strikeOrRestore(s.lo, s.hi);
+  };
+  // Fix everywhere (K.02): 1–4 caption words spelt right in every caption of the project,
+  // added to the term list (and, asked, to every project's)
+  const [fixing, setFixing] = createSignal(false);
+  const [fixText, setFixText] = createSignal("");
+  const [fixAll, setFixAll] = createSignal(false);
+  const openFix = () => {
+    const x = sel();
+    const t = d();
+    if (!x || !t || x.hi - x.lo > 3) return;
+    setFixText(t.text.slice(x.lo, x.hi + 1).map((w) => w.replace(/[.,?!:;]+$/, "")).join(" "));
+    setFixing(true);
+  };
+  const fixEverywhere = async () => {
+    const v = cutView();
+    const x = sel();
+    const written = fixText().trim();
+    if (!v || !x || !written) return;
+    const r = await attempt(() => ideaActions.termFixEverywhere(v.project, v.cut, x.lo, x.hi, written, fixAll(), owner() ?? undefined));
+    if (!r) return;
+    setFixing(false);
+    say(`“${r.heard}” shows as “${r.written}” in every caption (said ${r.found}×)${r.profile ? " · a term in all your projects" : " · a project term"} — ⌘Z undoes it`);
+    void refreshCut();
   };
   const keywordSel = () => {
     const v = cutView();
@@ -659,7 +704,6 @@ export function Transcript() {
             <For each={d()?.videos ?? []}>{(x) => <option value={x.owner}>{x.name}{x.in_cut ? "" : " (not in this cut)"}</option>}</For>
           </select>
         </Show>
-        <button type="button" class={follow() ? "ghost small on" : "ghost small"} aria-pressed={follow()} data-testid="follow" title="Follow the playhead (keep its word in view)" onClick={() => setFollow(!follow())}>⌖</button>
         <Show when={!reading()}>
           <button type="button" class="ghost small tr-read" data-testid="reading-open" data-tip="Read the full transcript: prose, no times, large type" data-kbd="⌥R" onClick={() => setReading(true)}>
             <Icon name="book-open" size={14} />
@@ -682,6 +726,17 @@ export function Transcript() {
           </Show>
         </div>
       </Show>
+      <Show when={fixing() && sel()}>
+        <form class="fix-pop" data-testid="fix-pop" onSubmit={(e) => { e.preventDefault(); void fixEverywhere(); }} onKeyDown={(e) => { if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); setFixing(false); } e.stopPropagation(); }}>
+          <span class="small">Heard <b>{d()?.text.slice(sel()!.lo, sel()!.hi + 1).join(" ")}</b> — show it as</span>
+          <div class="row">
+            <input type="text" aria-label="Show as" data-testid="fix-written" value={fixText()} onInput={(e) => setFixText(e.currentTarget.value)} ref={(el) => queueMicrotask(() => el.select())} />
+            <Button type="submit" size="sm" variant="primary" data-testid="fix-apply" disabled={!fixText().trim()}>Fix everywhere</Button>
+            <IconButton icon="x" size="sm" label="Close" onClick={() => setFixing(false)} />
+          </div>
+          <Switch testid="fix-all" on={fixAll()} onChange={setFixAll} label={<>In all my projects</>} hint="Every new transcription spells it this way, and the name check before export knows it" />
+        </form>
+      </Show>
       <div classList={{ "tr-sel": true, on: !!sel() || respelling() !== null || tuning() !== null }} role="toolbar" aria-label="Transcript actions">
         <Show
           when={respelling() === null}
@@ -703,7 +758,7 @@ export function Transcript() {
             fallback={
               <Show
                 when={tuning() !== null}
-                fallback={<span class="muted small tabular">{d()?.text.length ? `${d()!.text.length} words` : ""}</span>}
+                fallback={<span />}
               >
                 <span class="small" data-testid="tune-readout">
                   “{d()?.text[tuning()!]}” start {ms(tunedOf(tuning())?.[0] ?? 0)} · end {ms(tunedOf(tuning())?.[1] ?? 0)}
@@ -724,6 +779,13 @@ export function Transcript() {
               <button type="button" data-testid="label-topic" onClick={() => setLabelAsk(sel())} title="T">Topic…</button>
             </Show>
             <button type="button" onClick={keywordSel} title="*">★ Keyword</button>
+            {/* Fix everywhere (K.02), here since the words strip retired (2026-11-22): 1–4
+                words spelt right in every caption of the project, and a term */}
+            <Show when={sel()!.hi - sel()!.lo < 4 && cutView()}>
+              <button type="button" class="ghost" data-testid="fix-everywhere" data-tip="A name the transcriber got wrong: spell it right in every caption of the project and add it to your terms" onClick={openFix}>
+                <Icon name="pencil" size={13} />Fix everywhere…
+              </button>
+            </Show>
             <Show when={sel()!.hi - sel()!.lo >= 2 && cutView()}>
               <button type="button" class="ghost" data-testid="tr-broll" data-tip="B-roll: moments from your other recordings that talk about these words" onClick={() => { const v = cutView(); const x = sel(); if (v && x) askBroll({ project: v.project, cut: v.cut, lo: x.lo, hi: x.hi }); }}>
                 <Icon name="film" size={13} />B-roll…
@@ -770,7 +832,10 @@ export function Transcript() {
         <div class="tr-body" ref={pane} tabindex="0" role="listbox" aria-label="Transcript words" aria-multiselectable="true" onKeyDown={onKey} data-testid="transcript">
           <For each={paras()}>
             {(para) => (
-            <div classList={{ "tr-para": true, "all-out": para.out }}>
+            <div
+              classList={{ "tr-para": true, "all-out": para.out, topic: !!topicAt(para.lines[0]!.a), proposed: topicAt(para.lines[0]!.a)?.state === "proposed" }}
+              style={topicAt(para.lines[0]!.a) ? { "--topic": topicAt(para.lines[0]!.a)!.colour } : undefined}
+            >
             <For each={para.lines}>
             {(l) => (
               <>
@@ -782,7 +847,8 @@ export function Transcript() {
                       class="topic-edge"
                       role="button"
                       tabindex="-1"
-                      title="Drag onto a word: the topic starts there"
+                      aria-label="Topic start: drag onto a word"
+                      data-tip="Drag onto a word to move where this topic starts"
                       data-testid="topic-edge-start"
                       onPointerDown={(e) => { e.preventDefault(); edgeDrag = { topic: tp.id, edge: "start" }; document.body.classList.add("edge-dragging"); }}
                     >⇤</span>
@@ -800,7 +866,8 @@ export function Transcript() {
                       class="topic-edge"
                       role="button"
                       tabindex="-1"
-                      title="Drag onto a word: the topic ends there"
+                      aria-label="Topic end: drag onto a word"
+                      data-tip="Drag onto a word to move where this topic ends"
                       data-testid="topic-edge-end"
                       onPointerDown={(e) => { e.preventDefault(); edgeDrag = { topic: tp.id, edge: "end" }; document.body.classList.add("edge-dragging"); }}
                     >⇥</span>
@@ -834,8 +901,9 @@ export function Transcript() {
                 <span class="tr-t" aria-hidden="true">{l.t}</span>
                 <For each={chips().get(l.a) ?? []}>
                   {(c) => (
-                    <button type="button" class={`cov-chip ${c.kind}`} title={`Used by “${c.title}” — open it`} data-testid="coverage-chip" onClick={() => { const v = cutView(); if (v) void openCut(v.project, c.cut); }}>
-                      {c.kind === "long" ? "▭" : "▯"} {c.title.length > 18 ? c.title.slice(0, 17) + "…" : c.title}
+                    <button type="button" class={`cov-chip ${c.kind}`} aria-label={`Used by “${c.title}” — open it`} data-tip={`Used by the ${c.kind === "long" ? "long video" : "short"} “${c.title}” — open it`} data-testid="coverage-chip" onClick={() => { const v = cutView(); if (v) void openCut(v.project, c.cut); }}>
+                      <span aria-hidden="true">{c.kind === "long" ? "▭" : "▯"}</span>
+                      <span class="cov-name">{c.title}</span>
                     </button>
                   )}
                 </For>
@@ -849,8 +917,8 @@ export function Transcript() {
                         ref={(el) => (els[i] = el)}
                         role="option"
                         aria-selected="false"
-                        classList={{ w: true, out, kw: t.keywords.includes(i), respelled: ed !== undefined && ed !== "", nocap: ed === "", tuned: !!t.tuned?.[String(i)] }}
-                        title={ed !== undefined ? (ed === "" ? `“${t.text[i]}” is hidden from captions` : `heard “${t.text[i]}”`) : undefined}
+                        classList={{ w: true, out, kw: t.keywords.includes(i), respelled: ed !== undefined && ed !== "", nocap: ed === "", tuned: !!t.tuned?.[String(i)], again: againWords().has(i) }}
+                        title={ed !== undefined ? (ed === "" ? `“${t.text[i]}” is hidden from captions` : `heard “${t.text[i]}”`) : againWords().has(i) ? "Said again just after: Tighten (in the status) keeps the second try" : undefined}
                         onDblClick={() => setRespelling(i)}
                         data-i={i}
                         onPointerDown={(e) => down(e, i)}

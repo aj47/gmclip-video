@@ -117,7 +117,7 @@ const FIXTURES: &[Fixture] = &[
         name: "ci-build-rs",
         check: "cargo xt supply",
         args: &["@supply"],
-        expect: "libc custom-build",
+        expect: "anyhow custom-build",
         tool: None,
     },
     Fixture {

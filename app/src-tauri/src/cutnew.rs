@@ -38,19 +38,13 @@ pub fn from_moment(core: &AppCore, project: &str, moment: &str) -> AppResult<Val
             gmclip_model::Rational::new(30, 1),
             crate::video::framing_fps,
         );
-    let title: String = m
-        .text_hook
-        .clone()
-        .filter(|x| !x.trim().is_empty())
-        .unwrap_or_else(|| m.excerpt.text.clone())
-        .chars()
-        .take(120)
-        .collect();
-    let title = if title.trim().is_empty() {
-        "New cut".to_owned()
-    } else {
-        title
-    };
+    // a short's name is a few words (AJ 2026-11-22): its hook, else the topic it starts
+    // in, else its first words; renamed like any cut
+    let title = short_title(
+        m.text_hook.as_deref(),
+        topic_at(&doc, m, span.0, t.as_deref()).as_deref(),
+        &m.excerpt.text,
+    );
     let out = |v: Value| v["output"].clone();
     let cut = out(core.call(
         project,
@@ -168,5 +162,131 @@ pub fn media_range(doc: &gmclip_model::Doc, media: gmclip_model::entities::Media
             }
             (lo, hi)
         }
+    }
+}
+
+/// The title of the accepted topic (on the moment's media) that `at` falls in, if any.
+pub fn topic_at(
+    doc: &gmclip_model::Doc,
+    m: &Moment,
+    at: gmclip_model::Flicks,
+    t: Option<&crate::review::Transcript>,
+) -> Option<String> {
+    use gmclip_model::entities::{ProposalState, Topic};
+    doc.iter::<Topic>()
+        .filter(|x| x.state == ProposalState::Accepted && x.media == m.media)
+        .find(|x| {
+            let a = crate::review::anchor_time(doc, &x.span.start, t);
+            let b = crate::review::anchor_time(doc, &x.span.end, t);
+            matches!((a, b), (Some(a), Some(b)) if a <= at && at < b)
+        })
+        .map(|x| x.title.clone())
+        .filter(|x| !x.trim().is_empty())
+}
+
+/// A short's name in a few words: the hook if it has one, else its topic, else the first
+/// words of what is said (up to five, ending at a sentence's end, never on "and" or "the").
+pub fn short_title(hook: Option<&str>, topic: Option<&str>, said: &str) -> String {
+    const MAX_WORDS: usize = 5;
+    const MAX_CHARS: usize = 40;
+    const WEAK: &[&str] = &[
+        "and", "or", "but", "so", "the", "a", "an", "to", "of", "with", "for", "in", "on", "at",
+        "is", "it's", "that", "this", "my", "your", "i", "we",
+    ];
+    let pick = |x: Option<&str>| {
+        x.map(str::trim)
+            .filter(|x| !x.is_empty())
+            .map(str::to_owned)
+    };
+    // a hook or a topic is a name someone chose: whole when it is short, else cut at a word
+    if let Some(name) = pick(hook).or_else(|| pick(topic)) {
+        if name.chars().count() <= MAX_CHARS {
+            return name;
+        }
+        let mut out = String::new();
+        for w in name.split_whitespace() {
+            if out.chars().count() + w.chars().count() + 1 > MAX_CHARS {
+                break;
+            }
+            if !out.is_empty() {
+                out.push(' ');
+            }
+            out.push_str(w);
+        }
+        return out;
+    }
+    let src = said.trim().to_owned();
+    let mut words: Vec<String> = Vec::new();
+    for w in src.split_whitespace() {
+        let end = w.ends_with(['.', '?', '!']);
+        words.push(w.to_owned());
+        let chars: usize = words.iter().map(|x| x.chars().count() + 1).sum();
+        if words.len() >= MAX_WORDS || chars > MAX_CHARS || (end && words.len() >= 2) {
+            break;
+        }
+    }
+    let clean = |w: &str| {
+        w.trim_end_matches(['.', ',', ';', ':', '!', '?', '…', '-', '—'])
+            .to_owned()
+    };
+    while words.len() > 1 && WEAK.contains(&clean(words.last().unwrap()).to_lowercase().as_str()) {
+        words.pop();
+    }
+    let mut title = words
+        .iter()
+        .map(|w| w.as_str())
+        .collect::<Vec<_>>()
+        .join(" ");
+    title = clean(&title);
+    if title.is_empty() {
+        return "New short".to_owned();
+    }
+    let mut c = title.chars();
+    match c.next() {
+        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+        None => title,
+    }
+}
+
+#[cfg(test)]
+mod title_tests {
+    use super::short_title;
+
+    #[test]
+    fn a_few_words() {
+        assert_eq!(
+            short_title(
+                None,
+                None,
+                "I stopped using Codex and Claude Code harness directly to use something no one's really heard of."
+            ),
+            "I stopped using Codex"
+        );
+        assert_eq!(
+            short_title(
+                None,
+                None,
+                "it's called BB, the agentic IDE. It runs the real code"
+            ),
+            "It's called BB, the agentic"
+        );
+        assert_eq!(
+            short_title(
+                Some("My PC made this in 67 seconds"),
+                Some("Hardware"),
+                "whatever"
+            ),
+            "My PC made this in 67 seconds"
+        );
+        assert_eq!(
+            short_title(None, Some("What BB is"), "whatever"),
+            "What BB is"
+        );
+        assert_eq!(
+            short_title(Some("  "), Some("What BB is"), "whatever"),
+            "What BB is"
+        );
+        assert_eq!(short_title(None, None, "   "), "New short");
+        assert_eq!(short_title(None, None, "Wow."), "Wow");
     }
 }

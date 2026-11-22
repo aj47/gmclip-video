@@ -2,7 +2,7 @@
   "name": "gmclip-ui",
   "private": true,
   "license": "MIT OR Apache-2.0",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "description": "gmclip's webview UI (SPEC \u00a712): SolidJS + TypeScript + Vite.",
   "scripts": {

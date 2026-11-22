@@ -380,6 +380,8 @@ export function WelcomeCard(props: { tick: number; onSetup: () => void }) {
 export function FirstChecklist(props: { tick: number }) {
   const [cl, { refetch, mutate }] = createResource(() => props.tick, async () => (await attempt(actions.checklistView)) ?? null);
   onMount(() => void refetch());
+  // the first step not done yet: marked, and its how said under the steps
+  const next = () => cl()?.steps.find((x) => !x.done);
   const dismiss = async () => {
     const r = await attempt(() => actions.checklistDismiss(true));
     if (r) mutate(r as Checklist);
@@ -387,22 +389,22 @@ export function FirstChecklist(props: { tick: number }) {
   return (
     <Show when={cl()?.show}>
       <section class="fr-checklist" aria-label="Your first short" data-testid="checklist">
-        <header class="row">
+        <div class="fr-cl-row">
           <h2>Your first short</h2>
-          <span class="muted small">{cl()!.steps.filter((s) => s.done).length} of {cl()!.steps.length}</span>
+          <ol>
+            <For each={cl()!.steps}>
+              {(s) => (
+                <li classList={{ done: s.done, next: s.id === next()?.id }} data-testid="checklist-step" data-step={s.id} data-done={s.done ? "yes" : "no"} data-tip={s.how}>
+                  <span class="fr-cl-n" aria-hidden="true" />
+                  <span>{s.label}</span>
+                </li>
+              )}
+            </For>
+          </ol>
           <span class="spacer" />
           <Button size="sm" variant="ghost" icon="x" data-testid="checklist-dismiss" tooltip="Hide this checklist" onClick={() => void dismiss()}>Dismiss</Button>
-        </header>
-        <ol>
-          <For each={cl()!.steps}>
-            {(s) => (
-              <li class={s.done ? "done" : ""} data-testid="checklist-step" data-step={s.id} data-done={s.done ? "yes" : "no"} data-tip={s.how}>
-                <Icon name={s.done ? "circle-check" : "circle"} size={15} />
-                <span>{s.label}</span>
-              </li>
-            )}
-          </For>
-        </ol>
+        </div>
+        <Show when={next()}>{(n) => <p class="fr-cl-next muted small">Next: {n().how}</p>}</Show>
       </section>
     </Show>
   );

@@ -35,6 +35,9 @@ interface Loaf {
 }
 
 test("words strip on a 2 h 40 min transcript", async ({ browser }) => {
+  // the words strip under the picture is retired (AJ 2026-11-22): the transcript is the Words
+  // tab only (its Fix everywhere and B-roll moved there; see ideas.spec and transcript specs)
+  test.skip(true, "the words strip is retired (2026-11-22)");
   test.setTimeout(300_000);
   let { page } = await openPage(browser, { width: 1440, height: 900 });
   const errors: string[] = [];

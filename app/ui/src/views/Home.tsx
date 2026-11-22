@@ -3,16 +3,15 @@
 // importing. Empty states: one sentence, one action (§12.5).
 import { baseName, isMac, isWindows } from "../platform";
 import { about, ago } from "../eta";
-import { createEffect, createResource, createSignal, For, on, onMount, Show } from "solid-js";
+import { createEffect, createMemo, createResource, createSignal, For, on, onMount, Show } from "solid-js";
 import { ConnectAgent } from "../components/AgentPanel";
 import { FirstChecklist, SetupSheet, WelcomeCard } from "../components/FirstRun";
 import { RestoreSheet } from "../components/Reliability";
-import { MachineCaps } from "../components/MachineCaps";
 import { setLaunchFor } from "../agentsState";
 import { setFramingsFor } from "../extrasState";
 import { ConsolidateSheet } from "../components/ConsolidateSheet";
 import { BatchSheet } from "../components/BatchSheet";
-import { actions, type Home as HomeData, type PairProposal, type ProjectInfo } from "../actions";
+import { actions, type Home as HomeData, type PairProposal, type ProjectInfo, type RecentProject } from "../actions";
 import { Button, Menu } from "../design/components";
 import { Icon } from "../design/Icon";
 import { humanTitle } from "./CutView";
@@ -83,6 +82,13 @@ export function Home() {
   };
   onMount(() => void refreshHome());
   const active = () => home().running.length + home().needs_you.length + home().done.length > 0;
+  // a project shows once: an open one as its own card (with its picture when it has a
+  // recent video), a closed one in "Opened before", the rest of the library after that
+  const projectIds = createMemo(() => projects().map((p) => p.id), undefined, { equals: (a, b) => a.length === b.length && a.every((x, i) => x === b[i]) });
+  const recentOf = (id: string) => recent()?.find((r) => r.project === id);
+  const moreLibrary = () => (home().library ?? []).filter((l) => !l.open);
+  // a closed project in the library is its row (exports, moments); a card only otherwise
+  const closedRecent = () => (recent() ?? []).filter((r) => !projects().some((p) => p.id === r.project) && !moreLibrary().some((l) => l.id === r.project));
 
   const openAt = async (path: string) => {
     const p = await attempt(() => actions.openHome(path));
@@ -139,11 +145,7 @@ export function Home() {
     <main class="home" aria-label="Home">
       <WelcomeCard tick={welcomeKey()} onSetup={() => setStranger(true)} />
       <FirstChecklist tick={projects().length + home().done.length + welcomeKey()} />
-      <form class="home-search" role="search" data-testid="home-search" onSubmit={(e) => { e.preventDefault(); setRoute({ view: "search", q: searchQ().trim() }); }}>
-        <input type="search" placeholder="Search everything you said…" aria-label="Search everything you said" value={searchQ()} onInput={(e) => setSearchQ(e.currentTarget.value)} />
-        <Button type="submit" icon="search" keys="⌘⇧F" tooltip="Search every stream in your library">Search</Button>
-      </form>
-      <div class="home-hero" classList={{ solo: !active() }}>
+      <div class="home-hero" classList={{ solo: !active(), compact: !!(projects().length || recent()?.length) }}>
         <section class="dropzone" aria-label="Open a video">
           <span class="drop-icon"><Icon name="upload" size={24} /></span>
           <h1>Open a video</h1>
@@ -171,6 +173,12 @@ export function Home() {
             <input type="text" placeholder="…or paste a path to a video" aria-label="Video path" value={videoPath()} onInput={(e) => setVideoPath(e.currentTarget.value)} />
             <button type="submit" disabled={!videoPath().trim() || opening()}>Open</button>
           </form>
+          <Show when={folderOpen()}>
+            <form class="path" onSubmit={(e) => { e.preventDefault(); void open(); }}>
+              <input type="text" ref={(el) => queueMicrotask(() => el.focus())} placeholder="…/Library/Name.gmclip (a project folder)" aria-label="Project folder" value={openPath()} onInput={(e) => setOpenPath(e.currentTarget.value)} onKeyDown={(e) => { if (e.key === "Escape") setFolderOpen(false); }} />
+              <button type="submit" disabled={!openPath().trim()}>Open</button>
+            </form>
+          </Show>
           <Show when={recPathOpen()}>
             <form class="path" onSubmit={(e) => { e.preventDefault(); void openRec(); }}>
               <input type="text" ref={(el) => queueMicrotask(() => el.focus())} placeholder="…/Recordings/Recording … (the folder with session.json)" aria-label="Recording folder" data-testid="rec-open-path" value={recPath()} onInput={(e) => setRecPath(e.currentTarget.value)} onKeyDown={(e) => { if (e.key === "Escape") setRecPathOpen(false); }} />
@@ -184,6 +192,7 @@ export function Home() {
             testid="open-more"
             items={() => [
               { label: "A stream with its hi-res picture…", icon: "layers", testid: "open-pair", onSelect: () => setPair(true) },
+              { label: "A project folder…", icon: "folder-open", testid: "open-folder", onSelect: () => setFolderOpen(true) },
               { label: "A consolidated project…", icon: "folder-open", testid: "open-consolidated", onSelect: () => setConsolidating(true) },
               { label: "A recording folder…", icon: "video", testid: "open-recording", onSelect: () => setRecPathOpen(true) },
               { label: "Restore an earlier copy…", icon: "history", testid: "restore-open", onSelect: () => setRestoring(true) },
@@ -356,33 +365,124 @@ export function Home() {
       <Show when={connecting()}>
         <ConnectAgent onClose={() => setConnecting(false)} />
       </Show>
-      <Show when={recent()?.length}>
-        <section aria-label="Recent">
-          <div class="home-section-head">
-            <h2>Recent projects</h2>
-            <span class="muted">{recent()!.length}</span>
-          </div>
+
+      {/* Your projects: each open project once (its picture, its cuts, its actions), then
+          the ones opened before, then the rest of the library; search what you said sits
+          with them (an empty library has nothing said to search: ⌘⇧F still opens Search) */}
+      <section class="home-projects" aria-label="Your projects">
+        <div class="home-section-head">
+          <h2>Your projects</h2>
+          <Show when={projects().length + closedRecent().length + moreLibrary().length}>
+            {(n) => <span class="muted">{n()}</span>}
+          </Show>
+          <span class="spacer" />
+          <Show when={projects().length || recent()?.length || home().library?.length}>
+            <form class="home-search" role="search" data-testid="home-search" onSubmit={(e) => { e.preventDefault(); setRoute({ view: "search", q: searchQ().trim() }); }}>
+              {/* one field: Enter searches (⌘⇧F from anywhere) */}
+              <span class="home-search-field">
+                <Icon name="search" size={14} />
+                <input type="search" placeholder="Search everything you said (Enter)" aria-label="Search everything you said" data-tip="Search every video in your library" data-kbd="⌘⇧F" value={searchQ()} onInput={(e) => setSearchQ(e.currentTarget.value)} />
+              </span>
+            </form>
+          </Show>
+        </div>
+        <Show when={!projects().length && !closedRecent().length && !moreLibrary().length}>
+          <p class="empty">Your projects show here once you open a video.</p>
+        </Show>
+        {/* keyed by project id: Home refreshing its list (transcription, exports) keeps each
+            card, so a menu open on one stays open */}
+        <For each={projectIds()}>
+          {(pid) => (
+            <Show when={projects().find((x) => x.id === pid)}>
+              {(p) => (
+                <div class="project" classList={{ "has-thumb": !!recentOf(p().id) }}>
+                  <Show when={recentOf(p().id)}>{(v) => <RecentCard v={v()} onOpen={() => void openProject(p().id)} />}</Show>
+                  <div class="project-body">
+                    <header>
+                      <h3>{p().name}</h3>
+                      {/* the project's actions in its menu (the card stays the picture and its cuts) */}
+                      <Menu
+                        label={`More for ${p().name}`}
+                        icon="more"
+                        testid="project-menu"
+                        items={() => [
+                          { label: "Export 9:16 + 16:9…", icon: "share", testid: "framings-open-home", onSelect: () => setFramingsFor({ project: p().id }) },
+                          // starting agents inside gmclip: the developer setting's (decision 0054)
+                          ...(prefs.developer
+                            ? [
+                                { label: "Ask an agent…", icon: "smile", testid: "project-agent-open", onSelect: () => setLaunchFor({ project: p().id }) },
+                                { label: "Send an agent…", icon: "bot", testid: "batch-open", onSelect: () => setBatchFor(p()) },
+                              ]
+                            : []),
+                        ]}
+                      />
+                    </header>
+                    <For each={p().cuts} fallback={<p class="empty">No cuts yet.</p>}>
+                      {(c) => (
+                        // the whole row opens the cut; the project's own main cut (its name again) says "Main cut"
+                        <div class="item" data-framed={c.framed ? "yes" : "no"}>
+                          <button
+                            type="button"
+                            class="item-open"
+                            disabled={!c.framed}
+                            aria-label={`Open ${c.title === p().name ? "Main cut" : c.title}`}
+                            data-tip={c.framed ? undefined : "A story cut: grow it into a framed cut (story panel)"}
+                            onClick={() => void openCut(p().id, c.id)}
+                          >
+                            <span class="cut-name">{c.title === p().name ? "Main cut" : c.title}</span>
+                            <Show when={c.title === p().name}><span class="sr-only">{c.title}</span></Show>
+                            <span class="muted">{c.framed ? `${c.parts} part${c.parts === 1 ? "" : "s"}${c.imported ? " · imported" : ""}` : "story, not framed yet"}</span>
+                            <Icon name="chevron-right" size={14} />
+                          </button>
+                        </div>
+                      )}
+                    </For>
+                    <For each={dropped()}>
+                      {(path) => (
+                        <div class="item">
+                          <span class="muted">Dropped: {baseName(path)}</span>
+                          <button type="button" onClick={() => void doImport(p().id, path)}>Import</button>
+                        </div>
+                      )}
+                    </For>
+                  </div>
+                </div>
+
+              )}
+            </Show>
+          )}
+        </For>
+        <Show when={closedRecent().length || moreLibrary().length}>
+          <h3 class="home-sub">Opened before</h3>
+        </Show>
+        <Show when={closedRecent().length}>
           <div class="recent-grid" role="list" aria-label="Recent projects">
-            <For each={recent()}>
+            <For each={closedRecent()}>
               {(v) => (
                 <div role="listitem">
-                  <button type="button" class="recent-card" data-missing={v.missing ? "yes" : "no"} disabled={v.missing || !v.open || opening()} aria-label={`Edit ${v.name}`} data-tip={v.missing ? "Its videos moved or were deleted" : v.thumb} onClick={() => void open_(v.open ?? undefined)}>
-                    <span class="recent-thumb">
-                      <RecentThumb path={v.thumb} missing={v.missing} />
-                      <span class="recent-dur">{dur(v.duration_s)}</span>
-                    </span>
-                    <span class="recent-meta">
-                      <span class="recent-name">{humanTitle(v.name)}</span>
-                      <span class="recent-path">{v.missing ? "videos moved or deleted" : v.videos === 1 ? (v.thumb.split(isWindows ? /[\\/]/ : "/").slice(-2, -1)[0] ?? v.thumb) : `${v.videos} videos`}</span>
-                    </span>
-                  </button>
+                  <RecentCard v={v} disabled={opening()} onOpen={() => void open_(v.open ?? undefined)} />
                 </div>
               )}
             </For>
           </div>
-        </section>
-      </Show>
-
+        </Show>
+        <Show when={moreLibrary().length}>
+          <section class="library-rows" aria-label="Library">
+            <For each={moreLibrary()}>
+              {(l) => (
+                <div class="item" data-testid="library-row">
+                  <span>{l.name}</span>
+                  <span class="muted">
+                    {l.exports ? `${l.exports} export${l.exports === 1 ? "" : "s"}${l.last_export ? ` · last “${l.last_export.title}”` : ""}` : "no exports"}
+                    {l.moments?.total ? ` · ${l.moments.total} moment${l.moments.total === 1 ? "" : "s"}${l.moments.to_grow ? `, ${l.moments.to_grow} to grow` : ""}` : ""}
+                  </span>
+                  <button type="button" onClick={() => void openAt(l.path)}>Open</button>
+                </div>
+              )}
+            </For>
+          </section>
+        </Show>
+      </section>
       <Show when={home().recent?.length}>
         <section class="projects home-recent" aria-label="Recent exports">
           <h2>Recent exports</h2>
@@ -404,86 +504,12 @@ export function Home() {
           </For>
         </section>
       </Show>
-
-      <Show when={(home().library ?? []).some((l) => !l.open)}>
-        <section class="projects" aria-label="Library">
-          <h2>In your library</h2>
-          <For each={(home().library ?? []).filter((l) => !l.open)}>
-            {(l) => (
-              <div class="item" data-testid="library-row">
-                <span>{l.name}</span>
-                <span class="muted">
-                  {l.exports ? `${l.exports} export${l.exports === 1 ? "" : "s"}${l.last_export ? ` · last “${l.last_export.title}”` : ""}` : "no exports"}
-                  {l.moments?.total ? ` · ${l.moments.total} moment${l.moments.total === 1 ? "" : "s"}${l.moments.to_grow ? `, ${l.moments.to_grow} to grow` : ""}` : ""}
-                </span>
-                <button type="button" onClick={() => void openAt(l.path)}>Open</button>
-              </div>
-            )}
-          </For>
-        </section>
-      </Show>
-      <section class="projects" aria-label="Projects">
-        <h2>Projects</h2>
-        <Show
-          when={projects().length}
-          fallback={<p class="empty">Open a video above, or a project folder.</p>}
-        >
-          <For each={projects()}>
-            {(p) => (
-              <div class="project">
-                <header>
-                  <h3>{p.name}</h3>
-                  <span class="row">
-                    {/* starting agents inside gmclip: the developer setting's (decision 0054) */}
-                    <Show when={prefs.developer}>
-                      <button type="button" class="ghost" data-testid="project-agent-open" onClick={() => setLaunchFor({ project: p.id })}>Ask an agent…</button>
-                      <button type="button" class="ghost" data-testid="batch-open" onClick={() => setBatchFor(p)}>Send an agent…</button>
-                    </Show>
-                    <button type="button" class="ghost" data-testid="framings-open-home" title="Each cut you tick exported twice: 9:16 and 16:9" onClick={() => setFramingsFor({ project: p.id })}>Export 9:16 + 16:9…</button>
-                  </span>
-                </header>
-                <For each={p.cuts} fallback={<p class="empty">No cuts yet.</p>}>
-                  {(c) => (
-                    <div class="item" data-framed={c.framed ? "yes" : "no"}>
-                      <span>{c.title}</span>
-                      <span class="muted">{c.framed ? `${c.parts} part${c.parts === 1 ? "" : "s"}${c.imported ? " · imported" : ""}` : "story (no framing yet)"}</span>
-                      <button type="button" disabled={!c.framed} title={c.framed ? undefined : "A story cut: grow it into a framed cut (story panel)"} onClick={() => void openCut(p.id, c.id)}>
-                        Open
-                      </button>
-                    </div>
-                  )}
-                </For>
-                <For each={dropped()}>
-                  {(path) => (
-                    <div class="item">
-                      <span class="muted">Dropped: {baseName(path)}</span>
-                      <button type="button" onClick={() => void doImport(p.id, path)}>Import</button>
-                    </div>
-                  )}
-                </For>
-              </div>
-            )}
-          </For>
-        </Show>
-        <div class="row">
-          <Show
-            when={folderOpen()}
-            fallback={<Button variant="ghost" icon="folder-open" data-testid="open-folder" onClick={() => setFolderOpen(true)}>Open folder…</Button>}
-          >
-            <form class="row" onSubmit={(e) => { e.preventDefault(); void open(); }}>
-              <input type="text" ref={(el) => queueMicrotask(() => el.focus())} placeholder="…/Library/Name.gmclip" aria-label="Project folder" value={openPath()} onInput={(e) => setOpenPath(e.currentTarget.value)} onKeyDown={(e) => { if (e.key === "Escape") setFolderOpen(false); }} />
-              <button type="submit" disabled={!openPath().trim()}>Open</button>
-            </form>
-          </Show>
-        </div>
-      </section>
       <Show when={batchFor()}>
         {(p) => <BatchSheet project={p()} onClose={() => setBatchFor(null)} />}
       </Show>
       <Show when={consolidating()}>
         <ConsolidateSheet onClose={() => setConsolidating(false)} />
       </Show>
-      <MachineCaps />
     </main>
   );
 }
@@ -598,5 +624,22 @@ function PairDialog(props: {
         </div>
       </section>
     </div>
+  );
+}
+
+/** A project's card: its first video's frame, length, name and folder. */
+function RecentCard(props: { v: RecentProject; disabled?: boolean; onOpen: () => void }) {
+  const v = () => props.v;
+  return (
+    <button type="button" class="recent-card" data-missing={v().missing ? "yes" : "no"} disabled={v().missing || !v().open || props.disabled} aria-label={`Edit ${v().name}`} data-tip={v().missing ? "Its videos moved or were deleted" : v().thumb} onClick={() => props.onOpen()}>
+      <span class="recent-thumb">
+        <RecentThumb path={v().thumb} missing={v().missing} />
+        <span class="recent-dur">{dur(v().duration_s)}</span>
+      </span>
+      <span class="recent-meta">
+        <span class="recent-name">{humanTitle(v().name)}</span>
+        <span class="recent-path">{v().missing ? "videos moved or deleted" : v().videos === 1 ? (v().thumb.split(isWindows ? /[\\/]/ : "/").slice(-2, -1)[0] ?? v().thumb) : `${v().videos} videos`}</span>
+      </span>
+    </button>
   );
 }

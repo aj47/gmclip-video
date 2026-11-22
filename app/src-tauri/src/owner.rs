@@ -536,7 +536,10 @@ pub fn settings(core: &AppCore) -> Value {
             json!({"read_roots": s.read_roots, "write_roots": s.write_roots, "recordings": s.recordings,
                    "revoked": s.revoked, "export_dir": s.export_dir, "profile": s.profile, "style": style,
                    "budgets": s.budgets(), "providers": s.providers(), "telemetry": s.telemetry,
-                   "agent": crate::agent::client_status(core)})
+                   // the clients' probe takes seconds the first time (warmed at app_ready):
+                   // until it is done this says so instead of holding Settings
+                   "agent": crate::agent::client_status_cached(core)
+                       .unwrap_or_else(|| json!({"found": false, "pending": true, "message": "Finding your agents…"}))})
         }
         None => json!({"note": "no agent server in this app"}),
     }

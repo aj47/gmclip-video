@@ -21,7 +21,8 @@ test("Settings › Recording shows the permissions; Home points there", async ({
   await page.getByTestId("record-hint").click();
   const section = page.getByTestId("rec-settings");
   await expect(section).toBeVisible();
-  await expect(section.getByTestId("rec-perm")).toHaveCount(5);
+  // off: the permission rows wait until recording is turned on (2026-11-22)
+  await expect(section.getByTestId("rec-perm")).toHaveCount(0);
   await expect(section.getByRole("switch").or(section.getByRole("checkbox")).first()).not.toBeChecked();
   expect(errors).toEqual([]);
 });

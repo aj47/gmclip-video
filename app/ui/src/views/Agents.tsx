@@ -61,7 +61,9 @@ export function Agents() {
     if (!openSession() && first) void loadSession(first.id);
   });
   return (
-    <div class="agents-view" data-testid="agents-view">
+    <div class="agents-view" data-testid="agents-view" data-empty={sessions().length ? undefined : "1"}>
+      {/* the list only once there is a session (with none: the welcome, its one New session) */}
+      <Show when={sessions().length}>
       <aside class="ag-list" aria-label="Sessions">
         <header class="ag-list-head">
           <h2>Agents</h2>
@@ -78,19 +80,23 @@ export function Agents() {
           <h4 class="ag-sec">Earlier</h4>
           <For each={earlier()}>{(s) => <SessionRow s={s} on={s.id === openSession()} onPick={() => void loadSession(s.id)} />}</For>
         </Show>
-        <details class="ag-outside">
-          <summary class="ag-sec">Outside agents and approvals</summary>
-          <p class="muted small">
-            Agents you run yourself (in a terminal) reach gmclip over MCP.{" "}
-            <button type="button" class="ghost small" onClick={() => setConnect(true)}>
-              Connect one…
-            </button>
-          </p>
-          <ActivityRail />
-        </details>
+        {/* with a session open, outside agents are here; otherwise the main area has them */}
+        <Show when={current()}>
+          <details class="ag-outside">
+            <summary class="ag-sec">Outside agents and approvals</summary>
+            <p class="muted small">
+              Agents you run yourself (in a terminal) reach gmclip over MCP.{" "}
+              <button type="button" class="ghost small" onClick={() => setConnect(true)}>
+                Connect one…
+              </button>
+            </p>
+            <ActivityRail />
+          </details>
+        </Show>
       </aside>
+      </Show>
       <main class="ag-main">
-        <Show when={current()} keyed fallback={<Welcome />}>
+        <Show when={current()} keyed fallback={<Welcome showNew={!sessions().length} onConnect={() => setConnect(true)} />}>
           {(s) => <SessionPane s={s} />}
         </Show>
       </main>
@@ -101,34 +107,60 @@ export function Agents() {
   );
 }
 
-function Welcome() {
+function Welcome(props: { showNew: boolean; onConnect: () => void }) {
   const [agents] = createResource(async () => (await attempt(sessionActions.agents)) ?? null);
   return (
-    <Empty
-      icon="smile"
-      title="Put your own agent to work"
-      testid="agents-empty"
-      action={
-        <Button variant="primary" icon="plus" onClick={() => setLaunchFor({})}>
-          New session
-        </Button>
-      }
-    >
-      <p>Claude Code, Codex, pi or opencode, on your own plan: pick a project, a video or a cut, say what you want, and watch it work. Every edit shows live and can be undone.</p>
-      <Show when={agents()}>
-        {(a) => (
-          <p class="ag-avail">
-            <For each={a().agents}>
-              {(x) => (
-                <Chip tone={x.available ? "success" : "neutral"} dot tooltip={x.available ? `via ${x.via}` : (x.problem ?? undefined)}>
-                  {x.label}
-                </Chip>
-              )}
-            </For>
-          </p>
-        )}
-      </Show>
-    </Empty>
+    <div class="ag-welcome">
+      <Empty
+        icon="smile"
+        title="Put your own agent to work"
+        testid="agents-empty"
+        action={
+          // one New session button: here only while the list (with its own) is not shown
+          props.showNew ? (
+            <Button variant="primary" icon="plus" data-testid="session-new" onClick={() => setLaunchFor({})}>
+              New session
+            </Button>
+          ) : undefined
+        }
+      >
+        <p>Claude Code, Codex, pi or opencode, on your own plan: pick a project, a video or a cut, say what you want, and watch it work. Every edit shows live and can be undone.</p>
+        {/* the agents are the picker: one click starts a session with that one */}
+        <Show when={agents()}>
+          {(a) => (
+            <p class="ag-avail" role="group" aria-label="Start with">
+              <For each={a().agents}>
+                {(x) => (
+                  <button
+                    type="button"
+                    class="ag-pick"
+                    data-testid="agent-pick"
+                    data-harness={x.harness}
+                    disabled={!x.available}
+                    data-tip={x.available ? `A new session with ${x.label}${x.via ? ` (via ${x.via})` : ""}` : `Not installed: ${x.problem ?? `install ${x.label}, then it shows here`}`}
+                    onClick={() => setLaunchFor({ harness: x.harness })}
+                  >
+                    <span class={`ag-pick-dot${x.available ? " on" : ""}`} aria-hidden="true" />
+                    {x.label}
+                    <Show when={!x.available}><span class="muted small">not installed</span></Show>
+                  </button>
+                )}
+              </For>
+            </p>
+          )}
+        </Show>
+      </Empty>
+      <section class="ag-outside-main" aria-label="Outside agents and approvals">
+        <h3>Outside agents and approvals</h3>
+        <p class="muted small">
+          Agents you run yourself (in a terminal) reach gmclip over MCP.{" "}
+          <button type="button" class="ghost small" onClick={() => props.onConnect()}>
+            Connect one…
+          </button>
+        </p>
+        <ActivityRail />
+      </section>
+    </div>
   );
 }
 

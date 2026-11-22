@@ -19,7 +19,7 @@ const STARTERS: Record<Kind, string[]> = {
   cut: ["Tighten this cut: drop pauses and fillers, hook first, keep it under 60 s.", "Grow this into a ~60 s story with a clear payoff.", "Check the captions for misheard words and fix them."],
 };
 
-export function AgentLaunch(props: { at: SessionTargetArgs; onClose: () => void }) {
+export function AgentLaunch(props: { at: SessionTargetArgs & { harness?: string }; onClose: () => void }) {
   const [agents] = createResource(async () => (await attempt(sessionActions.agents)) ?? null);
   const initial: Kind = props.at.cut ? "cut" : props.at.source ? "video" : props.at.project ? "project" : "library";
   const [kind, setKind] = createSignal<Kind>(initial);
@@ -61,7 +61,8 @@ export function AgentLaunch(props: { at: SessionTargetArgs; onClose: () => void 
   });
   createEffect(() => {
     const a = agents();
-    if (a && !harness()) setHarness(a.agents.find((x) => x.harness === a.default && x.available)?.harness ?? a.agents.find((x) => x.available)?.harness ?? a.default);
+    // the agent picked on the Agents page (its chip), else the default, else the first found
+    if (a && !harness()) setHarness(a.agents.find((x) => x.harness === props.at.harness && x.available)?.harness ?? a.agents.find((x) => x.harness === a.default && x.available)?.harness ?? a.agents.find((x) => x.available)?.harness ?? a.default);
   });
   const chosen = createMemo(() => agents()?.agents.find((a) => a.harness === harness()));
   const target = (): SessionTargetArgs | null => {

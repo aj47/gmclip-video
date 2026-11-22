@@ -50,6 +50,8 @@ pub fn defaults() -> Value {
         // Settings › Recording (decision 0045): off until turned on, which asks for the
         // five permissions recording needs.
         "recording": false,
+        // where recordings go ("" = the library's sibling Recordings folder)
+        "recordings_folder": "",
         // Settings › Developer (decision 0054)
         "developer": false,
     })
@@ -121,6 +123,21 @@ pub fn load(dir: &Path) -> Value {
 
 fn valid(key: &str, v: &Value) -> AppResult<()> {
     match key {
+        "recordings_folder" => {
+            let ok = v.as_str().is_some_and(|p| {
+                p.is_empty()
+                    || (Path::new(p).is_absolute()
+                        && p.len() <= 1024
+                        && !p.chars().any(char::is_control))
+            });
+            if ok {
+                Ok(())
+            } else {
+                Err(AppError::invalid(
+                    "recordings_folder is an absolute folder (or \"\" for the default)",
+                ))
+            }
+        }
         "hover_scrub" | "safe_zones" | "map_open" | "render_stats" | "waveform" | "recording"
         | "developer" => {
             if v.is_boolean() {

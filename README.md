@@ -1,13 +1,16 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-light.png">
-    <img src="docs/images/logo.png" alt="gmclip" width="320">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-lockup-light.png">
+    <img src="assets/brand/logo-lockup.png" alt="gmclip" width="320">
   </picture>
 </p>
 
-<p align="center"><a href="https://gmclip.com">gmclip.com</a></p>
+<p align="center"><a href="https://gmclip.com">gmclip.com</a> · <a href="https://github.com/aj47/gmclip-video/releases/tag/v0.1.0">Download v0.1.0</a></p>
 
-![The gmclip editor on a vertical cut: the video preview, the transcript and burned-in captions](docs/images/editor-vertical-light.webp)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/editor-vertical-dark.webp">
+  <img src="docs/screenshots/editor-vertical-light.webp" alt="The gmclip editor on a vertical cut: the picture, the Words panel as prose, and an eight-part timeline">
+</picture>
 
 A desktop video editor for turning long recordings into vertical and horizontal cuts. You
 edit a cut by editing its words. Every feature is one command, and the UI, the CLI and a
@@ -16,18 +19,117 @@ Codex can do anything you can except change owner settings. Rust core, Tauri she
 SolidJS UI. Decode and encode go through the operating system's codecs; there is no
 ffmpeg.
 
-**Status: pre-release.** gmclip runs on macOS 13 or later on Apple silicon. Windows code
-exists and is not yet supported. There are no signed builds; you build it from source.
-Formats and commands still change.
+**Status: v0.1.0, an early release.** gmclip runs on macOS 14 or later on Apple silicon,
+and the Windows x64 build works too. The Intel Mac build is new and less tested. The
+installers are not signed yet. Formats and commands still change.
+
+## Download
+
+| Your computer | Installer |
+|---|---|
+| Mac with an Apple chip (M1 or later) | [gmclip-0.1.0-macos-arm64.dmg](https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-macos-arm64.dmg) |
+| Mac with an Intel chip | [gmclip-0.1.0-macos-x64.dmg](https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-macos-x64.dmg) |
+| Windows 10 (1809) or 11, x64 | [gmclip-0.1.0-windows-x64.msi](https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-windows-x64.msi) |
+
+Each installer has a `.sha256` file beside it on the
+[release page](https://github.com/aj47/gmclip-video/releases/tag/v0.1.0).
+
+The installers are unsigned, so your system warns you the first time:
+
+- **macOS:** open the disk image and drag gmclip to Applications. When macOS says it
+  cannot check gmclip, open System Settings → Privacy & Security and click **Open
+  Anyway**, or run `xattr -dr com.apple.quarantine /Applications/gmclip.app` once.
+- **Windows:** when SmartScreen says "Windows protected your PC", click **More info**,
+  then **Run anyway**. gmclip needs the WebView2 runtime, which Windows 11 ships.
+
+There is no Linux installer yet; on Linux you can build and test the core crates.
+
+## Features
+
+Everything here is in v0.1.0, on macOS and Windows unless it says Mac only.
+
+**Word-based editing**
+- Cut and restore by editing the transcript; the Words panel reads as prose
+- Word-snapped trims
+- Tighten pauses and fillers
+- Find and replace, and fix a misheard word everywhere
+- Versions and history
+
+**Framing**
+- 9:16 and 16:9 from one edit, with crop versions
+- Full screen, or screen and facecam
+- Follow-the-action crop
+- Blurred fill and gradient plates
+- Cut-outs without a green screen (built on a Mac; Windows plays them)
+- Pin an overlay to motion (Mac only)
+
+**Captions and text**
+- Burned-in captions timed to each cut's own audio, with keyword highlights
+- Text hooks, section labels and a stopwatch
+- Stressed-word emphasis and punch-ins
+- A caption style gallery
+- New shorts are titled from their hook or topic
+
+**Timeline**
+- Several videos in one project
+- Non-destructive trims that only hide
+- Stream edits, topics and long-form cuts
+- YouTube chapters
+- Voice and hi-res picture pairing
+- Recording your screen, camera and mic into a project (Mac only)
+
+**Audio**
+- An audio lane with waveforms
+- Volume per part and per span, with fades
+- −16 LUFS loudness on export
+
+**Export**
+- Reels and YouTube presets at 1080p, 1440p and 4K
+- Thumbnails with versions
+- Copy drafts per platform
+- Alternate openings to test
+- Moment clips (Mac only)
+
+**Agents and MCP**
+- A built-in MCP server gives an agent every feature
+- Claude Code, Codex, pi and opencode, each run limited to gmclip's tools
+- Your agent finds moments and grows a story; nothing runs until you click
+- Overnight batches with budget limits
+- "Fix with my agent" from a comment
+
+**Review from your phone**
+- Scan a QR code and give notes from your phone
+- Keep, change or drop each cut
+- Comments pinned to the moment, and suggested edits you approve
+- A retention CSV on the timeline
+
+**Brand kit**
+- Name, handle, colours, logo and face
+- Overlay templates and lower thirds
+- End cards that loop to the opening
+- A caption style for new projects
+
+**Search and library**
+- Search by words or by meaning, across every transcript you own
+- Golden cuts and "new cut like this"
+- Consolidate a project into one folder
 
 ## Screenshots
 
-| | |
-|---|---|
-| ![A 16:9 cut in the dark theme](docs/images/editor-horizontal-dark.webp) | ![The transcript beside the timeline of a cut's parts](docs/images/editor-plan-light.webp) |
-| The same cut framed for 16:9 | Transcript and timeline, part by part |
-| ![Home, with the project library](docs/images/home-light.webp) | ![The keyboard shortcut sheet](docs/images/keys-light.webp) |
-| Home and the project library | Every key on one sheet |
+<table>
+<tr>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/editor-topics-dark.webp"><img src="docs/screenshots/editor-topics-light.webp" alt="Topics in the project map and the Words panel"></picture><br>Topics in the project map, a long video and a short made from them</td>
+<td width="50%"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/editor-horizontal-dark.webp"><img src="docs/screenshots/editor-horizontal-light.webp" alt="The same cut framed 16:9"></picture><br>The same cut at 16:9</td>
+</tr>
+<tr>
+<td><picture><source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/captions-dark.webp"><img src="docs/screenshots/captions-light.webp" alt="The Captions panel with a text hook"></picture><br>Captions, a text hook and hook ideas from the clip</td>
+<td><picture><source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/home-dark.webp"><img src="docs/screenshots/home-light.webp" alt="Home with a project and its cuts"></picture><br>Home and your projects</td>
+</tr>
+<tr>
+<td><picture><source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/agents-dark.webp"><img src="docs/screenshots/agents-light.webp" alt="Agents: Claude Code, Codex, pi and opencode"></picture><br>Put your own agent to work</td>
+<td></td>
+</tr>
+</table>
 
 ## Build and run
 
@@ -53,7 +155,7 @@ The command-line tool builds from the root workspace:
 cargo build -p gmclip-cli        # target/debug/gmclip
 ```
 
-### Windows (not yet supported)
+### Windows
 
 The Windows code builds and runs on Windows 11 x64 with rustup, Node, pnpm, the Visual
 Studio Build Tools (the "Desktop development with C++" workload) and the WebView2 runtime,

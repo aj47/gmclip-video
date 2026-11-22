@@ -1,12 +1,12 @@
 // The View menu (top bar, in the cut view): every pane with a tick and its key, the
-// side panel's tabs (Words, Look, Captions; every one with the developer setting), focus,
+// side panel's tabs (Words, Captions, and Look off the bar; every one with the developer setting), focus,
 // the viewer's own view toggles (hover scrub, safe zones), the layouts the person saved
 // before decision 0054 (none are built in, and none are saved from here now), and Reset
 // layout. Reading (⌥R) is in ⌘K and the Words tab. The keys are in keys.ts (VIEW_KEYS)
 // and the ? list.
 import { Menu, type MenuItem } from "../design/components";
 import { applyWorkspace, isCurrent, savedWorkspaces } from "../workspaces";
-import { DEFAULT_TABS, paneShown, reading, resetLayout, SIDE_TABS, tabShown, toggleFocus, togglePane, toggleTab } from "../layout";
+import { VIEW_TABS, paneShown, reading, resetLayout, SIDE_TABS, tabShown, toggleFocus, togglePane, toggleTab } from "../layout";
 import { prefs, setPref, toggleHoverScrub } from "../prefs";
 import { setRoute } from "../store";
 
@@ -14,11 +14,11 @@ export function viewItems(): MenuItem[] {
   return [
     { label: "Project map", icon: "panel-left", checked: paneShown("map"), keys: "⌥1", testid: "view-map", onSelect: () => togglePane("map") },
     { label: "Side panel", icon: "panel-right", checked: paneShown("side"), keys: "⌥2", testid: "view-side", onSelect: () => togglePane("side") },
-    { label: "Words strip", icon: "type", checked: paneShown("words"), keys: "⌥4", testid: "view-words", onSelect: () => togglePane("words") },
     { label: "Timeline", icon: "panel-bottom", checked: paneShown("timeline"), keys: "⌥3", testid: "view-timeline", onSelect: () => togglePane("timeline") },
     { separator: true, label: "" },
-    // the side panel's tabs by name (the rest are ⌘K's "More panels")
-    ...SIDE_TABS.filter((t) => prefs.developer || DEFAULT_TABS.includes(t.id)).map((t): MenuItem => ({
+    // the side panel's tabs by name, Look among them though it is off the bar (the rest are
+    // ⌘K's "More panels")
+    ...SIDE_TABS.filter((t) => prefs.developer || VIEW_TABS.includes(t.id)).map((t): MenuItem => ({
       label: t.label,
       icon: t.icon,
       checked: tabShown(t.id),

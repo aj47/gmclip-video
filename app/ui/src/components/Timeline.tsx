@@ -46,20 +46,26 @@ const WAVE_H = 24;
 const GAIN_Y = PARTS_Y + PARTS_H + 6;
 const GAIN_H = 30;
 const GAIN_RANGE = 24;
-const CAP_Y = GAIN_Y + GAIN_H + 6;
 const CAP_H = 22;
-const OV_Y = CAP_Y + CAP_H + 8;
+/** Which lanes under the video show (AJ 2026-11-22): an empty lane hides until it has
+ * something (captions, a text overlay, a volume level), so the ones below move up. The
+ * Volume lane also shows on asking (its "＋ Volume" head), to draw the first level. */
+const [laneShow, setLaneShow] = createSignal({ gain: true, cap: true, ov: true });
+const [gainAsked, setGainAsked] = createSignal(false);
+const CAP_Y = () => GAIN_Y + (laneShow().gain ? GAIN_H + 6 : 0);
+const OV_Y = () => CAP_Y() + (laneShow().cap ? CAP_H + 8 : 0);
 const OV_H = 18;
 const OV_GAP = 4;
 const EDGE = 7;
 /** Filmstrip thumbnail width (px, CSS) and the drawn height inside a part. */
 const THUMB_W = 96;
 /** Lane rows for the sticky header column (canvas y, height). */
-const LANES: { name: string; icon: string; y: number; h: number }[] = [
-  { name: "Video", icon: "film", y: PARTS_Y, h: PARTS_H },
-  { name: "Gain", icon: "activity", y: GAIN_Y, h: GAIN_H },
-  { name: "Captions", icon: "captions", y: CAP_Y, h: CAP_H },
-  { name: "Text", icon: "type", y: OV_Y, h: OV_H },
+/** (`key` names the lane in classes; `name` is what it says: the gain lane says Volume.) */
+const LANES = (): { key: string; name: string; icon: string; y: number; h: number }[] => [
+  { key: "video", name: "Video", icon: "film", y: PARTS_Y, h: PARTS_H },
+  ...(laneShow().gain ? [{ key: "gain", name: "Volume", icon: "activity", y: GAIN_Y, h: GAIN_H }] : []),
+  ...(laneShow().cap ? [{ key: "captions", name: "Captions", icon: "captions", y: CAP_Y(), h: CAP_H }] : []),
+  ...(laneShow().ov ? [{ key: "text", name: "Text", icon: "type", y: OV_Y(), h: OV_H }] : []),
 ];
 const MONO = "10px ui-monospace, SFMono-Regular, Menlo, monospace";
 const UI = (w: number, px: number) => `${w} ${px}px -apple-system, BlinkMacSystemFont, system-ui, sans-serif`;
@@ -179,7 +185,7 @@ const perf = (): TlPerf | undefined => (globalThis as unknown as { __GMCLIP_TL_P
 
 /** The lanes' least height: every fixed lane and the first overlay row. A shorter
  * timeline (a window ≤ 600 px tall) scrolls its lanes vertically instead of clipping. */
-const MIN_LANES_H = OV_Y + OV_H + 8;
+const MIN_LANES_H = () => OV_Y() + OV_H + 8;
 
 export function Timeline() {
   let wrap!: HTMLDivElement;
@@ -267,6 +273,15 @@ export function Timeline() {
     return base.map((o) => (o.id === l.id ? { ...o, out: span } : o));
   });
   const packed = createMemo(() => pack(overlays()));
+  // the lanes under the video: each shows once it has something (the Volume lane also
+  // when asked for); a new cut starts with none asked
+  createEffect(on(() => cutView()?.cut, () => setGainAsked(false), { defer: true }));
+  createEffect(() => {
+    const v = cutView();
+    const next = { gain: gains().length > 0 || gainAsked(), cap: (v?.captions ?? []).some((c) => c.role === "caption"), ov: packed().lanes > 0 };
+    const was = laneShow();
+    if (was.gain !== next.gain || was.cap !== next.cap || was.ov !== next.ov) setLaneShow(next);
+  });
   /** The gain segments as drawn: a dragged one at its previewed span and level. */
   const gains = createMemo<Gain[]>(() => {
     const base = lanes()?.gains ?? [];
@@ -414,8 +429,8 @@ export function Timeline() {
   const frameAt = (x: number) => (x - 12 + scroll()) / ppf();
   const gainY = (db: number) => GAIN_Y + GAIN_H / 2 - (Math.max(-GAIN_RANGE, Math.min(GAIN_RANGE, db)) / GAIN_RANGE) * (GAIN_H / 2 - 2);
   const dbAt = (y: number) => clampDb(((GAIN_Y + GAIN_H / 2 - y) / (GAIN_H / 2 - 2)) * GAIN_RANGE);
-  const ovMaxScroll = () => Math.max(0, OV_Y + packed().lanes * (OV_H + OV_GAP) - wrap.clientHeight - RULER + 4);
-  const laneTop = (lane: number) => OV_Y + lane * (OV_H + OV_GAP) - ovScroll();
+  const ovMaxScroll = () => Math.max(0, OV_Y() + packed().lanes * (OV_H + OV_GAP) - wrap.clientHeight - RULER + 4);
+  const laneTop = (lane: number) => OV_Y() + lane * (OV_H + OV_GAP) - ovScroll();
 
   const zoom = (factor: number) => zoomTo(ppf() * factor);
   // the topic lane (and anything else drawn beside the canvas) follows this mapping
@@ -525,7 +540,9 @@ export function Timeline() {
       ruler.style.width = canvas.style.width;
       ruler.style.height = `${RULER}px`;
     }
-    ruler.getContext("2d")?.drawImage(canvas, 0, 0, canvas.width, ruler.height, 0, 0, ruler.width, ruler.height);
+    // a hidden or collapsed timeline has a 0-size canvas, which drawImage refuses
+    if (canvas.width && canvas.height && ruler.height)
+      ruler.getContext("2d")?.drawImage(canvas, 0, 0, canvas.width, ruler.height, 0, 0, ruler.width, ruler.height);
   };
   const drawLanes = () => {
     const t0 = performance.now();
@@ -552,8 +569,8 @@ export function Timeline() {
     g.fillStyle = css("--sep");
     g.fillRect(0, RULER, w, 1);
     g.fillRect(0, GAIN_Y - 3, w, 1);
-    g.fillRect(0, CAP_Y - 3, w, 1);
-    g.fillRect(0, OV_Y - 4, w, 1);
+    if (laneShow().gain && laneShow().cap) g.fillRect(0, CAP_Y() - 3, w, 1);
+    if (laneShow().ov && (laneShow().gain || laneShow().cap)) g.fillRect(0, OV_Y() - 4, w, 1);
     if (!v) return;
     const fps = rate(v.fps);
     const pf = ppf();
@@ -813,9 +830,9 @@ export function Timeline() {
     // its ramps; the corner points are its handles.
     const y0 = gainY(0);
     g.fillStyle = css("--sep-strong");
-    g.fillRect(Math.max(0, x0cut), Math.round(y0), Math.max(0, Math.min(w, x1cut) - Math.max(0, x0cut)), 1);
+    if (laneShow().gain) g.fillRect(Math.max(0, x0cut), Math.round(y0), Math.max(0, Math.min(w, x1cut) - Math.max(0, x0cut)), 1);
     g.font = MONO;
-    for (const gs of gains()) {
+    for (const gs of laneShow().gain ? gains() : []) {
       const xa = xOf(gs.out[0]);
       const xb = xOf(gs.out[1]);
       if (xb < 0 || xa > w) continue;
@@ -854,15 +871,15 @@ export function Timeline() {
       if (x1 < 0 || x0 > w) continue;
       const cw = Math.max(1, x1 - x0 - 1);
       g.fillStyle = css("--lane-caption");
-      rr(g, x0, CAP_Y, cw, CAP_H, cw > 8 ? 3 : 0);
+      rr(g, x0, CAP_Y(), cw, CAP_H, cw > 8 ? 3 : 0);
       g.fill();
       if (x1 - x0 > 26) {
         g.save();
         g.beginPath();
-        g.rect(x0, CAP_Y, x1 - x0 - 3, CAP_H);
+        g.rect(x0, CAP_Y(), x1 - x0 - 3, CAP_H);
         g.clip();
         g.fillStyle = css("--text-1");
-        g.fillText(c.text.replace(/\n/g, " "), x0 + 5, CAP_Y + 14.5);
+        g.fillText(c.text.replace(/\n/g, " "), x0 + 5, CAP_Y() + 14.5);
         g.restore();
       }
     }
@@ -872,12 +889,12 @@ export function Timeline() {
     const ld = laneDrag("overlay");
     g.save();
     g.beginPath();
-    g.rect(0, OV_Y - 2, w, Math.max(0, h - OV_Y + 2));
+    g.rect(0, OV_Y() - 2, w, Math.max(0, h - OV_Y() + 2));
     g.clip();
     g.font = UI(500, 10);
     ovs.forEach((o, i) => {
       const y = laneTop(ovLane[i] ?? 0);
-      if (y > h || y + OV_H < OV_Y - 2) return;
+      if (y > h || y + OV_H < OV_Y() - 2) return;
       const x0 = xOf(o.out[0]);
       const x1 = xOf(o.out[1]);
       if (x1 < 0 || x0 > w) return;
@@ -1098,6 +1115,7 @@ export function Timeline() {
     lanes();
     gains();
     overlays();
+    laneShow();
     measureFrom();
     sweepRibbons();
     pxPerFrame();
@@ -1213,7 +1231,7 @@ export function Timeline() {
     return "body";
   };
   const hitOverlay = (x: number, y: number): { o: Ov; side: "in" | "out" | "body" } | null => {
-    if (y < OV_Y) return null;
+    if (y < OV_Y()) return null;
     const ovs = overlays();
     const { lane } = packed();
     for (let k = ovs.length - 1; k >= 0; k--) {
@@ -1226,7 +1244,7 @@ export function Timeline() {
     return null;
   };
   const hitGain = (x: number, y: number): { g: Gain; side: "in" | "out" | "body" } | null => {
-    if (y < GAIN_Y || y > GAIN_Y + GAIN_H) return null;
+    if (!laneShow().gain || y < GAIN_Y || y > GAIN_Y + GAIN_H) return null;
     for (const gs of gains()) {
       const xa = xOf(gs.out[0]);
       const xb = xOf(gs.out[1]);
@@ -1354,7 +1372,7 @@ export function Timeline() {
       else void attempt(() => actions.viewerSeek(ho.o.out[0]));
       return;
     }
-    if (y >= OV_Y) {
+    if (y >= OV_Y()) {
       // the empty space under the lanes: a drag there selects the parts it spans
       if (v0) {
         (pressEl ?? canvas).setPointerCapture(e.pointerId);
@@ -1363,7 +1381,7 @@ export function Timeline() {
       return;
     }
     // the gain lane: drag a segment; a drag on empty lane draws one (double-click: 1 s)
-    if (y >= GAIN_Y && y <= GAIN_Y + GAIN_H && v0) {
+    if (laneShow().gain && y >= GAIN_Y && y <= GAIN_Y + GAIN_H && v0) {
       const hg = hitGain(x, y);
       if (!gainsEditable()) {
         if (hg) void attempt(() => actions.viewerSeek(hg.g.out[0]));
@@ -1443,7 +1461,7 @@ export function Timeline() {
       const hg = gainsEditable() ? hitGain(x, y) : null;
       const h = hit(x, y);
       const side = ho?.side ?? hg?.side;
-      setHover(tlTool() === "blade" && ((y >= PARTS_Y && y <= PARTS_Y + PARTS_H) || ho) ? "crosshair" : side === "in" || side === "out" || h?.edge ? "col-resize" : side === "body" ? "grab" : y < RULER ? "ew-resize" : y >= GAIN_Y && y <= GAIN_Y + GAIN_H && gainsEditable() ? "copy" : "default");
+      setHover(tlTool() === "blade" && ((y >= PARTS_Y && y <= PARTS_Y + PARTS_H) || ho) ? "crosshair" : side === "in" || side === "out" || h?.edge ? "col-resize" : side === "body" ? "grab" : y < RULER ? "ew-resize" : laneShow().gain && y >= GAIN_Y && y <= GAIN_Y + GAIN_H && gainsEditable() ? "copy" : "default");
       setHoverX(x);
       const v = cutView();
       const mk = y < RULER && v ? cutMarkers().find((m) => Math.abs(xOf(markerFrame(m.cut_ms, rate(v.fps))) - x) <= 4) : undefined;
@@ -1611,7 +1629,7 @@ export function Timeline() {
     const v = cutView();
     const hg = hitGain(x, y);
     if (v && hg && gainsEditable()) void attempt(() => actions.gainSpanDelete(v.project, hg.g.id));
-    else if (v && !hg && gainsEditable() && y >= GAIN_Y && y <= GAIN_Y + GAIN_H) {
+    else if (v && !hg && gainsEditable() && laneShow().gain && y >= GAIN_Y && y <= GAIN_Y + GAIN_H) {
       // double-click on empty gain lane: 1 s at that level (+6 dB near the middle)
       const f = Math.round(frameAt(x));
       const half = Math.round(rate(v.fps) / 2);
@@ -1634,7 +1652,7 @@ export function Timeline() {
     } else if (e.shiftKey) {
       // ⇧-wheel: time, anywhere (macOS turns a mouse's ⇧-wheel into deltaX itself)
       wheel.dx += e.deltaX || e.deltaY;
-    } else if (upDown && y >= OV_Y && ovMaxScroll() > 0) wheel.ov += e.deltaY;
+    } else if (upDown && y >= OV_Y() && ovMaxScroll() > 0) wheel.ov += e.deltaY;
     else if (upDown && y >= GAIN_Y && canScrollLanes(e.deltaY)) {
       // a short timeline: below the parts, the wheel moves its lanes up and down first
       body.scrollTop += e.deltaY;
@@ -1724,15 +1742,29 @@ export function Timeline() {
     <section class="timeline" aria-label="Timeline">
       <Toolbar label="Timeline tools" class="timeline-bar">
         <ToolbarGroup>
-          <IconButton icon="pointer" label="Select tool" hint="Select: drag edges to trim, parts to reorder" pressed={tlTool() === "select"} onClick={() => setTlTool("select")} />
-          <IconButton icon="scissors" label="Blade tool" hint="Blade: click a part or an overlay to split it there" pressed={tlTool() === "blade"} onClick={() => setTlTool(tlTool() === "blade" ? "select" : "blade")} />
-          <IconButton icon="merge" label="Merge with the next part" hint={mergePair() ? "Merge the selected part with the next one (they play on in the source)" : "Select a part that plays on into the next one to merge them"} disabled={!mergePair()} data-testid="part-merge" onClick={() => void merge()} />
-          <IconButton icon="link" label="Group" keys="⌘G" hint={canGroup() ? "Group the selected parts: they move together" : "Select two or more parts (⌘-click or ⇧-click) to group them"} disabled={!canGroup()} data-testid="parts-group" onClick={() => void groupSelected()} />
-          <IconButton icon="unlink" label="Ungroup" keys="⌘⇧G" hint={canUngroup() ? "Ungroup the selected group" : "Select a grouped part to ungroup it"} disabled={!canUngroup()} data-testid="parts-ungroup" onClick={() => void ungroupSelected()} />
+          {/* the two tools by name; the part actions say what they need while greyed (the
+              wrapper takes the hover a disabled button does not) */}
+          <button type="button" class="ghost small tl-tool" aria-label="Select tool" aria-pressed={tlTool() === "select"} data-tip="Select: drag edges to trim, parts to reorder" onClick={() => setTlTool("select")}>
+            <Icon name="pointer" size={14} />Select
+          </button>
+          <button type="button" class="ghost small tl-tool" aria-label="Blade tool" aria-pressed={tlTool() === "blade"} data-tip="Blade: click a part or an overlay to split it there" data-kbd="S splits at the playhead" onClick={() => setTlTool(tlTool() === "blade" ? "select" : "blade")}>
+            <Icon name="scissors" size={14} />Blade
+          </button>
+          <span class="tip-wrap" data-tip={mergePair() ? undefined : "Merge: select a part that plays on into the next one"}>
+            <IconButton icon="merge" label="Merge with the next part" hint={mergePair() ? "Merge the selected part with the next one (they play on in the source)" : "Select a part that plays on into the next one to merge them"} disabled={!mergePair()} data-testid="part-merge" onClick={() => void merge()} />
+          </span>
+          <span class="tip-wrap" data-tip={canGroup() ? undefined : "Group: select two or more parts (⌘-click or ⇧-click)"}>
+            <IconButton icon="link" label="Group" keys="⌘G" hint={canGroup() ? "Group the selected parts: they move together" : "Select two or more parts (⌘-click or ⇧-click) to group them"} disabled={!canGroup()} data-testid="parts-group" onClick={() => void groupSelected()} />
+          </span>
+          <span class="tip-wrap" data-tip={canUngroup() ? undefined : "Ungroup: select a grouped part"}>
+            <IconButton icon="unlink" label="Ungroup" keys="⌘⇧G" hint={canUngroup() ? "Ungroup the selected group" : "Select a grouped part to ungroup it"} disabled={!canUngroup()} data-testid="parts-ungroup" onClick={() => void ungroupSelected()} />
+          </span>
         </ToolbarGroup>
         <ToolbarSep />
         <ToolbarGroup>
           <Toggle icon="magnet" label="Snapping" hint={snapping() ? "Snapping on: edges snap to words, sound onsets and parts (hold ⌥ for frames)" : "Snapping off: edges move by frames"} on={snapping()} onChange={setSnapping} />
+          {/* the Volume lane hides while the cut has no level: this shows it to draw one */}
+          <Toggle icon="activity" label="Volume lane" hint={gains().length ? "The Volume lane shows while the cut has levels" : laneShow().gain ? "Hide the empty Volume lane" : "Show the Volume lane: double-click it to add a level"} on={laneShow().gain} disabled={!!gains().length || !gainsEditable()} onChange={(on) => setGainAsked(on)} data-testid="lane-gain-show" />
           <Toggle icon="wave" label="Waveform" hint={wave() ? "Waveform on under each part" : "Waveform off: the filmstrip fills the part"} on={wave()} onChange={(on) => setPref("waveform", on)} data-testid="waveform-toggle" />
           <Toggle
             icon="zoom-in"
@@ -1801,11 +1833,11 @@ export function Timeline() {
       </div>
       <LayerTracks overlays={lanes()?.overlays ?? []} editable={editable()} refetch={() => void refetchLanes()} />
       <SectionLanes />
-      <div class="timeline-body" ref={body} data-testid="timeline-body" data-lanes-min-h={MIN_LANES_H}>
+      <div class="timeline-body" ref={body} data-testid="timeline-body" data-lanes-min-h={MIN_LANES_H()}>
         <div class="lane-heads" aria-hidden="true">
-          <For each={LANES}>
+          <For each={LANES()}>
             {(l) => (
-              <div class={`lane-head lane-${l.name.toLowerCase()}`} style={{ top: `${l.y - RULER}px`, height: `${l.h}px` }}>
+              <div class={`lane-head lane-${l.key}`} style={{ top: `${l.y - RULER}px`, height: `${l.h}px` }}>
                 <Icon name={l.icon} size={13} />
                 <span>{l.name}</span>
               </div>
@@ -1826,7 +1858,7 @@ export function Timeline() {
           data-overlay-lanes={packed().lanes}
           data-overlay-kinds={(lanes()?.overlays ?? []).map((o) => `${o.kind ?? "text"}${o.under != null ? ":under" : ""}${o.matte ? ":matte" : ""}`).join(",")}
           data-overlays-editable={editable() ? "1" : "0"}
-          data-lanes-y={`${MEAS_Y},${PARTS_Y},${GAIN_Y},${CAP_Y},${OV_Y},${OV_H + OV_GAP}`}
+          data-lanes-y={`${MEAS_Y},${PARTS_Y},${GAIN_Y},${CAP_Y()},${OV_Y()},${OV_H + OV_GAP}`}
           data-measuring={measureFrom() ?? ""}
           data-dragging={drag() && "lane" in drag()! ? "lane" : drag() ? "1" : ""}
           data-snapped={(() => { const d = drag(); return d && "part" in d ? d.snapped : ""; })()}
@@ -1860,7 +1892,7 @@ export function Timeline() {
               class={`tl-trim-readout ${d().edge}`}
               data-testid="trim-readout"
               data-delta={d().delta}
-              style={{ left: `${xOf(d().part.out[d().edge === "in" ? 0 : 1] + d().delta)}px`, top: `${PARTS_Y - RULER + 4}px` }}
+              style={{ left: `${xOf(d().part.out[d().edge === "in" ? 0 : 1] + d().delta)}px` }}
             >
               {d().delta > 0 ? "+" : d().delta < 0 ? "−" : "±"}
               {Math.abs(d().delta)}f
@@ -1898,7 +1930,7 @@ export function Timeline() {
           )}
         </For>
       </ol>
-      <ol class="sr-only mirror" aria-label="Gain">
+      <ol class="sr-only mirror" aria-label="Volume">
         <For each={gains()}>
           {(gs) => (
             <li>

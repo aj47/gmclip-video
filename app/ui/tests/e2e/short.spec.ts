@@ -5,7 +5,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { transcribed } from "./analysed";
 import { STATE } from "./global-setup";
 import { labMedia } from "./lab";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 const VIDEO = labMedia("renders/own-vm-1080.mp4");
 
@@ -50,6 +50,7 @@ test("short core: captions, hook, pill, run clock", async ({ browser }) => {
   // The keywords list stars every match across the cut.
   const words = page.locator(".cue-word");
   const target = ((await words.nth(2).textContent()) ?? "").replace(/[^A-Za-z0-9']/g, "");
+  await rowOn(page, "highlight");
   await page.getByTestId("keywords").fill(target);
   await page.getByTestId("keywords-star").click();
   await expect(page.locator(".cue-word.star").first()).toBeVisible({ timeout: 20_000 });
@@ -85,12 +86,15 @@ test("short core: captions, hook, pill, run clock", async ({ browser }) => {
   await expect(page.locator(".fix")).toContainText("V.M.");
 
   // The hook for 3 s.
-  await page.getByLabel("Hook text").fill("Every project gets its own VM");
+  // the text hook is one field (2026-11-22): its row on, the time, Enter sets it
+  await rowOn(page, "hook");
   await page.getByLabel("Hook seconds").fill("3");
-  await page.getByRole("button", { name: "Set hook" }).click();
+  await page.getByLabel("Hook text").fill("Every project gets its own VM");
+  await page.getByLabel("Hook text").press("Enter");
   await expect(page.locator('.overlay-row[data-role="text_hook"]')).toContainText("Every project gets its own VM");
 
   // A pill on the part at the playhead.
+  await rowOn(page, "label");
   await page.getByLabel("Pill text").fill("MY DEV VM SETUP");
   await page.getByRole("button", { name: "Add to this part" }).click();
   await expect(page.locator('.overlay-row[data-role="section_pill"]')).toContainText("MY DEV VM SETUP");
@@ -102,6 +106,7 @@ test("short core: captions, hook, pill, run clock", async ({ browser }) => {
   await expect(page.getByTestId("timecode")).toHaveText(/^0:00\.00 /);
   for (let i = 0; i < 12; i++) await page.keyboard.press("Shift+ArrowRight");
   await expect(page.getByTestId("timecode")).toHaveText(/^0:04\.00/);
+  await rowOn(page, "stopwatch");
   await page.getByTestId("run-start").click();
   for (let i = 0; i < 24; i++) await page.keyboard.press("Shift+ArrowRight");
   await expect(page.getByTestId("timecode")).toHaveText(/^0:12\.00/);

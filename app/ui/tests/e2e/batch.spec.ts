@@ -42,7 +42,8 @@ test("send an agent to three cuts", async ({ browser }) => {
     page.evaluate(([c, a, p]) => (globalThis as unknown as { __gmclipBridgeCall: (c: string, a: Record<string, unknown>, p?: string) => Promise<Out> }).__gmclipBridgeCall(c as string, a as Record<string, unknown>, p as string | undefined), [c, a, project] as const);
   await developerOn(page);
   const row = page.locator(".project").filter({ hasText: "h79-v4" }).first();
-  await row.getByTestId("batch-open").click();
+  await row.getByTestId("project-menu").click(); // the card's ⋯ menu (2026-11-22)
+  await page.getByTestId("batch-open").click();
   const sheet = page.getByRole("dialog", { name: "Send an agent to cuts" });
   await expect(sheet.getByTestId("batch-cut")).toHaveCount(1);
   await sheet.getByRole("button", { name: "Close" }).click();
@@ -57,7 +58,8 @@ test("send an agent to three cuts", async ({ browser }) => {
     cuts.push(out.cut ?? out.output!.cut);
   }
   // the sheet's limits: out of range disables Start
-  await row.getByTestId("batch-open").click();
+  await row.getByTestId("project-menu").click(); // the card's ⋯ menu (2026-11-22)
+  await page.getByTestId("batch-open").click();
   await sheet.getByTestId("batch-cut").first().check();
   await sheet.getByTestId("batch-per-cut").fill("120");
   await expect(sheet.getByTestId("batch-start")).toBeDisabled();
@@ -68,7 +70,8 @@ test("send an agent to three cuts", async ({ browser }) => {
   await sheet.getByRole("button", { name: "Close" }).click();
   const started = (await bridge("dev_batch_start", { cuts, pass: "edit_pass", budget_usd: 2, wall_clock_h: 4, per_cut_min: 45 }, p.id)) as Out;
   expect(started.ok ?? true).toBeTruthy();
-  await row.getByTestId("batch-open").click();
+  await row.getByTestId("project-menu").click(); // the card's ⋯ menu (2026-11-22)
+  await page.getByTestId("batch-open").click();
   const rows = sheet.getByTestId("batch-row").first();
   await expect(rows.locator("p").first()).toContainText("· done", { timeout: 240_000 });
   // one at a time, each through the launcher with the stub model: all three done

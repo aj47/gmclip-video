@@ -35,6 +35,13 @@ use crate::error::{AppError, AppResult};
 
 /// Where recordings go unless the sheet says otherwise: `~/Movies/gmclip/Recordings`.
 fn default_parent(core: &AppCore) -> PathBuf {
+    // the folder the person picked (Settings › Recording › Change), else the library's sibling
+    if let Some(p) = crate::uiprefs::get(core)["recordings_folder"]
+        .as_str()
+        .filter(|p| !p.is_empty())
+    {
+        return PathBuf::from(p);
+    }
     core.dirs
         .library
         .parent()
@@ -299,6 +306,7 @@ mod mac {
             "bundled": bundled(),
             "recording": rec,
             "folder": default_parent(core),
+            "folder_short": short_path(&default_parent(core)),
         }))
     }
 
@@ -568,3 +576,21 @@ mod mac {
 pub use mac::{
     ask, cancel, enable, go, marker, prepare, preview, preview_frame, sources, status, stop,
 };
+
+/// The recordings folder shown as a person writes it: the home folder as `~`.
+pub fn short_path(p: &Path) -> String {
+    let home =
+        std::env::var_os(if cfg!(windows) { "USERPROFILE" } else { "HOME" }).map(PathBuf::from);
+    match home.as_deref().and_then(|h| p.strip_prefix(h).ok()) {
+        Some(rest) => format!("~{}{}", std::path::MAIN_SEPARATOR, rest.display()),
+        None => p.display().to_string(),
+    }
+}
+
+/// `recording_reveal`: the recordings folder in the file manager (made first if missing).
+pub fn reveal_folder(core: &AppCore) -> AppResult<PathBuf> {
+    let dir = default_parent(core);
+    std::fs::create_dir_all(&dir)
+        .map_err(|e| AppError::internal(format!("making the recordings folder: {}", e.kind())))?;
+    Ok(dir)
+}

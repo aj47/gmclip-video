@@ -919,3 +919,58 @@ kbd,
   flex: 1 1 auto;
   min-width: 0;
 }
+
+/* ── Inside the side panel (Words, Look, Captions…) the controls are many: a plain
+ * button there drops the sticker (a 1 px line, no lift), so the panel reads as content
+ * and only its primary action stands out. Home, dialogs and bars keep the sticker. */
+.side button:not([class]) {
+  border: 1px solid var(--border-control);
+  box-shadow: none;
+  font-weight: var(--fw-medium);
+}
+.side button:not([class]):hover:not(:disabled) {
+  border-color: var(--border-control-hover);
+  transform: none;
+  box-shadow: none;
+}
+.side button:not([class]):active:not(:disabled) {
+  transform: none;
+  box-shadow: none;
+}
+
+/* A set of choices, one of them current (the Look tab's layouts) */
+.layout-choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 6px;
+}
+button.layout-choice {
+  justify-content: flex-start;
+  min-height: 32px;
+  padding: 6px 10px;
+  white-space: normal;
+  text-align: left;
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-medium);
+}
+button.layout-choice[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.layout-spread {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--s-2);
+}
+.layout-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.layout-next input {
+  width: 3.5em;
+  min-height: var(--control-sm);
+}

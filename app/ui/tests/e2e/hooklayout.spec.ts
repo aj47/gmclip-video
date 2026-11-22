@@ -7,7 +7,7 @@ import { copyFileSync, existsSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { openPage, VIDEO } from "./ux-lib";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 test.skip(!!process.env.GMCLIP_S2A, "GMCLIP_S2A runs the S2a spec on its own");
 test.skip(!existsSync(VIDEO), "no test video on this machine");
@@ -50,9 +50,11 @@ test("the hook keeps the opening layout until it clears", async ({ browser }) =>
 
   // a 5 s hook: still up when take 2 starts
   await openTab(page, "Short");
-  await page.getByLabel("Hook text").fill("My PC made this");
+  // the text hook is one field (2026-11-22): its row on, the time, Enter sets it
+  await rowOn(page, "hook");
   await page.getByLabel("Hook seconds").fill("5");
-  await page.getByRole("button", { name: "Set hook" }).click();
+  await page.getByLabel("Hook text").fill("My PC made this");
+  await page.getByLabel("Hook text").press("Enter");
   const warn = page.getByTestId("hook-layout-warn");
   await expect(warn).toContainText("(take 2) while the hook is still on screen", { timeout: 20_000 });
   await page.getByTestId("hook-layout").click();

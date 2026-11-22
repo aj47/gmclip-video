@@ -1,7 +1,7 @@
 // Open any video (AJ 2026-10-14): paste a path (the native panel and drag-drop give the
 // same call), land in the editor, words arrive in the transcript pane, click a word to
 // seek, select words and Backspace cuts them (⌘Z puts them back), search finds words,
-// and the video is listed under Recent projects.
+// and the video is listed once under Your projects.
 import { expect, test } from "@playwright/test";
 import { existsSync, readFileSync } from "node:fs";
 import { transcribed } from "./analysed";
@@ -30,8 +30,11 @@ test("open a video and cut its transcript", async ({ browser }) => {
   await page.getByLabel("Video path").fill(VIDEO);
   await page.getByLabel("Video path").press("Enter");
   await expect(page.getByTestId("cut-title")).toHaveText("h79-v4", { timeout: 30_000 });
-  // the side panel opens on Look (the words strip shows the words); the transcript is Words
-  await expect(page.getByRole("tab", { name: "Look" })).toHaveAttribute("aria-selected", "true");
+  // the side panel opens on Words, the transcript's one place (the words strip under the
+  // picture retired 2026-11-22; Look is off the bar)
+  await expect(page.getByRole("tab", { name: "Words" })).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("listbox", { name: "Cut words" })).toHaveCount(0);
+  await expect(page.getByRole("tab", { name: "Look" })).toHaveCount(0);
   await openTab(page, "Transcript");
   const d0 = await seconds(page);
   expect(d0).toBeGreaterThan(59);
@@ -63,7 +66,7 @@ test("open a video and cut its transcript", async ({ browser }) => {
   await expect.poll(() => seconds(page)).toBeCloseTo(d0, 1);
 
   // The cut's checks are in its head.
-  await expect(page.getByTestId("checks").locator("summary")).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByTestId("checks").locator("summary").first()).toBeVisible({ timeout: 20_000 });
 
   // Search.
   await page.getByLabel("Search the transcript").fill("banana");
@@ -73,18 +76,21 @@ test("open a video and cut its transcript", async ({ browser }) => {
   await page.getByTestId("replace-with").fill("Banana!");
   await page.getByTestId("replace-all").click();
   await expect(page.getByText(/re-spelled in the captions/)).toBeVisible({ timeout: 20_000 });
-  // ⌖ follow the playhead toggles
-  await expect(page.getByTestId("follow")).toHaveAttribute("aria-pressed", "true");
-  await page.getByTestId("follow").click();
-  await expect(page.getByTestId("follow")).toHaveAttribute("aria-pressed", "false");
+  // following the playhead is on; ⌘K turns it off (its ⌖ button left the bar 2026-11-22)
+  await page.keyboard.press("ControlOrMeta+k");
+  await page.getByTestId("palette-input").fill("follow the playhead");
+  await page.getByTestId("palette-item").filter({ hasText: "Words: follow the playhead" }).first().click();
+  await expect(page.locator(".toast").last()).toContainText("Words stay where you scroll");
   // scrub audio is on by default and can be turned off
   await expect(page.getByTestId("scrub-audio")).toHaveAttribute("aria-pressed", "true");
   await page.getByTestId("scrub-audio").click();
   await expect(page.getByTestId("scrub-audio")).toHaveAttribute("aria-pressed", "false", { timeout: 10_000 });
 
-  // Home lists its project under Recent projects.
+  // Home lists its project once, under Your projects, with its picture.
   await page.getByRole("button", { name: "Home" }).click();
   // once (other specs in the same run may have opened other videos)
-  await expect(page.getByRole("list", { name: "Recent projects" }).getByRole("listitem").filter({ hasText: "h79-v4" })).toHaveCount(1);
+  const yours = page.getByRole("region", { name: "Your projects" });
+  await expect(yours.locator(".project").filter({ hasText: "h79-v4" })).toHaveCount(1);
+  await expect(yours.getByRole("button", { name: "Edit h79-v4" })).toHaveCount(1);
   expect(errors).toEqual([]);
 });

@@ -52,6 +52,18 @@ const ALLOW: &[&str] = &["A", "OA", "XA", "ZA"];
 /// allow ACE for another trustee (an alias such as `SY`, `BA`, `WD`, `OW` included) is
 /// `false`. Deny ACEs are fine. An empty DACL (nobody at all) is `true`.
 pub fn dacl_private_to(sddl: &str, sid: &str) -> bool {
+    dacl_private_to_resolving(sddl, sid, |_| None)
+}
+
+/// [`dacl_private_to`], where a trustee Windows printed as a two-letter SDDL alias counts
+/// as `sid` when `resolve` turns the alias into exactly `sid`. Windows prints some
+/// accounts only as an alias: the built-in Administrator (RID 500) is `LA`, which is
+/// the user CI runners and some machines run as. Any other alias is still refused.
+pub fn dacl_private_to_resolving(
+    sddl: &str,
+    sid: &str,
+    resolve: impl Fn(&str) -> Option<String>,
+) -> bool {
     if !is_sid(sid) {
         return false;
     }
@@ -90,13 +102,21 @@ pub fn dacl_private_to(sddl: &str, sid: &str) -> bool {
         if fields.len() < 6 {
             return false;
         }
-        if ALLOW.contains(&fields[0]) && fields[5] != sid {
+        if ALLOW.contains(&fields[0]) && fields[5] != sid && !is_alias_of(fields[5], sid, &resolve)
+        {
             return false;
         }
         rest = &after_open[end + 1..];
     }
     // anything after the ACEs must be another section (`S:`), never more DACL text
     rest.is_empty() || rest.starts_with("S:")
+}
+
+/// Is `trustee` an SDDL alias (two uppercase letters) that `resolve` maps to `sid`?
+fn is_alias_of(trustee: &str, sid: &str, resolve: &impl Fn(&str) -> Option<String>) -> bool {
+    trustee.len() == 2
+        && trustee.bytes().all(|b| b.is_ascii_uppercase())
+        && resolve(trustee).as_deref() == Some(sid)
 }
 
 #[cfg(test)]
@@ -168,5 +188,34 @@ mod tests {
             assert!(!dacl_private_to(s, ME), "{s}");
         }
         assert!(!dacl_private_to(&format!("D:P(A;;FA;;;{ME})"), "SY"));
+    }
+
+    #[test]
+    fn an_alias_counts_only_when_it_resolves_to_the_user() {
+        const ADMIN: &str = "S-1-5-21-3414932011-3134797172-3625386099-500";
+        let la = |a: &str| (a == "LA").then(|| ADMIN.to_owned());
+        let dacl = "D:P(A;OICI;FA;;;LA)";
+        assert!(
+            !dacl_private_to(dacl, ADMIN),
+            "unresolved aliases fail closed"
+        );
+        assert!(dacl_private_to_resolving(dacl, ADMIN, la));
+        assert!(
+            !dacl_private_to_resolving(dacl, ME, la),
+            "LA is someone else"
+        );
+        assert!(!dacl_private_to_resolving(
+            "D:P(A;;FA;;;LA)(A;;FA;;;WD)",
+            ADMIN,
+            la
+        ));
+        // only two-letter aliases are resolved, never a SID string or a longer name
+        let any = |_: &str| Some(ADMIN.to_owned());
+        assert!(!dacl_private_to_resolving(
+            "D:P(A;;FA;;;S-1-5-18)",
+            ADMIN,
+            any
+        ));
+        assert!(!dacl_private_to_resolving("D:P(A;;FA;;;LAX)", ADMIN, any));
     }
 }

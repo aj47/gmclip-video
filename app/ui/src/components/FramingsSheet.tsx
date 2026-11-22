@@ -5,7 +5,8 @@
 // layout defaults first: it is made when the export starts, and the cut keeps showing its own.
 import { createEffect, createResource, createSignal, For, on, Show } from "solid-js";
 import { actions, type FramingExport, type FramingsView } from "../actions";
-import { attempt, jobs, say } from "../store";
+import { attempt, cutView, jobs, say } from "../store";
+import { Icon } from "../design/Icon";
 import { Button, Chip, Sheet } from "../design/components";
 
 type Aspect = "9:16" | "16:9";
@@ -27,7 +28,7 @@ export function FramingChips(props: { v: FramingsView; progress?: (aspect: strin
             when={x.f}
             fallback={
               <Chip tone="accent" icon={x.aspect === "9:16" ? "portrait" : "landscape"} testid="framing-missing" tooltip="Made from the layout defaults when the export starts; adjust it after in the Look tab">
-                {x.aspect} · none yet
+                {x.aspect} · not made yet
               </Chip>
             }
           >
@@ -152,34 +153,30 @@ export function BothFramings(props: { project: string; cut: string; rev: number;
       void refetch();
     }
   };
+  const other = () => (cutView()?.framing?.aspect === "16:9" ? "9:16" : "16:9");
   return (
     <div class="export-both" data-testid="export-both-box">
-      <div class="export-both-head">
-        <span class="field-label">Both framings</span>
-        <button type="button" class="link small" data-testid="framings-open" data-tip="Tick several cuts of this project and export each in both shapes" onClick={() => props.onSeveral()}>Several cuts…</button>
-      </div>
-      <Show when={v()} fallback={<span class="hint">{v.loading ? "Reading this cut's framings…" : "This cut's framings cannot be read."}</span>}>
+      <Show when={v()} fallback={<span class="hint">{v.loading ? "Reading this cut's shapes…" : "This cut's shapes cannot be read."}</span>}>
         {(fv) => (
           <Show when={fv().supported} fallback={<span class="hint">{fv().why_not}</span>}>
-            <FramingChips v={fv()} />
             <Show
               when={fv().missing.length && asking()}
               fallback={
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  icon="share"
+                <button
+                  type="button"
+                  class="menu-item"
                   data-testid="export-both"
                   disabled={busy()}
-                  tooltip="Two exports with their own records: the vertical, then the horizontal"
+                  data-tip={`This cut in both shapes, each export with its own record (the ${other()} made from the layout defaults if it has none)`}
                   onClick={() => (fv().missing.length ? setAsking(true) : void go(false))}
                 >
-                  Export 9:16 + 16:9
-                </Button>
+                  <Icon name={other() === "16:9" ? "landscape" : "portrait"} size={14} />
+                  Also export {other()}
+                </button>
               }
             >
               <div class="export-both-ask" role="group" aria-label="Make the missing framing" data-testid="export-both-ask">
-                <span class="hint">This cut has no {fv().missing.join(" or ")} yet. Make it from the layout defaults first? You can adjust it after; the cut keeps showing its own.</span>
+                <span class="hint">This cut has no {fv().missing.join(" or ")} yet: make it from the layout defaults (you can adjust it after) and export both?</span>
                 <div class="row">
                   <Button size="sm" variant="primary" data-testid="export-both-make" disabled={busy()} onClick={() => void go(true)}>
                     Make {fv().missing[0]} and export both
@@ -191,6 +188,10 @@ export function BothFramings(props: { project: string; cut: string; rev: number;
           </Show>
         )}
       </Show>
+      <button type="button" class="menu-item" data-testid="framings-open" data-tip="Tick several cuts of this project and export each in both shapes" onClick={() => props.onSeveral()}>
+        <Icon name="layers" size={14} />
+        Several cuts…
+      </button>
     </div>
   );
 }

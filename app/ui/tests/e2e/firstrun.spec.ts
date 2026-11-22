@@ -97,7 +97,7 @@ test("the four questions, the summary, the checklist", async ({ browser }) => {
     await page.getByRole("button", { name: "Home" }).click();
     const cl = page.getByTestId("checklist");
     await expect(cl).toBeVisible({ timeout: 10_000 });
-    await expect(cl.getByTestId("checklist-step")).toHaveText(["Set the layout", "Pick a moment", "Trim by words", "Check captions", "Export"]);
+    await expect(cl.getByTestId("checklist-step")).toHaveText(["Make it vertical", "Pick a moment", "Trim by words", "Check captions", "Export"]);
     // a portrait video opens vertical: the layout step is done
     await expect(cl.locator("[data-step=layout]")).toHaveAttribute("data-done", "yes");
     await expect(cl.locator("[data-step=export]")).toHaveAttribute("data-done", "no");
