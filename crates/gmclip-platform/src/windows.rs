@@ -18,8 +18,8 @@ use windows_sys::Win32::Foundation::{
 };
 use windows_sys::Win32::Security::Authorization::{
     ConvertSecurityDescriptorToStringSecurityDescriptorW, ConvertSidToStringSidW,
-    ConvertStringSecurityDescriptorToSecurityDescriptorW, GetSecurityInfo, SDDL_REVISION_1,
-    SE_FILE_OBJECT,
+    ConvertStringSecurityDescriptorToSecurityDescriptorW, ConvertStringSidToSidW, GetSecurityInfo,
+    SDDL_REVISION_1, SE_FILE_OBJECT,
 };
 use windows_sys::Win32::Security::{
     DACL_SECURITY_INFORMATION, GetTokenInformation, OWNER_SECURITY_INFORMATION,
@@ -109,6 +109,19 @@ unsafe fn sid_string(sid: PSID) -> io::Result<String> {
     let s = unsafe { from_wide_nul(out) };
     s.into_string()
         .map_err(|_| io::Error::other("a SID that is not text"))
+}
+
+/// The SID an SDDL alias (`LA`, `BA`, …) stands for on this machine, in string form.
+fn alias_sid(alias: &str) -> io::Result<String> {
+    let w = wide(OsStr::new(alias))?;
+    let mut sid: PSID = std::ptr::null_mut();
+    // SAFETY: `w` is NUL-terminated; `sid` receives a LocalAlloc'ed SID.
+    if unsafe { ConvertStringSidToSidW(w.as_ptr(), &mut sid) } == 0 {
+        return Err(io::Error::last_os_error());
+    }
+    let _guard = Local(sid.cast());
+    // SAFETY: on success `sid` is a valid SID, alive until the guard drops.
+    unsafe { sid_string(sid) }
 }
 
 /// The user SID of a process token.
@@ -304,7 +317,8 @@ pub struct FileSecurity {
 impl FileSecurity {
     /// Owned by this user and nobody else let in.
     pub fn is_private_to(&self, sid: &str) -> bool {
-        self.owner_sid == sid && sddl::dacl_private_to(&self.dacl_sddl, sid)
+        self.owner_sid == sid
+            && sddl::dacl_private_to_resolving(&self.dacl_sddl, sid, |a| alias_sid(a).ok())
     }
 }
 

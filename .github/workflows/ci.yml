@@ -64,7 +64,7 @@ jobs:
       - name: Clippy
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Test
-        run: cargo nextest run --workspace --locked
+        run: cargo nextest run --workspace --locked --no-fail-fast
       - name: Doctests (nextest does not run them)
         run: cargo test --doc --workspace --locked
       - name: Dependency direction and unsafe policy
