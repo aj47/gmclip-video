@@ -257,7 +257,7 @@ export function History(props: { onClose: () => void; reason?: string; nameFirst
     }
   };
   return (
-    <Sheet label="History" class="history" testid="history" onClose={props.onClose} sub="Every version of this cut: drag the slider to see one, restore it, or name this one.">
+    <Sheet label="History: restore an earlier version" class="history" testid="history" onClose={props.onClose} sub="Every version of this cut: drag the slider to see one, restore it, or name this one.">
         <Show when={props.reason}>
           <p class="muted small" data-testid="history-reason">{props.reason}</p>
         </Show>

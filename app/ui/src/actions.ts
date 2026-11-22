@@ -1015,6 +1015,8 @@ export interface UiPrefs {
   workspaces?: Workspace[];
   /** Settings › Recording (decision 0045): the Record button on Home. `recording_enable` sets it. */
   recording?: boolean;
+  /** Where recordings go ("" = the library's sibling Recordings folder). */
+  recordings_folder?: string;
   /** Settings › Developer (decision 0054): the team and in-app agent surfaces, every side
    *  panel in the bar, and the preview's measuring tools. Off by default. */
   developer?: boolean;
@@ -2087,6 +2089,8 @@ export interface RecStatus {
   recording: RecRunning | null;
   /** Where recordings go unless the sheet says otherwise. */
   folder: string;
+  /** The same with the home folder as ~ (to show). */
+  folder_short?: string;
 }
 export interface RecSources {
   displays: { id: number; name: string; main: boolean; width: number; height: number }[];
@@ -2122,6 +2126,8 @@ export interface RecOpened {
 
 export const recordingActions = {
   status: () => call<RecStatus>("recording_status"),
+  /** The recordings folder in Finder (made first if missing). */
+  reveal: () => call<{ folder: string }>("recording_reveal"),
   /** On asks the OS for all five permissions in order (camera and mic sheets wait). */
   enable: (on: boolean) => call<RecStatus>("recording_enable", { on }),
   /** The Record sheet's camera preview on (with `camera`, a unique id) or off; its

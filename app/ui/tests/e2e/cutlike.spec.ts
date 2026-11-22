@@ -53,7 +53,7 @@ test("new cut like this, saved as a look", async ({ browser }) => {
   await expect(page.getByTestId("cut-title")).toBeVisible();
 
   // New cut like this… (the head's More menu)
-  await page.getByRole("button", { name: "More", exact: true }).click();
+  await page.getByTestId("view-menu").click(); // "View and more" (2026-11-22: View folded into ⋯)
   await page.getByTestId("cut-like-open").click();
   const sheet = page.getByTestId("cutlike-sheet");
   await expect(sheet).toBeVisible();
@@ -80,7 +80,7 @@ test("new cut like this, saved as a look", async ({ browser }) => {
 
   // the saved look is offered next time (⌘K, in a narrow window: the More menu)
   await page.setViewportSize({ width: 820, height: 860 });
-  await page.getByRole("button", { name: "More", exact: true }).click();
+  await page.getByTestId("view-menu").click(); // "View and more" (2026-11-22: View folded into ⋯)
   await page.getByTestId("cut-like-open").click();
   await expect(page.getByTestId("cutlike-sheet").getByLabel("Look from")).toContainText("Tap look");
   await page.keyboard.press("Escape");

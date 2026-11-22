@@ -2,7 +2,7 @@
 
 Locked in 2026-10-17 by AJ, chosen from five directions. `brand-kit.png` is the board and `ui-mockup.png` the matching editor window (AI-generated mockups; the hex codes and font names below come from the board).
 
-- Mark: a smiling sun drawn as one cream hairline on a sky-blue rounded square (locked 2026-10-17: v2, the line drawing "F" at hairline weight). Every proportion is a power of φ: tile corner = tile ÷ φ⁴, sun radius r = tile ÷ 2φ², twelve rays from r·√φ to r·φ, line weight r ÷ φ⁵. Tagline: "Bright ideas. Great clips."
+- Mark: a smiling yellow sun (sun-yellow to orange gradient, nine sun-yellow rays, an ink face) on a sky-blue rounded square. Restored 2026-11-22 by AJ: the sticker sun from 0fee272 replaces v2, the cream φ line drawing (91466da). Tagline: "Bright ideas. Great clips."
 - Palette: sky blue `#4A9BE8`, sun yellow `#FFD23F`, coral `#FF6B5B`, teal `#2EC4B6`, violet `#7B61FF`, ink `#2D2A4A`. In the app these are `--brand-*` in `app/ui/src/design/tokens.css`.
 - Type: Fredoka (headings, `--font-display`) and Nunito Sans (UI, `--font-ui`), the OFL variable fonts in `assets/fonts`, loaded by `app/ui/src/design/brand.css`.
 - Style: thick ink outlines, chunky rounded shapes, sticker-like flat color.

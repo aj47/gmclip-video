@@ -33,6 +33,8 @@ test("search the library, play a hit, make a moment", async ({ browser }) => {
   await page.keyboard.press("ControlOrMeta+Shift+F");
   const view = page.getByTestId("library-search");
   await expect(view).toBeVisible();
+  // Both by default; Words is an option (2026-11-22)
+  await page.getByTestId("library-search-options").locator("summary").click();
   await page.getByRole("button", { name: "Words" }).click();
   await page.getByTestId("library-search-input").fill("generate that five second video");
   const hit = page.getByTestId("library-hit").first();
@@ -55,7 +57,8 @@ test("search the library, play a hit, make a moment", async ({ browser }) => {
   // Home's box lands on the same view with the words in it
   await page.getByRole("button", { name: "Home" }).click();
   await page.getByTestId("home-search").getByRole("searchbox").fill("five second video");
-  await page.getByTestId("home-search").getByRole("button", { name: "Search" }).click();
+  // one field: Enter searches (2026-11-22: no separate button)
+  await page.getByTestId("home-search").getByRole("searchbox").press("Enter");
   await expect(page.getByTestId("library-search-input")).toHaveValue("five second video");
   await expect(page.getByTestId("library-hit").first()).toBeVisible({ timeout: 30_000 });
 

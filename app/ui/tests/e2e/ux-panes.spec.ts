@@ -37,9 +37,9 @@ test("panes hide, show, resize and are remembered", async ({ browser }) => {
   // The View menu lists every pane with its key.
   await (await viewItem(page, "view-side")).isVisible();
   const menu = page.getByRole("menu", { name: "View" });
-  for (const [label, keys] of [["Project map", "⌥1"], ["Side panel", "⌥2"], ["Timeline", "⌥3"], ["Words strip", "⌥4"], ["Words", "⌥T"], ["Look", "⌥I"], ["Focus: viewer and timeline", "⌥F"], ["Hover scrub", "⌥S"], ["Reset layout", "⌥0"]]) {
-    // (the Words tab, not the Words strip)
-    const name = label === "Words" ? /^Words(?! strip)/ : new RegExp(`^${label.replace(/[()]/g, "\\$&")}`);
+  for (const [label, keys] of [["Project map", "⌥1"], ["Side panel", "⌥2"], ["Timeline", "⌥3"], ["Words", "⌥T"], ["Look", "⌥I"], ["Focus: viewer and timeline", "⌥F"], ["Hover scrub", "⌥S"], ["Reset layout", "⌥0"]]) {
+    // (the words strip retired 2026-11-22: "Words" is the tab)
+    const name = label === "Words" ? /^Words/ : new RegExp(`^${label.replace(/[()]/g, "\\$&")}`);
     await expect(menu.getByRole(/Reset/.test(label) ? "menuitem" : "menuitemcheckbox", { name })).toContainText(process.platform === "darwin" ? keys : keys.replace("⌥", "Alt+"));
   }
   await shot(page, "view-menu-1440x900");
@@ -64,11 +64,17 @@ test("panes hide, show, resize and are remembered", async ({ browser }) => {
   await page.keyboard.press("Alt+Digit3");
   await expect(tl).toBeVisible();
   expect(await height(page, ".viewer")).toBeLessThan(vh);
-  await expect(words).toBeVisible();
-  await page.keyboard.press("Alt+Digit4");
+  // the words strip is retired (AJ 2026-11-22): ⌥4, its key, shows the transcript's tab
   await expect(words).toBeHidden();
+  // from another tab (⌥4 on the Words tab hides the panel, as ⌥T does)
+  await page.getByRole("tab", { name: "Captions" }).click();
   await page.keyboard.press("Alt+Digit4");
-  await expect(words).toBeVisible();
+  await expect(page.getByRole("tab", { name: "Words" })).toHaveAttribute("aria-selected", "true");
+  await page.keyboard.press("Alt+Digit4");
+  await expect(side).toBeHidden();
+  await page.keyboard.press("Alt+Digit2");
+  await expect(side).toBeVisible();
+  await page.getByRole("tab", { name: "Captions" }).click();
   // the transcript and the inspector as panes of their own
   await page.keyboard.press("Alt+KeyT");
   await expect(page.getByRole("tab", { name: "Words" })).toHaveAttribute("aria-selected", "true");
@@ -107,9 +113,8 @@ test("panes hide, show, resize and are remembered", async ({ browser }) => {
   await expect.poll(() => height(page, ".timeline")).toBeGreaterThan(th + 80);
   expect(await overflow(page)).toEqual([]);
   await shot(page, "resized-panes-1440x900");
-  // saved: they come back after a reload, the hidden words strip too
-  await page.keyboard.press("Alt+Digit4");
-  await expect.poll(async () => { const p = await prefs(page); return [Number(p.side_w) > 0, Number(p.map_w) > 0, Number(p.tl_h) > 0, p.words_open]; }).toEqual([true, true, true, false]);
+  // saved: they come back after a reload
+  await expect.poll(async () => { const p = await prefs(page); return [Number(p.side_w) > 0, Number(p.map_w) > 0, Number(p.tl_h) > 0]; }).toEqual([true, true, true]);
   const sw2 = await width(page, ".side");
   await page.reload();
   await page.getByLabel("Video path").fill(VIDEO);
@@ -121,7 +126,7 @@ test("panes hide, show, resize and are remembered", async ({ browser }) => {
   await page.getByTestId("split-side").dblclick();
   await expect.poll(() => width(page, ".side")).toBeLessThan(sw2 - 100);
   await (await viewItem(page, "view-reset")).click();
-  await expect(words).toBeVisible();
+  await expect(words).toBeHidden();
   await expect.poll(async () => { const p = await prefs(page); return [p.side_w, p.map_w, p.tl_h, p.words_open, p.side_open]; }).toEqual([0, 0, 0, true, true]);
 
   // Portrait: the side panel hides and shows too (it used to be forced open).
@@ -160,6 +165,8 @@ test("panes hide, show, resize and are remembered", async ({ browser }) => {
   await page.getByTestId("transcript").focus();
   await page.keyboard.press("?");
   const help = page.getByRole("dialog", { name: "Keyboard shortcuts" });
+  // the essentials first; the groups behind "Show all keys" (2026-11-22)
+  await help.getByTestId("keys-all").click();
   await expect(help.getByRole("heading", { name: "View" })).toBeVisible();
   await expect(help).toContainText("Read the full transcript");
   await expect(help).toContainText("Focus: only the viewer and the timeline");

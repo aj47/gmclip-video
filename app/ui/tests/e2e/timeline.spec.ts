@@ -44,7 +44,7 @@ test("overlay lanes, marks, range loop, hover scrub", async ({ browser }) => {
 
   // The plan's envelopes in the gain lane, read-only.
   await expect(tl).toHaveAttribute("data-overlays-editable", "0");
-  const gainRows = page.getByRole("list", { name: "Gain" }).getByRole("button");
+  const gainRows = page.getByRole("list", { name: "Volume" }).getByRole("button");
   await expect(gainRows).toHaveCount(2, { timeout: 20_000 });
   const before = await gainRows.allTextContents();
   expect(before[0]).toContain("+10 dB (frames 1–54)");

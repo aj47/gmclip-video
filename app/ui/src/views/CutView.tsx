@@ -4,11 +4,13 @@ import { createEffect, createMemo, createResource, createSignal, For, Match, on,
 import { Portal } from "solid-js/web";
 import { Banner, Button, Chip, IconButton, Menu, SegmentedControl, Tabs, type SegOption, type TabItem } from "../design/components";
 import { Icon } from "../design/Icon";
+import { CropVersions } from "../components/CropVersions";
+import { viewItems } from "../components/ViewMenu";
 import { ExportDoneChip, savedText, savedTip, topbarSlot } from "../components/Chrome";
 import { MapSidebar } from "../components/MapSidebar";
 import { setLaunchFor } from "../agentsState";
 import { Splitter } from "../components/Splitter";
-import { barTabs, layout, paneIsDrawer, paneShown, reading, setSideTab, setTightenOpen, showTab, SIDE_TABS, sideTab, tightenOpen, toggleFocus, togglePane, type SideTab } from "../layout";
+import { barTabs, layout, paneIsDrawer, paneShown, reading, setSideTab, setStatusOpen, setTightenOpen, showTab, statusOpen, SIDE_TABS, sideTab, tightenOpen, toggleFocus, togglePane, type SideTab } from "../layout";
 import { prefs } from "../prefs";
 import { Coach } from "../components/Coach";
 import { actions, rate, type TermGate } from "../actions";
@@ -44,6 +46,28 @@ import { CommentPins } from "../components/CommentPins";
 import { ThumbPanel } from "../components/ThumbPanel";
 import { longformOpen, projectMapData } from "../streamState";
 import { askCrop, attempt, cropAsk, cutError, cutView, exportAsk, jobs, openCut, saved, say, selectedPart, setHelpOpen, setHistoryOpen, setSelectedPart, viewer } from "../store";
+
+/** The checks that are tidying (Tighten's sweeps), not problems. */
+const TIDY_RULES = new Set(["retake", "dead_air", "part_filler_elsewhere"]);
+
+/** A check's message for a person: the agent's how-to after the "; " (a command name) goes. */
+function plainCheck(m: string): string {
+  const i = m.indexOf("; ");
+  return i > 0 && /\b[a-z]+_[a-z_]+\b/.test(m.slice(i)) ? m.slice(0, i) : m;
+}
+
+/** A tidying check in a few plain words. */
+function tidyLine(rule: string, m: string): string {
+  if (rule === "retake") {
+    const x = /at ([0-9:.]+): (\d+) word/.exec(m);
+    if (x) return `Said again at ${x[1]} (${x[2]} word${x[2] === "1" ? "" : "s"}): keep the second try`;
+  }
+  if (rule === "dead_air") {
+    const x = /has ([0-9.]+) s of silence/.exec(m);
+    if (x) return `${Math.round(Number(x[1]))} s of pauses between words`;
+  }
+  return plainCheck(m);
+}
 
 export function CutView() {
   const [starting, setStarting] = createSignal(false);
@@ -287,14 +311,20 @@ export function CutView() {
     },
     (k) => lastExport(k.p, k.c),
   );
-  const loudChecks = () => (checks()?.findings ?? []).filter((f) => f.level !== "info");
+  // Raw footage always has retakes, pauses and stray fillers: those are tidying to do
+  // (Tighten does it), not problems, so they neither colour the pill nor read as warnings
+  const isTidy = (rule: string) => TIDY_RULES.has(rule);
+  const loudChecks = () => (checks()?.findings ?? []).filter((f) => f.level !== "info" && !isTidy(f.rule));
+  const tidyChecks = () => (checks()?.findings ?? []).filter((f) => isTidy(f.rule));
   /** The status pill's tone: the worst of saving, the export and the checks. */
   const statusTone = (): "neutral" | "success" | "warning" | "danger" => {
     const e = cutView()?.export.state;
     if (saved() === "failed" || loudChecks().some((f) => f.level === "error")) return "danger";
     if (loudChecks().length || e === "stale") return "warning";
-    return e === "fresh" && saved() === "saved" ? "success" : "neutral";
+    return !tidyChecks().length && saved() === "saved" ? "success" : "neutral";
   };
+  const pillLabel = () =>
+    saved() === "failed" ? savedText() : loudChecks().length ? `${loudChecks().length} to check` : tidyChecks().length ? `${tidyChecks().length} to tidy` : `${savedText()}, nothing to tidy`;
   const tabs = (): TabItem<SideTab>[] => barTabs().map((id) => SIDE_TABS.find((t) => t.id === id)!);
   return (
     <main
@@ -337,7 +367,7 @@ export function CutView() {
                     />
                   }
                 >
-                  <h1 data-testid="cut-title" data-tip={cutView() ? "Rename" : undefined} onClick={() => cutView() && setRenaming(true)}>
+                  <h1 data-testid="cut-title" data-tip={cutView() ? `${cutView()!.title} — click to rename` : undefined} onClick={() => cutView() && setRenaming(true)}>
                     {cutView() ? cutView()!.title : cutError() ? "This cut cannot be shown" : "Loading…"}
                   </h1>
                 </Show>
@@ -347,8 +377,8 @@ export function CutView() {
                 </span>
                 <Show when={versions()}>
                   {(n) => (
-                    <button type="button" class="versions-link" data-testid="earlier-versions" data-tip="History: compare and restore" onClick={() => setHistoryOpen({})}>
-                      ↶ {n()} earlier version{n() === 1 ? "" : "s"}
+                    <button type="button" class="versions-link" data-testid="earlier-versions" data-count={n()} data-tip={`${n()} earlier version${n() === 1 ? "" : "s"} of this cut: compare one with now and restore it`} onClick={() => setHistoryOpen({})}>
+                      ↶ Restore…
                     </button>
                   )}
                 </Show>
@@ -356,6 +386,7 @@ export function CutView() {
               </div>
               <div class="cut-center">
                 <SegmentedControl label="Output" options={framings()} value={cutView()?.framing?.aspect === "9:16" ? "9:16" : cutView()?.framing?.aspect === "16:9" ? "16:9" : undefined} onChange={(a) => void output(a)} />
+                <CropVersions />
               </div>
               <div class="cut-right">
                 <ExportDoneChip />
@@ -366,20 +397,19 @@ export function CutView() {
                     </Chip>
                   )}
                 </Show>
-                {/* one status pill: saved, exported, the cut's checks (AJ 2026-10-18) */}
-                <details class="checks status-pill" data-testid="checks" onToggle={(e) => setPillOpen(e.currentTarget.open)}>
-                  <summary class={`chip chip-${statusTone()}`}>
-                    <Icon name={statusTone() === "danger" || statusTone() === "warning" ? "triangle-alert" : "circle-check"} size={12} />
-                    <span class={`saved${saved() === "failed" ? " failed" : ""}`} data-testid="saved" role={saved() === "failed" ? "alert" : undefined}>{savedText()}</span>
-                    <span class="status-sep" aria-hidden="true">·</span>
-                    <span class={`export-state ${cutView()?.export.state ?? ""}`}>{exportChip()}</span>
+                {/* one status pill (AJ 2026-10-18; 2026-11-22: short). It says only what needs
+                    you: "N to check", "N to tidy", or a green check; saving shows only while
+                    it is not "Saved". Save and export details, the checks and the one Tighten
+                    are in its dropdown. */}
+                <details class="checks status-pill" data-testid="checks" open={statusOpen()} onToggle={(e) => { setPillOpen(e.currentTarget.open); setStatusOpen(e.currentTarget.open); }}>
+                  <summary class={`chip chip-${statusTone()}`} aria-label={pillLabel()}>
+                    <Icon name={statusTone() === "danger" || statusTone() === "warning" ? "triangle-alert" : statusTone() === "success" ? "circle-check" : "tighten"} size={12} />
+                    <span classList={{ saved: true, failed: saved() === "failed", "sr-only": saved() === "saved" }} data-testid="saved" role={saved() === "failed" ? "alert" : undefined}>{savedText()}</span>
                     <Show when={loudChecks().length}>
-                      {(n) => (
-                        <>
-                          <span class="status-sep" aria-hidden="true">·</span>
-                          <span>{n()} check{n() === 1 ? "" : "s"}</span>
-                        </>
-                      )}
+                      {(n) => <span>{n()} to check</span>}
+                    </Show>
+                    <Show when={!loudChecks().length && tidyChecks().length}>
+                      {(n) => <span data-testid="tidy-count">{n()} to tidy</span>}
                     </Show>
                     <Show when={tile()?.handoff}>
                       <span class="status-sep" aria-hidden="true">·</span>
@@ -388,14 +418,15 @@ export function CutView() {
                   </summary>
                   <ul>
                     <li class="small status-line">{savedTip() ?? savedText()}</li>
-                    <li class="small status-line">{exportState()}</li>
+                    <li class="small status-line"><span class={`export-state ${cutView()?.export.state ?? ""}`} data-tip={exportState()}>{exportChip()}</span></li>
                     <Show when={cutView() && tile()?.handoff ? tile() : null}>
                       {(t) => <li><HandoffNote project={cutView()!.project} tile={t()} /></li>}
                     </Show>
-                    <For each={checks()?.findings ?? []} fallback={<li class="muted small">No checks to look at.</li>}>
+                    <For each={checks()?.findings ?? []} fallback={<li class="muted small">Nothing to check.</li>}>
                       {(f, i) => (
+                        <Show when={!isTidy(f.rule)}>
                         <li class={`small ${f.level}`} data-rule={f.rule}>
-                          <b>{f.level}</b> {f.message}
+                          <b>{f.level === "warning" ? "Check" : f.level === "error" ? "Fix" : "Note"}</b> {plainCheck(f.message)}
                           <Show when={f.fix}>
                             {(fx) => (
                               <>
@@ -407,15 +438,37 @@ export function CutView() {
                             )}
                           </Show>
                         </li>
+                        </Show>
                       )}
                     </For>
+                    <Show when={tidyChecks().length}>
+                      <li class="small tidy-head" data-testid="tidy-list">To tidy</li>
+                      <For each={tidyChecks()}>
+                        {(f) => (
+                          <li class="small tidy-row" data-rule={f.rule}>
+                            <Icon name={f.rule === "dead_air" ? "pause" : "scissors"} size={12} />
+                            <span>{tidyLine(f.rule, f.message)}</span>
+                          </li>
+                        )}
+                      </For>
+                    </Show>
+                    <li class="tidy-go">
+                      <details class="words-tighten" data-testid="words-tighten" open={tightenOpen()} onToggle={(e) => setTightenOpen(e.currentTarget.open)}>
+                        <summary data-testid="tidy-open"><Icon name="tighten" size={13} />Tighten: pauses, fillers and retakes</summary>
+                        <Show when={tightenOpen()}><TightenPanel /></Show>
+                      </details>
+                    </li>
                   </ul>
                 </details>
                 <span class="tb-divider" />
                 <Menu
-                  label="More"
+                  label="View and more"
                   icon="more"
+                  testid="view-menu"
                   items={() => [
+                    // the View menu (panes, tabs, focus, scrub, safe zones, layouts), then the cut's own
+                    ...viewItems(),
+                    { separator: true, label: "" },
                     ...(prefs.developer ? [{ label: "Ask an agent…", icon: "smile", onSelect: () => { const v = cutView(); if (v) setLaunchFor({ project: v.project, cut: v.cut }); } }] : []),
                     { label: "History", icon: "history", keys: "⌘⇧S", testid: "history-open", onSelect: () => setHistoryOpen({}) },
                     { label: "New cut like this…", icon: "layers", testid: "cut-like-open", onSelect: () => setCutLikeOpen(true) },
@@ -427,8 +480,8 @@ export function CutView() {
                   when={job()}
                   fallback={
                     <span class="export-split" ref={exportBox}>
-                      <Button variant="primary" icon="share" data-testid="export" keys="⌘E" tooltip="Export the cut" disabled={!cutView() || starting()} onClick={() => void startExport()}>
-                        Export
+                      <Button variant="primary" icon="share" data-testid="export" keys="⌘E" tooltip={`Export this cut as ${cutView()?.framing?.aspect ?? "framed"}`} disabled={!cutView() || starting()} onClick={() => void startExport()}>
+                        Export{cutView()?.framing?.aspect ? ` ${cutView()!.framing!.aspect}` : ""}
                       </Button>
                       <button type="button" class="primary export-more" aria-label="Export options" aria-expanded={exportOpts()} onClick={() => setExportOpts(!exportOpts())}>
                         <Icon name="chevron-down" size={13} />
@@ -440,7 +493,23 @@ export function CutView() {
                         role="group"
                         aria-label="Export options"
                       >
-                        <h3>Export options</h3>
+                        {/* one button exports this shape; this menu: the other shape too,
+                            several cuts, then quality (size and loudness) */}
+                        <Show when={cutView()}>
+                          {(v) => <BothFramings project={v().project} cut={v().cut} rev={v().rev} open={exportOpts()} onSeveral={() => { setExportOpts(false); setFramingsFor({ project: v().project, only: v().cut }); }} />}
+                        </Show>
+                        <h3 class="pop-sub">Quality</h3>
+                        <Show when={(cutView()?.upload_presets ?? []).length}>
+                          <label class="field">
+                            Size
+                            <select aria-label="Export format" data-testid="export-preset" value={exportPreset()} onChange={(e) => setExportPreset(e.currentTarget.value)}>
+                              <option value="framed">As framed ({cutView()?.canvas.w}×{cutView()?.canvas.h})</option>
+                              <For each={cutView()?.upload_presets ?? []}>
+                                {(p) => <option value={p}>{p === "youtube-1440p" ? "YouTube 1440p (2560×1440)" : "YouTube 1080p (1920×1080)"}</option>}
+                              </For>
+                            </select>
+                          </label>
+                        </Show>
                         <label class="field">
                           Loudness
                           <select
@@ -457,10 +526,9 @@ export function CutView() {
                             <option value="-14">−14 LUFS (YouTube)</option>
                           </select>
                         </label>
-                        <span class="hint" data-testid="loudness">{loudnessLine()}</span>
-                        <Show when={cutView()}>
-                          {(v) => <BothFramings project={v().project} cut={v().cut} rev={v().rev} open={exportOpts()} onSeveral={() => { setExportOpts(false); setFramingsFor({ project: v().project, only: v().cut }); }} />}
-                        </Show>
+                        {/* the plan's words stay readable (tests, screen readers); shown only
+                            once an export measured something the select does not say */}
+                        <span class="hint" data-testid="loudness" hidden={!cutView()?.loudness?.last?.integrated}>{loudnessLine()}</span>
                         <Show when={cutView()?.export.id}>
                           <div class="export-verify" data-testid="export-verify" data-passed={cutView()?.export.verify ? String(cutView()!.export.verify!.passed) : "none"}>
                             <span class="hint" data-testid="export-verify-line">{verifyLine()}</span>
@@ -482,17 +550,6 @@ export function CutView() {
                         </Show>
                         <Show when={cutView() && tile() ? tile() : null}>
                           {(t) => <ExportFile project={cutView()!.project} tile={t()} />}
-                        </Show>
-                        <Show when={(cutView()?.upload_presets ?? []).length}>
-                          <label class="field">
-                            Format
-                            <select aria-label="Export format" data-testid="export-preset" value={exportPreset()} onChange={(e) => setExportPreset(e.currentTarget.value)}>
-                              <option value="framed">As framed ({cutView()?.canvas.w}×{cutView()?.canvas.h})</option>
-                              <For each={cutView()?.upload_presets ?? []}>
-                                {(p) => <option value={p}>{p === "youtube-1440p" ? "YouTube 1440p (2560×1440)" : "YouTube 1080p (1920×1080)"}</option>}
-                              </For>
-                            </select>
-                          </label>
                         </Show>
                       </div>
                     </span>
@@ -603,13 +660,9 @@ export function CutView() {
         <div class="side-tabs">
           <Tabs label="Side panel" items={tabs()} value={tab()} onChange={setTab} />
         </div>
-        {/* Words: Tighten folded above the transcript. The transcript stays mounted: the
+        {/* Words: the transcript (Tighten is in the status dropdown). It stays mounted: the
             global keys (d/x, s, p, q/w) read it. */}
         <div class="side-pane words-pane" hidden={tab() !== "words"}>
-          <details class="words-tighten" data-testid="words-tighten" open={tightenOpen()} onToggle={(e) => setTightenOpen(e.currentTarget.open)}>
-            <summary><Icon name="tighten" size={13} />Tighten: pauses and fillers</summary>
-            <Show when={tightenOpen()}><TightenPanel /></Show>
-          </details>
           <Transcript />
         </div>
         <Switch>

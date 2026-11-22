@@ -28,11 +28,11 @@ test("both framings from the export popover and the sheet", async ({ browser }) 
   const output = page.getByRole("group", { name: "Output" });
   await expect(output.getByRole("button", { name: "9:16" })).toHaveAttribute("aria-pressed", "true");
 
-  // the popover: 9:16 not exported, 16:9 to be made; asking first
+  // the menu (2026-11-22: no state chips): "Also export 16:9"; the 16:9 is to be made, asking first
+  await expect(page.getByTestId("export")).toContainText("Export 9:16");
   await page.getByRole("button", { name: "Export options" }).click();
   const box = page.getByTestId("export-both-box");
-  await expect(box.getByTestId("framing-state")).toContainText("9:16 · not exported");
-  await expect(box.getByTestId("framing-missing")).toContainText("16:9");
+  await expect(box.getByTestId("export-both")).toHaveText("Also export 16:9");
   await box.getByTestId("export-both").click();
   await expect(box.getByTestId("export-both-ask")).toContainText("no 16:9 yet");
   if (SHOTS) await page.screenshot({ path: join(SHOTS, "export-both-ask-1440x900.png") });
@@ -45,9 +45,8 @@ test("both framings from the export popover and the sheet", async ({ browser }) 
   // the cut still shows its 9:16
   await expect(output.getByRole("button", { name: "9:16" })).toHaveAttribute("aria-pressed", "true");
   if (!(await box.isVisible())) await page.getByRole("button", { name: "Export options" }).click();
-  await expect(box.getByTestId("framing-state")).toHaveCount(2);
-  await expect(box.getByTestId("framing-state").nth(0)).toContainText("9:16 · exported");
-  await expect(box.getByTestId("framing-state").nth(1)).toContainText("16:9 · exported");
+  // both made now: no question this time
+  await expect(box.getByTestId("export-both-ask")).toHaveCount(0);
 
   // Several cuts…: the sheet, this cut ticked, both exported
   await box.getByTestId("framings-open").click();
@@ -71,7 +70,9 @@ test("both framings from the export popover and the sheet", async ({ browser }) 
 
   // Home's card opens it for the project
   await page.getByRole("button", { name: "Home" }).click();
-  await page.locator(".project").filter({ hasText: "both-test" }).first().getByTestId("framings-open-home").click();
+  // the project card's ⋯ menu (2026-11-22)
+  await page.locator(".project").filter({ hasText: "both-test" }).first().getByTestId("project-menu").click();
+  await page.getByTestId("framings-open-home").click();
   await expect(page.getByTestId("framings-sheet")).toBeVisible();
   await expect(page.getByTestId("framings-sheet").getByTestId("framings-start")).toBeDisabled();
   expect(errors).toEqual([]);

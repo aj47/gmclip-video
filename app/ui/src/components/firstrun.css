@@ -109,18 +109,19 @@
 /* the welcome: one line */
 .fr-welcome { flex-wrap: nowrap; gap: var(--s-2); padding: var(--s-1) var(--s-2) var(--s-1) var(--s-3); font-size: var(--fs-12); }
 .fr-welcome > span:not(.spacer) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.fr-checklist { flex-direction: column; align-items: stretch; }
-.fr-checklist header { display: flex; align-items: center; gap: var(--s-2); }
-.fr-checklist ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2) var(--s-4);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.fr-checklist li { display: flex; align-items: center; gap: var(--s-1); color: var(--text-2); font-size: var(--fs-13); }
+/* Your first short: the steps on one line, numbered, the next one lit, its how under them */
+.fr-checklist { flex-direction: column; align-items: stretch; gap: var(--s-1); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-4); }
+.fr-cl-row { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; min-width: 0; }
+.fr-checklist ol { counter-reset: step; display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); margin: 0; padding: 0; list-style: none; }
+.fr-checklist li { counter-increment: step; display: flex; align-items: center; gap: 6px; color: var(--text-3); font-size: var(--fs-12); }
+.fr-cl-n { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--border-control); font-size: 10px; font-weight: var(--fw-semibold); color: var(--text-2); }
+.fr-checklist li.next { color: var(--text-1); font-weight: var(--fw-semibold); }
+.fr-checklist li.next .fr-cl-n { background: var(--accent); border-color: var(--accent); color: var(--text-on-accent); }
 .fr-checklist li.done { color: var(--success); }
+.fr-checklist li.done .fr-cl-n { background: var(--success-wash); border-color: var(--success); color: var(--success); }
+.fr-cl-n::before { content: counter(step); }
+.fr-checklist li.done .fr-cl-n::before { content: "✓"; }
+.fr-cl-next { margin: 0; }
 
 .restore-sheet { max-width: 640px; }
 .restore-project h3 { display: flex; align-items: center; gap: var(--s-2); margin: var(--s-3) 0 var(--s-1); font-size: var(--fs-13); }

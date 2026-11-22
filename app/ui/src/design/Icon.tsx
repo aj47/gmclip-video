@@ -313,12 +313,14 @@ const P: Record<string, () => JSX.Element> = {
     </>
   ),
   smile: () => (
-    // the gmclip sun (assets/brand/icon.svg), redrawn on the 24 grid: twelve rays, the
-    // face; the rays are their own group so a working agent's sun can turn
+    // the gmclip sun (assets/brand/icon.svg), redrawn on the 24 grid: nine rays at the
+    // icon's angles, the disc, the face. The rays are their own group so a working
+    // agent's sun can turn; disc and face have classes so the agent button paints it
+    // as the yellow sticker sun (agents.css)
     <>
-      <path class="sun-rays" stroke-width="1.6" d="M12.0 3.43L12.0 1.1M16.29 4.58L17.45 2.56M19.42 7.71L21.44 6.55M20.57 12.0L22.9 12.0M19.42 16.29L21.44 17.45M16.29 19.42L17.45 21.44M12.0 20.57L12.0 22.9M7.71 19.42L6.55 21.44M4.58 16.29L2.56 17.45M3.43 12.0L1.1 12.0M4.58 7.71L2.56 6.55M7.71 4.58L6.55 2.56" />
-      <circle cx="12" cy="12" r="6.74" stroke-width="1.7" />
-      <path stroke-width="1.6" d="M7.54 10.41a1.19 1.19 0 0 1 2.38 0M14.08 10.41a1.19 1.19 0 0 1 2.38 0M9.97 12.77A2.57 2.57 0 0 0 14.03 12.77" />
+      <path class="sun-rays" stroke-width="1.7" d="M12 3.5L12 1.1M17.46 5.49L19.01 3.65M20.37 10.52L22.73 10.11M19.57 15.86L21.71 16.95M15.99 19.51L17.12 21.62M6.54 5.49L4.99 3.65M3.63 10.52L1.27 10.11M4.43 15.86L2.29 16.95M8.01 19.51L6.88 21.62" />
+      <circle class="sun-disc" cx="12" cy="12" r="6.6" stroke-width="1.7" />
+      <path class="sun-face" stroke-width="1.2" d="M8 11.8a1.06 1.06 0 0 1 2.13 0M13.87 11.8a1.06 1.06 0 0 1 2.13 0M10.27 13.01Q12 14.74 13.73 13.01" />
     </>
   ),
   bot: () => (

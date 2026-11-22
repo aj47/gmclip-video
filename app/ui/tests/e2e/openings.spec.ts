@@ -8,7 +8,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { transcribed } from "./analysed";
 import { STATE } from "./global-setup";
 import { labMedia } from "./lab";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 const VIDEO = labMedia("renders/own-vm-1080.mp4");
 
@@ -63,6 +63,7 @@ test("alternate openings side by side, exported, retention per opening, make mai
 
   // Short tab › Openings: the main version, and an alternate from the second moment
   await openTab(page, "Short");
+  await rowOn(page, "openings");
   const section = page.getByTestId("openings");
   await expect(section.getByTestId("opening-row")).toHaveCount(1, { timeout: 20_000 });
   await expect(section.getByTestId("openings-compare")).toBeDisabled();

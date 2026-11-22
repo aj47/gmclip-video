@@ -136,10 +136,11 @@ test("long-forms compared, topics searched, names fixed, B-roll and reactions", 
   // at the chapter, not the start
   await expect.poll(async () => (await page.getByTestId("timecode").textContent())?.startsWith("0:00.00"), { timeout: 20_000 }).toBe(false);
 
-  // Fix everywhere from a caption word in the words strip
-  const strip = page.getByRole("listbox", { name: "Cut words" });
-  await expect(strip).toBeVisible({ timeout: 30_000 });
-  const live = strip.locator(".w:not(.struck)");
+  // Fix everywhere from a caption word in the transcript (the words strip retired 2026-11-22)
+  await openTab(page, "Words");
+  const strip = page.getByTestId("transcript");
+  await expect(strip.locator(".w").first()).toBeVisible({ timeout: 30_000 });
+  const live = strip.locator(".w:not(.out)");
   const w = live.nth(3);
   const heard = ((await w.textContent()) ?? "").replace(/[.,?!]+$/, "");
   await w.click();
@@ -149,7 +150,7 @@ test("long-forms compared, topics searched, names fixed, B-roll and reactions", 
   await page.getByTestId("fix-apply").click();
   await expect(page.locator(".toast")).toContainText(`“${heard}” shows as “Gmclipped” in every caption`);
   await expect(page.locator(".toast")).toContainText("all your projects");
-  await expect(strip.locator(".w.edited").filter({ hasText: "Gmclipped" }).first()).toBeVisible({ timeout: 20_000 });
+  await expect(strip.locator(".w.respelled").filter({ hasText: "Gmclipped" }).first()).toBeVisible({ timeout: 20_000 });
   const terms = await bridge<{ terms: { written: string; heard_as: string[]; profile: boolean }[] }>(page, "terms_view", {}, pid);
   expect(terms.terms.find((t) => t.written === "Gmclipped")?.profile).toBe(true);
   await page.keyboard.press("Meta+z");
@@ -162,7 +163,7 @@ test("long-forms compared, topics searched, names fixed, B-roll and reactions", 
   const pop = page.getByTestId("broll-pop");
   await expect.poll(async () => {
     // (the meaning index may still be embedding the other recording: ask again)
-    await page.getByTestId("broll-open").click();
+    await page.getByTestId("tr-broll").click();
     await expect(pop.getByTestId("broll-busy")).toHaveCount(0, { timeout: 90_000 });
     return pop.getByTestId("broll-row").count();
   }, { timeout: 240_000, intervals: [5_000] }).toBeGreaterThan(0);

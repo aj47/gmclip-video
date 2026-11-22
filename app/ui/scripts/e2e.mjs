@@ -7,8 +7,8 @@
 // so specs run `--jobs` at a time (default GMCLIP_E2E_JOBS, else 2). The specs that gate
 // on timing (SOLO below) run afterwards, one at a time, with nothing else running.
 //
-//   node scripts/e2e.mjs                 every spec (qa-*, shots and s2a only with
-//                                        GMCLIP_QA, GMCLIP_SHOTS or GMCLIP_S2A set)
+//   node scripts/e2e.mjs                 every spec (qa-*, shots, polishshots and s2a only
+//                                        with GMCLIP_QA, GMCLIP_SHOTS, GMCLIP_POLISH_SHOTS or GMCLIP_S2A set)
 //   node scripts/e2e.mjs lanes crop      only these (names without .spec.ts)
 //   node scripts/e2e.mjs --repeat 5 lanes   each named spec five times in a row
 //   node scripts/e2e.mjs --jobs 1        one spec at a time, its output live
@@ -32,7 +32,7 @@ const SOLO = new Set(["evtburst.spec.ts", "hugefile.spec.ts", "tlcolumns.spec.ts
 // Opt-in specs skip every test without their variable, so a run without it would pay an
 // app launch for nothing: they are left out unless it is set (or they are named).
 const optIn = (f) =>
-  f === "s2a.spec.ts" ? !process.env.GMCLIP_S2A : f.startsWith("qa-") ? !process.env.GMCLIP_QA : f === "shots.spec.ts" ? !process.env.GMCLIP_SHOTS : false;
+  f === "s2a.spec.ts" ? !process.env.GMCLIP_S2A : f.startsWith("qa-") ? !process.env.GMCLIP_QA : f === "shots.spec.ts" ? !process.env.GMCLIP_SHOTS : f === "polishshots.spec.ts" ? !process.env.GMCLIP_POLISH_SHOTS : false;
 const every = readdirSync("tests/e2e").filter((f) => f.endsWith(".spec.ts")).sort();
 const all = every.filter((f) => !optIn(f));
 const specs = only.length ? only.map((n) => `${n}.spec.ts`).filter((f) => every.includes(f)) : all;

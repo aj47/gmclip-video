@@ -25,6 +25,9 @@ test("the full transcript reads as prose, and so does the panel", async ({ brows
   await openTab(page, "Transcript");
   await expect(body.locator(".tr-t").first()).toBeHidden();
   await expect(page.locator(".cut")).toHaveAttribute("data-words", "off");
+  // the panel is prose too (2026-11-22): lines inline in block paragraphs, as in reading
+  expect(await body.locator(".tr-line").first().evaluate((el) => getComputedStyle(el).display)).toBe("inline");
+  expect(await body.locator(".tr-para").first().evaluate((el) => getComputedStyle(el).display)).toBe("block");
   await shot(page, "transcript-panel-no-times-1440x900");
 
   // One click: the reading view.

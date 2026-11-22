@@ -31,6 +31,7 @@ export const DEFAULTS: Prefs = {
   open_panes: "last",
   workspaces: [],
   recording: false,
+  recordings_folder: "",
   developer: false,
 };
 

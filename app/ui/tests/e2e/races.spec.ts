@@ -9,7 +9,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { STATE } from "./global-setup";
 import { labMedia } from "./lab";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 const REEL = labMedia("h79/h79-v4.mp4");
 const WIDE = labMedia("renders/own-vm-1080.mp4");
@@ -54,9 +54,11 @@ test("a lane drag's overlay never shows its old span after the release; ⌘Z at 
   copyFileSync(REEL, copy);
   const { page, errors } = await open(browser, copy, "races-test");
   await openTab(page, "Short");
-  await page.getByLabel("Hook text").fill("My PC made this");
+  // the text hook is one field (2026-11-22): its row on, the time, Enter sets it
+  await rowOn(page, "hook");
   await page.getByLabel("Hook seconds").fill("3");
-  await page.getByRole("button", { name: "Set hook" }).click();
+  await page.getByLabel("Hook text").fill("My PC made this");
+  await page.getByLabel("Hook text").press("Enter");
   const tl = page.locator(".timeline-canvas");
   await expect(tl).toHaveAttribute("data-overlays-editable", "1", { timeout: 20_000 });
   const hookRow = page.getByRole("list", { name: "Overlays" }).getByRole("button").filter({ hasText: "text_hook" });
@@ -84,10 +86,17 @@ test("a lane drag's overlay never shows its old span after the release; ⌘Z at 
 
   // ⌘Z at once after a release undoes that release (sent before the release's commit,
   // it undid the edit before it: here, the gain segment's add)
+  // the Volume lane hides while the cut has no level (2026-11-22): show it to draw the first
+  const showGain = page.getByTestId("lane-gain-show");
+  if ((await showGain.getAttribute("aria-pressed")) !== "true") await showGain.click();
+  await expect(showGain).toHaveAttribute("aria-pressed", "true");
   const gainY = Number((await tl.getAttribute("data-lanes-y"))!.split(",")[2]);
-  const yDb = (db: number) => box.y + gainY + 15 - (db / 24) * 13;
-  const gainRows = page.getByRole("list", { name: "Gain" }).getByRole("button");
-  await page.mouse.click(x(300), yDb(12));
+  // the canvas grows by the lane it shows: measure it again
+  const gainBox = (await tl.boundingBox())!;
+  const yDb = (db: number) => gainBox.y + gainY + 15 - (db / 24) * 13;
+  const gainRows = page.getByRole("list", { name: "Volume" }).getByRole("button");
+  // a double-click adds a level (a single click adds nothing; lanes.spec)
+  await page.mouse.dblclick(x(300), yDb(12));
   await expect(gainRows).toHaveCount(1, { timeout: 20_000 });
   await expect(gainRows.first()).toContainText("+12 dB (frames 285–315)");
   await page.keyboard.down("Alt");

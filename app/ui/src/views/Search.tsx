@@ -2,7 +2,8 @@
 // ⌘⇧F from anywhere, or the search box on Home. A hit plays its span (▶), opens the cut that
 // shows it, or becomes a moment (＋). Words are exact; Meaning finds what was talked about;
 // Both mixes them. Transcript text is shown as text, never as markup.
-import { createEffect, createSignal, For, on, onCleanup, onMount, Show } from "solid-js";
+import { createEffect, createResource, createSignal, For, on, onCleanup, onMount, Show } from "solid-js";
+import { Icon } from "../design/Icon";
 import { ideaActions, libraryActions, type LibraryHit, type LibrarySearchResult, type LibraryTopic } from "../actions";
 import { Viewer } from "../components/Viewer";
 import { Button, Chip, Empty, IconButton, SegmentedControl } from "../design/components";
@@ -32,11 +33,16 @@ export function clock(s: number): string {
   return h ? `${h}:${String(m).padStart(2, "0")}:${sec}` : `${m}:${sec}`;
 }
 
+/** A few searches to start from (what a talk about building with agents says). */
+const EXAMPLES = ["it finally worked", "how long it took", "the error", "GPU", "my setup"];
+
 export function Search(props: { q?: string; project?: string }) {
   // a project's map searches only its videos (every video of it); ✕ widens to the library
   const [only, setOnly] = createSignal(props.project);
   const [q, setQ] = createSignal(props.q ?? "");
+  // Both by default (AJ 2026-11-22); Words or Meaning is an option, remembered when picked
   const [mode, setMode] = createSignal<Mode>(savedMode());
+  const [recent] = createResource(async () => (await attempt(actions.recentVideos))?.projects ?? []);
   const [res, setRes] = createSignal<LibrarySearchResult | null>(null);
   const [busy, setBusy] = createSignal(false);
   const [playing, setPlaying] = createSignal<string | null>(null);
@@ -150,6 +156,8 @@ export function Search(props: { q?: string; project?: string }) {
             onKeyDown={onKey}
           />
         </form>
+        <details class="libsearch-opts" data-testid="library-search-options" open={mode() !== "hybrid"}>
+          <summary class="small">{mode() === "hybrid" ? "Options" : mode() === "words" ? "Exact words" : "By meaning"}</summary>
         <SegmentedControl<Mode>
           label="Search by"
           testid="library-search-mode"
@@ -169,6 +177,7 @@ export function Search(props: { q?: string; project?: string }) {
             { value: "meaning", label: "Meaning", hint: "What you talked about, in any words" },
           ]}
         />
+        </details>
         <Show when={only()}>
           <Chip tone="accent" testid="search-only" tooltip="Only this project's videos">
             <span>This project</span>
@@ -228,7 +237,33 @@ export function Search(props: { q?: string; project?: string }) {
               <li class="libsearch-empty">
                 <Show
                   when={q().trim()}
-                  fallback={<Empty icon="search" title="Search every stream you recorded" compact />}
+                  fallback={
+                    <div class="libsearch-start" data-testid="library-search-start">
+                      <Empty icon="search" title="Search everything you said" compact />
+                      <div class="libsearch-examples">
+                        <span class="muted small">Try</span>
+                        <For each={EXAMPLES}>
+                          {(x) => (
+                            <button type="button" class="ag-pick" data-testid="search-example" onClick={() => { setQ(x); input?.focus(); }}>
+                              {x}
+                            </button>
+                          )}
+                        </For>
+                      </div>
+                      <Show when={(recent() ?? []).length}>
+                        <div class="libsearch-examples">
+                          <span class="muted small">In one project</span>
+                          <For each={(recent() ?? []).slice(0, 6)}>
+                            {(p) => (
+                              <button type="button" class="ag-pick" data-testid="search-in-project" data-tip={`Search only “${p.name}”`} onClick={() => { setOnly(p.project); input?.focus(); }}>
+                                <Icon name="film" size={13} />{p.name}
+                              </button>
+                            )}
+                          </For>
+                        </div>
+                      </Show>
+                    </div>
+                  }
                 >
                   <Show when={!busy() && !topics().length}>
                     <Empty icon="search" title="Nothing said like that" compact />

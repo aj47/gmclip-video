@@ -1,5 +1,6 @@
 // The layout half of the Look tab (decision 0054): output shape (9:16 / 16:9), the current part's layout preset, "apply to
 // all parts", and the crop editor switch (crops are edited on the full source picture).
+import { Icon } from "../design/Icon";
 import { thisMachine } from "../platform";
 import { createResource, createSignal, For, Show } from "solid-js";
 import { actions, type PartView } from "../actions";
@@ -119,28 +120,35 @@ export function LayoutPanel(props: { part: PartView | undefined; cropping: boole
         </div>
         <div>
           <h3>Layout</h3>
-          <div class="row">
+          {/* the choices as one grid; the part's own is marked */}
+          <div class="layout-choices" role="group" aria-label="Layouts">
             <For each={f()?.presets ?? []}>
-              {(pr) => (
-                <button type="button" disabled={!props.part} onClick={() => void preset(pr.id, false)} title={`Use ${pr.name} for this part`}>
-                  {pr.name}
-                </button>
-              )}
+              {(pr) => {
+                const on = () => { const n = layoutName(); return !!n && (n === pr.name || n.startsWith(`${pr.name} `)); };
+                return (
+                  <button type="button" class="layout-choice" aria-pressed={on()} disabled={!props.part} onClick={() => void preset(pr.id, false)} title={`Use ${pr.name} for this part`}>
+                    {pr.name}
+                  </button>
+                );
+              }}
             </For>
           </div>
-          <div class="row">
-            <button type="button" disabled={!props.part} onClick={() => void toAll()} data-testid="apply-all">Apply this part's layout and crops to all parts</button>
-            <button type="button" disabled={!props.part} data-testid="apply-same-source" title="Every part cut from the same video as this one" onClick={() => { const v = cutView(); const p = props.part; if (v && p) void attempt(() => actions.layoutCopySameSource(v.project, v.cut, p.id)).then((r) => r && say(`Part ${p.n}'s layout and crops are on ${r.parts} more part${r.parts === 1 ? "" : "s"} from the same video — ⌘Z undoes it`)); }}>
-              … to all parts from this video
+          <div class="layout-spread" role="group" aria-label="Use this part's layout and crops on">
+            <span class="muted small">Use it on</span>
+            <button type="button" class="small" disabled={!props.part} onClick={() => void toAll()} data-testid="apply-all" title="This part's layout and crops on every part">All parts</button>
+            <button type="button" class="small" disabled={!props.part} data-testid="apply-same-source" title="Every part cut from the same video as this one" onClick={() => { const v = cutView(); const p = props.part; if (v && p) void attempt(() => actions.layoutCopySameSource(v.project, v.cut, p.id)).then((r) => r && say(`Part ${p.n}'s layout and crops are on ${r.parts} more part${r.parts === 1 ? "" : "s"} from the same video — ⌘Z undoes it`)); }}>
+              Parts from this video
             </button>
+            <form class="layout-next" onSubmit={(e) => { e.preventDefault(); void copyNext(); }}>
+              <button type="submit" class="small" disabled={!props.part} data-testid="copy-next" title="This part's layout on the parts after it">The next</button>
+              <input class="num" type="number" min="1" step="1" aria-label="How many parts" value={count()} onInput={(e) => setCount(e.currentTarget.value)} />
+            </form>
           </div>
-          <form class="row" onSubmit={(e) => { e.preventDefault(); void copyNext(); }}>
-            <button type="submit" disabled={!props.part} data-testid="copy-next">Copy this part's layout to the next</button>
-            <input class="num" type="number" min="1" step="1" aria-label="How many parts" value={count()} onInput={(e) => setCount(e.currentTarget.value)} />
-            <span class="muted small">parts</span>
-          </form>
           <div class="row">
-            <button type="button" disabled={!props.part} onClick={() => void inset()} data-testid="inset-add" title="A piece of the screen as its own box on this part (Run button, progress, taskbar clock)">Add a detail inset</button>
+            <button type="button" class="ghost small" disabled={!props.part} onClick={() => void inset()} data-testid="inset-add" title="A piece of the screen as its own box on this part (Run button, progress, taskbar clock)">
+              <Icon name="plus" size={13} />
+              Add a detail inset
+            </button>
           </div>
         </div>
         <div>

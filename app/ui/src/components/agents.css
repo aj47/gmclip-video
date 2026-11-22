@@ -154,6 +154,10 @@
 .ag-fab:hover:not(:disabled), .ag-fab:active:not(:disabled) { background: var(--brand-blue); border-color: var(--outline); }
 .ag-fab:hover:not(:disabled) { transform: translateY(-2px) scale(1.06); }
 .ag-fab .ag-face { color: inherit; }
+/* the button's sun is the app icon's: a yellow sun with an ink face on the blue */
+.ag-fab .ag-face .sun-rays { stroke: var(--brand-yellow); }
+.ag-fab .ag-face .sun-disc { fill: var(--brand-yellow); stroke: #f9b233; stroke-width: 1; }
+.ag-fab .ag-face .sun-face { stroke: var(--brand-ink); stroke-width: 0.85; }
 .ag-fab.open, .ag-fab.open:hover:not(:disabled) { background: var(--brand-ink); }
 .ag-fab.working { box-shadow: var(--shadow-pop), 0 0 0 3px var(--accent-wash); }
 .ag-fab.waiting { box-shadow: var(--shadow-pop), 0 0 0 3px var(--warning-wash); }
@@ -178,3 +182,16 @@
 .ag-dock-foot label { display: inline-flex; align-items: center; gap: 4px; }
 .ag-composer.compact { padding: var(--s-2) var(--s-3); }
 .ag-composer.compact textarea { min-height: 36px; }
+
+/* No sessions (2026-11-22): no empty list column; the welcome is the page. Its agents are
+ * the picker; outside agents are a section under it. */
+.agents-view[data-empty="1"] { grid-template-columns: minmax(0, 1fr); }
+.ag-welcome { display: flex; flex-direction: column; align-items: center; gap: var(--s-5); padding: var(--s-6) var(--s-5); overflow: auto; height: 100%; }
+.ag-welcome > .empty, .ag-welcome > [data-testid="agents-empty"] { flex: none; }
+.ag-pick { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 12px; border-radius: var(--r-pill); border: 1px solid var(--border-control); background: var(--surface-raised); font-weight: var(--fw-medium); }
+.ag-pick:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-wash); }
+.ag-pick:disabled { opacity: 0.6; }
+.ag-pick-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); }
+.ag-pick-dot.on { background: var(--success); }
+.ag-outside-main { width: min(640px, 100%); padding-top: var(--s-4); border-top: 1px solid var(--sep); }
+.ag-outside-main h3 { margin: 0 0 var(--s-2); font-size: var(--fs-15); font-family: var(--font-display); color: var(--text-1); }

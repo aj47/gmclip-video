@@ -836,7 +836,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-ai"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "gmclip-model",
  "gmclip-platform",
@@ -846,7 +846,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-analysis"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "ciborium",
  "gmclip-model",
@@ -856,7 +856,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-cli"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "clap",
  "gmclip-ai",
@@ -879,7 +879,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-core"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "arc-swap",
  "gmclip-analysis",
@@ -897,7 +897,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-eval"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "gmclip-ai",
  "serde",
@@ -906,7 +906,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-gpu"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "block2",
  "objc2",
@@ -927,7 +927,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-macros"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -936,7 +936,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-mcp"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "cap-std",
  "getrandom 0.4.3",
@@ -957,7 +957,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-media"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "gmclip-gpu",
  "gmclip-model",
@@ -972,7 +972,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-ml"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "gmclip-analysis",
  "gmclip-model",
@@ -985,7 +985,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-model"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "ciborium",
  "gmclip-macros",
@@ -999,7 +999,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-plan"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "schemars",
  "serde",
@@ -1009,7 +1009,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-platform"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "tokio",
  "windows-sys 0.61.2",
@@ -1017,7 +1017,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-proto"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "gmclip-model",
  "schemars",
@@ -1027,7 +1027,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-render"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "fearless_simd",
  "gmclip-gpu",
@@ -1046,7 +1046,7 @@ dependencies = [
 
 [[package]]
 name = "gmclip-store"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "gmclip-model",
  "proptest",
@@ -3556,7 +3556,7 @@ checksum = "3ad82d2a33cdc9674dc7465672f271e096168fcdbe0f799d9e6db8c5892679dc"
 
 [[package]]
 name = "xtask"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "serde_json",
  "syn 3.0.9",

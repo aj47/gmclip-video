@@ -10,7 +10,7 @@ import { copyFileSync, existsSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { openPage, VIDEO } from "./ux-lib";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 test.skip(!!process.env.GMCLIP_S2A, "GMCLIP_S2A runs the S2a spec on its own");
 test.skip(!existsSync(VIDEO), "no test video on this machine");
@@ -40,9 +40,11 @@ test("text hook and caption seat drags are one transaction each; Esc cancels", a
   const vs = async () => await bridge<Vs>(page, "viewer_state", {}, pid);
 
   await openTab(page, "Short");
-  await page.getByLabel("Hook text").fill("My PC made this");
+  // the text hook is one field (2026-11-22): its row on, the time, Enter sets it
+  await rowOn(page, "hook");
   await page.getByLabel("Hook seconds").fill("3");
-  await page.getByRole("button", { name: "Set hook" }).click();
+  await page.getByLabel("Hook text").fill("My PC made this");
+  await page.getByLabel("Hook text").press("Enter");
   const hook = page.getByTestId("gizmo-text");
   await expect(hook).toHaveCount(1, { timeout: 20_000 });
   await expect(hook).toHaveAttribute("data-role", "text_hook");

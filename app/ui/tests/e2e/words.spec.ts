@@ -17,6 +17,9 @@ test.skip(!!process.env.GMCLIP_S2A, "GMCLIP_S2A runs the S2a spec on its own");
 test.skip(!hasLab("preview"), "no lab media on this machine");
 
 test("words strip on a real cut", async ({ browser }) => {
+  // the words strip under the picture is retired (AJ 2026-11-22): the transcript is the Words
+  // tab only (its Fix everywhere and B-roll moved there; see ideas.spec and transcript specs)
+  test.skip(true, "the words strip is retired (2026-11-22)");
   test.setTimeout(180_000);
   const s = JSON.parse(readFileSync(STATE, "utf8")) as { port: number; token: string };
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });

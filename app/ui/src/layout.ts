@@ -30,14 +30,18 @@ addEventListener("resize", () => {
   setLayout(l);
 });
 
-/** The side panel's tabs (decision 0054): Words (the transcript, Tighten inside it), Look
- * (layout and the part's inspector, one pane) and Captions are the bar; the rest are "More
- * panels" — in ⌘K, and in the bar only while one is open (or with the developer setting). */
+/** The side panel's tabs (decision 0054): Words (the transcript, Tighten inside it) and
+ * Captions are the bar; the rest are "More panels" — in ⌘K, and in the bar only while one
+ * is open (or with the developer setting). Look (layout and the part's inspector) left the
+ * bar on 2026-11-22 (AJ never used it): View › Look, ⌥I, ⌘K and a double-click on a layer
+ * still open it, and the agent's layout commands are unchanged. */
 export type SideTab = "words" | "look" | "captions" | "story" | "polish" | "thumbnail" | "review" | "agent";
-export const DEFAULT_TABS: SideTab[] = ["words", "look", "captions"];
-// The panel opens on Look: the words strip already shows the words (AJ 2026-10-18: "keep
-// the format that just looks like paragraph").
-const [sideTab, setSideTab] = createSignal<SideTab>("look");
+export const DEFAULT_TABS: SideTab[] = ["words", "captions"];
+/** Off the bar but named in the View menu (the one quiet place it lives). */
+export const VIEW_TABS: SideTab[] = [...DEFAULT_TABS, "look"];
+// The panel opens on Words: the transcript lives in one place, the Words tab (AJ
+// 2026-11-22: the words strip under the picture is retired, the picture gets its room).
+const [sideTab, setSideTab] = createSignal<SideTab>("words");
 export { sideTab, setSideTab };
 
 /** The tabs the bar shows: the default three, every one with the developer setting, and
@@ -47,8 +51,15 @@ export function barTabs(): SideTab[] {
   return DEFAULT_TABS.includes(sideTab()) ? DEFAULT_TABS : [...DEFAULT_TABS, sideTab()];
 }
 
-/** Tighten (pauses and fillers) is a section of the Words tab, folded until asked for. */
+/** Tighten (pauses, fillers, retakes) lives in the cut's status dropdown (AJ 2026-11-22:
+ * one Tighten), folded until asked for; `statusOpen` is that dropdown. */
 export const [tightenOpen, setTightenOpen] = createSignal(false);
+export const [statusOpen, setStatusOpen] = createSignal(false);
+/** Opens the status dropdown on Tighten (⌘K, the "tighten" section of an old layout). */
+export function openTighten() {
+  setTightenOpen(true);
+  setStatusOpen(true);
+}
 
 /** A tab by an older name (a saved layout from before decision 0054, a key, a link):
  * the merged ones go to their new tab, and a tab that left the bar opens Words. */
@@ -60,6 +71,7 @@ export function tabFrom(name: string): { tab: SideTab; section?: string } {
       return { tab: "words", section: "words-tighten" };
     case "inspector":
     case "layout":
+    case "look":
       return { tab: "look" };
     case "short":
       return { tab: "captions" };
@@ -98,8 +110,9 @@ export function paneShown(id: PaneId): boolean {
     case "timeline":
       return prefs.timeline_open;
     case "words":
-      // the Transcript panel shows the words already: one transcript on screen at a time
-      return prefs.words_open && !(sideTab() === "words" && paneShown("side"));
+      // the words strip is retired (AJ 2026-11-22): the transcript is the Words tab only.
+      // WordsStrip stays in the code; this is the one switch that brings it back.
+      return false;
   }
 }
 
@@ -129,9 +142,8 @@ export function togglePane(id: PaneId) {
       setPref("timeline_open", !on);
       break;
     case "words":
-      // asking for the strip while the Words panel hides it: the panel moves to Look
-      if (!on && prefs.words_open) setSideTab("look");
-      else setPref("words_open", !on);
+      // ⌥4 (the strip's key) now shows the transcript where it lives: the Words tab
+      toggleTab("words");
       break;
   }
 }
@@ -153,11 +165,11 @@ export function toggleTab(t: SideTab) {
 
 /** Shows a side-panel tab (leaving reading and focus), never hides it: ⌘K and the
  * buttons that send you to a panel. `section` is scrolled into view once it is there
- * (Words' Tighten section unfolds first). */
+ * ("words-tighten" opens the status dropdown's Tighten instead). */
 export function showTab(t: SideTab, section?: string) {
+  if (section === "words-tighten") return openTighten();
   if (reading()) setReadingRaw(false);
   setSideTab(t);
-  if (section === "words-tighten") setTightenOpen(true);
   if (!paneShown("side")) togglePane("side");
   if (section) {
     let tries = 0;
@@ -170,12 +182,12 @@ export function showTab(t: SideTab, section?: string) {
   }
 }
 
-/** The side-panel tabs: their names and icons (the bar, View menu, ⌘K), the default three
- * first. */
+/** The side-panel tabs: their names and icons (the bar, View menu, ⌘K), the bar's two
+ * first, then Look. */
 export const SIDE_TABS: { id: SideTab; label: string; icon: string; what: string }[] = [
   { id: "words", label: "Words", icon: "file-text", what: "the transcript, search, topics; tighten pauses and fillers" },
-  { id: "look", label: "Look", icon: "sliders", what: "layout: crops, insets, presets; this part: crop, gain, speed and ramp, sound, images, plates, backdrop, covers inspector" },
   { id: "captions", label: "Captions", icon: "captions", what: "captions, hook and hook lines, openings, pills, run clock, end card short" },
+  { id: "look", label: "Look", icon: "sliders", what: "layout: crops, insets, presets; this part: crop, gain, speed and ramp, sound, images, plates, backdrop, covers inspector" },
   { id: "story", label: "Story", icon: "book", what: "grow the cut into a story" },
   { id: "polish", label: "Polish", icon: "sparkles", what: "stressed words, punch-ins, callouts, loop, screen holds" },
   { id: "thumbnail", label: "Thumbnail", icon: "image", what: "covers, titles and descriptions" },

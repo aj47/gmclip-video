@@ -402,6 +402,12 @@ pub fn clients_json(core: &AppCore, refresh: bool) -> Value {
 }
 
 /// What the Agent tab says about the default client.
+/// [`client_status`] if the clients were already found (never probes: that takes seconds).
+pub fn client_status_cached(core: &AppCore) -> Option<Value> {
+    let found = core.agents.clients.lock().ok().is_some_and(|g| g.is_some());
+    found.then(|| client_status(core))
+}
+
 pub fn client_status(core: &AppCore) -> Value {
     let h = default_harness(core);
     match find_client(core, h) {

@@ -12,7 +12,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { openPage, VIDEO } from "./ux-lib";
 import { hasLab } from "./lab";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 import { transcribed } from "./analysed";
 
 
@@ -57,7 +57,7 @@ test("six screens look as they did", async ({ browser }) => {
   await expect(page.getByTestId("cut-title")).toHaveText("visual-test", { timeout: 30_000 });
   await expect(page.getByTestId("transcribing")).toHaveCount(0, { timeout: 180_000 });
   await transcribed(page, "");
-  await expect(page.getByRole("listbox", { name: "Cut words" })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("transcript").locator(".w").first()).toBeVisible({ timeout: 30_000 });
   // the first-run tip goes at the first click (it is shown once per Mac)
   await page.locator(".cut-head").click({ position: { x: 4, y: 4 } });
   await expect(page.getByTestId("coach-welcome")).toHaveCount(0);
@@ -78,6 +78,7 @@ test("six screens look as they did", async ({ browser }) => {
 
   // 5. the Short tab
   await openTab(page, "Short");
+  await rowOn(page, "hook");
   await expect(page.getByLabel("Hook text")).toBeVisible();
   await same(page, "short");
 

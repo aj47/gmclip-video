@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><rect x="94" y="94" width="836" height="836" rx="122.0" fill="#4a9be8"/><g stroke="#fff8ec" stroke-width="14.4" stroke-linecap="round"><line x1="512.0" y1="308.9" x2="512.0" y2="253.7"/><line x1="613.5" y1="336.1" x2="641.2" y2="288.3"/><line x1="687.9" y1="410.5" x2="735.7" y2="382.8"/><line x1="715.1" y1="512.0" x2="770.3" y2="512.0"/><line x1="687.9" y1="613.5" x2="735.7" y2="641.2"/><line x1="613.5" y1="687.9" x2="641.2" y2="735.7"/><line x1="512.0" y1="715.1" x2="512.0" y2="770.3"/><line x1="410.5" y1="687.9" x2="382.8" y2="735.7"/><line x1="336.1" y1="613.5" x2="288.3" y2="641.2"/><line x1="308.9" y1="512.0" x2="253.7" y2="512.0"/><line x1="336.1" y1="410.5" x2="288.3" y2="382.8"/><line x1="410.5" y1="336.1" x2="382.8" y2="288.3"/></g><circle cx="512" cy="512" r="159.7" fill="none" stroke="#fff8ec" stroke-width="14.4"/><g fill="none" stroke="#fff8ec" stroke-width="14.4" stroke-linecap="round"><path d="M406.2 474.3 a28.2 28.2 0 0 1 56.5 0"/><path d="M561.3 474.3 a28.2 28.2 0 0 1 56.5 0"/><path d="M463.9 530.3 A61.0 61.0 0 0 0 560.1 530.3"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="sun" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#ffe14d"/>
+      <stop offset="1" stop-color="#f7941d"/>
+    </linearGradient>
+  </defs>
+  <rect x="94" y="94" width="836" height="836" rx="150" fill="#4a9be8"/>
+  <g transform="translate(512 512)" stroke="#ffd23f" stroke-width="58" stroke-linecap="round">
+    <line x1="0" y1="-278" x2="0" y2="-330"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(40)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(80)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(117)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(152)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-40)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-80)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-117)"/>
+    <line x1="0" y1="-278" x2="0" y2="-330" transform="rotate(-152)"/>
+  </g>
+  <circle cx="512" cy="512" r="236" fill="url(#sun)"/>
+  <g fill="none" stroke="#2d2a4a" stroke-width="22" stroke-linecap="round">
+    <path d="M369 505 a38 38 0 0 1 76 0"/>
+    <path d="M579 505 a38 38 0 0 1 76 0"/>
+    <path d="M450 548 q62 62 124 0"/>
+  </g>
+</svg>

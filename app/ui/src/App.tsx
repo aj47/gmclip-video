@@ -24,22 +24,40 @@ import { AgentLaunch } from "./components/AgentLaunch";
 import { AgentDock } from "./components/AgentDock";
 import { launchFor, liveSessions, setLaunchFor, waitingSessions, watchSessions } from "./agentsState";
 import { setCutLikeOpen } from "./libraryState";
-import { ViewMenu } from "./components/ViewMenu";
 import { applyWorkspace, savedWorkspaces } from "./workspaces";
-import { DEFAULT_TABS, paneShown, resetLayout, showTab, SIDE_TABS, toggleFocus, togglePane, toggleReading } from "./layout";
+import { DEFAULT_TABS, openTighten, paneShown, resetLayout, showTab, SIDE_TABS, toggleFocus, togglePane, toggleReading } from "./layout";
 import { DrawLayoutSheet } from "./components/DrawLayoutSheet";
 import { LongformCompare } from "./components/LongformCompare";
 import { compareLongs, compareLongsFor, drawLayout, setCompareLongs, setDrawLayout } from "./ideasState";
 import { projectMapData, refreshMap } from "./streamState";
 import { copyText } from "./components/Packaging";
 import { askBroll } from "./components/Broll";
-import { trSel } from "./transcriptState";
+import { setTrFollow, trFollow, trSel } from "./transcriptState";
 import { FramingsSheet } from "./components/FramingsSheet";
 import { framingsFor, setFramingsFor } from "./extrasState";
 import { addLongformEndCard } from "./components/EndCardLongform";
 import { groupSelected, ungroupSelected } from "./partGroups";
 import { RecordingOverlay, RecordSheet } from "./components/Recording";
 import { recordSheet, resumeRecording, setRecordSheet } from "./recordingState";
+
+/** A top bar destination: icon and name; in a cut (`.tb-icons`) the name hides and the
+ * tooltip says it. */
+function NavButton(props: { icon: string; label: string; on: boolean; compact: boolean; hint?: string; testid?: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      class={`ghost tb-nav${props.on ? " nav-on" : ""}`}
+      aria-label={props.label}
+      aria-current={props.on ? "page" : undefined}
+      data-tip={props.hint ?? (props.compact ? props.label : undefined)}
+      data-testid={props.testid}
+      onClick={() => props.onClick()}
+    >
+      <Icon name={props.icon} size={16} />
+      <span class="tb-nav-label">{props.label}</span>
+    </button>
+  );
+}
 
 export function App() {
   // the first render is done (U.18's cold start measures to here)
@@ -167,6 +185,7 @@ export function App() {
     { id: "agent_new", label: "New agent session…", also: "claude code codex pi opencode ask agent run", when: () => prefs.developer, run: () => setLaunchFor({}) },
     { id: "agent_cut", label: "Ask an agent about this cut…", also: "claude code codex pi opencode edit", when: () => inCut() && prefs.developer, run: () => { const v = cutView(); if (v) setLaunchFor({ project: v.project, cut: v.cut }); } },
     { id: "hover_scrub", label: "Hover scrub on / off", also: "skim skimming timeline ruler follow pointer", keys: "⌥S", when: inCut, run: () => toggleHoverScrub() },
+    { id: "follow", label: "Words: follow the playhead on / off", also: "transcript scroll keep the playing word in view", when: inCut, run: () => { setTrFollow(!trFollow()); say(trFollow() ? "Words follow the playhead" : "Words stay where you scroll"); } },
     { id: "reading", label: "Read the full transcript", also: "prose text no times reading view whole transcript", keys: "⌥R", when: inCut, run: toggleReading },
     { id: "focus", label: "Focus: viewer and timeline only", also: "hide panels distraction free", keys: "⌥F", when: inCut, run: toggleFocus },
     { id: "pane_map", label: "Project map on / off", also: "sidebar left panel hide show", keys: "⌥1", when: inCut, run: () => togglePane("map") },
@@ -188,7 +207,7 @@ export function App() {
       when: inCut,
       run: () => showTab(t.id),
     })),
-    { id: "tighten", label: "Tighten: pauses and fillers", also: "sweep silence um uh dead air words", when: inCut, run: () => showTab("words", "words-tighten") },
+    { id: "tighten", label: "Tighten: pauses, fillers and retakes", also: "sweep silence um uh dead air words said again tidy", when: inCut, run: () => openTighten() },
     // the panels' own sections, so a feature is found by its name
     { id: "openings", label: "Compare openings…", also: "alternate openings versions hook first seconds short", when: inCut, run: () => showTab("captions", "openings") },
     { id: "hook_lines", label: "Hook lines from the clip's numbers", also: "text hook suggestions measured said short", when: inCut, run: () => showTab("captions", "hook-lines") },
@@ -224,31 +243,33 @@ export function App() {
             onClick={() => togglePane("map")}
           />
         </Show>
-        <img class="brand" src={sun} alt="" aria-hidden="true" />
-        <span class="tb-group">
-          <IconButton
-            icon="home"
-            label="Home"
-            class={route().view === "home" ? "nav-on" : undefined}
-            onClick={() => { setRoute({ view: "home" }); void refreshHome(); }}
-          />
-          <IconButton icon="settings" label="Settings" class={route().view === "settings" ? "nav-on" : undefined} onClick={() => setRoute({ view: "settings" })} />
+        {/* one sun (AJ 2026-11-22): the app's yellow sun is the Agents button (the outline
+            sun that was Agents is gone); then Home and Settings, named. In a cut the View
+            menu is the "⋯" at the right; in a narrow cut the names hide (tooltips say them). */}
+        <span class="tb-group" classList={{ "tb-cut": inCut() }}>
           <span class="tb-agents">
-            <IconButton
-              icon="smile"
-              label="Agents"
-              hint={liveSessions() || asks() ? `Agents: ${liveSessions()} running${needYou() ? `, ${needYou()} need you` : ""}` : "Agents"}
-              class={route().view === "agents" ? "nav-on" : undefined}
+            <button
+              type="button"
+              class={`ghost tb-nav tb-sun${route().view === "agents" ? " nav-on" : ""}`}
+              aria-label="Agents"
+              aria-current={route().view === "agents" ? "page" : undefined}
+              data-tip={liveSessions() || asks() ? `Agents: ${liveSessions()} running${needYou() ? `, ${needYou()} need you` : ""}` : "Agents: your agent sessions"}
               data-testid="nav-agents"
               onClick={() => setRoute({ view: "agents" })}
-            />
+            >
+              <img class="brand" src={sun} alt="" aria-hidden="true" />
+              {/* named like Home and Settings: everywhere but a narrow cut window */}
+              <span class="tb-nav-label">Agents</span>
+            </button>
             <Show when={liveSessions() || asks()}>
               <span class={`tb-badge${needYou() ? " waiting" : ""}`} data-testid="agents-badge" aria-hidden="true">{needYou() || liveSessions()}</span>
             </Show>
           </span>
-          <Show when={route().view === "cut"}>
-            <ViewMenu />
-          </Show>
+          <NavButton icon="home" label="Home" compact={inCut()} on={route().view === "home"} onClick={() => { setRoute({ view: "home" }); void refreshHome(); }} />
+          {/* Search is always here (it was a crumb only on its own page): the library is
+              searched from anywhere, and ⌘⇧F says so in its tooltip */}
+          <NavButton icon="search" label="Search" compact={inCut()} hint="Search everything you said (⌘⇧F)" on={route().view === "search"} onClick={() => setRoute({ view: "search" })} />
+          <NavButton icon="settings" label="Settings" compact={inCut()} on={route().view === "settings"} onClick={() => setRoute({ view: "settings" })} />
         </span>
         <Show when={backTo()}>
           {(p) => (
@@ -257,15 +278,6 @@ export function App() {
               <span>{projectName()}</span>
             </button>
           )}
-        </Show>
-        <Show when={route().view === "settings"}>
-          <span class="tb-crumb"><Icon name="settings" size={14} />Settings</span>
-        </Show>
-        <Show when={route().view === "search"}>
-          <span class="tb-crumb"><Icon name="search" size={14} />Search</span>
-        </Show>
-        <Show when={route().view === "agents"}>
-          <span class="tb-crumb"><Icon name="smile" size={14} />Agents</span>
         </Show>
         <div class="tb-slot" ref={setTopbarSlot} />
         <Show when={route().view !== "cut"}>

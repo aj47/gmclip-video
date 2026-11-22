@@ -11,7 +11,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { STATE } from "./global-setup";
 import { labMedia } from "./lab";
-import { openTab } from "./tabs";
+import { openTab, rowOn } from "./tabs";
 
 const VIDEO = labMedia("h79/h79-v4.mp4");
 
@@ -46,6 +46,10 @@ async function settledGeom(page: Page) {
 }
 
 async function geom(page: Page) {
+  // the Volume lane hides while the cut has no level (2026-11-22): shown, the lanes sit
+  // where this spec draws on them
+  const showGain = page.getByTestId("lane-gain-show");
+  if ((await showGain.getAttribute("aria-pressed")) !== "true") await showGain.click();
   const tl = page.locator(".timeline-canvas");
   const box = (await tl.boundingBox())!;
   const ppf = Number(await tl.getAttribute("data-ppf"));
@@ -63,9 +67,11 @@ test("overlay drags, gain lane, measure brackets", async ({ browser }) => {
   await page.getByLabel("Video path").press("Enter");
   await expect(page.getByTestId("cut-title")).toHaveText("lanes-test", { timeout: 30_000 });
   await openTab(page, "Short");
-  await page.getByLabel("Hook text").fill("My PC made this");
+  // the text hook is one field (2026-11-22): its row on, the time, Enter sets it
+  await rowOn(page, "hook");
   await page.getByLabel("Hook seconds").fill("3");
-  await page.getByRole("button", { name: "Set hook" }).click();
+  await page.getByLabel("Hook text").fill("My PC made this");
+  await page.getByLabel("Hook text").press("Enter");
   const tl = page.locator(".timeline-canvas");
   await expect(tl).toHaveAttribute("data-overlays-editable", "1", { timeout: 20_000 });
   const hookRow = page.getByRole("list", { name: "Overlays" }).getByRole("button").filter({ hasText: "text_hook" });
@@ -112,7 +118,7 @@ test("overlay drags, gain lane, measure brackets", async ({ browser }) => {
 
   // The gain lane: a single click adds nothing; a double-click at frame 300, +12 dB → a
   // 1 s segment there.
-  const gainRows = page.getByRole("list", { name: "Gain" }).getByRole("button");
+  const gainRows = page.getByRole("list", { name: "Volume" }).getByRole("button");
   const half = 15; // GAIN_H / 2
   const yDb = (db: number) => g.box.y + g.gainY + half - (db / 24) * (half - 2);
   await page.mouse.click(g.x(300), yDb(12));

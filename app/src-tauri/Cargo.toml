@@ -14,7 +14,7 @@
 [package]
 name = "gmclip-app"
 description = "gmclip for Mac: the Tauri shell around gmclip-core, the renderer and the frame stream."
-version = "0.0.1"
+version = "0.1.0"
 edition = "2024"
 rust-version = "1.97"
 publish = false

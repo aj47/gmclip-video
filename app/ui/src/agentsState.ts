@@ -26,7 +26,7 @@ const [entryStore, setEntryStore] = createStore<{ id: string | null; v: SessionE
 export const entries = () => entryStore.v;
 
 /** What the launch sheet opens on (null: closed). */
-export const [launchFor, setLaunchFor] = createSignal<(SessionTargetArgs & { label?: string }) | null>(null);
+export const [launchFor, setLaunchFor] = createSignal<(SessionTargetArgs & { label?: string; harness?: string }) | null>(null);
 
 function upsert(s: SessionView) {
   setListStore("v", (v) => {

@@ -151,8 +151,9 @@ test("palette, named versions, history restore", async ({ browser }) => {
     await page.locator(".cut-head").hover();
     await expect.poll(async () => (await head.textContent()) ?? "").toContain(`${n} parts`);
   }
-  // the cut head says how many versions there are and opens the same dialog
-  await expect(page.getByTestId("earlier-versions")).toHaveText(/↶ \d+ earlier version/);
+  // the cut head's "Restore…" (its tooltip counts the versions) opens the same dialog
+  await expect(page.getByTestId("earlier-versions")).toHaveText("↶ Restore…");
+  expect(Number(await page.getByTestId("earlier-versions").getAttribute("data-count"))).toBeGreaterThan(0);
   await page.getByTestId("earlier-versions").click();
   const row = dlg.getByTestId("history-row").filter({ hasText: "one take" });
   await expect(row).toContainText("now 3 parts");

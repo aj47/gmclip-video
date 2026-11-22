@@ -36,7 +36,9 @@ test("review-link controls: settings are the Owner's, a link's fix request waits
     expect(r.error?.code, c).toBe("Unauthorized");
     expect(r.error?.message, c).toContain("dev bridge");
   }
-  // H.09: the startup probe's lines for this Mac (H.264 first; HEVC and AV1 reported)
+  // H.09: the startup probe's lines for this Mac (H.264 first; HEVC and AV1 reported),
+  // in Settings › This Mac since 2026-11-22
+  await page.getByRole("button", { name: "Settings" }).click();
   const mac = page.getByRole("region", { name: /^This (Mac|PC)$/ });
   await expect(mac.getByTestId("mac-cap")).toHaveCount(5);
   await expect(mac.getByTestId("mac-cap").nth(1)).toContainText("H.264:");
