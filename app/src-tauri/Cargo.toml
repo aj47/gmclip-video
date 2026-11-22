@@ -53,7 +53,7 @@ gmclip-render = { path = "../../crates/gmclip-render" }
 realfft = "3.5.0"
 # The library index (A2.16): a read-only cache rebuilt from the project homes (already in
 # the tree via gmclip-store).
-rusqlite = { version = "0.40", default-features = false, features = ["bundled", "cache"] }
+rusqlite = { version = "0.41", default-features = false, features = ["bundled", "cache"] }
 gmclip-gpu = { path = "../../crates/gmclip-gpu" }
 # Background analysis and ASR of opened videos: lane D's DSP and models, driven by the
 # CLI's analysis host (compiled in from `crates/gmclip-cli/src/analysis.rs`, see

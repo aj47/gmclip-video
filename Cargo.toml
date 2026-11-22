@@ -64,7 +64,7 @@ imbl = { version = "7", default-features = false }
 proc-macro2 = "1"
 proptest = { version = "1", default-features = false, features = ["std"] }
 quote = "1"
-rusqlite = { version = "0.40", default-features = false, features = ["bundled", "cache"] }
+rusqlite = { version = "0.41", default-features = false, features = ["bundled", "cache"] }
 syn = { version = "3", features = ["full", "extra-traits"] }
 # ASR and VAD (lane D, SPEC §9). One ORT per process, loaded by absolute path (R-LOAD-1):
 # `load-dynamic`, never ort's binary download. parakeet-rs re-exports this same `ort`.
@@ -75,7 +75,7 @@ parakeet-rs = { version = "=0.4.1", default-features = false, features = ["load-
 cap-std = "4.0.3"
 getrandom = "0.4"
 hmac = "0.12"
-rmcp = { version = "=3.5.1", default-features = false, features = ["server"] }
+rmcp = { version = "=3.7.0", default-features = false, features = ["server"] }
 rustix = { version = "1", default-features = false, features = ["std", "process"] }
 sha2 = { version = "0.10", default-features = false }
 tokio = { version = "1.53", default-features = false, features = ["rt-multi-thread", "net", "io-util", "io-std", "sync", "time", "macros"] }

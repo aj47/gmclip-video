@@ -25,6 +25,11 @@ feature-depth = 1
 yanked = "deny"
 ignore = [
     { id = "RUSTSEC-2024-0436", reason = "unmaintained `paste` via tokenizers (parakeet-rs); decision 0006, pending AJ (or own TDT decoder)" },
+    # Added 2026-11-22 (CI fix branch, AJ to review). The fixed releases are newer than
+    # R-SUP-1's 30 days; drop each line when its fix is old enough to take.
+    { id = "RUSTSEC-2026-0543", reason = "unmaintained `chrono` via schemars and rmcp; no maintained release exists, nothing to upgrade to" },
+    { id = "RUSTSEC-2026-0462", reason = "rmcp Streamable HTTP client buffering; gmclip enables only server, client and transport-child-process (stdio), never the HTTP client; fixed in rmcp 3.9.0 (2026-11-05)" },
+    { id = "RUSTSEC-2026-0486", reason = "rustix::fs xattr calls; neither gmclip nor cap-std calls them; fixed in rustix 1.1.6 (2026-10-27)" },
 ]
 
 [licenses]
