@@ -39,8 +39,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # macOS 14 arm64 is the reference build host (W0-03 scans its release binary).
-        os: [macos-14, windows-latest, ubuntu-latest]
+        # macOS 15 arm64 is the reference build host (W0-03 scans its release binary).
+        # GitHub retired the macos-14 image (2026-11: "configuration not supported").
+        os: [macos-15, windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -112,4 +113,4 @@ jobs:
   # Not yet checked (W0-11, open): "a crate published < 30 days ago" (needs crates.io).
   # Added when app/ui lands (M2): pnpm install --frozen-lockfile with ignore-scripts=true,
   # onlyBuiltDependencies = [] and minimumReleaseAge >= 7 days (SR R-SUP-1).
-  # Added by W0-03: release build on macos-14 arm64 -> syft SBOM -> scancode -> deny globs.
+  # Added by W0-03: release build on macos-15 arm64 -> syft SBOM -> scancode -> deny globs.

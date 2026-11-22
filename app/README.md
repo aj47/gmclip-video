@@ -18,3 +18,18 @@ pnpm lint && pnpm lint:fixtures                                       # R-UI-SEC
 `target/debug/gmclip-app [--open <project home>] [--s2a]`; `--dev-bridge [--no-window]
 [--dev-bridge-origin <origin>]` exists only with the `dev-bridge` feature (refused in
 release builds). S2a: `../spikes/S2a/README.md`.
+
+## Installers
+
+- macOS: `app/scripts/bundle-mac.sh [OUT_DIR]` builds an ad-hoc signed `gmclip.app`.
+- Windows: `app\scripts\bundle-win.ps1 [-Out DIR] [-Wix DIR]` builds
+  `gmclip-<version>-x64.msi` with WiX 3.14. Its Start menu shortcut runs
+  `gmclip-launch.exe`, which starts `gmclip-app.exe` (a console program: the MCP shim and
+  `call`) without a console window. If a build stops with "The paging file is too small"
+  (os error 1455), add `-j 8` to cargo.
+- `.github/workflows/release.yml` runs both on a `v*` tag: `.dmg` for Apple silicon
+  (macos-15) and Intel (macos-15-intel), `.msi` for x64, each with a `.sha256`, attached
+  to a draft release. A pull request touching the packaging builds them as artifacts.
+- Linux has no installer yet: the media pipeline the app needs (export, preview, proxy)
+  is macOS and Windows only until M6's GStreamer helper. CI builds and tests the core
+  crates on Linux.

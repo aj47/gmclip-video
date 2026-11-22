@@ -1,0 +1,165 @@
+# gmclip installers: macOS .dmg (Apple silicon and Intel) and Windows .msi.
+#
+# CODEOWNERS: AJ, as ci.yml. Same rules: actions pinned by commit SHA, every cargo
+# invocation --locked (the bundle scripts pass it), tools fetched by a pinned hash.
+#
+# The installers come from app/scripts/bundle-mac.sh and bundle-win.ps1, not from Tauri's
+# CLI: the CLI is not in any lockfile (adding it is a supply-chain change for AJ), and the
+# scripts already assemble the same layouts. Both builds are unsigned (no Developer ID,
+# no notarisation, no Authenticode identity yet): the .app is ad-hoc signed.
+#
+# Triggers:
+#   - a `v*` tag: builds every installer and attaches them to a DRAFT release, which AJ
+#     reviews and publishes by hand;
+#   - workflow_dispatch, and a pull request touching the packaging: builds and uploads
+#     the installers as workflow artifacts only.
+#
+# Linux is not here: the app's media pipeline (export, preview, proxy) exists for macOS
+# and Windows only until M6's GStreamer helper (SPEC D11, §6.4). ci.yml builds and tests
+# the core crates on Linux.
+
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/release.yml
+      - app/scripts/**
+      - app/src-tauri/Cargo.toml
+      - app/src-tauri/tauri.conf.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+  # app/ui/pnpm-lock.yaml is lockfile v9 (pnpm 9).
+  PNPM_VERSION: "9.12.1"
+  NODE_VERSION: "22"
+
+jobs:
+  macos:
+    name: macos (${{ matrix.arch }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          # Intel: built natively, so `gmclip-app bundle-fonts` runs without Rosetta.
+          - runner: macos-15-intel
+            arch: x64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned toolchain (rust-toolchain.toml)
+        run: rustup toolchain install
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+        with:
+          workspaces: |
+            . -> target
+            app/src-tauri -> target
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Build gmclip.app
+        run: app/scripts/bundle-mac.sh "$RUNNER_TEMP/out"
+      - name: Disk image
+        run: |
+          version=$(sed -n 's/^version = "\(.*\)"/\1/p' app/src-tauri/Cargo.toml | head -1)
+          stage="$RUNNER_TEMP/dmg"
+          mkdir -p "$stage" dist
+          ditto "$RUNNER_TEMP/out/gmclip.app" "$stage/gmclip.app"
+          ln -s /Applications "$stage/Applications"
+          dmg="dist/gmclip-$version-macos-${{ matrix.arch }}.dmg"
+          hdiutil create -volname gmclip -srcfolder "$stage" -fs HFS+ -format UDZO -ov "$dmg"
+          hdiutil verify "$dmg"
+          shasum -a 256 "$dmg" | tee "$dmg.sha256"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: gmclip-macos-${{ matrix.arch }}
+          path: dist/*
+          if-no-files-found: error
+
+  windows:
+    name: windows (x64)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned toolchain (rust-toolchain.toml)
+        run: rustup toolchain install
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+        with:
+          workspaces: |
+            . -> target
+            app/src-tauri -> target
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: WiX 3.14 (the pinned zip bundle-win.ps1 names)
+        shell: pwsh
+        run: |
+          $zip = Join-Path $env:RUNNER_TEMP "wix314-binaries.zip"
+          Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip" -OutFile $zip
+          $hash = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLower()
+          if ($hash -ne "6ac824e1642d6f7277d0ed7ea09411a508f6116ba6fae0aa5f2c7daa2ff43d31") { throw "wix314-binaries.zip: sha256 $hash is not the pin" }
+          Expand-Archive $zip -DestinationPath (Join-Path $env:RUNNER_TEMP "wix314")
+      - name: Build the installer
+        shell: pwsh
+        run: app\scripts\bundle-win.ps1 -Out (Join-Path $env:RUNNER_TEMP "out") -Wix (Join-Path $env:RUNNER_TEMP "wix314")
+      - name: Collect
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Get-ChildItem (Join-Path $env:RUNNER_TEMP "out") -Filter *.msi | ForEach-Object {
+            $dst = Join-Path dist ($_.BaseName -replace '-x64$', '-windows-x64')
+            Copy-Item $_.FullName "$dst.msi"
+            $h = (Get-FileHash -Algorithm SHA256 "$dst.msi").Hash.ToLower()
+            "$h  $(Split-Path -Leaf "$dst.msi")" | Set-Content -Encoding ascii "$dst.msi.sha256"
+          }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: gmclip-windows-x64
+          path: dist/*
+          if-no-files-found: error
+
+  draft-release:
+    name: draft release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [macos, windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Draft release (AJ publishes it)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          ls -l dist
+          gh release create "$GITHUB_REF_NAME" --draft --verify-tag \
+            --title "gmclip $GITHUB_REF_NAME" \
+            --notes "Unsigned builds. macOS: ad-hoc signed, so the first open is right-click → Open. Windows: SmartScreen asks once." \
+            dist/*
