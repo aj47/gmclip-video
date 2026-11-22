@@ -9,7 +9,7 @@
 use std::path::PathBuf;
 
 use clap::{Args, Subcommand};
-use serde_json::{Value, json};
+use serde_json::json;
 
 use crate::Output;
 use crate::error::{CliError, Code};
@@ -156,6 +156,7 @@ mod mac {
     use std::time::Duration;
 
     use gmclip_media::rec::{Hotkey, RecordOptions, Recording, cap};
+    use serde_json::Value;
 
     use super::*;
 
