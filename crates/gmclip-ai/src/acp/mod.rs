@@ -174,6 +174,8 @@ pub fn child_env(
         "XDG_DATA_HOME",
         "XDG_STATE_HOME",
         "XDG_CACHE_HOME",
+        // Linux: where the holder socket lives (gmclip-mcp paths)
+        "XDG_RUNTIME_DIR",
         // Windows
         "SystemRoot",
         "USERPROFILE",

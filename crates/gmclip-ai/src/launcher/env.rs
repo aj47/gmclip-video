@@ -98,6 +98,10 @@ fn inherited(key: &str, h: Harness) -> bool {
         return true;
     }
     matches!(key, "HOME" | "LANG" | "TMPDIR")
+        // Linux: the holder socket of this session is `$XDG_RUNTIME_DIR/gmclip/s`
+        // (gmclip-mcp paths); without it the client's shim looks elsewhere and the
+        // holder never sees the run
+        || (cfg!(all(unix, not(target_os = "macos"))) && key == "XDG_RUNTIME_DIR")
         || key.starts_with("LC_")
         || (h == Harness::Codex && key == "CODEX_HOME")
         || (h == Harness::Pi && key == "PI_CODING_AGENT_DIR")
