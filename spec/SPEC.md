@@ -157,6 +157,7 @@ Records `{id, kind, state, input_rev, started_by, run?, progress, eta, log_tail,
 ### 3.10 Events
 Emitted by commands (triples); bounded per-subscriber queues (1 000 / 4 MB) with `Resync`; UI subscribes per scope; agents use `project_watch{project, since, max}` (the contract); `subscriptions/listen` resources from M4.
 - R-EVT-1 MUST [M2]: a 1 000-op agent burst keeps UI input latency ≤ 1 frame.
+- The cut on screen draws its agents from these events alone (decision 0059): one cursor per run on the entity its last commit changed, with the command as a word and the run's name; a ring on each changed entity; an outline where one was deleted. No commit, no movement. While a run has committed within 4 s, a cut that does not plan is shown as that agent's edit in progress ("<agent> is mid-edit"), not as an error; the error is shown if the cut still does not plan once the run has been quiet that long.
 
 ### 3.11 Threads
 | Thread / pool | Owns | Talks via |

@@ -34,6 +34,7 @@ import { LayerTracks } from "./LayerTracks";
 import { SectionLanes } from "./SectionLanes";
 import { cutMarkers, sectionLanesShown, setSectionLanesOn } from "../sectionsState";
 import { timecode } from "./Viewer";
+import { registerLocator } from "../presence";
 
 const RULER = 24;
 /** Measurement brackets (a ribbon between the ruler and the parts). */
@@ -431,6 +432,41 @@ export function Timeline() {
   const dbAt = (y: number) => clampDb(((GAIN_Y + GAIN_H / 2 - y) / (GAIN_H / 2 - 2)) * GAIN_RANGE);
   const ovMaxScroll = () => Math.max(0, OV_Y() + packed().lanes * (OV_H + OV_GAP) - wrap.clientHeight - RULER + 4);
   const laneTop = (lane: number) => OV_Y() + lane * (OV_H + OV_GAP) - ovScroll();
+
+  // Where a part, an overlay, a gain segment or a caption is in the window, for the
+  // agents' cursors and rings (decision 0059). A thing scrolled out of the lanes is
+  // placed at the edge it left by, and says so.
+  onCleanup(registerLocator((entity) => {
+    const v = cutView();
+    if (!v || !canvas || !wrap) return null;
+    const id = entity.slice(entity.indexOf(":") + 1);
+    let span: [number, number] | null = null;
+    let y = PARTS_Y;
+    let h = PARTS_H;
+    // (a part with visual splits is several blocks: all of them)
+    for (const p of v.parts) if (p.id === id) span = span ? [Math.min(span[0], p.out[0]), Math.max(span[1], p.out[1])] : [p.out[0], p.out[1]];
+    if (!span) {
+      const i = overlays().findIndex((o) => o.id === id);
+      const g = i < 0 ? gains().find((x) => x.id === id) : undefined;
+      const c = i < 0 && !g ? v.captions.find((x) => x.id === id && x.role === "caption") : undefined;
+      if (i >= 0) [span, y, h] = [overlays()[i]!.out, laneTop(packed().lane[i] ?? 0), OV_H];
+      // (a lane hidden while it is empty draws nothing to point at)
+      else if (g && laneShow().gain) [span, y, h] = [g.out, GAIN_Y, GAIN_H];
+      else if (c && laneShow().cap) [span, y, h] = [c.out, CAP_Y(), CAP_H];
+    }
+    if (!span) return null;
+    const box = wrap.getBoundingClientRect();
+    if (box.width <= 0 || box.height <= 0) return null;
+    const top = canvas.getBoundingClientRect().top + y;
+    const x0 = xOf(span[0]);
+    const x1 = xOf(span[1]);
+    const off = x1 < 0 ? "left" : x0 > box.width ? "right" : undefined;
+    const a = Math.max(0, Math.min(box.width, x0));
+    const b = Math.max(0, Math.min(box.width, x1));
+    // (below the lanes' own scroll: kept inside the pane)
+    const ty = Math.max(box.top, Math.min(box.bottom - 6, top));
+    return { x: box.left + a, y: ty, w: Math.max(off ? 0 : 2, b - a), h: Math.max(0, Math.min(h, box.bottom - ty)), off };
+  }));
 
   const zoom = (factor: number) => zoomTo(ppf() * factor);
   // the topic lane (and anything else drawn beside the canvas) follows this mapping

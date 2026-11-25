@@ -6,6 +6,7 @@ import { createStore, reconcile } from "solid-js/store";
 import { actions, type CutView, type Home, type ImportInspect, type ImportMany, type JobView, type ProjectInfo, type ViewerState } from "./actions";
 import type { ManyAnswer } from "./components/ImportManySheet";
 import { CallError, editsAnswered, onMutation, seekReported, subscribe } from "./ipc";
+import { agentEditing, noteCommits, onSettled } from "./presence";
 /** The event plumbing, for state modules beside this one (agentsState), and the call error
  * a view reads (History). */
 export { CallError, subscribe };
@@ -300,10 +301,17 @@ export async function attempt<T>(f: () => Promise<T>): Promise<T | undefined> {
   try {
     return await f();
   } catch (e) {
-    say(e instanceof CallError ? e.error.message : String(e), "error");
+    const text = e instanceof CallError ? e.error.message : String(e);
+    // an agent mid-edit passes through cuts that do not plan (decision 0059): what a read
+    // of such a cut answers is not said while the agent works, only if it is left so
+    if (agentEditing() && PLAN_ERROR.test(text)) heldPlanError = text;
+    else say(text, "error");
     return undefined;
   }
 }
+const PLAN_ERROR = /^(the cut does not plan yet|this cut has no framing to plan)/;
+/** The last plan error held back while an agent was editing. */
+let heldPlanError: string | null = null;
 
 export async function refreshProjects() {
   const p = await attempt(actions.openProjects);
@@ -381,10 +389,44 @@ async function refreshViewer() {
   if (v) setViewer(v);
 }
 
+/** The viewer's standing error, and the one not said yet. A frame that fails says so a
+ * moment later, and only while it still fails: an agent's commit and the frame it broke
+ * arrive on two scopes in either order, and an agent mid-edit passes through cuts that
+ * do not plan (it deletes the parts, then adds the new ones). While an agent is editing
+ * the error waits; it is said once the agent has been quiet for a while and the frame
+ * still fails (decision 0059). */
+let viewerError: string | null = null;
+let viewerErrorTimer: ReturnType<typeof setTimeout> | undefined;
+const VIEWER_ERROR_GRACE_MS = 300;
+function viewerFailed(error: string | null) {
+  viewerError = error;
+  clearTimeout(viewerErrorTimer);
+  if (!error) return;
+  viewerErrorTimer = setTimeout(() => {
+    if (viewerError !== error || agentEditing()) return; // gone, or held until the agents settle
+    say(error, "error");
+  }, VIEWER_ERROR_GRACE_MS);
+}
+onSettled(() => {
+  const e = viewerError ?? heldPlanError;
+  heldPlanError = null;
+  if (e && (cutError() || viewer()?.error)) say(e, "error");
+});
+
 const projectSubs = new Set<string>();
 export async function watchProject(id: string) {
   if (projectSubs.has(id)) return;
-  await subscribe(`project:${id}`, (b) => {
+  // claimed before the subscription is made: two opens of one project used to race here
+  // and subscribe twice, so every event was handled twice (an agent's nine commits
+  // counted as eighteen)
+  projectSubs.add(id);
+  const sub = subscribe(`project:${id}`, (b) => {
+    // agents at work, drawn (decision 0059): their commits to the project on screen
+    const r = route();
+    if (r.view === "cut" && r.project === id) {
+      const commits = b.events.filter((e) => e.kind === "committed");
+      if (commits.length) noteCommits(id, r.cut, commits);
+    }
     for (const e of b.events) {
       if (e.kind !== "agent_run") continue;
       setAgentTick((n) => n + 1);
@@ -401,7 +443,12 @@ export async function watchProject(id: string) {
       refreshProjectsSoon();
     }
   });
-  projectSubs.add(id);
+  try {
+    await sub;
+  } catch (e) {
+    projectSubs.delete(id);
+    throw e;
+  }
 }
 
 export async function boot() {
@@ -414,7 +461,7 @@ export async function boot() {
       // removed failed after the screen moved on, and its toast hid the one saying so)
       const r = route();
       const elsewhere = e.kind === "error" && typeof e.cut === "string" && r.view === "cut" && r.cut !== e.cut;
-      if (e.kind === "error" && e.error && !elsewhere) say(e.error, "error");
+      if (e.kind === "error" && !elsewhere) viewerFailed(e.error ?? null);
       if (e.kind === "mattes") setMattesTick((n) => n + 1);
     }
   });

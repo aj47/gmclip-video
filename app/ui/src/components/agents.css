@@ -195,3 +195,35 @@
 .ag-pick-dot.on { background: var(--success); }
 .ag-outside-main { width: min(640px, 100%); padding-top: var(--s-4); border-top: 1px solid var(--sep); }
 .ag-outside-main h3 { margin: 0 0 var(--s-2); font-size: var(--fs-15); font-family: var(--font-display); color: var(--text-1); }
+
+/* Agents at work, drawn over the cut (decision 0059): a cursor per agent run and a ring on
+   each thing its commit just changed. The layer takes no input. One hue per run, the same
+   lightness in both themes, the app's ink outline around it. */
+.agent-layer { position: fixed; inset: 0; z-index: 80; pointer-events: none; overflow: hidden; contain: strict; }
+.agent-ring, .agent-cursor { position: absolute; left: 0; top: 0; will-change: transform, opacity; --agent: hsl(var(--agent-hue) 88% 60%); --agent-wash: hsl(var(--agent-hue) 88% 60% / 0.16); }
+.agent-ring { box-sizing: border-box; border: 2px solid var(--agent); border-radius: var(--r-2, 8px); background: var(--agent-wash); box-shadow: 0 0 0 var(--outline-w) var(--outline); }
+.agent-ring.made { animation: agent-land 260ms var(--ease, ease-out); }
+/* where a thing was removed: an outline of what is no longer there */
+.agent-ring.gone { border-style: dashed; background: transparent; box-shadow: none; transform-origin: left center; animation: agent-gone 700ms var(--ease, ease-in) forwards; }
+.agent-cursor { display: flex; align-items: flex-start; transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.agent-arrow { flex: none; margin: -2px 0 0 -2px; overflow: visible; }
+.agent-arrow path { fill: var(--agent); stroke: var(--outline); stroke-width: 1.6; stroke-linejoin: round; }
+.agent-tag { display: inline-flex; align-items: center; gap: 5px; margin: 14px 0 0 -2px; padding: 1px 7px; border: var(--outline-w) solid var(--outline); border-radius: var(--r-pill, 999px); background: var(--agent); color: #08071a /* ink on the run's hue, both themes */; font-size: var(--fs-11, 11px); line-height: 16px; font-weight: var(--fw-semibold, 600); white-space: nowrap; box-shadow: var(--lift); max-width: 220px; }
+.agent-tag b { font-weight: inherit; overflow: hidden; text-overflow: ellipsis; }
+.agent-did { font-weight: var(--fw-medium, 500); opacity: 0.78; }
+.agent-did::before { content: "· "; }
+/* waiting for its agent's next commit: only its name, and a slow bob */
+.agent-cursor[data-idle="1"] .agent-did { display: none; }
+.agent-cursor[data-idle="1"] .agent-arrow, .agent-cursor[data-idle="1"] .agent-tag { animation: agent-bob 2.4s ease-in-out infinite; }
+/* the thing it changed is scrolled out of the lanes: which way */
+.agent-cursor[data-off="left"] .agent-did::after { content: " ←"; }
+.agent-cursor[data-off="right"] .agent-did::after { content: " →"; }
+/* at the window's right edge the tag goes to the cursor's left */
+.agent-cursor[data-flip="1"] .agent-tag { position: absolute; right: 100%; top: 0; margin: 14px 2px 0 0; }
+@keyframes agent-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 3px; } }
+@keyframes agent-gone { 0%, 35% { scale: 1 1; } 100% { scale: 0.08 1; } }
+@keyframes agent-land { from { scale: 1.06; opacity: 0.2; } to { scale: 1; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .agent-cursor { transition: none; }
+  .agent-cursor[data-idle="1"] .agent-arrow, .agent-cursor[data-idle="1"] .agent-tag, .agent-ring.made, .agent-ring.gone { animation: none; }
+}
