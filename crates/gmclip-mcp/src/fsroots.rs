@@ -4,8 +4,10 @@
 //!   every agent file access is relative to that handle, so `..`, absolute symlinks and
 //!   symlinks leaving the root fail inside cap-std (`openat` beneath the root), not in a
 //!   string check that a rename could race.
-//! - **Roots** are the recordings folder chosen at setup, roots the Owner added, and the
-//!   homes of projects already open. Source directories are never roots.
+//! - **Roots** are the human's home folder unless the Owner removed it (decision 0057),
+//!   the recordings folder chosen at setup, roots the Owner added (read or write), and the
+//!   homes of projects already open or in gmclip's library. Source directories are never
+//!   roots on their own; inside the home folder they are readable because the home is.
 //! - **Refused forms** (both grammars, before any filesystem call): empty, relative,
 //!   NUL, any `..` or `.` component, a trailing dot or space, backslashes; and on the
 //!   Windows grammar UNC (`\\server\…`), device paths (`\\.\`, `\\?\`), drive-relative

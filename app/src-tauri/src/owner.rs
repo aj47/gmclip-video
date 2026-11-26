@@ -364,6 +364,17 @@ pub fn effects(command: &str, args: &Value) -> AppResult<(String, Vec<String>)> 
 /// Asks the human on the native sheet, then runs the Owner command.
 pub fn request(core: &AppCore, command: &str, args: &Value) -> AppResult<Value> {
     let (title, lines) = effects(command, args)?;
+    // a folder that is not there is refused before the sheet asks (decision 0057: a
+    // typed `/Movies/…` without the home folder was saved and granted nothing)
+    if command == "roots_add"
+        && let Some(p) = args.get("path").and_then(Value::as_str)
+        && !std::path::Path::new(p).is_dir()
+    {
+        return Err(AppError::invalid(format!(
+            "no folder at {} (type ~/… for one in your home folder)",
+            printable(p)
+        )));
+    }
     let text = lines
         .iter()
         .map(|l| format!("• {l}"))
@@ -533,7 +544,10 @@ pub fn settings(core: &AppCore) -> Value {
                 json!({"path": st.path, "sha256": st.pinned_sha256,
                        "changed_on_disk": st.changed, "unreadable": st.current.err()})
             });
+            // the home folder agents read by default (decision 0057): Settings lists it
+            // with the Owner's roots, and expands `~` in a typed folder to it
             json!({"read_roots": s.read_roots, "write_roots": s.write_roots, "recordings": s.recordings,
+                   "home": h.user_home(), "home_readable": s.home_readable(),
                    "revoked": s.revoked, "export_dir": s.export_dir, "profile": s.profile, "style": style,
                    "budgets": s.budgets(), "providers": s.providers(), "telemetry": s.telemetry,
                    // the clients' probe takes seconds the first time (warmed at app_ready):

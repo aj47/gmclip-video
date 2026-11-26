@@ -303,11 +303,26 @@ export function ConnectAgent(props: { onClose: () => void }) {
   );
 }
 
+/** A typed folder with `~` or `~/…` (`~\…` on Windows) expanded to the home folder;
+ *  anything else as typed. */
+export function expandHome(typed: string, home: string | null | undefined): string {
+  const p = typed.trim();
+  if (!home || !(p === "~" || p.startsWith("~/") || p.startsWith("~\\"))) return p;
+  const sep = home.includes("\\") && !home.includes("/") ? "\\" : "/";
+  const base = home.replace(/[\\/]+$/, "");
+  return p === "~" ? base : `${base}${sep}${p.slice(2).replace(/^[\\/]+/, "")}`;
+}
+
 /** Agent access (Owner, U.11): the folders agents may use and blocked clients. Every
- *  change asks on the native sheet, which says in plain words what it will do. */
+ *  change asks on the native sheet, which says in plain words what it will do. Agents
+ *  read the home folder by default (decision 0057); removing it narrows them to the
+ *  folders listed. */
 export function AgentAccess(props: { onClose: () => void }) {
   const [st, { refetch }] = createResource(async () => (await attempt(actions.ownerSettings)) ?? null);
   const [path, setPath] = createSignal("");
+  const resolved = () => expandHome(path(), st()?.home);
+  // a write root is read too (decision 0057): one list, write roots tagged
+  const roots = () => [...new Set([...(st()?.read_roots ?? []), ...(st()?.write_roots ?? [])])];
   const [write, setWrite] = createSignal(false);
   const [ident, setIdent] = createSignal("");
   const ask = async (command: string, args: Record<string, unknown>) => {
@@ -324,19 +339,36 @@ export function AgentAccess(props: { onClose: () => void }) {
         </header>
         <p class="muted small">Each change asks you in a system dialog first.</p>
         <h3>Folders agents may read</h3>
-        <For each={st()?.read_roots ?? []} fallback={<p class="muted small">None besides your projects.</p>}>
+        <Show when={st()?.home && st()?.home_readable}>
+          <div class="row" data-testid="home-root">
+            <code>{st()!.home}</code>
+            <span class="tag">your home folder</span>
+            <button type="button" class="ghost" onClick={() => void ask("roots_remove", { path: st()!.home })}>Remove</button>
+          </div>
+        </Show>
+        <Show when={st()?.home && st()?.home_readable === false}>
+          <p class="row small" data-testid="home-off">
+            <span class="muted">Agents read only the folders listed here, not your whole home folder.</span>
+            <button type="button" class="ghost" onClick={() => void ask("roots_add", { path: st()!.home })}>Let agents read {st()!.home}…</button>
+          </p>
+        </Show>
+        <For each={roots()} fallback={<Show when={!st()?.home_readable}><p class="muted small">None besides your projects.</p></Show>}>
           {(r) => (
-            <div class="row">
+            <div class="row" data-testid="agent-root">
               <code>{r}</code>
+              <Show when={(st()?.write_roots ?? []).includes(r)}><span class="tag">read and write</span></Show>
               <button type="button" class="ghost" onClick={() => void ask("roots_remove", { path: r })}>Remove</button>
             </div>
           )}
         </For>
-        <form class="row" onSubmit={(e) => { e.preventDefault(); void ask("roots_add", { path: path().trim(), write: write() }); }}>
-          <input type="text" aria-label="Folder for agents" placeholder="/Users/you/Movies/Recordings" value={path()} onInput={(e) => setPath(e.currentTarget.value)} />
+        <form class="row" onSubmit={(e) => { e.preventDefault(); void ask("roots_add", { path: resolved(), write: write() }); }}>
+          <input type="text" aria-label="Folder for agents" placeholder="~/Movies/Recordings" value={path()} onInput={(e) => setPath(e.currentTarget.value)} />
           <label class="check"><input type="checkbox" checked={write()} onChange={(e) => setWrite(e.currentTarget.checked)} /> and write</label>
-          <button type="submit" disabled={!path().trim()}>Add folder…</button>
+          <button type="submit" disabled={!resolved()}>Add folder…</button>
         </form>
+        <Show when={resolved()}>
+          <p class="muted small" data-testid="folder-resolved">Folder: <code>{resolved()}</code></p>
+        </Show>
         <h3>Blocked clients</h3>
         <For each={st()?.revoked ?? []} fallback={<p class="muted small">None.</p>}>{(r) => <p><code>{r}</code></p>}</For>
         <form class="row" onSubmit={(e) => { e.preventDefault(); void ask("revoke", { identity: ident().trim() }); }}>

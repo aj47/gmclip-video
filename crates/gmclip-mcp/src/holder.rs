@@ -294,6 +294,9 @@ pub struct Holder {
     /// readable and openable by name or id (decision 0039). The app sets it; a bare
     /// holder derives it from app data.
     library_dir: Mutex<Option<PathBuf>>,
+    /// The human's home folder (decision 0057: an agent read root unless the Owner
+    /// removed it). The app sets it; a bare holder derives it from app data.
+    human_home: Mutex<Option<PathBuf>>,
     /// The model planner (A18) and the renderer/exporter (CLI or app).
     pub planner: Arc<dyn gmclip_core::Planner>,
     pub media: Arc<dyn gmclip_core::MediaRender>,
@@ -522,6 +525,7 @@ impl Holder {
             roots: Mutex::new(None),
             grants: Mutex::new(HashMap::new()),
             library_dir: Mutex::new(None),
+            human_home: Mutex::new(None),
             planner: Arc::new(gmclip_core::NoPlanner),
             media: Arc::new(gmclip_core::NullMediaRender),
             jobs: crate::media::Jobs::default(),
@@ -939,10 +943,25 @@ impl Holder {
         Ok(home.join("Movies/gmclip/Exports"))
     }
 
-    /// The user's home, from the standard app-data folder (none for any other).
-    fn user_home(&self) -> Option<PathBuf> {
+    /// Sets the human's home folder (the app's `HOME` / `USERPROFILE`).
+    pub fn set_human_home(&self, home: PathBuf) {
+        if home.is_absolute()
+            && let Ok(mut g) = self.human_home.lock()
+        {
+            *g = Some(home);
+        }
+    }
+
+    /// The user's home: the one the app set, else from the standard app-data folder
+    /// (none for any other).
+    pub fn user_home(&self) -> Option<PathBuf> {
+        if let Some(h) = self.human_home.lock().ok().and_then(|g| g.clone()) {
+            return Some(h);
+        }
         let suffix = if cfg!(target_os = "macos") {
             "Library/Application Support/gmclip"
+        } else if cfg!(windows) {
+            "AppData\\Local\\gmclip"
         } else {
             ".local/share/gmclip"
         };
@@ -1027,10 +1046,24 @@ impl Holder {
             .unwrap_or_default()
     }
 
-    /// The agent read roots now: the Owner's roots and recordings folder, plus the homes
-    /// of open projects.
+    /// The read roots the Owner's settings give: the human's home folder unless the
+    /// Owner removed it (decision 0057), the Owner's roots and the recordings folder.
+    pub fn owner_read_roots(&self) -> Vec<PathBuf> {
+        let s = self.settings();
+        let mut v = Vec::new();
+        if s.home_readable()
+            && let Some(h) = self.user_home()
+        {
+            v.push(h);
+        }
+        v.extend(s.read_roots());
+        v
+    }
+
+    /// The agent read roots now: [`Holder::owner_read_roots`], plus the homes of open
+    /// projects and of gmclip's library.
     pub fn read_roots(&self) -> Vec<PathBuf> {
-        let mut v = self.settings().read_roots();
+        let mut v = self.owner_read_roots();
         if let Ok(g) = self.projects.lock() {
             v.extend(g.values().map(|p| p.home.clone()));
         }
@@ -1134,8 +1167,7 @@ impl Holder {
     /// the Owner's settings and the grant's, never the refused path.
     pub fn file_roots_help(&self, conn: &Conn) -> Value {
         let mut readable: Vec<String> = self
-            .settings()
-            .read_roots()
+            .owner_read_roots()
             .iter()
             .chain(self.grant_roots(conn).iter())
             .map(|p| p.display().to_string())
@@ -1150,7 +1182,7 @@ impl Holder {
         let how = if conn.launched.is_some() {
             "This run is bound to one cut and adds no files. Ask the human to add the video in gmclip."
         } else {
-            "Tell the human the folder: they can add it in gmclip under Settings → Agent access… → Folders agents may read, or start a new session with Full access (its gmclip tools may then open files in their home folder). Do not retry other paths outside these folders."
+            "Tell the human the folder: they can add it in gmclip under Settings → Agent access… → Folders agents may read (adding their home folder there lets agents read anywhere in it again), or start a new session with Full access (its gmclip tools may then open files in their home folder). Do not retry other paths outside these folders."
         };
         json!({ "readable": readable, "how": how })
     }
@@ -1769,24 +1801,41 @@ impl Holder {
         match command {
             "roots_add" => {
                 let p = path_arg()?;
+                // a root that is not a folder grants nothing and hides a typo (decision 0057)
+                if !p.is_dir() {
+                    return Err(CmdError::invalid("/path", "no such folder"));
+                }
                 let write = args.get("write").and_then(Value::as_bool).unwrap_or(false);
-                let list = if write {
-                    &mut s.write_roots
+                let home = self.user_home();
+                // the home folder as a read root is the default's switch (decision 0057)
+                if !write && home.as_ref() == Some(&p) {
+                    s.home_read = None;
                 } else {
-                    &mut s.read_roots
-                };
-                if !list.contains(&p) {
-                    list.push(p);
+                    let list = if write {
+                        &mut s.write_roots
+                    } else {
+                        &mut s.read_roots
+                    };
+                    if !list.contains(&p) {
+                        list.push(p);
+                    }
                 }
                 save(&s)?;
-                Ok(json!({"read_roots": s.read_roots, "write_roots": s.write_roots}))
+                Ok(
+                    json!({"read_roots": s.read_roots, "write_roots": s.write_roots, "home_readable": s.home_readable()}),
+                )
             }
             "roots_remove" => {
                 let p = path_arg()?;
+                if self.user_home().as_ref() == Some(&p) {
+                    s.home_read = Some(false);
+                }
                 s.read_roots.retain(|r| *r != p);
                 s.write_roots.retain(|r| *r != p);
                 save(&s)?;
-                Ok(json!({"read_roots": s.read_roots, "write_roots": s.write_roots}))
+                Ok(
+                    json!({"read_roots": s.read_roots, "write_roots": s.write_roots, "home_readable": s.home_readable()}),
+                )
             }
             "recordings_set" => {
                 s.recordings = Some(path_arg()?);
