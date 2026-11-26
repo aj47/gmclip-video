@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.1 — 2026-11-26
+
+### New
+
+- The review link has its own video player. Its controls sit over the picture and stay in
+  fullscreen on phones. Tap to show or hide them, double-tap a side to skip 5 s, double-tap
+  the middle for fullscreen, drag sideways to scrub and swipe down to leave fullscreen. The
+  scrub bar marks each comment, and fullscreen has a Comment here button. The ? button
+  lists every gesture and key.
+- Agents can read your home folder by default. Remove it in Settings → Agent access to
+  limit agents to the folders you list. A folder you let agents write to is readable too.
+- The Agent access folder field accepts `~` and `~/…`.
+
+### Fixed
+
+- The review page no longer reloads you out of fullscreen.
+- Adding an agent folder that does not exist is refused instead of saved.
+
 ## 0.1.0 — 2026-11-22
 
 The first release with installers. gmclip turns long recordings into vertical and

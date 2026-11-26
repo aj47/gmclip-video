@@ -39,7 +39,7 @@
   "meta": {
     "generator": {
       "name": "cargo xt bench60",
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     "import_report": [
       "stream sources: test-media/stream-sources.toml, sha256 9c0755fa7768c862e353ddde4cd31b204d442353197856e13e6ef193e141aade",
