@@ -1159,6 +1159,9 @@ export const actions = {
       read_roots?: string[];
       write_roots?: string[];
       recordings?: string | null;
+      /** The human's home folder, and whether agents may read anywhere in it (decision 0058). */
+      home?: string | null;
+      home_readable?: boolean;
       revoked?: string[];
       note?: string;
       profile?: string | null;

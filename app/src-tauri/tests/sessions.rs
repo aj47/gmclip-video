@@ -406,7 +406,8 @@ fn full_access_sessions_carry_a_grant_for_the_home_folder_until_they_end() {
     sessions::stop(&c, &id).unwrap();
     assert!(connect().is_err(), "the grant ended with the session");
 
-    // gmclip access: no grant, and the agent is told where it may read
+    // gmclip access: no grant; the agent is told it may still read the home folder,
+    // a default read root for every agent (decision 0058)
     let id = start(&c, "gmclip", "make a project from my movies");
     wait_for(&c, &id, "the turn's end", |v| {
         v["session"]["state"] == "idle" && v["session"]["stop_reason"] == "end_turn"
@@ -422,7 +423,10 @@ fn full_access_sessions_carry_a_grant_for_the_home_folder_until_they_end() {
         .as_str()
         .unwrap()
         .to_owned();
-    assert!(first.contains("folders agents may read"), "{first}");
+    assert!(
+        first.contains("anywhere in the human's home folder"),
+        "{first}"
+    );
     c.shutdown();
     let _ = std::fs::remove_dir_all(&root);
 }

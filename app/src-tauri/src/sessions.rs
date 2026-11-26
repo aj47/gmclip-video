@@ -1164,16 +1164,17 @@ fn first_prompt(core: &AppCore, t: &Target, access: &str, message: &str) -> Stri
 }
 
 /// The human's home folder (what the window's file panels open on).
-fn human_home() -> Option<PathBuf> {
+pub(crate) fn human_home() -> Option<PathBuf> {
     std::env::var_os(if cfg!(windows) { "USERPROFILE" } else { "HOME" })
         .filter(|h| !h.is_empty())
         .map(PathBuf::from)
         .filter(|h| h.is_absolute())
 }
 
-/// Which files gmclip's tools may open for this session (decision 0039), so the agent
-/// does not guess: its home folder with full access (not on one cut), else the agent
-/// read roots; gmclip's library in every case.
+/// Which files gmclip's tools may open for this session (decisions 0039, 0058), so the
+/// agent does not guess: its home folder with full access (not on one cut), else the
+/// agent read roots (the home folder too unless the Owner removed it); gmclip's library
+/// in every case.
 fn files_note(core: &AppCore, t: &Target, access: &str) -> String {
     let library = core.dirs.library.display();
     let lib = format!(
@@ -1191,14 +1192,20 @@ fn files_note(core: &AppCore, t: &Target, access: &str) -> String {
     if t.kind == "cut" {
         return "This session is bound to its cut: it adds no files.".into();
     }
-    let roots: Vec<String> = core
+    let owner = core
         .agents
         .holder()
-        .map(|h| h.settings().read_roots())
-        .unwrap_or_default()
-        .iter()
-        .map(|p| p.display().to_string())
-        .collect();
+        .map(|h| h.owner_read_roots())
+        .unwrap_or_default();
+    if let Some(home) = human_home()
+        && owner.contains(&home)
+    {
+        return format!(
+            "gmclip's tools may open files anywhere in the human's home folder ({}): hand gmclip absolute paths (videos_add {{files: [{{path}}]}}). {lib}",
+            home.display()
+        );
+    }
+    let roots: Vec<String> = owner.iter().map(|p| p.display().to_string()).collect();
     let roots = if roots.is_empty() {
         "none yet".to_owned()
     } else {

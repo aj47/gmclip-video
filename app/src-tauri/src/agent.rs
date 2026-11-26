@@ -791,6 +791,10 @@ impl Agents {
         h.set_library(Arc::new(crate::libsearch::Host(Arc::downgrade(core))));
         h.set_importer(Arc::new(crate::video::Importer(Arc::downgrade(core))));
         h.set_library_dir(core.dirs.library.clone());
+        // the human's home folder is an agent read root by default (decision 0058)
+        if let Some(home) = crate::sessions::human_home() {
+            h.set_human_home(home);
+        }
         let h = Arc::new(h);
         if self.holder.set(Arc::clone(&h)).is_err() {
             return;

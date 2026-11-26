@@ -230,6 +230,7 @@ async fn owner_commands_are_absent_and_need_a_code() {
     // the human-only source_add is not reachable either
     assert_eq!(code(&c.call("command_run", json!({"command": "source_add", "args": {"path": "/etc/passwd", "fingerprint": "x"}})).await.unwrap_err()), "NotFound");
     // Owner path: a code bound to command + args, single use
+    std::fs::create_dir_all(w.base.join("more")).unwrap();
     let args = json!({"path": w.base.join("more").to_str().unwrap()});
     let wrong = w
         .control(&Control::OwnerCall {

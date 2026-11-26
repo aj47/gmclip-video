@@ -38,6 +38,13 @@ fn owner_sheet_and_codes() {
     gmclip_app::owner::request(&c, "roots_add", &args).unwrap();
     let st = gmclip_app::owner::settings(&c);
     assert!(st["read_roots"].to_string().contains("Footage"), "{st}");
+    // the human's home folder is listed as readable by default (decision 0058)
+    assert_eq!(st["home_readable"], true, "{st}");
+    // a folder that is not there is refused before the sheet (decision 0058)
+    let missing =
+        json!({"path": root.join("Movies").join("nope").to_string_lossy(), "write": true});
+    let e = gmclip_app::owner::request(&c, "roots_add", &missing).unwrap_err();
+    assert_eq!(e.code, "Invalid", "{e:?}");
 
     // A code is bound to its command and arguments, and used once.
     let code = c.agents.owner_code("roots_remove", &args).unwrap();
