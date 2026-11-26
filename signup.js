@@ -60,6 +60,7 @@ form.addEventListener('submit', async (event) => {
     intro.hidden = true;
     form.hidden = true;
     success.hidden = false;
+    window.gmCount?.('signup');
     if (dialog.open) success.focus();
     form.reset();
   } catch (error) {

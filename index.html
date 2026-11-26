@@ -28,6 +28,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preload" href="assets/fonts/Fredoka-Variable.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"gmclip","description":"AI native video editor. Turns long recordings into Shorts and YouTube cuts: edit by transcript, frame 9:16 and 16:9, burn in captions, and let your own AI agent find the moments.","url":"https://gmclip.com/","image":"https://gmclip.com/assets/og-gmclip-v4.jpg","applicationCategory":"MultimediaApplication","operatingSystem":"macOS, Windows","softwareVersion":"0.1.0","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://github.com/aj47/gmclip-video/releases/tag/v0.1.0"}</script>
 </head>
 <body>
   <header class="nav">
@@ -292,6 +293,9 @@
       <img src="assets/logo.png" alt="gmclip" width="1039" height="360" />
       <span>Bright ideas. Great clips.</span>
       <a href="https://github.com/aj47/gmclip-video" rel="noopener">Open source on GitHub</a>
+      <nav class="footer-links" aria-label="Guides">
+<!-- guides -->
+      </nav>
       <span>© 2026 gmclip · MIT or Apache-2.0</span>
     </div>
   </footer>
@@ -333,6 +337,7 @@
     setTheme(matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     buttons.forEach((b) => b.addEventListener("click", () => setTheme(b.dataset.themeSet)));
   </script>
+  <script src="a.js" defer></script>
   <script src="signup.js" defer></script>
 </body>
 </html>

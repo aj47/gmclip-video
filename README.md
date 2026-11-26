@@ -8,6 +8,9 @@ A landing page with a Cloudflare Pages Function and D1-backed early-access signu
 - Social previews use `assets/og-gmclip-v4.jpg` (1200 × 630), with absolute Open Graph and Twitter image URLs. The layout source is `social/og.html`; regenerate with `node render-og.mjs` using the existing Playwright dependency in `app/ui`. The card uses exact brand assets/fonts and the 0.1.0 `editor-vertical-light` screenshot, which already shows the Short at 00:35. (`assets/og-exe-dev-still.jpg` was the still v2 composited in; v3 does not use it.) Bump the image filename and metadata together for future revisions.
 - The endpoint accepts same-origin JSON POSTs, validates emails, caps payloads, uses a honeypot, and limits each hashed IP to ten valid attempts per hour. Raw IPs are not stored. Rate-limit records are cleaned up after 24 hours as requests arrive.
 
+- Guides live in `pages/*.html`: a `key: value` header (title, description, h1, nav, lede, updated) and the article body. `build.py` wraps them in the shared head, nav, download box and footer, serves each at `/<slug>`, links them from every footer, and writes `sitemap.xml` and `robots.txt`. Competitor facts carry the date they were checked; re-check them before editing a page.
+- `a.js` counts visits by source and download clicks into D1; see [ANALYTICS.md](ANALYTICS.md).
+
 From `site/`:
 
 ```sh
