@@ -2,7 +2,7 @@
 @media (prefers-color-scheme: dark) { :root { --bg: #121212; --fg: #eee; --muted: #aaa; --card: #1d1d1d; --line: #333; --accent: #5aa2f0; --pin: #ffd84d; --ok: #81c784; } }
 * { box-sizing: border-box; }
 html, body { overflow-x: hidden; }
-body { margin: 0; padding: 12px; font: 16px/1.45 -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--fg); max-width: 760px; margin-inline: auto; }
+body { margin: 0; padding: 12px max(12px, env(safe-area-inset-right)) 12px max(12px, env(safe-area-inset-left)); font: 16px/1.45 -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--fg); max-width: 760px; margin-inline: auto; }
 header h1 { margin: 0 0 4px; font-size: 20px; }
 #status { margin: 0 0 16px; color: var(--muted); }
 section { margin: 0 0 24px; }
@@ -30,7 +30,7 @@ button[aria-pressed=true] { outline: 2px solid var(--accent); }
 .stage { position: relative; }
 .pins { position: absolute; inset: 0; pointer-events: none; }
 .stage.drawing .pins { pointer-events: auto; cursor: crosshair; touch-action: none; }
-.stage.drawing video { outline: 2px dashed var(--pin); }
+.stage.drawing video { outline: 2px dashed var(--pin); outline-offset: -2px; }
 .pin { position: absolute; border: 2px solid var(--pin); border-radius: 4px; box-shadow: 0 0 0 1px rgba(0,0,0,.5); }
 .pin.resolved { border-style: dashed; opacity: .6; }
 .pin.picked { border-width: 3px; }
@@ -48,5 +48,92 @@ button[aria-pressed=true] { outline: 2px solid var(--accent); }
 .pair { display: grid; gap: 8px; margin-top: 8px; }
 .pair.side { grid-template-columns: 1fr 1fr; }
 .pair.side video { max-height: 50vh; }
-.pair.ab video.hidden { display: none; }
+.pair.ab video.hidden, .pair.ab .player.hidden { display: none; }
 .versions { gap: 6px; }
+/* the player: controls over the picture, never beside it */
+.player { position: relative; border-radius: 8px; overflow: hidden; background: #000; outline: none; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.player:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+.player video { border-radius: 0; }
+.player.idle { cursor: none; }
+.p-hit { position: absolute; inset: 0; touch-action: pan-y; }
+.p-chrome { position: absolute; inset: 0; color: #fff; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.p-top, .p-bottom { position: absolute; left: 0; right: 0; }
+.p-top { top: 0; }
+.p-bottom { bottom: 0; }
+.p-center { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); }
+.player.show .p-chrome { opacity: 1; }
+.player.show .p-chrome button, .player.show .p-track { pointer-events: auto; }
+.p-chrome button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 44px; height: 44px; min-height: 0; padding: 0; border: 0; border-radius: 999px; background: rgba(0, 0, 0, .45); color: #fff; cursor: pointer; }
+.p-chrome button:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+.p-top { display: flex; align-items: center; gap: 8px; padding: 10px 12px 24px; background: linear-gradient(rgba(0, 0, 0, .6), transparent); }
+.player:not(.fs) .p-top { display: none; }
+.p-title { flex: 1; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+.p-chrome .p-comment { width: auto; padding: 0 14px; font-size: 14px; font-weight: 600; }
+.p-center { display: flex; align-items: center; justify-content: center; gap: 28px; }
+.p-chrome .p-play { width: 64px; height: 64px; background: rgba(0, 0, 0, .55); }
+.p-play svg { width: 34px; height: 34px; }
+.p-chrome .p-skip { position: relative; width: 48px; height: 48px; }
+.p-skip svg { width: 30px; height: 30px; }
+.p-skip.ahead svg { transform: scaleX(-1); }
+.p-skip span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -28%); font-size: 10px; font-weight: 700; }
+.p-bottom { padding: 24px 10px 6px; background: linear-gradient(transparent, rgba(0, 0, 0, .7)); }
+.p-track { position: relative; height: 28px; cursor: pointer; touch-action: none; }
+.p-rail { position: absolute; left: 0; right: 0; top: 12px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, .28); overflow: hidden; }
+.p-buf, .p-played { position: absolute; left: 0; top: 0; bottom: 0; width: 0; }
+.p-buf { background: rgba(255, 255, 255, .4); }
+.p-played { background: #fff; }
+.p-thumb { position: absolute; top: 7px; left: 0; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .5); pointer-events: none; }
+.p-ticks { position: absolute; inset: 0; pointer-events: none; }
+.p-tick { position: absolute; top: 8px; width: 4px; height: 12px; margin-left: -2px; border-radius: 2px; background: var(--pin); box-shadow: 0 0 0 1px rgba(0, 0, 0, .4); }
+.p-tick.resolved { opacity: .5; }
+.p-row { display: flex; align-items: center; gap: 4px; }
+.p-time { flex: 1; font-size: 13px; font-variant-numeric: tabular-nums; text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+.p-row button { width: 40px; height: 40px; background: transparent; }
+.p-chrome .p-speed { width: auto; min-width: 40px; padding: 0 8px; font-size: 14px; font-weight: 700; }
+.p-flash, .p-bubble { position: absolute; padding: 8px 14px; border-radius: 999px; background: rgba(0, 0, 0, .6); color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; pointer-events: none; opacity: 0; transition: opacity .25s; white-space: pre; }
+.p-flash { top: 50%; transform: translateY(-50%); }
+.p-flash.left { left: 8%; }
+.p-flash.right { right: 8%; }
+.p-flash.mid { left: 50%; transform: translate(-50%, -50%); }
+.p-flash.on, .p-bubble.on { opacity: 1; transition: none; }
+.p-bubble { left: 50%; top: 16%; transform: translateX(-50%); }
+/* fullscreen, or the window filled where a page may not go fullscreen */
+html.p-locked, html.p-locked body { overflow: hidden; }
+.player.fs { position: fixed; inset: 0; z-index: 1000; width: 100vw; height: 100vh; height: 100dvh; border-radius: 0; }
+.player.fs video { width: 100%; height: 100%; max-height: none !important; object-fit: contain; }
+.player.fs .p-hit { touch-action: none; }
+.player.fs .p-top { padding-top: max(10px, env(safe-area-inset-top)); padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+.player.fs .p-bottom { padding-bottom: max(6px, env(safe-area-inset-bottom)); padding-left: max(10px, env(safe-area-inset-left)); padding-right: max(10px, env(safe-area-inset-right)); }
+.player.fs .p-center { gap: 48px; }
+/* drawing a box: the finger is for the box, not the controls */
+.stage.drawing .p-hit, .stage.drawing .p-chrome, .stage.drawing .p-flash, .stage.drawing .p-bubble { display: none; }
+/* two small players side by side: no skip buttons */
+.pair.side .p-skip, .pair.side .p-speed { display: none; }
+.pair.side .p-chrome .p-play { width: 48px; height: 48px; }
+.pair.side .player.fs .p-skip, .pair.side .player.fs .p-speed { display: inline-flex; }
+.player.compact .p-skip { display: none; }
+.player.compact .p-chrome .p-play { width: 52px; height: 52px; }
+.player.compact .p-center { top: calc(50% - 22px); }
+.player.compact .p-bottom { padding-top: 10px; }
+.player.compact .p-row button { height: 34px; }
+/* the gestures card and the first-play hint */
+.p-help { position: absolute; inset: 0; z-index: 2; display: none; align-items: center; justify-content: center; padding: 12px; background: rgba(0, 0, 0, .75); color: #fff; }
+.player.helping .p-help { display: flex; }
+.player.helping .p-chrome, .player.helping .p-hint { display: none; }
+.p-help-card { width: 100%; max-width: 420px; max-height: 100%; overflow: auto; padding: 14px 16px; border-radius: 12px; background: #161616; box-shadow: 0 8px 32px rgba(0, 0, 0, .5); }
+/* a small inline player opens the card over the whole window */
+.player:not(.fs) .p-help { position: fixed; z-index: 1001; padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); }
+.p-help-card h4 { margin: 0 0 6px; font-size: 15px; }
+.p-help-card h4.p-help-keys { margin-top: 12px; }
+.p-help-card dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; }
+.p-help-card dt { font-weight: 700; white-space: nowrap; }
+.p-help-card dd { margin: 0; color: #ddd; }
+.p-help-done { margin-top: 12px; width: 100%; background: #fff; color: #111; border: 0; font-weight: 700; }
+/* touch-only phones: no keyboard to list */
+@media (hover: none) and (pointer: coarse) { .p-help-keys { display: none; } }
+.p-hint { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); max-width: calc(100% - 24px); padding: 8px 12px; border-radius: 10px; background: rgba(0, 0, 0, .72); color: #fff; font-size: 13px; text-align: center; pointer-events: none; opacity: 0; transition: opacity .3s; }
+.p-hint.on { opacity: 1; }
+.player.fs .p-hint { top: max(64px, calc(env(safe-area-inset-top) + 56px)); }
+.stage.drawing .p-hint, .stage.drawing .p-help { display: none; }
+.pair.side .p-helpbtn { display: none; }
+.player.compact .p-helpbtn { height: 34px; }
