@@ -45,7 +45,9 @@ import { CommentsPanel } from "../components/CommentsPanel";
 import { CommentPins } from "../components/CommentPins";
 import { ThumbPanel } from "../components/ThumbPanel";
 import { longformOpen, projectMapData } from "../streamState";
-import { askCrop, attempt, cropAsk, cutError, cutView, exportAsk, jobs, openCut, saved, say, selectedPart, setHelpOpen, setHistoryOpen, setSelectedPart, viewer } from "../store";
+import { AgentLayer } from "../components/AgentLayer";
+import { agentEditing, clearPresence, cursors } from "../presence";
+import { askCrop, attempt, cropAsk, cutError, route, cutView, exportAsk, jobs, openCut, saved, say, selectedPart, setHelpOpen, setHistoryOpen, setSelectedPart, viewer } from "../store";
 
 /** The checks that are tidying (Tighten's sweeps), not problems. */
 const TIDY_RULES = new Set(["retake", "dead_air", "part_filler_elsewhere"]);
@@ -79,6 +81,19 @@ export function CutView() {
   const aspect = () => cutView()?.framing?.aspect ?? undefined;
   const sideShown = () => paneShown("side");
   let cutEl!: HTMLElement;
+  /** The agent editing this project right now, by name (decision 0059): a cut that does
+   * not plan is its half-made edit, not an error, until it has been quiet a while. */
+  const midEdit = () => {
+    const v = cutView();
+    const p = agentEditing();
+    const r = route();
+    if (!p || r.view !== "cut" || p !== r.project) return null;
+    // (whichever run committed last: two agents can have cursors on one cut)
+    const last = cursors.filter((c) => c.project === p).reduce<(typeof cursors)[number] | null>((a, c) => (!a || c.editedAt > a.editedAt ? c : a), null);
+    return last?.name ?? v?.agent_working?.identity ?? "An agent";
+  };
+  // another cut: its own cursors (a run's place on the last cut means nothing here)
+  createEffect(on(() => { const r = route(); return r.view === "cut" ? `${r.project}/${r.cut}` : ""; }, () => clearPresence(), { defer: true }));
   const onOff = (b: boolean) => (b ? "on" : "off");
   const [cropping, setCroppingRaw] = createSignal(false);
   const setCropping = (on: boolean) => {
@@ -571,14 +586,31 @@ export function CutView() {
         <Show when={cutError()}>
           {(e) => {
             const x = explainPlanError(e());
+            // an agent mid-edit passes through cuts that do not plan (decision 0059): said
+            // plainly while it works, an error only once it has stopped and left it so
             return (
-              <Banner tone="danger" testid="cut-error" role="alert">
-                <span class="plan-error">
-                  <b>{x.part ? `Part ${x.part}: ` : ""}{x.what}</b>
-                  <span>{x.fix}</span>
-                  <span class="muted small">{cutView() ? "The viewer keeps the last frame that planned." : ""}</span>
-                </span>
-              </Banner>
+              <Show
+                when={midEdit()}
+                fallback={
+                  <Banner tone="danger" testid="cut-error" role="alert">
+                    <span class="plan-error">
+                      <b>{x.part ? `Part ${x.part}: ` : ""}{x.what}</b>
+                      <span>{x.fix}</span>
+                      <span class="muted small">{cutView() ? "The viewer keeps the last frame that planned." : ""}</span>
+                    </span>
+                  </Banner>
+                }
+              >
+                {(who) => (
+                  <Banner tone="info" testid="cut-mid-edit" role="status">
+                    <span class="plan-error">
+                      <b>{who()} is mid-edit</b>
+                      <span>{x.part ? `Part ${x.part}: ` : ""}{x.what}, for now.</span>
+                      <span class="muted small">{cutView() ? "The viewer keeps the last frame that planned." : ""}</span>
+                    </span>
+                  </Banner>
+                )}
+              </Show>
             );
           }}
         </Show>
@@ -696,6 +728,7 @@ export function CutView() {
         />
       </Show>
       <Timeline />
+      <AgentLayer />
       <Show when={longformOpen()}>
         <LongformSheet />
       </Show>

@@ -3,6 +3,7 @@
 import { createEffect, createSignal, onCleanup, onMount, Show, type JSX } from "solid-js";
 import { actions } from "../actions";
 import { attempt, cutView, say, setLoopAsk, viewer } from "../store";
+import { agentEditing } from "../presence";
 import { Chip, IconButton, Menu, Toggle } from "../design/components";
 import { Icon } from "../design/Icon";
 import { prefs, setPref } from "../prefs";
@@ -277,7 +278,7 @@ export function Viewer(props: { aspect?: () => number | undefined; measure?: boo
                 : "Connecting to the preview…"}
           </div>
         </Show>
-        <Show when={vs()?.error}>
+        <Show when={vs()?.error && !agentEditing()}>
           <div class="viewer-error" role="alert"><Icon name="circle-alert" size={14} />{vs()?.error}</div>
         </Show>
       </div>
