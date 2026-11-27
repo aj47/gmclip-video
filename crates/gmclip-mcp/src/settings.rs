@@ -29,6 +29,10 @@ pub struct OwnerSettings {
     /// The recordings folder chosen at setup (a read root).
     #[serde(default)]
     pub recordings: Option<PathBuf>,
+    /// Whether the human's home folder is an agent read root (decision 0058). Absent =
+    /// yes; the Owner narrows it by removing the home folder from the read roots.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub home_read: Option<bool>,
     /// Identities the Owner revoked (`local:<client>`): their calls are refused.
     #[serde(default)]
     pub revoked: Vec<String>,
@@ -250,10 +254,26 @@ impl OwnerSettings {
         Ok(())
     }
 
-    /// The agent read roots this settings file grants.
+    /// Whether the human's home folder is a read root (decision 0058: yes unless the
+    /// Owner removed it).
+    pub fn home_readable(&self) -> bool {
+        self.home_read != Some(false)
+    }
+
+    /// The agent read roots this settings file names: the read roots, the write roots
+    /// (a folder agents may write is one they may read, decision 0058) and the recordings
+    /// folder. The human's home folder, when [`OwnerSettings::home_readable`], is added by
+    /// the holder, which knows the home.
     pub fn read_roots(&self) -> Vec<PathBuf> {
         let mut v = self.read_roots.clone();
-        if let Some(r) = &self.recordings {
+        for w in &self.write_roots {
+            if !v.contains(w) {
+                v.push(w.clone());
+            }
+        }
+        if let Some(r) = &self.recordings
+            && !v.contains(r)
+        {
             v.push(r.clone());
         }
         v

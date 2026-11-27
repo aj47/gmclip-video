@@ -81,7 +81,7 @@ export function Settings() {
                 </Show>
                 <button type="button" class="ghost small" data-testid="style-pick" onClick={() => void pickStyle()}>Choose file…</button>
               </dd>
-              <dt>Folders agents may read</dt><dd>{(s().read_roots ?? []).join(", ") || "none"}</dd>
+              <dt>Folders agents may read</dt><dd>{[...(s().home && s().home_readable ? [`${s().home} (your home folder)`] : []), ...new Set([...(s().read_roots ?? []), ...(s().write_roots ?? [])])].join(", ") || "none"}</dd>
               <dt>Folders agents may write</dt><dd>{(s().write_roots ?? []).join(", ") || "none"}</dd>
               <dt>Recordings folder</dt><dd>{s().recordings ?? "none"}</dd>
               <dt>Your agent</dt><dd>{s().agent?.found ? s().agent?.path : s().agent?.message}</dd>

@@ -1,8 +1,10 @@
 //! Decision 0039 (AJ's session that could not add his videos): gmclip's library is
 //! readable and its projects open by name or id; a session the human started with full
-//! access proves a grant whose folders its gmclip tools may read too, while outside
-//! agents and runs bound to one cut keep R-FS-1 as it was; a refused path says which
-//! folders are readable and how the human adds one.
+//! access proves a grant whose folders its gmclip tools may read too, while runs bound to
+//! one cut get no grant; a refused path says which folders are readable and how the human
+//! adds one. Decision 0058: the human's home folder is a read root for every agent by
+//! default (the worlds here set no human home unless a test does), and the Owner narrows
+//! it by removing it.
 
 mod common;
 
@@ -241,6 +243,121 @@ async fn a_full_access_session_reads_its_granted_folders_and_no_one_else_does() 
     let e = s.call("command_run", add.clone()).await.unwrap_err();
     assert_eq!(code(&e), "Unauthorized", "{e}");
     assert_eq!(stub.0.lock().unwrap().len(), 1);
+}
+
+/// Decision 0058 (AJ: "make the default everything available and ship it"): on a fresh
+/// read-roots config an outside agent opens a video anywhere in the human's home folder;
+/// removing the home folder on the Owner path narrows agents to the listed roots, and
+/// adding it back restores the default. Path safety is unchanged: a symlink out of the
+/// home and `..` are still refused.
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+async fn the_home_folder_is_readable_by_default_and_the_owner_can_narrow_it() {
+    let w = World::start().await;
+    let fx = w.fixture("p.gmclip", 1, "p");
+    let stub = Arc::new(Stub::default());
+    w.holder.set_app(stub.clone());
+    let home = w.base.join("home");
+    let movies = home.join("Movies").join("interview").join("raw");
+    std::fs::create_dir_all(&movies).unwrap();
+    let clip = movies.join("take-a.mp4");
+    std::fs::write(&clip, b"x").unwrap();
+    w.holder.set_human_home(home.clone());
+    let add = |p: &std::path::Path| json!({"command": "videos_add", "args": {"project": fx.project, "files": [{"path": p.to_str().unwrap()}]}});
+
+    // an outside agent with no grant and no Owner change
+    let outsider = w.client("claude-code", None).await;
+    outsider
+        .ok(
+            "command_run",
+            json!({"command": "project_open", "args": {"path": fx.home.to_str().unwrap()}}),
+        )
+        .await;
+    outsider.ok("command_run", add(&clip)).await;
+    assert_eq!(
+        stub.0.lock().unwrap()[0].1["files"][0]["path"],
+        clip.canonicalize().unwrap().to_str().unwrap()
+    );
+    // path safety stays: a symlink out of the home, and `..`
+    let outside = w.base.join("outside");
+    std::fs::create_dir_all(&outside).unwrap();
+    std::fs::write(outside.join("secret.mp4"), b"x").unwrap();
+    #[cfg(unix)]
+    {
+        std::os::unix::fs::symlink(&outside, home.join("escape")).unwrap();
+        let e = outsider
+            .call("command_run", add(&home.join("escape").join("secret.mp4")))
+            .await
+            .unwrap_err();
+        assert_eq!(code(&e), "Unauthorized", "{e}");
+    }
+    let dotdot = format!("{}/../outside/secret.mp4", home.display());
+    let e = outsider
+        .call("command_run", json!({"command": "videos_add", "args": {"project": fx.project, "files": [{"path": dotdot}]}}))
+        .await
+        .unwrap_err();
+    assert_ne!(code(&e), "Ok", "{e}");
+    assert_eq!(stub.0.lock().unwrap().len(), 1);
+
+    // the Owner removes the home folder: agents are back to the listed roots
+    let args = json!({"path": home.to_str().unwrap()});
+    let c1 = w.owner_code("roots_remove", &args).await;
+    let r = w
+        .control(&Control::OwnerCall {
+            command: "roots_remove".into(),
+            args: args.clone(),
+            code: c1,
+        })
+        .await;
+    assert_eq!(r["ok"], true, "{r}");
+    assert_eq!(w.holder.settings().home_read, Some(false));
+    let raw = outsider.call_raw("command_run", add(&clip)).await;
+    assert_eq!(
+        raw["error"],
+        json!({"code": "Unauthorized", "scope": "file_roots"}),
+        "{raw}"
+    );
+    assert!(
+        !raw["help"]["readable"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|r| r.as_str() == home.to_str()),
+        "{raw}"
+    );
+    // ... and adds it back: the default again
+    let c2 = w.owner_code("roots_add", &args).await;
+    let r = w
+        .control(&Control::OwnerCall {
+            command: "roots_add".into(),
+            args,
+            code: c2,
+        })
+        .await;
+    assert_eq!(r["ok"], true, "{r}");
+    assert_eq!(w.holder.settings().home_read, None);
+    assert!(!w.holder.settings().read_roots.contains(&home));
+    outsider.ok("command_run", add(&clip)).await;
+    assert_eq!(stub.0.lock().unwrap().len(), 2);
+
+    // a folder that is not there is refused (AJ's `~`-less "/Movies/…" was saved)
+    let missing = json!({"path": w.base.join("Movies/interview").to_str().unwrap(), "write": true});
+    let c3 = w.owner_code("roots_add", &missing).await;
+    let r = w
+        .control(&Control::OwnerCall {
+            command: "roots_add".into(),
+            args: missing,
+            code: c3,
+        })
+        .await;
+    assert_eq!(r["ok"], false, "{r}");
+    assert!(w.holder.settings().write_roots.is_empty());
+    // a write root is a read root: with the home off, a folder added "and write" reads
+    let mut st = w.holder.settings();
+    st.home_read = Some(false);
+    st.write_roots = vec![movies.clone()];
+    st.save(&w.env.app_data).unwrap();
+    outsider.ok("command_run", add(&clip)).await;
+    assert_eq!(stub.0.lock().unwrap().len(), 3);
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
