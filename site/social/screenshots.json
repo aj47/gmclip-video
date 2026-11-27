@@ -1,0 +1,106 @@
+{
+  "source": "https://www.youtube.com/shorts/p9TabsKWsqI",
+  "title": "exe.dev Lets You Provision VMs With a Prompt",
+  "frame_seconds": 35,
+  "size": [
+    2000,
+    1250
+  ],
+  "kind": "real app captures",
+  "viewport": [
+    1280,
+    800
+  ],
+  "device_scale_factor": 1.5625,
+  "parts": 8,
+  "landscape_framing": "the default 16:9 crop of the portrait video",
+  "caption_corrections": [
+    "XC.dev -> exe.dev (word_respell)"
+  ],
+  "files": [
+    {
+      "file": "assets/shots/v0.1.0/agents-dark.webp",
+      "bytes": 33928,
+      "sha256": "c799e299f57ec51e6091b90ab43962f20054cd0d1d06260a7c39486dadd25f8e"
+    },
+    {
+      "file": "assets/shots/v0.1.0/agents-light.webp",
+      "bytes": 36910,
+      "sha256": "2340c71af293a655c5a24426fcda5ddaa44974f5ce234e31d0899609a424cb91"
+    },
+    {
+      "file": "assets/shots/v0.1.0/captions-dark.webp",
+      "bytes": 81686,
+      "sha256": "07c7c754cfce1a09b30369002860784bf674f59980bdfb9ebfacdaa30c1655c5"
+    },
+    {
+      "file": "assets/shots/v0.1.0/captions-light.webp",
+      "bytes": 83846,
+      "sha256": "62b8b269dce9e6e6c7cdb4aa66a2a428360ead2e8ff9dfd875da402b412e3581"
+    },
+    {
+      "file": "assets/shots/v0.1.0/editor-horizontal-dark.webp",
+      "bytes": 119454,
+      "sha256": "a4d35056364df150710b50c2cfec1ba5a206eff18d48e5d99bb5b247e97ce846"
+    },
+    {
+      "file": "assets/shots/v0.1.0/editor-horizontal-light.webp",
+      "bytes": 123724,
+      "sha256": "365837cb2d9ce279cddbb76721c8bab004e02ea1106c6f80287cf5ad10725192"
+    },
+    {
+      "file": "assets/shots/v0.1.0/editor-topics-dark.webp",
+      "bytes": 121394,
+      "sha256": "8ae81dd995be20d23da187ca2c66ce0de4e01877ce2aa329a4a1217d04290489"
+    },
+    {
+      "file": "assets/shots/v0.1.0/editor-topics-light.webp",
+      "bytes": 127210,
+      "sha256": "43c8b3adbf93e6ddf10aefaa4f9a8dbcb20947f64288192e0fddbb992e664809"
+    },
+    {
+      "file": "assets/shots/v0.1.0/editor-vertical-dark.webp",
+      "bytes": 123722,
+      "sha256": "f9a40b7818cf5aa9fc70673a52b2897fff81a954ee74e9daf822fabd1bd43639"
+    },
+    {
+      "file": "assets/shots/v0.1.0/editor-vertical-light.webp",
+      "bytes": 128742,
+      "sha256": "c4b2b6e2ebc194e6a51024664026aec6fa0451f82a3bdba6e1d34130c26152c5"
+    },
+    {
+      "file": "assets/shots/v0.1.0/home-dark.webp",
+      "bytes": 39184,
+      "sha256": "4e8d2ab17b7a273de1279b20f73c18276b49517afe24a4c43ac04e79d22395a2"
+    },
+    {
+      "file": "assets/shots/v0.1.0/home-light.webp",
+      "bytes": 44664,
+      "sha256": "0b7955b8173dced47d2424136506a281fb4c353552d77b83bdcf89f38b1b82fc"
+    },
+    {
+      "file": "assets/shots/v0.1.0/keys-dark.webp",
+      "bytes": 62780,
+      "sha256": "d5fd735b6ffd65e0dabb0845cce708b9d70c8cc73be18942a992135839f33e2b"
+    },
+    {
+      "file": "assets/shots/v0.1.0/keys-light.webp",
+      "bytes": 69390,
+      "sha256": "cc28e9198bc5f73542a3c0635dc84fbb90ead8c4a25169d5c5f20511b51b9b65"
+    },
+    {
+      "file": "assets/shots/v0.1.0/palette-dark.webp",
+      "bytes": 28220,
+      "sha256": "e084a24948cadb4c517249677b69557c0a64e9bfb02b348753cbe85f1c101c92"
+    },
+    {
+      "file": "assets/shots/v0.1.0/palette-light.webp",
+      "bytes": 35764,
+      "sha256": "00b4efc7e2eeb3f3d0189f43785700c6e2e9a9cdb9052742fe302c31e6d7e305"
+    }
+  ],
+  "home": "Home view with the new Short in the recent-project card.",
+  "app_version": "0.1.0",
+  "capture": "app/ui/tests/e2e/siteshots.spec.ts (GMCLIP_SITE_SHOTS)",
+  "notes": "gmclip's own captions are off: the Short has its captions burned in"
+}
