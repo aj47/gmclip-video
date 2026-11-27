@@ -6,7 +6,7 @@ IP addresses, visitor ids, cookies or countries are stored. `pages/privacy.html`
 
 | Question | Where to look |
 |---|---|
-| Which searches show us, and where we rank | Google Search Console for gmclip.com (not set up yet) |
+| Which searches show us, and where we rank | Google Search Console, URL-prefix property https://gmclip.com/ owned by the owner's Google account (meta tag in `index.html`) |
 | Which posts, sites and pages bring visits, download clicks and update sign-ups | `scripts/report.sh` |
 | How many times each installer was downloaded | GitHub release asset counts (the last section of `scripts/report.sh`) |
 | Total traffic, including people with JavaScript off | Cloudflare dashboard > Workers & Pages > gmclip > Metrics |
