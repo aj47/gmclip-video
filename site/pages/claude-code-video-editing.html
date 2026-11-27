@@ -1,0 +1,48 @@
+<!--
+title: Edit video with Claude Code, Codex or any MCP agent · gmclip
+description: gmclip is a desktop video editor with a built-in MCP server, so Claude Code, Codex, pi or opencode can use every feature: find moments, cut by transcript, frame, caption and render. Free and open source.
+h1: Edit video with Claude Code and other agents
+nav: Claude Code video editing
+lede: gmclip is a video editor with a built-in MCP server. Claude Code, Codex, pi and opencode get the same commands you do, so your agent can find moments, cut by transcript, frame, caption and render while you watch every edit land in the app.
+updated: 26 November 2026
+-->
+      <figure>
+        <div class="screen"><img src="/assets/shots/v0.1.0/agents-light.webp" alt="gmclip’s Agents page: Claude Code, Codex, pi and opencode, a New session button and the list of connected clients" width="2000" height="1250" /></div>
+        <figcaption>The Agents page. Start a session on your own plan, or connect an agent you run in a terminal.</figcaption>
+      </figure>
+
+      <h2>Why an editor, not a script</h2>
+      <p>An agent can cut video with ffmpeg commands, but it can’t see the result, and you can’t easily fix what it did. In gmclip every feature is one command, and the app, the command line and the MCP server all call the same list. So the agent edits the real project: you watch each change appear in the timeline, undo any of it, and keep going by hand. The agent can also look at rendered frames of the cut, so it frames shots from what’s on screen rather than guessed coordinates.</p>
+
+      <h2>What your agent can do</h2>
+      <ul>
+        <li>Read the transcript of every video in a project and find the moments worth posting, then sweep for the ones it missed</li>
+        <li>Grow a story from a moment: it suggests, you apply</li>
+        <li>Cut by striking words, tighten pauses and fillers, fix misheard words</li>
+        <li>Set 9:16 and 16:9 framing, crops and facecam layouts, then check the frames</li>
+        <li>Style captions, add a text hook, draft titles and per-platform copy</li>
+        <li>Run overnight batches with a budget limit</li>
+        <li>Pick up a comment from your phone review with “Fix with my agent”</li>
+      </ul>
+
+      <h2>Two ways to connect</h2>
+      <h3>Start a session inside gmclip</h3>
+      <p>Open <b>Agents</b>, pick Claude Code, Codex, pi or opencode, and click <b>New session</b>. gmclip launches the agent on your own login with only gmclip’s tools, scoped to the project, video or cut you picked. Each run is isolated from your other agent settings.</p>
+      <h3>Connect the agent you already run</h3>
+      <p>On the same page, <b>Connect one…</b> adds gmclip as an MCP server to Claude Code or Codex through their own CLIs (<code>claude mcp add</code>, <code>codex mcp add</code>), and shows you the change before it writes it. Then ask in your terminal as usual, for example:</p>
+      <pre><code>Open my latest stream in gmclip, find three moments that work as Shorts,
+and make a 9:16 cut of each with captions. Don't export.</code></pre>
+      <p>An agent can do anything you can in a project except change owner settings, which stay with you.</p>
+
+      <h2>Compared with other agent video tools</h2>
+      <p><a href="https://github.com/browser-use/video-use" rel="noopener">video-use</a> lets Claude Code edit video through scripts and sends audio to ElevenLabs for transcription. gmclip transcribes on your machine and gives the agent a full editor with undo, a timeline you can see, and the same project you open by hand. Opus Clip offers an MCP connector on its paid plans; gmclip’s is free.</p>
+
+      <section class="faq">
+        <h2>Questions</h2>
+        <h3>Does gmclip charge for AI?</h3>
+        <p>No. gmclip is free and open source. The agent runs on your own Claude, ChatGPT or other plan.</p>
+        <h3>Which agents work?</h3>
+        <p>Claude Code, Codex, pi and opencode from inside the app. Other MCP clients can use gmclip’s stdio server, <code>gmclip mcp</code>.</p>
+        <h3>Can the agent publish or delete my videos?</h3>
+        <p>It edits projects. Exports and overwriting source media happen only when you ask, and every edit can be undone.</p>
+      </section>

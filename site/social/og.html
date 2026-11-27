@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>gmclip social card</title>
+<style>
+@font-face { font-family: Fredoka; src: url('../assets/fonts/Fredoka-Variable.ttf'); font-weight: 300 700; }
+@font-face { font-family: Nunito; src: url('../assets/fonts/NunitoSans-Variable.ttf'); font-weight: 200 1000; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+body { position: relative; background: #fff8ec; color: #2d2a4a; font-family: Nunito, sans-serif; }
+.brand { position: absolute; left: 58px; top: 46px; width: 218px; height: auto; }
+.badge { position: absolute; right: 54px; top: 61px; border: 2px solid #2d2a4a; border-radius: 99px; padding: 8px 17px; font-size: 17px; font-weight: 800; background: #ffd23f; box-shadow: 0 3px 0 #2d2a4a; }
+.copy { position: absolute; top: 196px; left: 58px; z-index: 3; }
+h1 { font: 600 74px/1.02 Fredoka, sans-serif; letter-spacing: -2.4px; margin: 0; }
+h1 span { position: relative; display: inline-block; z-index: 1; }
+h1 span::before { content: ''; position: absolute; z-index: -1; left: -7px; right: -10px; height: 37px; bottom: -1px; border-radius: 9px; background: #ffd23f; transform: rotate(-2deg); }
+.sub { margin: 30px 0 0; font-size: 23px; font-weight: 650; line-height: 1.45; color: #57537a; }
+.url { position: absolute; bottom: 47px; left: 58px; font-size: 20px; font-weight: 850; letter-spacing: -.4px; }
+.url span { display: inline-block; margin-left: 10px; color: #4a9be8; }
+.orb { position: absolute; left: 640px; top: 150px; width: 520px; height: 520px; border-radius: 50%; background: #4a9be8; }
+.orbit { position: absolute; left: 598px; top: 108px; width: 604px; height: 604px; border: 2px solid #4a9be830; border-radius: 50%; }
+.window { position: absolute; top: 172px; left: 618px; width: 540px; border: 3px solid #2d2a4a; border-radius: 16px; background: #fffdf8; overflow: hidden; transform: rotate(-4deg); box-shadow: 0 9px 0 #2d2a4a, 0 24px 40px #2d2a4a1a; }
+.window-bar { height: 29px; display: flex; align-items: center; gap: 6px; padding-left: 12px; border-bottom: 2px solid #2d2a4a; }
+.window-bar i { width: 7px; height: 7px; border: 1px solid #2d2a4a; border-radius: 50%; background: #ffd23f; }
+.window-bar i:nth-child(2) { background: #ff6b5b; }
+.window-bar i:nth-child(3) { background: #2ec4b6; }
+.app-shot { position: relative; width: 100%; height: 310px; overflow: hidden; }
+.app-canvas { position: absolute; bottom: 0; width: 100%; aspect-ratio: 2000 / 1250; }
+.shot { display: block; width: 100%; height: 100%; }
+.video-still { position: absolute; left: 33.45%; top: 6.16%; width: 21.25%; height: 60%; object-fit: contain; background: #0d0e19; border-radius: 3px; }
+.sticker { position: absolute; z-index: 4; left: 640px; bottom: 40px; display: flex; align-items: center; gap: 11px; border: 2.5px solid #2d2a4a; border-radius: 13px; padding: 12px 18px; background: #fff8ec; font-size: 18px; font-weight: 850; transform: rotate(3deg); box-shadow: 0 4px 0 #2d2a4a; }
+.sticker svg { width: 25px; height: 25px; }
+.spark { position: absolute; font: 400 56px Fredoka; color: #2d2a4a; top: 118px; left: 578px; transform: rotate(14deg); }
+</style>
+<body>
+  <img class="brand" src="../assets/logo.png" alt="gmclip" />
+  <div class="badge">v0.1.0 · macOS &amp; Windows</div>
+  <div class="orbit"></div><div class="orb"></div>
+  <div class="copy"><h1>AI native<br /><span>video editor.</span></h1><p class="sub">Long recordings.<br />Great clips.</p></div>
+  <div class="spark">✦</div>
+  <div class="window"><div class="window-bar"><i></i><i></i><i></i></div><div class="app-shot"><div class="app-canvas"><img class="shot" src="../assets/shots/v0.1.0/editor-vertical-light.webp" alt="The gmclip video editor with AJ’s exe.dev Short" /></div></div></div>
+  <div class="sticker"><svg viewBox="0 0 28 28" fill="none" stroke="#2d2a4a" stroke-width="2"><rect x="2" y="7" width="15" height="11" rx="2" fill="#ffd23f"/><rect x="18" y="3" width="8" height="20" rx="2" fill="#4a9be8"/></svg> Shorts + YouTube cuts</div>
+  <div class="url">gmclip.com <span>↗</span></div>
+</body>
+</html>

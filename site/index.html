@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>gmclip: AI native video editor</title>
+  <meta name="description" content="gmclip turns long recordings into Shorts and YouTube cuts. Strike words to cut, frame 9:16 and 16:9, burn in captions, and let your own AI agent find the moments. Open source, for Mac and Windows." />
+  <meta property="og:title" content="gmclip: AI native video editor" />
+  <meta property="og:description" content="Strike words to cut, frame 9:16 and 16:9, burn in captions, and let your own AI agent find the moments." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="gmclip" />
+  <meta property="og:url" content="https://gmclip.com/" />
+  <meta property="og:image" content="https://gmclip.com/assets/og-gmclip-v4.jpg" />
+  <meta property="og:image:secure_url" content="https://gmclip.com/assets/og-gmclip-v4.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="gmclip: AI native video editor. A cream and blue card with the yellow smiling sun logo and the gmclip 0.1.0 editor with AJ’s exe.dev Short. Long recordings. Great clips." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="gmclip: AI native video editor" />
+  <meta name="twitter:description" content="Long recordings. Great clips. Strike words to cut, reframe for Shorts and YouTube, and burn in captions. Open source for macOS and Windows." />
+  <meta name="twitter:image" content="https://gmclip.com/assets/og-gmclip-v4.jpg" />
+  <meta name="twitter:image:alt" content="gmclip: AI native video editor. A cream and blue card with the yellow smiling sun logo and the gmclip 0.1.0 editor with AJ’s exe.dev Short. Long recordings. Great clips." />
+  <meta name="google-site-verification" content="FdmKtyC1LMG-R3xdzL96oUC_ksqGy0BGOMS30useoIM" />
+  <link rel="canonical" href="https://gmclip.com/" />
+  <meta name="theme-color" content="#fff8ec" />
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" href="assets/fonts/Fredoka-Variable.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"gmclip","description":"AI native video editor. Turns long recordings into Shorts and YouTube cuts: edit by transcript, frame 9:16 and 16:9, burn in captions, and let your own AI agent find the moments.","url":"https://gmclip.com/","image":"https://gmclip.com/assets/og-gmclip-v4.jpg","applicationCategory":"MultimediaApplication","operatingSystem":"macOS, Windows","softwareVersion":"0.1.0","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://github.com/aj47/gmclip-video/releases/tag/v0.1.0"}</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="nav-logo" href="#top" aria-label="gmclip home"><img src="assets/logo.png" alt="gmclip" width="1039" height="360" /></a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#agents">Agents</a>
+        <a href="#themes">Light &amp; dark</a>
+        <a href="https://github.com/aj47/gmclip-video" rel="noopener">GitHub</a>
+      </nav>
+      <a class="btn btn-primary" href="#download">Download</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="stickers" aria-hidden="true">
+        <span class="sticker" style="top:14%;right:6%;background:var(--coral);--rot:6deg">cut the “um”s</span>
+        <span class="sticker" style="bottom:12%;right:38%;background:var(--teal);--rot:-5deg">9:16 + 16:9</span>
+      </div>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">☀︎ v0.1.0 · Open source · macOS &amp; Windows</span>
+          <h1>AI native <span class="hl">video editor.</span></h1>
+          <p class="lede">gmclip turns long recordings into Shorts and YouTube cuts. Strike words in the transcript to cut, frame for 9:16 and 16:9, burn in captions, and let your own AI agent find the moments worth posting.</p>
+          <div class="hero-ctas" id="download">
+            <a class="btn btn-primary" href="https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-macos-arm64.dmg">Download for Mac <span class="btn-sub">Apple chip</span></a>
+            <a class="btn btn-sun" href="https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-macos-x64.dmg">Mac <span class="btn-sub">Intel</span></a>
+            <a class="btn" href="https://github.com/aj47/gmclip-video/releases/download/v0.1.0/gmclip-0.1.0-windows-x64.msi">Windows <span class="btn-sub">x64</span></a>
+          </div>
+          <p class="hero-note download-note">The installers aren’t signed yet. On a Mac, open System Settings → Privacy &amp; Security and click <b>Open Anyway</b> the first time; on Windows, click <b>More info</b>, then <b>Run anyway</b>. <a href="https://github.com/aj47/gmclip-video/releases/tag/v0.1.0" rel="noopener">Release notes and checksums</a>.</p>
+          <p class="hero-note">Open source under MIT or Apache-2.0. Transcription runs on your machine. No ffmpeg inside. Bring Claude Code, Codex, pi or opencode.</p>
+        </div>
+        <div class="hero-sun"><img src="assets/icon-512.png" srcset="assets/icon-512.png 1x, assets/icon-1024.png 2x" alt="The gmclip app icon: a smiling sun" width="512" height="512" /></div>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase" aria-label="The editor">
+      <div class="wrap">
+        <div class="theme-toggle" role="group" aria-label="Screenshot theme">
+          <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+          <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+        </div>
+        <div class="screen">
+          <img class="light" src="assets/shots/v0.1.0/editor-topics-light.webp" alt="The gmclip editor with AJ’s exe.dev Short: topics, a long video and a short in the project map, the Words panel as prose, and an eight-part timeline" width="2000" height="1250" />
+          <img class="dark" src="assets/shots/v0.1.0/editor-topics-dark.webp" alt="The same editor in the dark theme" width="2000" height="1250" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="band section" aria-label="At a glance">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">At a glance</span>
+          <h2>One recording in, every cut out.</h2>
+          <p>A native editor with a Rust core, built for people who talk on camera and post everywhere.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>0</b><span>ffmpeg. Decoding and encoding use your OS's own codecs.</span></div>
+          <div class="fact"><b>2</b><span>shapes from one cut: 9:16 for Shorts and Reels, 16:9 for YouTube.</span></div>
+          <div class="fact"><b>4</b><span>agents it can drive: Claude Code, Codex, pi and opencode.</span></div>
+          <div class="fact"><b>−16</b><span>LUFS loudness on export, so every clip sounds the same.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">How it works</span>
+          <h2>From raw take to posted clip.</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><h3>Open a recording</h3><p>Drop in an MP4, MOV, MKV or WebM. gmclip transcribes it on your machine, word by word.</p></div>
+          <div class="step"><h3>Strike the words</h3><p>Cut by deleting text. Tighten clears pauses and filler words in one go, and one undo brings them back.</p></div>
+          <div class="step"><h3>Frame and caption</h3><p>Pick 9:16 or 16:9, place crops and the facecam, and burn in captions with your keywords in yellow.</p></div>
+          <div class="step"><h3>Export and share</h3><p>Reels and YouTube presets at the right loudness, plus a review link your phone can open.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features" style="padding-top:24px">
+      <div class="wrap">
+        <div class="feature">
+          <div class="feature-copy">
+            <span class="tag yellow">Word-based editing</span>
+            <h3>The transcript is the timeline.</h3>
+            <p>Every word links to its frame. Delete a sentence and the video goes with it; restore it and it comes back. Trims snap to word edges, so cuts land between words instead of halfway through one.</p>
+            <ul>
+              <li>Tighten: pauses and filler words gone, undone in one step</li>
+              <li>Find and replace across captions</li>
+              <li>Named versions and a History you can browse</li>
+            </ul>
+          </div>
+          <div class="screen"><img src="assets/shots/v0.1.0/editor-vertical-light.webp" alt="A vertical cut with the Words panel beside the picture" width="2000" height="1250" loading="lazy" /></div>
+        </div>
+
+        <div class="feature flip">
+          <div class="feature-copy">
+            <span class="tag blue">Framing</span>
+            <h3>9:16 and 16:9 from the same cut.</h3>
+            <p>Each cut keeps both, 9:16 and 16:9. Switch with one click and the edit follows. Presets for full screen and screen-plus-facecam get you most of the way, and crop boxes do the rest.</p>
+            <ul>
+              <li>Crops that apply to every part at once, and crop versions to switch between</li>
+              <li>"Follow the action" crop that tracks what moves</li>
+              <li>Blurred fill and gradient plates behind the picture</li>
+              <li>Background cut-out without a green screen (Mac)</li>
+            </ul>
+          </div>
+          <div class="screen"><img src="assets/shots/v0.1.0/editor-horizontal-dark.webp" alt="The same cut at 16:9 in the dark theme" width="2000" height="1250" loading="lazy" /></div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <span class="tag coral">Timeline</span>
+            <h3>Captions, volume and text, each on its own lane.</h3>
+            <p>Put several videos in one project and arrange them on a single timeline. Trims there only hide footage, so nothing is lost. Captions, volume levels and on-screen text sit on lanes you can see and drag.</p>
+            <ul>
+              <li>Burned-in captions of 1–3 words, keywords in yellow</li>
+              <li>Bounce, pop and fade, a style gallery, and "save as my style"</li>
+              <li>Volume per part or over a span, with fades</li>
+              <li>Pair a voice track with a hi-res picture, synced for you</li>
+            </ul>
+          </div>
+          <div class="screen"><img src="assets/shots/v0.1.0/editor-vertical-dark.webp" alt="The exe.dev edit with eight video parts, a waveform and a text lane" width="2000" height="1250" loading="lazy" /></div>
+        </div>
+
+        <div class="feature flip">
+          <div class="feature-copy">
+            <span class="tag teal">Keyboard first</span>
+            <h3>Fast hands, no hunting.</h3>
+            <p>J/K/L to shuttle, I/O to mark, and a command palette that finds every action by name. Press <b>?</b> anytime to see every key.</p>
+            <ul>
+              <li>⌘K command palette</li>
+              <li>Hover scrub across the timeline</li>
+              <li>Panes you can hide, resize and lay out your way</li>
+            </ul>
+          </div>
+          <div class="screen"><img src="assets/shots/v0.1.0/keys-light.webp" alt="The keyboard shortcuts sheet" width="2000" height="1250" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="every" style="background:var(--paper);border-block:2px solid var(--ink)">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Everything inside</span>
+          <h2>Every feature, on one page.</h2>
+          <p>What's built today, on macOS and Windows.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon bg-yellow" aria-hidden="true">✂︎</div>
+            <h3>Word-based editing</h3>
+            <p>Cut and restore by editing the transcript.</p>
+            <ul><li>Word-snapped trims</li><li>Tighten pauses and fillers</li><li>Find and replace</li><li>Versions and History</li></ul>
+          </article>
+          <article class="card" id="agents">
+            <div class="card-icon bg-violet" aria-hidden="true">✦</div>
+            <h3>Moments, by your agent</h3>
+            <p>Your own AI agent finds the moments; nothing runs until you click.</p>
+            <ul><li>Find moments, then sweep for missed ones</li><li>Grow a story: it suggests, you apply</li><li>Chat-log spikes become moments</li><li>Tap to mark moments while you watch</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-blue" aria-hidden="true" style="font:700 14px/1 var(--display)">9:16</div>
+            <h3>Framing</h3>
+            <p>Vertical and horizontal from one edit.</p>
+            <ul><li>Full screen and screen + facecam</li><li>Follow-the-action crop</li><li>Blurred fill, gradient plates</li><li>Cut-outs without a green screen (Mac)</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-coral" aria-hidden="true">Aa</div>
+            <h3>Captions and text</h3>
+            <p>Burned in, styled and timed to each cut's own audio.</p>
+            <ul><li>Keyword highlights</li><li>Text hooks, section labels, stopwatch</li><li>Stressed-word emphasis and punch-ins</li><li>Caption style gallery</li><li>Short titles from the hook or topic</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-teal" aria-hidden="true">≡</div>
+            <h3>Project timeline</h3>
+            <p>Several videos, one arrangement.</p>
+            <ul><li>Non-destructive trims that only hide</li><li>Stream edits, topics and long-form cuts</li><li>YouTube chapters</li><li>Voice + hi-res picture pairing</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-yellow" aria-hidden="true">∿</div>
+            <h3>Audio</h3>
+            <p>Levels that hold up on every platform.</p>
+            <ul><li>Audio lane and waveforms</li><li>Volume per part and per span</li><li>Fades</li><li>−16 LUFS loudness on export</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-blue" aria-hidden="true">⇪</div>
+            <h3>Export and packaging</h3>
+            <p>Ready to post, not just rendered.</p>
+            <ul><li>Reels and YouTube 1080p / 1440p / 4K presets</li><li>Thumbnails with versions</li><li>Copy drafts per platform</li><li>Alternate openings to test</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-violet" aria-hidden="true">⌘</div>
+            <h3>Agents and MCP</h3>
+            <p>A built-in MCP server gives an agent every feature.</p>
+            <ul><li>Claude Code, Codex, pi, opencode</li><li>Each run isolated to gmclip's tools</li><li>Overnight batches with budget limits</li><li>"Fix with my agent" from a comment</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-coral" aria-hidden="true">◎</div>
+            <h3>Review from your phone</h3>
+            <p>Scan a QR code and give notes from the couch.</p>
+            <ul><li>Keep, change or drop each cut</li><li>Comments pinned to the moment</li><li>Suggested edits you approve</li><li>Retention CSV on the timeline</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-teal" aria-hidden="true">★</div>
+            <h3>Brand kit</h3>
+            <p>Your look on every cut, set once.</p>
+            <ul><li>Name, handle, colours, logo, face</li><li>Overlay templates and lower thirds</li><li>End cards that loop to the opening</li><li>A caption style for new projects</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-yellow" aria-hidden="true">⌕</div>
+            <h3>Search and library</h3>
+            <p>Find anything you've ever said.</p>
+            <ul><li>Search by words or by meaning</li><li>Across every transcript you own</li><li>Golden cuts and "new cut like this"</li><li>Consolidate a project into one folder</li></ul>
+          </article>
+          <article class="card">
+            <div class="card-icon bg-blue" aria-hidden="true">⛨</div>
+            <h3>Local and safe</h3>
+            <p>Your footage stays on your machine.</p>
+            <ul><li>On-device transcription</li><li>Crash recovery and automatic backups</li><li>Handles a full disk gracefully</li><li>No ffmpeg in the app</li><li>Open source: read every line, build it yourself</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase" id="themes">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Light &amp; dark</span>
+          <h2>Bright mornings, late nights.</h2>
+          <p>A cream theme and a night-ink theme, both following your system by default.</p>
+        </div>
+        <div class="duo">
+          <div class="screen"><img src="assets/shots/v0.1.0/home-light.webp" alt="Home in the light theme" width="2000" height="1250" loading="lazy" /></div>
+          <div class="screen"><img src="assets/shots/v0.1.0/home-dark.webp" alt="Home in the dark theme" width="2000" height="1250" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="get">
+      <div class="wrap">
+        <div class="cta">
+          <img src="assets/icon-512.png" alt="" width="512" height="512" />
+          <h2>Good morning. Clip it.</h2>
+          <p>Download gmclip 0.1.0 for macOS or Windows, or build it from source. Leave your email to hear when a new version is out.</p>
+          <div class="hero-ctas" style="justify-content:center;margin-top:0">
+            <a class="btn btn-primary" href="#download">Download</a>
+            <button class="btn btn-sun" type="button" data-signup-open aria-haspopup="dialog" aria-controls="signup-dialog">Get updates <span aria-hidden="true">↗</span></button>
+            <a class="btn" href="https://github.com/aj47/gmclip-video" rel="noopener">Build it from source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <img src="assets/logo.png" alt="gmclip" width="1039" height="360" />
+      <span>Bright ideas. Great clips.</span>
+      <a href="https://github.com/aj47/gmclip-video" rel="noopener">Open source on GitHub</a>
+      <nav class="footer-links" aria-label="Guides">
+<!-- guides -->
+      </nav>
+      <span>© 2026 gmclip · MIT or Apache-2.0</span>
+    </div>
+  </footer>
+
+  <dialog class="signup-dialog" id="signup-dialog" aria-labelledby="signup-title" aria-describedby="signup-description">
+    <div class="signup-card">
+      <button class="signup-close" type="button" aria-label="Close signup" data-signup-close><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+      <div class="signup-intro">
+        <div class="signup-heading"><img src="assets/icon.svg" alt="" width="64" height="64" /><span class="signup-badge"><span aria-hidden="true">✦</span> New versions</span></div>
+        <h2 id="signup-title">Get updates.</h2>
+        <p id="signup-description">Leave your email and we’ll tell you when a new version of gmclip is out.</p>
+      </div>
+      <form class="signup" action="/api/signup" method="post">
+        <label for="signup-email">Email address</label>
+        <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required aria-describedby="signup-note signup-status" autofocus />
+        <div class="signup-trap" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off" /></label></div>
+        <button class="btn btn-primary signup-submit" type="submit"><span>Get updates</span><span aria-hidden="true">↗</span></button>
+        <p id="signup-status" class="signup-status" role="status" aria-live="polite"></p>
+        <p id="signup-note" class="signup-note">By joining, you agree to receive emails about new gmclip versions. Your email is stored with Cloudflare and used only for gmclip updates.</p>
+      </form>
+      <div class="signup-success" hidden role="status" tabindex="-1">
+        <span class="signup-check" aria-hidden="true">✓</span>
+        <h2>You’re on the list.</h2>
+        <p>We’ll email you when a new version is out.<br />Until then, keep the good takes rolling.</p>
+        <button class="btn btn-primary" type="button" data-signup-close>Sounds good <span aria-hidden="true">☀︎</span></button>
+      </div>
+      <div class="signup-footer"><span class="signup-dot" aria-hidden="true"></span> macOS <span aria-hidden="true">·</span> Windows</div>
+    </div>
+  </dialog>
+
+  <script>
+    // The showcase screenshots follow the visitor's system theme until they pick one.
+    const shows = document.querySelectorAll("#showcase");
+    const buttons = document.querySelectorAll("[data-theme-set]");
+    function setTheme(t) {
+      shows.forEach((s) => s.classList.toggle("is-dark", t === "dark"));
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === t)));
+    }
+    setTheme(matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    buttons.forEach((b) => b.addEventListener("click", () => setTheme(b.dataset.themeSet)));
+  </script>
+  <script src="a.js" defer></script>
+  <script src="signup.js" defer></script>
+</body>
+</html>
